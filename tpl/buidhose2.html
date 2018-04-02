@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />
+		<link href="../css/buiding.css" rel="stylesheet" />
+	</head>
+
+	<body>
+<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">创建纪念馆</h1>
+</header>
+<div class="mui-content">
+		        	
+ <div class="deathPhoto">
+    	<h5 class="mui-content-padded">逝者相片</h5>
+    	<img class="userImg" src="../img/deathimg.png" />
+    	<h5 class="mui-content-padded">最佳比例：128*164</h5>
+
+    	
+ </div>   
+		    
+		
+		    	
+		 <div id="deathName">
+		  	 <h5 class="mui-content-padded">逝者姓名：</h5>
+		     <div class="mui-input-row">
+					<input type="text" placeholder="只限中文，最多6个字">
+				</div>			
+		 </div> 
+		 
+	
+		 
+		 <div id="deathSex">
+		  	 <h5 class="mui-content-padded">性别：</h5>
+		   <div class="mui-card">
+				<form class="mui-input-group">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>男</label>
+						<input name="radio1" type="radio">
+					</div>
+					<div class="mui-input-row mui-radio mui-left">
+						<label>女</label>
+						<input name="radio1" type="radio" checked>
+					</div>
+					
+				</form>
+			</div>
+		
+		        
+		 <div id="birthDate">
+		  	 <h5 class="mui-content-padded">出生日期：</h5>
+		     <div class="mui-input-row">
+					<input type="text" placeholder="1974-02-06">
+				</div>			
+		 </div> 		
+					
+		<div id="deathDate">
+		  	 <h5 class="mui-content-padded">逝世日期：</h5>
+		     <div class="mui-input-row">
+					<input type="text" placeholder="1974-02-06">
+				</div>			
+		 </div> 
+		 
+		
+		
+		<div id="deathDate">
+		  	 <h5 class="mui-content-padded">生平简介：</h5>
+		     <div class="mui-input-row" style="margin: 10px 5px;">
+					<textarea id="textarea" rows="5" placeholder=""></textarea>
+				</div>		
+		 </div> 
+		
+			
+			
+			
+			
+			
+			
+			
+			<button type="button" class="mui-btn mui-btn-primary mui-btn-block backbtn">上一步</button>
+		 	<button type="button" class="mui-btn mui-btn-primary mui-btn-block completebtn">完成</button>
+		
+</div>
+		
+		
+		
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

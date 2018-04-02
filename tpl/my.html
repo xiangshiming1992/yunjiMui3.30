@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+     <link href="../css/index.css" rel="stylesheet"/>
+     <script src="../js/jquery-1.10.2.js"></script>
+   
+</head>
+<body>
+ <header class="mui-bar mui-bar-nav header">
+     <h1 class="mui-title">个人中心</h1>
+ </header>
+ 
+  <div class="mui-content">
+  	
+  <div class="mybanner"><img id="headImg" src=""/><h4 id="nickname"></h4></div>  
+ 
+ <div class="yunbi">
+ 	<div class="ybyue">
+ 		<span>云币：</span><span id="ybnumber"></span>
+ 	</div>
+ 
+ <a type="button" href="recharge.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">充值</a>
+
+ </div>
+              
+ <div class="phone"><a href="#">相册管理</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+    
+ <div class="phone"><a href="#">我的纪念馆</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+        
+ <div class="phone"><a href="#">我的家谱</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+  
+ <div class="phone"><a href="#">个人信息</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
+
+  </div>
+  
+  
+  
+  
+  
+
+
+
+<!--  底部选项卡-->  
+<nav class="mui-bar mui-bar-tab">
+      <a class="mui-tab-item" id="jinianguan">
+          <span class="mui-icon mui-icon-home"></span>
+          <span class="mui-tab-label">纪念馆</span>
+      </a>
+      <a class="mui-tab-item" id="jiapu">
+          <span class="mui-icon mui-icon-map"></span>
+          <span class="mui-tab-label">家谱圈</span>
+      </a>
+      <a class="mui-tab-item" id="xingshi">
+          <span class="mui-icon mui-icon-navigate"></span>
+          <span class="mui-tab-label">姓氏起源</span>
+      </a>
+      <a class="mui-tab-item mui-active" id="my">
+          <span class="mui-icon mui-icon-contact"></span>
+          <span class="mui-tab-label">个人中心</span>
+      </a>
+  </nav>
+  
+<script src="../js/navJump.js"></script>
+<script type="application/javascript">
+	var urlBase = 'http://120.77.156.29:8060/homage';
+	var imgBase = 'http://img.yunji128.com/';
+	$.ajax({  
+		headers: {
+	        tokenInfo: window.localStorage.getItem("tokenInfo")
+	    },
+        type: "GET",  
+        url: urlBase + "/api/user/userInfoByMe",  
+        data: {},  
+        dataType: "json",  
+        success: function (data) {
+        	if(data.code=='SUCCESS'){
+        		$("#nickname").html(data.result.nickname);
+        		$("#ybnumber").html(data.result.cloudBi);
+        		$("#headImg").attr("src",imgBase + data.result.headImg);
+        	}
+        	else if(data.code=='PleaseLogin'){
+        		window.location.href='login.html';
+        	}
+        	else{
+        		alert(data.message);
+        	}
+        },  
+        error: function (message) {  
+            alert("提交数据失败！");  
+        }  
+   });
+	
+</script>
+</body>
+</html>
