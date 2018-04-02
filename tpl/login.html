@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/login.css" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js"></script>
+		<script src="../js/sha256.jquery.debug.js"></script>
+		<style>
+			
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label>账号</label>
+					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+				</div>
+			</form>
+			<!--<form class="mui-input-group">
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						自动登录
+						<div id="autoLogin" class="mui-switch">
+							<div class="mui-switch-handle"></div>
+						</div>
+					</li>
+				</ul>
+			</form>-->
+			<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+				<div class="link-area"><a id='reg' href="reg.html">注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				</div>
+			</div>
+			<div class="mui-content-padded oauth-area">
+
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		
+		<script type="application/javascript">
+			var urlBase = 'http://120.77.156.29:8060/homage';
+			$("#login").click(function(){
+			  	var user = {
+				  "userName": $("#account").val(),
+				  "password": $.sha256($("#password").val())
+				};
+			  	$.ajax({  
+	                type: "POST",  
+	                url: urlBase + "/api/user/login",  
+	                contentType: "application/json; charset=utf-8",  
+	                data: JSON.stringify(user),  
+	                dataType: "json",  
+	                success: function (data) {
+	                	if(data.code=='SUCCESS'){
+	                		//登录成功，将用户的token信息存入cook
+	                		var tokenInfo = data.result.tokenModel.userId + "_" +data.result.tokenModel.token;
+	                		window.localStorage.setItem("tokenInfo",tokenInfo);
+	                		window.location.href='my.html'
+	                	}
+	                	else{
+	                		alert(data.message)
+	                	}
+	                },  
+	                error: function (message) {  
+	                    alert("提交数据失败！");  
+	                }  
+	           });
+			});
+		</script>
+	</body>
+
+</html>

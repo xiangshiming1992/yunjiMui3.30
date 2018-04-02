@@ -1,0 +1,51 @@
+
+*{margin:0;padding:0;}
+li{list-style: none;}
+.mui-content{
+position: absolute;  
+        width: 100%;  
+        height: 100%;  
+        background: url(../img/beijing1.png)no-repeat;  
+        background-size: 100%100%;  
+
+}
+
+.muxiang{width: 80%;margin-left: 40%;margin-top: 2%;}
+.muxiang img{position: absolute;width: 30%;}
+
+
+.mui-control-content{margin-bottom:0px;margin-top: 50%;}
+#jibai{background: #dddbd5;width: 100%;height: 60%;position: absolute;bottom: 0;}
+#jibai .jipin{width: 100%;height: 228px;margin-top: -2px;}
+#jibai .jipin h4,#jibai .liuyan h4{color:#6e6e6d;text-align: center;line-height: 40px;background: #f6f5f4;}
+
+
+#jibai .liuyan{margin-top:-16px;}
+#jibai .liuyan h4{margin-top: 0px;}
+.mui-input-row{margin-top:-8px}
+.mui-btn{position: absolute;top: 78%;left: 80%;}
+.jipin-ul{width:100%;height:100%;margin-top: -4px;}
+.jipin-ul li{float:left;width:32%; height:80px; background: #f6f5f4;margin:2px;}
+.jipin-ul li img{float:left;width: 36%;margin-top: 16px;margin-left: 4px;}
+.jipin-ul span{width:60%;font-size: 12px;display: inline-block;margin:0px;}
+
+#shengping{background:rgba(49,49,49,0.9); width: 100%;color: #d4d4d2;}
+#shengping .zhaopian{float: left; width: 100%;height: 160px;margin-top: 50px;}
+#shengping .zhaopian .img{float: left;margin:6px;}
+#shengping .zhaopian .jianjie-info{float: right;margin-right: 20%;}
+#shengping .zhaopian .jianjie-info li{margin: 8px;}
+#shengping .jianjie h4{text-align: center;}
+#shengping .jianjie p{margin: 8px;color: #d4d4d2;}
+
+#laifang{background: #dddbd5;width: 100%;height: 60%;position: absolute;bottom: 0;color:#414040;}
+#laifang h4{background:#FFFFFF;width:100%;line-height: 40px;padding-left: 20px;}
+.mui-table-view{margin-top: -8px;}
+#xiangpian,#video{background: #FFFFFF;width: 100%;height: 46%;position: absolute;bottom: 0;}
+#xiangpian .photo,#video .photo{width: 100%;height: 180px;}
+#xiangpian .photo .photo-img ,#video .photo .photo-img{margin:6px 10px ;}
+.photo-img span{margin: 2px;}
+.video-icon{margin:6px 10px ;}
+.video-icon span{margin: 2px;}
+
+.videoImg{color: #01a2ff;}
+#video{height:40%}
