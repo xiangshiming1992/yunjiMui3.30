@@ -3,19 +3,20 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>充值中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		
 		<link href="../css/recharge.css" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	</head>
 
 	<body>
-<header class="mui-bar mui-bar-nav reheader">
+<!--<header class="mui-bar mui-bar-nav reheader">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">充值</h1>
-</header>
+</header>-->
 <div class="mui-content">
 
 	<h5 class="mui-content-padded">请选择充值方案</h5>
@@ -63,15 +64,14 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			var urlBase = 'http://120.77.156.29:8060/homage';
-			
+			var urlBase = 'http://api.yunji128.com/homage';
 			
 			$("#recharge").click(function(){
 				var czMoney = $("#czMoney").val();
-				if(czMoney < 1){
+				/*if(czMoney < 1){
 					alert("至少充值一元钱的嘛");
 					return;
-				}
+				}*/
 				var createData = {
 				  "dataId": "",
 				  "number": 1,
@@ -81,7 +81,7 @@
 				  "orderSource": "WX",
 				  "returnUrl": "",
 				  "showUrl": "",
-				  "openId": "oAQmgwLI9SKgHsz4Yi5hWdXSgX1Q"
+				  "openId": window.localStorage.getItem("openid")
 				}
 			  	$.ajax({  
 	                type: "POST",  
@@ -95,7 +95,16 @@
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
 	                		//获取凭据成功
-	                		alert(JSON.stringify(data.result));
+	                		if (typeof WeixinJSBridge == "undefined"){
+							   if( document.addEventListener ){
+							       document.addEventListener('WeixinJSBridgeReady', onBridgeReady.bind(null,data.result), false);
+							   }else if (document.attachEvent){
+							       document.attachEvent('WeixinJSBridgeReady', onBridgeReady.bind(null,data.result)); 
+							       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady.bind(null,data.result));
+							   }
+							}else{
+							   onBridgeReady(data.result);
+							}
 	                	}
 	                	else if(data.code=='PleaseLogin'){
 	                		aler("请先登陆");
@@ -110,6 +119,27 @@
 	                }  
 	           });
 			});
+			
+			function onBridgeReady(obj){
+			   WeixinJSBridge.invoke(
+			       'getBrandWCPayRequest', {
+			           "appId":obj.appId,     //公众号名称，由商户传入     
+			           "timeStamp":obj.timeStamp,         //时间戳，自1970年以来的秒数     
+			           "nonceStr":obj.nonceStr, //随机串     
+			           "package":obj.package,     
+			           "signType":"MD5",         //微信签名方式：     
+			           "paySign":obj.sign //微信签名 
+			       },
+			       function(res){     
+			       	 	// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+			           if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+			           		window.location.href="my.html";
+			           }else{
+			           		alert("支付取消");
+			           }
+			       }
+			   ); 
+			}
 		</script>
 	</body>
 

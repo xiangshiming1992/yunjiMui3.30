@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title></title>
+		<title>注册</title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link href="../css/reg.css" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
@@ -13,10 +13,10 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">注册</h1>
-		</header>
+		</header>-->
 		<div class="mui-content">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
@@ -45,7 +45,7 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="application/javascript">
 			//发送验证码
-			var urlBase = 'http://120.77.156.29:8060/homage';
+			var urlBase = 'http://api.yunji128.com/homage';
 			$("#_sendSms").click(function(){
 			  	var user = {
 				  "sendType": 'REGISTER',
@@ -93,7 +93,7 @@
 	                dataType: "json",  
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
-	                		alert("注册成功");
+	                		alert("注册成功,去登录吧");
 	                		window.location.href="login.html";
 	                	}
 	                	else{
