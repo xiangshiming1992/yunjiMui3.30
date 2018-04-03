@@ -3,17 +3,12 @@
 
 	<head>
 		<meta charset="UTF-8">
-<<<<<<< HEAD
 		<title>充值中心</title>
-=======
-		<title></title>
->>>>>>> 2927650f7e765a0e98940351dda1b5378fb864d0
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		
 		<link href="../css/recharge.css" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
-<<<<<<< HEAD
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	</head>
 
@@ -22,15 +17,7 @@
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">充值</h1>
 </header>-->
-=======
 	</head>
-
-	<body>
-<header class="mui-bar mui-bar-nav reheader">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">充值</h1>
-</header>
->>>>>>> 2927650f7e765a0e98940351dda1b5378fb864d0
 <div class="mui-content">
 
 	<h5 class="mui-content-padded">请选择充值方案</h5>
@@ -78,26 +65,13 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
-<<<<<<< HEAD
 			var urlBase = 'http://api.yunji128.com/homage';
-			
 			$("#recharge").click(function(){
 				var czMoney = $("#czMoney").val();
 				/*if(czMoney < 1){
 					alert("至少充值一元钱的嘛");
 					return;
 				}*/
-=======
-			var urlBase = 'http://120.77.156.29:8060/homage';
-			
-			
-			$("#recharge").click(function(){
-				var czMoney = $("#czMoney").val();
-				if(czMoney < 1){
-					alert("至少充值一元钱的嘛");
-					return;
-				}
->>>>>>> 2927650f7e765a0e98940351dda1b5378fb864d0
 				var createData = {
 				  "dataId": "",
 				  "number": 1,
@@ -121,7 +95,6 @@
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
 	                		//获取凭据成功
-<<<<<<< HEAD
 	                		if (typeof WeixinJSBridge == "undefined"){
 							   if( document.addEventListener ){
 							       document.addEventListener('WeixinJSBridgeReady', onBridgeReady.bind(null,data.result), false);
@@ -132,9 +105,6 @@
 							}else{
 							   onBridgeReady(data.result);
 							}
-=======
-	                		alert(JSON.stringify(data.result));
->>>>>>> 2927650f7e765a0e98940351dda1b5378fb864d0
 	                	}
 	                	else if(data.code=='PleaseLogin'){
 	                		aler("请先登陆");
@@ -149,8 +119,6 @@
 	                }  
 	           });
 			});
-<<<<<<< HEAD
-			
 			function onBridgeReady(obj){
 			   WeixinJSBridge.invoke(
 			       'getBrandWCPayRequest', {
@@ -171,8 +139,6 @@
 			       }
 			   ); 
 			}
-=======
->>>>>>> 2927650f7e765a0e98940351dda1b5378fb864d0
 		</script>
 	</body>
 
