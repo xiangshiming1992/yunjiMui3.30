@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
+    <title>姓氏起源</title>
     <script src="../js/mui.min.js"></script>
     <link href="../css/mui.min.css" rel="stylesheet"/>
      <link href="../css/index.css" rel="stylesheet"/>
@@ -11,10 +11,9 @@
   <script src="../js/template-web.js"></script>
 </head>
 <body>
- <header class="mui-bar mui-bar-nav header">
+<!-- <header class="mui-bar mui-bar-nav header">
      <h1 class="mui-title">姓氏起源</h1>
- </header>
-  
+</header>-->
   <div class="mui-slider bannertop">
     <div class="mui-slider-group mui-slider-loop">
       <!--第一个内容区容器-->      
@@ -60,63 +59,36 @@
           <span class="mui-icon mui-icon-navigate"></span>
           <span class="mui-tab-label">姓氏起源</span>
       </a>
-      <a class="mui-tab-item" id="my">
+      <a class="mui-tab-item" id="personal">
           <span class="mui-icon mui-icon-contact"></span>
           <span class="mui-tab-label">个人中心</span>
       </a>
   </nav>
 
-<script>
-		 $.ajax({
-		      type: "GET",
-		      contentType: "application/json",
-		      dataType: "json",
-		      url: "http://120.77.156.29:8060/homage/api/industryDynamic/list?type=XSQY&currentPage=1&limit=50", //这里是网址
-		      success:function(data){
-				//console.log(data.result.content[1].title); //data.grant[0].tm_nam
-				var list = data.result.content;
-				var contens = "";
-				$.each(list, function(){     
-				    contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;">'+
-				    '<img class="mui-media-object mui-pull-left" src="'+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
-				}); 
-				document.getElementById('news').innerHTML = contens;
-			},
-	      timeout:6000, 
-	      error: function (XMLHttpRequest, textStatus, errorThrown) {
-	      	alert(errorThrown);
-	      }
+<script type="application/javascript">
+	var imgBase = "http://img.yunji128.com/";
+	var urlBase = 'http://api.yunji128.com/homage';
+	 $.ajax({
+	      headers: {
+        		tokenInfo: window.localStorage.getItem("tokenInfo")
+    	  },  
+	      type: "GET",
+	      contentType: "application/json",
+	      dataType: "json",
+	      url: urlBase+"/api/industryDynamic/list?type=XSQY&currentPage=1&limit=50", //这里是网址
+	      success:function(data){
+			var list = data.result.content;
+			var contens = "";
+			$.each(list, function(){     
+			    contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+			}); 
+			document.getElementById('news').innerHTML = contens;
+		},
+      	error: function (message) {
+      		alert("读取姓氏列表失败");
+      	}
     });
-	
-	
-//	$.ajax({
-////请求方式
-//  type:'GET',
-//  //发送请求的地址以及传输的数据
-//  url:'http://120.77.156.29:8060/homage/api/industryDynamic/list',
-//  //服务器返回的数据类型
-//  dataType:'json',
-//  success:function(data){
-//      //请求成功函数内容
-//      console.log(data.content)
-//  },
-//  error:function(jqXHR){
-//      //请求失败函数内容
-//  }
-//});
-	
-	
-	
-	
-//	$.get('http://120.77.156.29:8060/homage/api/industryDynamic/list',{
-//  //发送至服务器的数据，格式为key/value
-//  number:xxx  
-//},function(data){
-//  //请求成功时的callback
-//},'json');//json为返回内容的格式
-　　　　
-　　　　
-
 </script>
   
   

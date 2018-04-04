@@ -16,16 +16,18 @@ position: absolute;
 
 .mui-control-content{margin-bottom:0px;margin-top: 50%;}
 #jibai{background: #dddbd5;width: 100%;height: 60%;position: absolute;bottom: 0;}
-#jibai .jipin{width: 100%;height: 228px;margin-top: -2px;}
-#jibai .jipin h4,#jibai .liuyan h4{color:#6e6e6d;text-align: center;line-height: 40px;background: #f6f5f4;}
+
+.jipin h4,#jibai h4{color:#6e6e6d;text-align: left;line-height: 40px;padding-left:10px;background: #f6f5f4;}
 
 
-#jibai .liuyan{margin-top:-16px;}
-#jibai .liuyan h4{margin-top: 0px;}
-.mui-input-row{margin-top:-8px}
+
+.mui-input-row{margin-top:-6px}
 .mui-btn{position: absolute;top: 78%;left: 80%;}
+/*祭品*/
+.jipin{position:fixed;top:76%;px;background: #f6f5f4;width: 100%;height: 100%;}
+
 .jipin-ul{width:100%;height:100%;margin-top: -4px;}
-.jipin-ul li{float:left;width:32%; height:80px; background: #f6f5f4;margin:2px;}
+.jipin-ul li{float:left;width:32%; height:80px; background: #FFFFFF;margin:2px;}
 .jipin-ul li img{float:left;width: 36%;margin-top: 16px;margin-left: 4px;}
 .jipin-ul span{width:60%;font-size: 12px;display: inline-block;margin:0px;}
 
@@ -39,6 +41,12 @@ position: absolute;
 
 #laifang{background: #dddbd5;width: 100%;height: 60%;position: absolute;bottom: 0;color:#414040;}
 #laifang h4{background:#FFFFFF;width:100%;line-height: 40px;padding-left: 20px;}
+/*留言*/
+.liuyan{position:fixed;bottom:30px;width: 100%;}
+.liuyan .inputliuyan{float: left;width: 80%;}
+.liuyan .fasong{float:right;width:20%;height: 42px;background: #01A2FF;color: #FFFFFF;text-align: center;line-height: 40px;margin-top: -6px;}
+
+
 .mui-table-view{margin-top: -8px;}
 #xiangpian,#video{background: #FFFFFF;width: 100%;height: 46%;position: absolute;bottom: 0;}
 #xiangpian .photo,#video .photo{width: 100%;height: 180px;}
@@ -49,3 +57,7 @@ position: absolute;
 
 .videoImg{color: #01a2ff;}
 #video{height:40%}
+#close1, .close2{float: right;margin-right: 2px;}
+#close1 img, .close2 img{width: 36px;}
+.open{float: right;margin-right: 2px;margin-bottom: -44px;}
+.open img{width: 40px;}

@@ -22,3 +22,7 @@
 .phone a{font-size: 16px;color:#808080;line-height: 60px;margin-left: 5%;}
 .phone span{float:right;margin-right: 5%;line-height: 60px;}
 .setuser{clear:both;width: 100%;height: 60px; }
+.mCreat{z-index: -1;}
+#creatBtn{float: left; margin-top: -70px;margin-left: 200px;}
+#recharge1{float: left;width: 100px;}
+/*#recharge1 img{height:40px;}*/

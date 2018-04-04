@@ -3,18 +3,27 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>创建纪念馆</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link href="../css/index.css" rel="stylesheet" />
 		<link href="../css/buiding.css" rel="stylesheet" />
+		 <script src="../js/jquery-1.10.2.js"></script>
 	</head>
-
+<style type="text/css">
+	
+	.mui-table-view-cell{
+		border: 1px solid white;
+	}
+	.checkedImg{
+		border: 1px solid gray;
+	}
+</style>
 	<body>
-<header class="mui-bar mui-bar-nav header">
+<!--<header class="mui-bar mui-bar-nav header">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">创建纪念馆</h1>
-</header>
+</header>-->
 <div class="mui-content">
 		        	
 		      	<h5 class="mui-content-padded">请选择纪念类型</h5>
@@ -22,11 +31,11 @@
 				<form class="mui-input-group">
 					<div class="mui-input-row mui-radio mui-left">
 						<label>个人馆</label>
-						<input name="radio1" type="radio">
+						<input name="memorialType" type="radio" value="personal" checked>
 					</div>
 					<div class="mui-input-row mui-radio mui-left">
 						<label>名人馆</label>
-						<input name="radio1" type="radio" checked>
+						<input name="memorialType" type="radio" value="celebrity">
 					</div>
 					
 					
@@ -35,64 +44,100 @@
 		    
 		    <h5 class="mui-content-padded">请设置纪念馆名称：</h5>
 				<div class="mui-input-row">
-					<input type="text" placeholder="2-5个字，限中文">
+					<input type="text" id="memorialName" placeholder="2-5个字，限中文">
 				</div>	
-		    	
-		    
-		<h5 class="mui-content-padded">请选择纪念馆模板：</h5>
+			<h5 class="mui-content-padded">请选择纪念馆模板：</h5>
 				<div class="mui-slider">
 		        <div class="mui-slider-group mui-slider-loop">
-		        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
-		           
 		            <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view">
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            <div class="mui-media-body">室外模板1</div></a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            <div class="mui-media-body">静静看这世界</div></a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            <div class="mui-media-body">室外模板2</div></a></li>
+		                <ul class="mui-table-view mui-grid-view" id="modelChose">
 		                </ul>
 		            </div>
-		            <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view">
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            <div class="mui-media-body">静静看这世界</div></a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            <div class="mui-media-body">室外模板3</div></a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            <div class="mui-media-body">静静看这世界</div></a></li>
-		                </ul>
-		            </div>
-		          
-		            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
-		        
 		        </div>
-		        
 		 <div id="quanxian">
 		  	
 		 <h5 class="mui-content-padded">进入权限：</h5>
-		 
-					<div class="mui-switch mui-switch-blue mui-switch-mini switchdiv mui-active">
+					<div id="chousejoinType" class="mui-switch mui-switch-blue mui-switch-mini switchdiv mui-active">
 						<div class="mui-switch-handle"></div>
 					</div>
 		 </div> 		
+		 		<input type="hidden" id="joinType" value="password" placeholder="">
 				<div class="mui-input-row">
-					<input type="text" placeholder="6个数字">
+					<input type="password" id="password" placeholder="6个数字">
+					
 				</div>	
-		
-			 <button type="button" class="mui-btn mui-btn-primary mui-btn-block nextbtn">下一步</button>
+				<input type="hidden" id="memorialModelId">
+			 <button type="button" id="nextB" class="mui-btn mui-btn-primary mui-btn-block nextbtn">下一步</button>
 		
 		
 </div>
-		
-		
-		
-		
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			//模版列表
+			var imgBase = "http://img.yunji128.com/";
+			var urlBase = 'http://api.yunji128.com/homage';
+			var isManual = true;//标志按钮最后状态
+			$(function() {
+				//对按钮进行监听
+			    document.getElementById("chousejoinType").addEventListener('toggle', function(event) {
+			        isManual=!isManual;
+			        if(isManual){
+			        	$("#joinType").val("password");
+			        	 $('#password').show();
+			        }
+			        else{
+			        	$("#joinType").val("direct");
+			        	$('#password').hide();
+			        }
+			    });
+			});
+			 $.ajax({
+			      headers: {
+		        		tokenInfo: window.localStorage.getItem("tokenInfo")
+		    	  },  
+			      type: "GET",
+			      contentType: "application/json",
+			      dataType: "json",
+			      url: urlBase+"/api/memorial/modelList?deviceType=H5", //这里是网址
+			      success:function(data){
+					var list = data.result;
+					var contens = "";
+					$.each(list, function(){     
+					    contens += '<li class="mui-table-view-cell mui-media mui-col-xs-4" id="abc_'+this.memorialModelId+'">'
+		                    	+'<a href="javascript:chouseModel('+this.memorialModelId+');" ><img class="mui-media-object" src="'+imgBase+this.thumImg +'"><div class="mui-media-body">'+this.modelName+'</div></a></li>'
+					}); 
+					document.getElementById('modelChose').innerHTML = contens;
+				},
+		      	error: function (message) {
+		      		alert("读取姓氏列表失败");
+		      	}
+		    });
+			
+			function chouseModel(memorialModelId){
+				$(".mui-table-view-cell").removeClass("checkedImg")
+				$("#abc_"+memorialModelId).addClass("checkedImg")
+				$("#memorialModelId").val(memorialModelId);
+			}
+			
+			$("#nextB").click(function(){
+				var memorialType = $('input[name="memorialType"]:checked ').val();
+				var memorialName = $("#memorialName").val();
+				var memorialModelId = $("#memorialModelId").val();
+				var joinType = $("#joinType").val();
+			    var password = $('#password').val();
+			    if(memorialName == ''){
+					alert("请输入纪念馆名字");
+					return;
+				}
+				if(memorialModelId == ''){
+					alert("请选择一个模版");
+					return;
+				}
+				window.location.href = "buidhose2.html?memorialType="+memorialType +
+						"&memorialName="+memorialName+"&memorialModelId="+memorialModelId+"&joinType="+joinType+"&password="+password;
+			});
+			
 		</script>
 	</body>
-
 </html>

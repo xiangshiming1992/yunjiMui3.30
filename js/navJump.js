@@ -1,4 +1,4 @@
-  //打开家谱页面
+
 
 document.getElementById('jinianguan').addEventListener('tap', function() {
   //打开纪念馆页面
@@ -25,10 +25,12 @@ document.getElementById('xingshi').addEventListener('tap', function() {
   });
 });
 
-document.getElementById('my').addEventListener('tap', function() {
+document.getElementById('personal').addEventListener('tap', function() {
   //打开个人中心页面
   mui.openWindow({
-    url: 'my.html', 
-    id:'my'
+    url: 'personal.html', 
+    id:'personal'
   });
 });
+
+

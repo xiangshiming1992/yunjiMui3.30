@@ -25,10 +25,10 @@ document.getElementById('xingshi').addEventListener('tap', function() {
   });
 });
 
-document.getElementById('my').addEventListener('tap', function() {
+document.getElementById('personal').addEventListener('tap', function() {
   //打开个人中心页面
   mui.openWindow({
-    url: 'my.html', 
-    id:'my'
+    url: 'personal.html', 
+    id:'personal'
   });
 });

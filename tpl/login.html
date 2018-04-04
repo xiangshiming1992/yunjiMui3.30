@@ -10,11 +10,8 @@
 		<script src="../js/jquery-1.10.2.js"></script>
 		<script src="../js/sha256.jquery.debug.js"></script>
 		<style>
-			
 		</style>
-
 	</head>
-
 	<body>
 		<!--<header class="mui-bar mui-bar-nav">
 			<h1 class="mui-title">登录</h1>
@@ -42,7 +39,8 @@
 			</form>-->
 			<div class="mui-content-padded">
 				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
-				<div class="link-area"><a id='reg' href="reg.html">注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
+				<div class="link-area"><a id='reg' href="reg.html">注册账号</a> <span class="spliter">
+					|</span> <a id='forgetPassword'>忘记密码</a>
 				</div>
 			</div>
 			<div class="mui-content-padded oauth-area">
@@ -69,7 +67,7 @@
 	                		//登录成功，将用户的token信息存入cook
 	                		var tokenInfo = data.result.tokenModel.userId + "_" +data.result.tokenModel.token;
 	                		window.localStorage.setItem("tokenInfo",tokenInfo);
-	                		window.location.href='my.html'
+	                		window.location.href='personal.html'
 	                	}
 	                	else{
 	                		alert(data.message)
