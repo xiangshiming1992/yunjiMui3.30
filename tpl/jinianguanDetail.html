@@ -3,132 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>赵子龙的纪念馆</title>
-    
+    <title></title>
     <link href="../css/mui.min.css" rel="stylesheet"/>
     <link href="../css/index.css" rel="stylesheet"/>
     <link href="../css/changjing.css" rel="stylesheet" />
     <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
-    
 </head>
 <body>
 	<!-- <header class="mui-bar mui-bar-nav header">
 	 	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 	     <h1 class="mui-title" id="mName">赵子龙的纪念馆</h1>
 	 </header>-->
-	  
 	<div class="mui-content">  
-  	<div class="muxiang"><img src="../img/muxiang1.png"/><img src="../img/muxiangkuang.png"/></div>
-  
- <script type="application/javascript">
-	$.ajax({
-	    headers: {
-        tokenInfo: window.localStorage.getItem("tokenInfo")
-    		},  
-	      type: "GET",
-	      contentType: "application/json",
-	      dataType: "json",
-	      url: "http://120.77.156.29:8060/homage/api/memorial/basicInfo", //这里是网址
-	      success:function(data){
-			if(data.code=='SUCCESS'){
-				$("#mName").html(data.result.memorialName );
-				document.title = 'xxxxxx';
-			}
-			
-		}else if(data.code=='PleaseLogin'){
-    		window.location.href='login.html';
-    	}
-        error: function (message) {
-      	  alert("请求数据失败");
-        }
-    });
-</script> 
- 
- 
-  
+  	<div class="muxiang">
+  		<img src="../img/muxiang1.png"/><img src="../img/muxiangkuang.png"/></div>
 		<div id="jibai" class="mui-control-content">
 				 <div id="close1"><img src="../img/close.png"/></div> 	
-
-	
-			<h4>祭拜信息</h4>				 			
-
-				  <ul class="mui-table-view">
-				      <li class="mui-table-view-cell mui-media">
+					<h4>祭拜信息</h4>				 			
+				  <ul class="mui-table-view" id="jprec">
+				      <!--<li class="mui-table-view-cell mui-media">
 				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="../img/touxiang.jpeg">
-				              <div class="mui-media-body">
-				                  幸福
-				                  <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-				              </div>
+				          	<img class="mui-media-object mui-pull-left" src="../img/touxiang.jpeg">
+				            <div class="mui-media-body">幸福<p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p></div>
 				          </a>
-				      </li>
-				      <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>	
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>	
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>	
-				           <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>	
-				           <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>
-				           <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>	
-				           <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>	
+				      </li>-->
 				  </ul>
-				 
 	<div class="jipin">
-	<!--<div class="close2"><img src="../img/close.png"/></div>-->
 		<h4>祭品</h4>	 	
 	<ul class="jipin-ul">
 		<li>
@@ -140,233 +40,98 @@
 		<li>
 			<img src="../img/xianhua.png"/><h5>鲜花</h5><span>时效120分</span><span>消耗20云币</span>	
 		</li>
-		
-			
 	</ul>
 	</div>	  
 </div>			  
-			  
-<!--<div class="open"><img src="../img/show.png"/></div> -->		
-
-	
-
 <div id="shengping" class="mui-control-content ">
-	<!--<div class="close2"><img src="../img/close.png"/></div>-->
-	
 			<div class="zhaopian">
-				<img src="../img/touxiang1.jpeg"/>								 			
+				<img id="personHeadimg" width="128px" height="164px" src=""/>								 			
 				  <div class="jianjie-info">
 				  	<ul>
-				  	<li><span>姓名：</span><span>赵云</span></li>
-				  	<li><span>性别：</span><span>男</span></li>
-				  	<li><span>生辰：</span><span>265-01-10</span></li>
-				  	<li><span>忌日：</span><span>128-12-03</span></li>
-			  	
+				  	<li><span>姓名：</span><span id="personName"></span></li>
+				  	<li><span>性别：</span><span id="personSex"></span></li>
+				  	<li><span>生辰：</span><span id="bornIn"></span></li>
+				  	<li><span>忌日：</span><span id="diedIn"></span></li>
 					</ul>
 				  </div>
 				</div>
 			<div class="jianjie">
 				<h4>---------------------生平简介-----------------------</h4>
-				<p>
-					建安十三年（公元208年），曹操大军南下荆州，刘备军势力弱小，不足以抵抗，往江陵败逃，因为荆州十余万百姓相随，致使行军速度非常缓慢。曹操派麾下精骑快马追赶，于在当阳长阪附近追上了刘备。危急之下，刘备丢下妻子和孩子，仅带着张飞、诸葛亮、赵云等数十骑向逃跑，混乱中不见了赵云，有人对刘备说赵云往北边曹操那里去了，刘备直接用手戟打过去说：“子龙是不会弃我而去的。”而后，赵云怀抱刘备的幼子刘禅，保护着刘备的妻子甘夫人，平安地回到刘备身边。[8]  此战之后，刘备便任命赵云为牙门将军。[9]  
-赤壁之战后，赵云跟随刘备平定荆州四郡。刘备任命赵云为偏将军，并取代投降的赵范，兼任桂阳太守。赵范有一个守寡的嫂嫂姓樊，有倾国的美貌，赵范想将她许配给赵云。但是赵云不同意，推辞说：“我们是同姓，你的嫂子就像是我的嫂子一样。” 当时有人劝赵云接受这名美女，赵云回答说：“赵范是被迫投降的，心不可测，何况天下女子不少。”不久之后，赵范果然藉机逃走，而赵云则毫无牵涉。[10]  
-建安十四年（公元209年），刘备在平定荆南四郡，又得到原属刘表的部曲万人之后，成为荆州牧，声势渐大，孙权建议双方结亲，刘备便娶了其妹孙夫人。两年之后益州牧刘璋为防备曹操势力而向刘备求援，刘备便领兵三万入益州，留诸葛亮、关羽、张飞、赵云等人留守荆州，[11]  并任命赵云为留营司马，管理军事事务。此时孙夫人放纵骄横，她从东吴带来的侍卫和官吏，也多有不法的行为。刘备知晓后特命赵云掌管内事。孙权获知刘备西征益州之后，便派了大批舟船欲接孙夫人回去，孙夫人趁机将刘禅也一并带走，幸亏赵云与张飞一起带兵在长江截住东吴船队，并成功夺回刘禅。
-									
-				</p>
+				<p id="introduction"></p>
 			</div>	
-		
 </div>
-			
 <div id="xiangpian" class="mui-control-content">
 	<div class="close2"><img src="../img/close.png"/></div>
-	
 	<div class="photo">
 				<div class="photo-img"><span class="mui-icon mui-icon-image videoImg"></span><span>相片</span></div>			 			
-				
 				 <div class="mui-slider">
 		        <div class="mui-slider-group mui-slider-loop">
 		        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
 		            <div class="mui-slider-item">
 		                <ul class="mui-table-view mui-grid-view">
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/1.jpg">
+		                    <!--<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/1.jpg">
 		                            </a></li>
 		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/2.jpg">
-		                            </a></li>
+		                            </a></li>-->
 		                </ul>
 		            </div>
-		             <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view">
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/3.jpg">
-		                            </a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/4.jpg">
-		                            </a></li>
-		                </ul>
-		            </div>
-		            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
-		        
 		        </div>
 		   	</div>	
 		</div>		
-	</div>
-
+</div>
 <div id="video" class="mui-control-content">
 	<div class="close2"><img src="../img/close.png"/></div>
-	
 	<div class="photo">
-				<div class="photo-img"><span class="mui-icon mui-icon-videocam videoImg"></span><span>视频</span>	</div>			 			
-				
-				<div class="mui-slider">
-		        <div class="mui-slider-group mui-slider-loop">
-		        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
-		           
-		            <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view">
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            </a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            </a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            </a></li>
-		                </ul>
-		            </div>  
-		             <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view">
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            </a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            </a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-		                            </a></li>
-		                </ul>
-		            </div>
-		            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->	      
+		<div class="photo-img"><span class="mui-icon mui-icon-videocam videoImg"></span><span>视频</span>	</div>			 			
+		
+		<div class="mui-slider">
+        <div class="mui-slider-group mui-slider-loop">
+        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+            <div class="mui-slider-item">
+                <ul class="mui-table-view mui-grid-view">
+                    <!--<li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
+                            </a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
+                            </a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
+                            </a></li>-->
+                </ul>
+            </div>  
 	 </div>
-		   
 	</div>	
 		</div>		
-			</div>
-			
+		</div>
 	<div id="laifang" class="mui-control-content mui-active">
 	<div class="close2"><img src="../img/close.png"/></div>
-		
 				<h4>留言记录</h4>  
-				  <ul class="mui-table-view">
-				      <li class="mui-table-view-cell mui-media">
+				  <ul class="mui-table-view" id="levRec">
+				      <!--<li class="mui-table-view-cell mui-media">
 				          <a href="javascript:;">
 				              <img class="mui-media-object mui-pull-left" src="../img/touxiang.jpeg">
 				              <div class="mui-media-body">
-				                  幸福
+				                  	幸福
 				                  <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
 				              </div>
 				          </a>
-				      </li>
-				      <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>  
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>  
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li> 
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>  
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>  
-				       <li class="mui-table-view-cell mui-media">
-				          <a href="javascript:;">
-				              <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
-				              <div class="mui-media-body">
-				                  木屋
-				                  <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				              </div>
-				          </a>
-				      </li>  
+				      </li>-->
 				  </ul>		
-			
-	 
-	  
-			
-			
 		<div class="liuyan">
 				<!--<h4>留言</h4>-->
 				<div class="mui-input-row inputliuyan" >
-					<textarea id="textarea" rows="1" placeholder="留言"></textarea>
+					<textarea id="levContent" rows="1" placeholder="留言"></textarea>
 				</div>	
-				<!--<div class="mui-btn mui-btn-primary liuyanBtn">
-					确定
-				</div>-->
-				<div class="fasong">发送</div>
-			</div>				
-
+				<div class="fasong" id="sendLev">发送</div>
+		</div>				
  		</div> 
- 		
- 		
  <script>
-// 	$("#close1").click(function(){
-// 		window.location.href="recharge.html"})
-// 	
  	$("#close1").on("tap",function(){
-   //$(this).parent().hide();
-//window.location.href="recharge.html";
-  //$("#close1").click(function(){
-  //$("#jibai").animate({top:'250px'});
-  $("#jibai").hide();
-  $(".jipin").show();
-//});	
-
- 	$(".close2").on("tap",function(){
-   $(this).parent().hide();
-   //$("#jibai").show();
- 
-}); 
-//window.location.href="recharge.html";
-
-//$(".open").on("tap",function(){
-// $(this).parent().show();
-////window.location.href="recharge.html";
-
-
-});	
-
-
-
-
+  		$("#jibai").hide();
+  		$(".jipin").show();
+ 		$(".close2").on("tap",function(){
+   			$(this).parent().hide();
+		}); 
+	});	
  </script>		
- 		
-  
  <!--下标签-->
 <nav class="mui-bar mui-bar-tab">
       <a id="jb" class="mui-tab-item" href="#jibai">
@@ -389,33 +154,127 @@
           <span class="mui-icon mui-icon-contact"></span>
           <span class="mui-tab-label">留言</span>
       </a>
-  </nav>
- 
-  
-  
-  
-  
-  
+ </nav>
+ <script src="../js/mui.min.js"></script>
   <script type="application/javascript">
 	mui.init({
 			swipeBack:true //启用右滑关闭功能
-		});
-		
-		
+	});
+	var urlBase = 'http://api.yunji128.com/homage';
+	var imgBase = 'http://img.yunji128.com/';
+	function GetQueryString(name) {
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  decodeURI(r[2]); return null;
+	}
+	var memorialId = GetQueryString("memorialId");
+	var password = GetQueryString("password");
+	var userId = 0;
+	//主题信息 生平简介
+	$.ajax({
+	      headers: {
+	    	tokenInfo:window.localStorage.getItem("tokenInfo"),
+	    	userId:userId
+		  },  
+	      type: "GET",
+	      contentType: "application/json",
+	      dataType: "json",
+	      url: urlBase + "/api/memorial/accessMemorial?password="+password+"&memorialId="+memorialId, //这里是网址
+	      success:function(data){
+			if(data.code=='SUCCESS'){
+				document.title = data.result.memorialName+"的纪念馆";
+				$("#personName").text(data.result.persons[0].personName);
+				$("#personSex").text(data.result.persons[0].personSex);
+				$("#bornIn").text(data.result.persons[0].bornIn);
+				$("#diedIn").text(data.result.persons[0].diedIn);
+				$("#introduction").text(data.result.persons[0].introduction);
+				$("#personHeadimg").attr("src",imgBase+data.result.headImg);
+			}else if(data.code=='PleaseLogin'){
+	    		window.location.href='login.html';
+	    	}
+		 }
+    });
 
-
-		
-// 	function displayHideUI()
-//				{
-//				var ui =document.getElementById("laifang");
-//				ui.style.display="none";
-//				}
-//	function displayShowUI()
-//				{
-//				var ui =document.getElementById("laifang");
-//				ui.style.display="";//display为空的话会好使，为block会使后边的空间换行
-//}
+	//jibai记录
+	$.ajax({
+	      headers: {
+	    	tokenInfo:window.localStorage.getItem("tokenInfo"),
+	    	userId:userId
+		  },  
+	      type: "GET",
+	      contentType: "application/json",
+	      dataType: "json",
+	      url: urlBase + "/api/sacrifice/memorialSaclist?memorialId="+memorialId+"&currentPage=1&limit=20", //这里是网址
+	      success:function(data){
+			if(data.code=='SUCCESS'){
+				var list = data.result.content;
+				var contens = "";
+				$.each(list, function(){     
+				    contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;"><img width="42px" height="42px" class="mui-media-object mui-pull-left" src="'+imgBase+this.sacrificeImg +'">'
+				            +'<div class="mui-media-body">'+this.userName+'<p class="mui-ellipsis">'+this.dic+'</p></div></a></li>'
+				}); 
+				document.getElementById('jprec').innerHTML = contens;
+			}
+		 }
+    });
+	selectLev();
+	//留言记录
+	function selectLev(){
+		$.ajax({
+		      headers: {
+		    	tokenInfo:window.localStorage.getItem("tokenInfo"),
+		    	userId:userId
+			  },  
+		      type: "GET",
+		      contentType: "application/json",
+		      dataType: "json",
+		      url: urlBase + "/api/leav/memorialLeavlist?dataId="+memorialId+"&leaType=memorial&currentPage=1&limit=20", //这里是网址
+		      success:function(data){
+				if(data.code=='SUCCESS'){
+					var list = data.result.content;
+					var contens = "";
+					$.each(list, function(){     
+					    contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;"><img width="42px" height="42px" class="mui-media-object mui-pull-left" src="'+imgBase+this.headImg +'">'
+					            +'<div class="mui-media-body">'+this.userName+'<p class="mui-ellipsis">'+this.content+'</p></div></a></li>'
+					}); 
+					document.getElementById('levRec').innerHTML = contens;
+				}
+			 }
+	    });
+	}
+	
+	$("#sendLev").click(function(){
+		var neirong = $("#levContent").val();
+		if(neirong == ''){
+			alert("请输入留言内容");return;
+		}
+	  	var conten = {
+		  "dataId": memorialId,
+		  "content": neirong
+		};
+	  	$.ajax({  
+            type: "POST",  
+            headers: {
+		        tokenInfo: window.localStorage.getItem("tokenInfo")
+		    },
+            url: urlBase + "/api/leav/add?leaType=memorial",  
+            data: conten,  
+            dataType: "json",  
+            success: function (data) {
+            	if(data.code=='SUCCESS'){
+            		alert("留言成功~~~");
+            		$("#levContent").val('');
+            		selectLev();
+            	}
+            	else{
+            		alert(data.message)
+            	}
+            },  
+            error: function (message) {  
+                alert("提交数据失败！");  
+            }  
+       });
+	});
   </script> 
-<script src="../js/mui.min.js"></script>
 </body>
 </html>

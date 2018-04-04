@@ -12,11 +12,11 @@
         function GetQueryString(name) {
 		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 		     var r = window.location.search.substr(1).match(reg);
-		     if(r!=null)return  unescape(r[2]); return null;
+		     if(r!=null)return unescape(r[2]); return null;
 		}
         var jsonUser = GetQueryString("userInfoJson");
         //获取openid
-        var openid =  JSON.parse(decodeURI(jsonUser)).openid;
+        var openid = JSON.parse(decodeURI(jsonUser)).openid;
         window.localStorage.setItem("openid",openid);
         window.location.href = 'tpl/personal.html';
     </script>
