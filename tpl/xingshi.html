@@ -80,7 +80,7 @@
 			var list = data.result.content;
 			var contens = "";
 			$.each(list, function(){     
-			    contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;">'+
+			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
 			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
 			}); 
 			document.getElementById('news').innerHTML = contens;

@@ -31,10 +31,10 @@ position: absolute;
 .jipin-ul li img{float:left;width: 36%;margin-top: 16px;margin-left: 4px;}
 .jipin-ul span{width:60%;font-size: 12px;display: inline-block;margin:0px;}
 
-#shengping{background:rgba(49,49,49,0.9); width: 100%;color: #d4d4d2;}
-#shengping .zhaopian{float: left; width: 100%;height: 160px;margin-top: 50px;}
-#shengping .zhaopian .img{float: left;margin:6px;}
-#shengping .zhaopian .jianjie-info{float: right;margin-right: 20%;}
+#shengping{background:rgba(49,49,49,0.9); width: 100%;height:100%;color: #d4d4d2;}
+#shengping .zhaopian{float: left; width: 100%;height: 150px;margin:16px 16px;}
+#shengping .zhaopian img{float: left;width:80px;height:110px;margin:2px;}
+#shengping .zhaopian .jianjie-info{float: left;margin-left: 40px;}
 #shengping .zhaopian .jianjie-info li{margin: 8px;}
 #shengping .jianjie h4{text-align: center;}
 #shengping .jianjie p{margin: 8px;color: #d4d4d2;}

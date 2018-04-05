@@ -163,9 +163,9 @@
   </nav>
 <script src="../js/navJump.js"></script>
 <script type="application/javascript">
+	var urlBase = 'http://api.yunji128.com/homage';
+	var imgBase = 'http://img.yunji128.com/';
 	function info(id){
-		var urlBase = 'http://api.yunji128.com/homage';
-		var imgBase = 'http://img.yunji128.com/';
 		$.ajax({  
 			headers: {
 		        tokenInfo: window.localStorage.getItem("tokenInfo")
@@ -179,9 +179,33 @@
 	        		if(data.result){
 	        			window.location.href="jinianguanDetail.html?memorialId="+id;
 	        		}else{
-	        			//
-	        			alert("请输入密码");
+	        			if(inputPwd=prompt("请输入密码访问")){
+	        				checkPwd(inputPwd,id);	
+	        			}
 	        		}
+	        	}
+	        	else{
+	        		alert(data.message);
+	        	}
+	        },  
+	        error: function (message) {  
+	            alert("提交数据失败！");  
+	        }  
+	   });
+	}
+	function checkPwd(pwd,id){
+		$.ajax({  
+			headers: {
+		    	tokenInfo:window.localStorage.getItem("tokenInfo"),
+		    	userId:0
+			},  
+	        type: "GET",  
+	        url: urlBase + "/api/memorial/accessMemorialcheckPassWorld?password="+pwd+"&memorialId="+id,  
+	        data: {},  
+	        dataType: "json",  
+	        success: function (data) {
+	        	if(data.code=='SUCCESS'){
+	        		window.location.href="jinianguanDetail.html?memorialId="+id;
 	        	}
 	        	else{
 	        		alert(data.message);

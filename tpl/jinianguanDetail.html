@@ -16,7 +16,7 @@
 	 </header>-->
 	<div class="mui-content">  
   	<div class="muxiang">
-  		<img src="../img/muxiang1.png"/><img src="../img/muxiangkuang.png"/></div>
+  		<img id="mubeixiang" src="../img/muxiang1.png"/><img src="../img/muxiangkuang.png"/></div>
 		<div id="jibai" class="mui-control-content">
 				 <div id="close1"><img src="../img/close.png"/></div> 	
 					<h4>祭拜信息</h4>				 			
@@ -46,17 +46,17 @@
 <div id="shengping" class="mui-control-content ">
 			<div class="zhaopian">
 				<img id="personHeadimg" width="128px" height="164px" src=""/>								 			
-				  <div class="jianjie-info">
-				  	<ul>
+				  
+				  	<ul class="jianjie-info">
 				  	<li><span>姓名：</span><span id="personName"></span></li>
 				  	<li><span>性别：</span><span id="personSex"></span></li>
 				  	<li><span>生辰：</span><span id="bornIn"></span></li>
 				  	<li><span>忌日：</span><span id="diedIn"></span></li>
 					</ul>
-				  </div>
+				 
 				</div>
 			<div class="jianjie">
-				<h4>---------------------生平简介-----------------------</h4>
+				<h4>------------ 生平简介   ------------</h4>
 				<p id="introduction"></p>
 			</div>	
 </div>
@@ -189,6 +189,8 @@
 				$("#diedIn").text(data.result.persons[0].diedIn);
 				$("#introduction").text(data.result.persons[0].introduction);
 				$("#personHeadimg").attr("src",imgBase+data.result.headImg);
+				$("#mubeixiang").attr("src",imgBase+data.result.headImg);
+				
 			}else if(data.code=='PleaseLogin'){
 	    		window.location.href='login.html';
 	    	}
@@ -222,8 +224,7 @@
 	function selectLev(){
 		$.ajax({
 		      headers: {
-		    	tokenInfo:window.localStorage.getItem("tokenInfo"),
-		    	userId:userId
+		    	tokenInfo:window.localStorage.getItem("tokenInfo")
 			  },  
 		      type: "GET",
 		      contentType: "application/json",

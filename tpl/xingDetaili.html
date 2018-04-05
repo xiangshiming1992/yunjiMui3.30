@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>姓氏起源</title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+     <link href="../css/index.css" rel="stylesheet"/>
+     <script src="../js/jquery-1.10.2.js"></script>
+  <script src="../js/template-web.js"></script>
+</head>
+<body>
+<!-- <header class="mui-bar mui-bar-nav header">
+     <h1 class="mui-title">姓氏起源</h1>
+</header>-->
+ <div class="mui-content xs">
+   <h2 id="title"></h2>
+   <hr />
+	<h5 id="addTime"></h5>
+   <div class="content">
+   	<p id="content"></p>
+   </div>
+   
+ <div class="message">
+   	<h5>评论</h5>
+   	<hr />
+   	<ul id="levRec">
+   		<!--<li><h6>走你</h6>
+			<p>我觉得很有道理</p>
+   		</li>-->
+	</ul>
+	<hr />
+	<div class="message_input">
+			<div class="mui-input-row inputliuyan" >
+			<textarea id="levContent" rows="5" placeholder="立刻参与评论"></textarea>
+			</div>	
+					<div id="sendLev">发表</div>
+	</div>
+ </div>
+ </div> 
+<script src="../js/navJump.js"></script>
+<script type="text/javascript">
+			var urlBase = 'http://api.yunji128.com/homage';
+			var imgBase = 'http://img.yunji128.com/';
+			function GetQueryString(name) {
+			     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			     var r = window.location.search.substr(1).match(reg);
+			     if(r!=null)return  decodeURI(r[2]); return null;
+			}
+	        var industryDynamicId = GetQueryString("industryDynamicId");
+	        $.ajax({  
+				headers: {
+			        tokenInfo: window.localStorage.getItem("tokenInfo")
+			    },
+		        type: "GET",  
+		        url: urlBase + "/api/industryDynamic/info?id="+industryDynamicId,  
+		        data: {},  
+		        dataType: "json",  
+		        success: function (data) {
+		        	if(data.code=='SUCCESS'){
+		        		$("#title").html(data.result.title);
+		        		$("#content").html(data.result.content);
+		        		$("#addTime").html(data.result.rowAddTime);
+		        	}
+		        	else if(data.code=='PleaseLogin'){
+		        		window.location.href='login.html';
+		        	}
+		        	else{
+		        		alert(data.message);
+		        	}
+		        },  
+		        error: function (message) {  
+		            alert("提交数据失败！");  
+		        }  
+		   });
+		    selectLev();
+			//留言记录
+			function selectLev(){
+				$.ajax({
+				      headers: {
+				    	tokenInfo:window.localStorage.getItem("tokenInfo")
+					  },  
+				      type: "GET",
+				      contentType: "application/json",
+				      dataType: "json",
+				      url: urlBase + "/api/leav/memorialLeavlist?dataId="+industryDynamicId+"&leaType=dynamic&currentPage=1&limit=20", //这里是网址
+				      success:function(data){
+						if(data.code=='SUCCESS'){
+							var list = data.result.content;
+							var contens = "";
+							$.each(list, function(){     
+								contens +='<li><h6>'+this.userName+'</h6><p>'+this.content+'</p></li>';
+							}); 
+							document.getElementById('levRec').innerHTML = contens;
+						}
+					 }
+			    });
+			}
+			$("#sendLev").click(function(){
+				var neirong = $("#levContent").val();
+				if(neirong == ''){
+					alert("请输入留言内容");return;
+				}
+			  	var conten = {
+				  "dataId": industryDynamicId,
+				  "content": neirong
+				};
+			  	$.ajax({  
+			        type: "POST",  
+			        headers: {
+				        tokenInfo: window.localStorage.getItem("tokenInfo")
+				    },
+			        url: urlBase + "/api/leav/add?leaType=dynamic",  
+			        data: conten,  
+			        dataType: "json",  
+			        success: function (data) {
+			        	if(data.code=='SUCCESS'){
+			        		alert("评论成功~~~");
+			        		$("#levContent").val('');
+			        		selectLev();
+			        	}
+			        	else{
+			        		alert(data.message)
+			        	}
+			        },  
+			        error: function (message) {  
+			            alert("提交数据失败！");  
+			        }  
+			   });
+			});
+		</script>
+</body>
+</html>

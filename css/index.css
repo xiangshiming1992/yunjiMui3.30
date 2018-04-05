@@ -9,20 +9,126 @@
 }
 
 .bannertop {
-	margin-top: 44px;
+	margin-top: 0px;
 }
-.mybanner{background-image:url(../img/my.png) ;width: 100%;height: 140px;}
-.mybanner img{width: 20%;margin-left:40%;margin-top:20px;}
-.mybanner h4{text-align: center;color: #FFFFFF;}
-.yunbi{width: 100%; height: 80px;background: #FFFFFF;margin-top: 2px; float: left;}
-.ybyue{margin-left: 20%;float: left;}
-.yunbi span{font-size: 20px;line-height: 80px;}
-.payyb{float:left;margin: 20px 20px 20px 20%;}
-.phone{float:left;width: 100%;height: 60px;background: #FFFFFF;margin-top: 2px;}
-.phone a{font-size: 16px;color:#808080;line-height: 60px;margin-left: 5%;}
-.phone span{float:right;margin-right: 5%;line-height: 60px;}
-.setuser{clear:both;width: 100%;height: 60px; }
-.mCreat{z-index: -1;}
-#creatBtn{float: left; margin-top: -70px;margin-left: 200px;}
-#recharge1{float: left;width: 100px;}
+
+.mybanner {
+	background-image: url(../img/my.png);
+	width: 100%;
+	height: 140px;
+}
+
+.mybanner img {
+	width: 20%;
+	margin-left: 40%;
+	margin-top: 20px;
+}
+
+.mybanner h4 {
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.yunbi {
+	width: 100%;
+	height: 80px;
+	background: #FFFFFF;
+	margin-top: 2px;
+	float: left;
+}
+
+.ybyue {
+	margin-left: 20%;
+	float: left;
+}
+
+.yunbi span {
+	font-size: 20px;
+	line-height: 80px;
+}
+
+.payyb {
+	float: left;
+	margin: 20px 20px 20px 20%;
+}
+
+.phone {
+	float: left;
+	width: 100%;
+	height: 60px;
+	background: #FFFFFF;
+	margin-top: 2px;
+}
+
+.phone a {
+	font-size: 16px;
+	color: #808080;
+	line-height: 60px;
+	margin-left: 5%;
+}
+
+.phone span {
+	float: right;
+	margin-right: 5%;
+	line-height: 60px;
+}
+
+.setuser {
+	clear: both;
+	width: 100%;
+	height: 60px;
+}
+
+.mCreat {
+	z-index: -1;
+}
+
+#creatBtn {
+	float: left;
+	margin-top: -70px;
+	margin-left: 200px;
+}
+
+#recharge1 {
+	float: left;
+	width: 100px;
+}
+
+
 /*#recharge1 img{height:40px;}*/
+
+.xs h2 {
+	padding: 12px 20px;
+	color: #696969;
+}
+
+.xs h5 {
+	padding: 4px 20px;
+	color: #898989;
+}
+
+.content {
+	margin: 12px 20px;
+	border: 1px #898989 solid;
+	padding: 10px;
+}
+
+.content p {
+	font-size: 14px;
+}
+
+.message {
+	padding: 10px 20px;
+}
+
+.message #sendLev {
+	width: 66px;
+	height: 36px;
+	background: #007AFF;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 36px;
+	font-size: 20px;
+	margin-left:76%;
+}
+/*.xs hr{width:80%;color: #FFFFFF;}*/
