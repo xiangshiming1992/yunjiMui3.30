@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>账户管理</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/reg.css" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js"></script>
+		<script src="../js/sha256.jquery.debug.js"></script>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">找回密码 </h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入手机号">
+				</div>
+				<div class="mui-input-row mbcoad">
+					<input id='smsCode' type="text" class="mui-input-clear mui-input inputcode" placeholder="请输入验证码">
+					    <button id="_sendSms" type="button" class="mui-btn mui-btn-primary mui-btn-block yanzhengma">获取验证码</button>
+				</div>
+				
+				<div class="mui-input-row">
+					<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入新密码">
+				</div>
+				<div class="mui-input-row">
+					
+					<input id='password_confirm' type="password" class="mui-input-clear mui-input" placeholder="请再次输入新密码">
+				</div>
+			</form>
+			<div class="mui-content-padded">
+				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">重置</button>
+			</div>
+			<div class="mui-content-padded">
+				
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="application/javascript">
+			//发送验证码
+			var urlBase = 'http://api.yunji128.com/homage';
+			$("#_sendSms").click(function(){
+			  	var user = {
+				  "sendType": 'CHANGE_PWD',
+				  "phone": $("#account").val()
+				};
+			  	$.ajax({  
+	                type: "POST",  
+	                url: urlBase + "/api/smscode/send",  
+	                data: user,  
+	                dataType: "json",  
+	                success: function (data) {
+	                	if(data.code=='SUCCESS'){
+	                		alert("发送短信成功，请注意查收");
+	                		var obj = $("#_sendSms");
+	                		settime(obj);
+	                	}
+	                	else{
+	                		alert(data.message)
+	                	}
+	                },  
+	                error: function (message) {  
+	                    alert("提交数据失败！");  
+	                }  
+	           });
+			});
+			$("#reg").click(function(){
+				if($("#password").val().length < 6){
+					alert("密码至少6位");
+					return;
+				}
+				if($("#password").val() != $("#password_confirm").val()){
+					alert("两次密码不一致");
+					return;
+				}
+			  	var upPass = {
+				  "sendCode": $("#smsCode").val(),
+				  "userName": $("#account").val(),
+				  "newPwd": $.sha256($("#password_confirm").val())
+				};
+			  	$.ajax({  
+	                type: "POST",  
+	                url: urlBase + "/api/user/setUpPwd",  
+	                data: upPass,  
+	                dataType: "json",  
+	                success: function (data) {
+	                	if(data.code=='SUCCESS'){
+	                		alert("修改成功,去登录吧");
+	                		window.location.href="login.html";
+	                	}
+	                	else{
+	                		alert(data.message)
+	                	}
+	                },  
+	                error: function (message) {  
+	                    alert("提交数据失败！");  
+	                }  
+	           });
+			});
+			var countdown=60; 
+			function settime(obj) { //发送验证码倒计时
+			    if (countdown == 0) { 
+			        obj.attr('disabled',false); 
+			        //obj.removeattr("disabled"); 
+			        obj.text("获取验证码");
+			        countdown = 60; 
+			        return;
+			    } else { 
+			        obj.attr('disabled',true);
+			        //obj.val("重新发送(" + countdown + ")");
+			        obj.text("重新发送(" + countdown + ")");
+			        countdown--; 
+			    } 
+				setTimeout(function() { 
+				    settime(obj) }
+				,1000) 
+			}
+		</script>
+	</body>
+
+</html>

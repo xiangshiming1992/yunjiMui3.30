@@ -16,34 +16,26 @@
 	 </header>-->
 	<div class="mui-content">  
   	<div class="muxiang">
-  		<img id="mubeixiang" src="../img/muxiang1.png"/><img src="../img/muxiangkuang.png"/></div>
-		<div id="jibai" class="mui-control-content">
-				 <div id="close1"><img src="../img/close.png"/></div> 	
-					<h4>祭拜信息</h4>				 			
+  		<img id="mubeixiang" src=""/>
+  		<img src="../img/muxiangkuang.png"/></div>
+		<div class="changBuid">更换场景</div>
+		
+		<div id="jibai" class="mui-control-content mui-active">
+				<div class="jingxian">我要敬献</div>
+				<h6>收到礼物</h6>
+					
 				  <ul class="mui-table-view" id="jprec">
-				      <!--<li class="mui-table-view-cell mui-media">
+				      <li class="mui-table-view-cell mui-media">
 				          <a href="javascript:;">
-				          	<img class="mui-media-object mui-pull-left" src="../img/touxiang.jpeg">
-				            <div class="mui-media-body">幸福<p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p></div>
+				          	<img class="mui-media-object mui-pull-left" src="../img/xianhua.png">
+				            <div class="mui-media-body"><h5>张三</h5><span class="mui-ellipsis">鲜花</span><span class="mui-ellipsis">敬献时间：2018-12-02</span></div>
 				          </a>
-				      </li>-->
+				      </li>
 				  </ul>
-	<div class="jipin">
-		<h4>祭品</h4>	 	
-	<ul class="jipin-ul">
-		<li>
-			<img src="../img/xianhua.png"/><h5>鲜花</h5><span>时效120分</span><span>消耗20云币</span>	
-		</li>
-		<li>
-			<img src="../img/xianhua.png"/><h5>鲜花</h5><span>时效120分</span><span>消耗20云币</span>	
-		</li>
-		<li>
-			<img src="../img/xianhua.png"/><h5>鲜花</h5><span>时效120分</span><span>消耗20云币</span>	
-		</li>
-	</ul>
-	</div>	  
-</div>			  
+
+</div>			
 <div id="shengping" class="mui-control-content ">
+	
 			<div class="zhaopian">
 				<img id="personHeadimg" width="128px" height="164px" src=""/>								 			
 				  
@@ -56,7 +48,7 @@
 				 
 				</div>
 			<div class="jianjie">
-				<h4>------------ 生平简介   ------------</h4>
+				<h4>生平简介 </h4>
 				<p id="introduction"></p>
 			</div>	
 </div>
@@ -101,7 +93,7 @@
 	</div>	
 		</div>		
 		</div>
-	<div id="laifang" class="mui-control-content mui-active">
+	<div id="laifang" class="mui-control-content">
 	<div class="close2"><img src="../img/close.png"/></div>
 				<h4>留言记录</h4>  
 				  <ul class="mui-table-view" id="levRec">
@@ -127,8 +119,8 @@
  	$("#close1").on("tap",function(){
   		$("#jibai").hide();
   		$(".jipin").show();
- 		$(".close2").on("tap",function(){
-   			$(this).parent().hide();
+ 	$(".close2").on("tap",function(){
+   		$(this).parent().hide();
 		}); 
 	});	
  </script>		
@@ -190,11 +182,10 @@
 				$("#introduction").text(data.result.persons[0].introduction);
 				$("#personHeadimg").attr("src",imgBase+data.result.headImg);
 				$("#mubeixiang").attr("src",imgBase+data.result.headImg);
-				
+				$(".mui-content").css("background","url("+imgBase+data.result.memorialModel.backImg+")no-repeat"); 
+				$(".mui-content").css("background-size","100%100%"); 
 			}else if(data.code=='PleaseLogin'){
 	    		window.location.href='login.html';
-	    	}else{
-	    		alert(data.message);
 	    	}
 		 }
     });
@@ -278,6 +269,13 @@
             }  
        });
 	});
+	
+	$(".jingxian").click(function(){
+		window.location.href="jipin.html?memorialId="+memorialId;
+	});
+	$(".changBuid").on("tap",function(){
+ 		window.location.href="upgradehouse.html?memorialId="+memorialId;
+	})
   </script> 
 </body>
 </html>
