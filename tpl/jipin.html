@@ -23,7 +23,6 @@
 		            <a class="mui-control-item" href="#item3">饰品</a>
 		            <a class="mui-control-item" href="#item4">鲜花</a>-->
 		        </div>
-<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
 <div class="mui-slider-group">
 		        	
 <div class="mui-slider-item mui-control-content">            			 	
@@ -57,9 +56,13 @@
 						var list = data.result;
 						var contens = "";
 						var firstId = list[0].sacrificeId
-						$.each(list, function(){     
-						    contens += '<a class="mui-control-item" onclick="sacriInfoList('+this.sacrificeId+');">'+this.sacrificeName+'</a>'
-						}); 
+						for(i=0;i<list.length;i++){
+							if(i==0){
+								contens += '<a class="mui-control-item mui-active" onclick="sacriInfoList('+list[i].sacrificeId+');">'+list[i].sacrificeName+'</a>'
+							}else{
+								contens += '<a class="mui-control-item" onclick="sacriInfoList('+list[i].sacrificeId+');">'+list[i].sacrificeName+'</a>'	
+							}
+						}
 						document.getElementById('jpType').innerHTML = contens;
 						sacriInfoList(firstId);
 					}
