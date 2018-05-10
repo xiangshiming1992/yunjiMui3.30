@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>yunjiMui</name>
+	<name>yunjiWx</name>
 	<comment>Create By HBuilder</comment>
 	<projects>
 	</projects>
@@ -22,7 +22,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1521874447024</id>
+			<id>0</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -40,7 +40,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522072687540</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -49,7 +49,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522072687544</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -58,7 +58,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522114604742</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -67,7 +67,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522158223800</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -76,7 +76,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522200059245</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -85,7 +85,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522333268508</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -94,7 +94,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522375513357</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -103,7 +103,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522482256895</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -112,7 +112,16 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1522631654309</id>
+			<id>0</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-node_modules</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1525940619555</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
