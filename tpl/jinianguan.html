@@ -15,23 +15,7 @@
 <!-- <header class="mui-bar mui-bar-nav header">
      <h1 class="mui-title">纪念馆</h1>
  </header>-->
-  
-<!--  轮播图-->
-  <div class="mui-slider bannertop">
-    <div class="mui-slider-group mui-slider-loop mCreat">
-      <!--第一个内容区容器-->      
-      <div class="mui-slider-item">
-      <!-- 具体内容 -->
-              <img src="../img/banner1.png"/>
-      </div>
-      <!--第二个内容区-->
-      <div class="mui-slider-item">
-        <!-- 具体内容 -->
-        	<img src="../img/banner2.png"/>
-      </div>
-    </div>
-    <div id="creatBtn"><img src="../img/creat.png"/></div>
-  </div>
+    <div class="mui-content"><!--  轮播图-->  <div class="mui-slider bannertop">    <div class="mui-slider-group mCreat">                                     <div class="mui-slider-item">      		<img src="../img/banner3.png"/>      </div>          <div class="mui-slider-item">                	<img src="../img/banner4.png"/>      </div>        <div class="mui-slider-item">      		<img src="../img/banner5.png"/>      </div>          <div class="mui-slider-item">                	<img src="../img/banner6.png"/>      </div>    </div>  <div class="mui-slider-indicator">				<div class="mui-indicator mui-active"></div>				<div class="mui-indicator"></div>				<div class="mui-indicator"></div>				<div class="mui-indicator"></div>									</div>    <div id="creatBtn"><img src="../img/creat.png"/></div>  </div>
   <script>
 	document.getElementById('creatBtn').addEventListener('tap', function() {
 		//打开纪念馆详情页面
@@ -40,7 +24,7 @@
 		    id:'buidhose1'
 		});
 	});
-
+var gallery = mui('.mui-slider');gallery.slider({  interval:1500//自动轮播周期，若为0则不自动播放，默认为0；});
 
 // 	$("#creatBtn").click(function(){
 // 		window.location.href="jinianguanDetail.html"})
@@ -100,7 +84,7 @@
 		      type: "GET",
 		      contentType: "application/json",
 		      dataType: "json",
-			  url: urlBase + "/api/memorial/list?memorialType=personal&deviceType=H5&currentPage=1&limit=50&content="+content,
+			  url: urlBase + "/api/memorial/list?memorialType=personal&currentPage=1&limit=50&content="+content,
 		      success:function(data){
 				var listPersonal = data.result.content;
 				var memorialContent = "";
@@ -122,7 +106,7 @@
 			      type: "GET",
 			      contentType: "application/json",
 			      dataType: "json",
-			      url: urlBase+"/api/memorial/list?memorialType=celebrity&deviceType=H5&currentPage=1&limit=50&content="+content, 
+			      url: urlBase+"/api/memorial/list?memorialType=celebrity&currentPage=1&limit=50&content="+content, 
 			      success:function(data){
 					var listcelebrity = data.result.content;
 					var memorialcelebrity = "";
@@ -144,7 +128,7 @@
 			      type: "GET",
 			      contentType: "application/json",
 			      dataType: "json",
-			      url: urlBase+"/api/memorial/list?lab=xinhuo&deviceType=H5&currentPage=1&limit=50&content="+content,
+			      url: urlBase+"/api/memorial/list?lab=xinhuo&currentPage=1&limit=50&content="+content,
 			      success:function(data){
 					var listrenqi = data.result.content;
 					console.log(listrenqi)
@@ -237,6 +221,6 @@
 			});
 	    }
 	}
-</script>
+</script></div>
 </body>
 </html>

@@ -1,3 +1,11 @@
 .reheader{background: #FFFFFF;}
-#rechargeMode img{width:30%;margin: 10px;}
-.payment{width: 60%;margin-left: 20%;}
+#rechargeMode img{width:30%;margin: 3%;}
+.payment{width: 30%; margin-left: 3%;}
+#czMoney{margin-left:3%;}
+.chongzhi{
+	margin-top: 20px;
+}
+.mui-input-row{
+	margin-bottom: 10px;
+font-size: 12px;
+}

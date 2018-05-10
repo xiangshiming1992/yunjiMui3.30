@@ -11,20 +11,57 @@ li {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: url(../img/beijing1.png)no-repeat;
+	background: url()no-repeat;
 	background-size: 100%100%;
 }
 
 .muxiang {
-	width: 80%;
-	margin-left: 40%;
-	margin-top: 2%;
+	
 }
 
-.muxiang img {
+/*室外css样式*/
+.mubeixiang {
 	position: absolute;
-	width: 30%;
+	left: 46.8%;
+	top: 23.3%;
+	width: 11%;
 }
+.muzi{
+	position: absolute;
+	left: 50%;
+	top: 32.5%;
+	-webkit-writing-mode:vertical-rl;
+	writing-mode:tb-rl;
+	writing-mode:vertical-rl;
+	font-family:STXingkai;
+	/*font-weight:normal;*/
+	color: #c2c2c2;
+	font-size: 18px;
+}
+/*完*/
+
+/*室内css样式*/
+
+.mubeixiang_sn {
+	position: absolute;
+	left: 46%;
+	top: 22.5%;
+	width: 12%;
+}
+.muzi_sn{
+	position: absolute;
+	left: 48.6%;
+	top: 43%;
+	-webkit-writing-mode:vertical-rl;
+	writing-mode:tb-rl;
+	writing-mode:vertical-rl;
+	font-family:STXingkai;
+	/*font-weight:normal;*/
+	color: #c2c2c2;
+	font-size: 14px;
+}
+
+/*室内完*/
 
 .mui-control-content {
 	margin-bottom: 0px;
@@ -67,6 +104,7 @@ li {
 	line-height: 44px;
 	border-radius: 6px;
 	margin-top:140px;
+	margin-right: 10px;
 	width: 80px;
 	height: 44px;
 }
@@ -81,21 +119,23 @@ li {
 }
 
 
-/*祭品*/
+/*生平*/
 
 #shengping {
 	background: rgba(20, 20, 20, 0.96);
 	width: 100%;
 	height: 100%;
 	color: #d4d4d2;
-	margin-top: 0px;
+	margin-top: -10px;
+
 }
 
 #shengping .zhaopian {
 	
 	width: 100%;
 	height: 150px;
-	margin: -10px 20px;
+	padding: 10px;
+	
 }
 
 #shengping .zhaopian img {
@@ -103,20 +143,23 @@ li {
 	width: 80px;
 	height: 110px;
 	margin: 2px;
+	
 }
 
 #shengping .zhaopian .jianjie-info {
 	float: left;
-	margin-left: 40px;
+	margin-left: 20px;
+
 }
 
 #shengping .zhaopian .jianjie-info li {
 	margin: 8px;
 }
+#shengping .jianjie{clear: both;}
 
 #shengping .jianjie h4 {
-margin-left: 20px;
-margin-top: 30px;
+text-align: center;
+margin:20px;
 color: #898989;
 }
 

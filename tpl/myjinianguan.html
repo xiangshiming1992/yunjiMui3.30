@@ -74,7 +74,7 @@
 	    	  },
 		      contentType: "application/json",
 		      dataType: "json",
-		      url: urlBase+"/api/memorial/mylist?deviceType=H5&currentPage=1&limit=50&peopleNumber=1", //这里是网址
+		      url: urlBase+"/api/memorial/mylist?currentPage=1&limit=50&peopleNumber=1", //这里是网址
 		      success:function(data){
 				var listPersonal = data.result.content;
 				//alert(personallist)
@@ -110,7 +110,7 @@
 			  headers: {
 	           	tokenInfo: window.localStorage.getItem("tokenInfo")
 	    	  },
-		      url: urlBase+"/api/memorial/mylist?deviceType=H5&currentPage=1&limit=50&peopleNumber=2", //这里是网址
+		      url: urlBase+"/api/memorial/mylist?currentPage=1&limit=50&peopleNumber=2", //这里是网址
 		      success:function(data){
 				var listcelebrity = data.result.content;
 				console.log(listcelebrity)
@@ -141,7 +141,7 @@
 			  headers: {
 	           	tokenInfo: window.localStorage.getItem("tokenInfo")
 	    	  },
-		      url: urlBase+"/api/memorial/mylist?memorialType=celebrity&deviceType=H5&currentPage=1&limit=50", //这里是网址
+		      url: urlBase+"/api/memorial/mylist?memorialType=celebrity&currentPage=1&limit=50", //这里是网址
 		      success:function(data){
 				var listrenqi = data.result.content;
 				console.log(listrenqi)

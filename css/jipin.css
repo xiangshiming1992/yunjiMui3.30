@@ -1,17 +1,17 @@
 ul{list-style: none;
 
-
 }
-
+*{margin: 0;padding: 0;}
+.jipin{width:100%;border: 1px red solid;}
 .jipin li {
 	float: left;
-	width: 30%;
-	height: 170px;
+	width: 32%;
+	height: auto;
 	background: #FFFFFF;
-	margin: 12px;
-	padding: 6px;
-	margin-left: -8px;
+	margin: 2px;
+	padding: 4px;
 	
 }
-.jipin li p{line-height:10px;}
+.jipin li h5{color: #323232;text-align: center;}
+.jipin li p{line-height:10px;font-size: 12px;}
 
