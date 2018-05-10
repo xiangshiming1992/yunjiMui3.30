@@ -1,88 +1,55 @@
-<!doctype html>
+<!doctype html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title>充值中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		
 		<link href="../css/recharge.css" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 	</head>
-
 	<body>
-<!--<header class="mui-bar mui-bar-nav reheader">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">充值</h1>
-</header>-->
 	</head>
 <div class="mui-content">
-
-	<h5 class="mui-content-padded">请选择充值方案</h5>
+	<h5 class=" chongzhi mui-content-padded">请选择充值方案</h5>
 			 <div class="mui-card">
-				<form class="mui-input-group">
+				<div class="mui-input-group" id="chouseCzTypeList">					<div class="mui-input-row mui-radio mui-left">						<label>云币充值</label>						<input name="chouseCzType" type="radio" value="CZ_YB" checked>					</div>
 					<!--<div class="mui-input-row mui-radio mui-left">
-						<label>白银会员<span> (24元/年，充值返利10%） </span></label>
-						
-						<input name="radio1" type="radio">
+						<label>白银会员<span> (36元/年，充值返利10% ，空间20M） </span></label>
+						<input name="chouseCzType" type="radio">
 					</div>
-					<div class="mui-input-row mui-radio mui-left href="#video">
-						<label>黄金会员<span> (60元/年，充值返利40%） </span></label>
-						<input name="radio1" type="radio" checked>
+					<div class="mui-input-row mui-radio mui-left>
+						<label>黄金会员<span> (72元/年，充值返利40%，空间80M） </span></label>
+						<input name="chouseCzType" type="radio" checked>
 					</div>
-					
 					<div class="mui-input-row mui-radio mui-left">
-						<label>钻石会员<span> (120元/年，充值返利100%） </span></label>
-						<input name="radio1" type="radio">
+						<label>钻石会员<span> (120元/年，充值返利100%，空间200M） </span></label>
+						<input name="chouseCzType" type="radio">
 					</div>-->
-					<div class="mui-input-row mui-radio mui-left">
-						<label>云币充值</label>
-						<input name="radio1" type="radio" checked>
-					</div>
-					
-			</form>		
-		</div>
-		 <div id="recharges">
-		  		 <h5 class="mui-content-padded">充值金额：</h5>
-		 				<div class="mui-input-row">
-							<input type="number" id="czMoney" placeholder="">
-						</div>	
-		</div>
-		 <div id="rechargeMode">
-		  		 <h5 class="mui-content-padded">充值方式：</h5>
-		  		 <div class="mui-input-row">
-					<img src="../img/wx.png"/>
-					<!--<img src="../img/zfb.png"/>-->
 				</div>
 		</div>
-			 <button id="recharge" type="button" class="mui-btn mui-btn-primary mui-btn-block payment">立即支付</button>
-		
-		
+		 <div id="recharges">
+		  		 <h5 class=" chongzhi mui-content-padded">充值金额：</h5>
+ 				<div class="mui-input-row">
+					<input type="number" id="czMoney" placeholder="">
+				</div>
+		</div>
+		<!--<div id="rechargeMode">
+	  		 <h5 class=" chongzhi mui-content-padded">充值方式：</h5>
+	  		 <div class="mui-input-row">
+				<img src="../img/wx.png"/>
+				<img src="../img/zfb.png"/>
+			</div>
+		</div>-->
+		<button id="recharge" type="button" class="mui-btn mui-btn-primary mui-btn-block payment">立即支付</button>
 </div>
-
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			var urlBase = 'http://api.yunji128.com/homage';
-			$("#recharge").click(function(){
-				var czMoney = $("#czMoney").val();
-				if(czMoney < 1){
-					alert("至少充值一元钱的嘛");
-					return;
-				}
-				var createData = {
-				  "dataId": "",
-				  "number": 1,
-				  "money": czMoney,
-				  "orderType": "CZ_YB",
-				  "channel": "wx_pub",
-				  "orderSource": "WX",
-				  "returnUrl": "",
-				  "showUrl": "",
-				  "openId": window.localStorage.getItem("openid")
-				}
+			var urlBase = 'http://api.yunji128.com/homage';			/**			 *充值会员套餐列表 			 */			$.ajax({					headers: {						tokenInfo: window.localStorage.getItem("tokenInfo")					},					type: "GET",					contentType: "application/json",					dataType: "json",					url: urlBase + "/api/userMember/confiList", //这里是网址					success: function(data) {						var list = data.result;						var contens = "";						$.each(list, function() {							if('UniversalMember'!=this.configKey){								contens += '<div class="mui-input-row mui-radio mui-left"><label>'+this.configName+'<span> ('+this.annualFee/100.0+'元/年，充值返利'+this.czFanli+'% ，空间'+this.spaceSize+'M)</span></label><input name="chouseCzType" value="'+this.configKey+'" type="radio"></div>'							}						});						$('#chouseCzTypeList').append(contens);												$("input[name=chouseCzType]").click(function(){						  	var a = $("input[name='chouseCzType']:checked").val();							if("CZ_YB"==a){								$("#recharges").show();							}else{								$("#recharges").hide();							}						});					},					error: function(message) {						alert("读取列表失败");					}			});						/**			 *立即充值 			 */
+			$("#recharge").click(function(){				var createData = null;				var a = $("input[name='chouseCzType']:checked").val(); 				if("CZ_YB"==a){ 					var czMoney = $("#czMoney").val();					if(czMoney < 1){						alert("至少充值一元钱的嘛");						return;					}					createData = {					  "dataId": "",					  "number": 1,					  "money": czMoney,					  "orderType": "CZ_YB",					  "channel": "wx_pub",					  "orderSource": "WX",					  "returnUrl": "",					  "showUrl": "",					  "openId": window.localStorage.getItem("openid")					} 				} 				if("CZ_YB"!=a){ 					$("#recharges").hide();					createData = {					  "dataId": a,					  "number": 1,					  "money": null,					  "orderType": "CZ_HY",					  "channel": "wx_pub",					  "orderSource": "WX",					  "returnUrl": "",					  "showUrl": "",					  "openId": window.localStorage.getItem("openid")					} 				}
+				
 			  	$.ajax({  
 	                type: "POST",  
 	                headers: {
@@ -141,5 +108,4 @@
 			}
 		</script>
 	</body>
-
 </html>
