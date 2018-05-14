@@ -9,14 +9,23 @@
 		<link href="../css/index.css" rel="stylesheet" />
 		<link href="../css/buiding.css" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
+		<style type="text/css">
+			.people1 h4 , .people2 h4{
+				border-left: 2px blue solid;
+				margin-left: 10px;
+				padding-left: 6px;
+			}
+			.people2 {
+				display: none;
+			}
+			#shuangren{
+				margin-left: 20px;
+			}
+		</style>
 	</head>
 	<script>
     </script>
 	<body>
-<!--<header class="mui-bar mui-bar-nav header">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">创建纪念馆</h1>
-</header>-->
 <div class="mui-content">
 		 <div class="deathPhoto">
 		    	<h5 class="mui-content-padded">逝者相片</h5>
@@ -24,10 +33,15 @@
 		    	<form id="uploadImgForm">
 		    		<input id="upload" name="fileName" onchange="uploadImg()" accept="image/*" type="file" style="display: none"/>
 		    	</form>
-		    	<h5 class="mui-content-padded">最佳比例：128*164</h5>
+		    	<input type="radio" name="numbPeople" value="1" checked/> <label>单人</label>
+		    	<input  type="radio" name="numbPeople" value="2"/> <label>双人</label>
+		    	<h5>最佳比例:128*164</h5>
 		 </div>   
+		 
+	<div class="people1">
+		<h4 >逝者信息</h4>
 		 <div id="deathName">
-		  	 <h5 class="mui-content-padded">逝者姓名：</h5>
+		  	 <h5 class="mui-content-padded">姓名：</h5>
 		     <div class="mui-input-row">
 					<input type="text" name="personName" placeholder="只限中文，最多6个字">
 				</div>			
@@ -47,6 +61,7 @@
 					
 				</form>
 			</div>
+			</div>
 		 <div id="birthDate">
 		  	 <h5 class="mui-content-padded">出生日期：</h5>
 		     <div class="mui-input-row">
@@ -59,17 +74,73 @@
 					<input type="text" name="diedIn" placeholder="1974-02-06">
 				</div>			
 		 </div> 
-		<div id="deathDate">
+		<div id="lifetime">
 		  	 <h5 class="mui-content-padded">生平简介：</h5>
 		     <div class="mui-input-row" style="margin: 10px 5px;">
 					<textarea id="textarea" name="introduction" rows="5" placeholder=""></textarea>
 				</div>		
 		 </div> 
-			<button type="button" class="mui-btn mui-btn-primary mui-btn-block backbtn">上一步</button>
-		 	<button type="button" id="save" class="mui-btn mui-btn-primary mui-btn-block completebtn">完成</button>
+	</div>	 
+
+	 <div class="people2"><h4 >逝者信息</h4>
+		 <div id="deathName2">
+		  	 <h5 class="mui-content-padded">姓名：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="personName2" placeholder="只限中文，最多6个字">
+			</div>			
+		 </div> 
+		 <div id="deathSex2">
+		  	 <h5 class="mui-content-padded">性别：</h5>
+		   <div class="mui-card">
+				<form class="mui-input-group">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>男</label>
+						<input name="personSex2" type="radio" value="男" checked>
+					</div>
+					<div class="mui-input-row mui-radio mui-left">
+						<label>女</label>
+						<input name="personSex2" type="radio" value="女">
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		 <div id="birthDate2">
+		  	 <h5 class="mui-content-padded">出生日期：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="bornIn2" placeholder="1974-02-06">
+			 </div>			
+		 </div> 		
+		<div id="deathDate2">
+		  	 <h5 class="mui-content-padded">逝世日期：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="diedIn2" placeholder="1978-02-06">
+			 </div>			
+		 </div> 
+		<div id="lifetime2">
+		  	 <h5 class="mui-content-padded">生平简介：</h5>
+		     <div class="mui-input-row" style="margin: 10px 5px;">
+					<textarea id="textarea" name="introduction2" rows="5" placeholder=""></textarea>
+				</div>		
+		 </div> 
+	</div>	 
+		<button type="button" class="mui-btn mui-btn-primary mui-btn-block backbtn">上一步</button>
+		<button type="button" id="save" class="mui-btn mui-btn-primary mui-btn-block completebtn">完成</button>	
 	</div>
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
+			var numPerson = $('input[name="numbPeople"]:checked').val();
+			var memorialPerson = null;
+			$("input[name='numbPeople']").click(function(){
+				numPerson = $('input[name="numbPeople"]:checked').val();
+				if(numPerson == 1){
+					$(".people2").hide();
+				}
+				if(numPerson == 2){
+					$(".people2").show();
+				}
+			});
+			
 			var urlBase = 'http://api.yunji128.com/homage';
 			var imgBase = 'http://img.yunji128.com/';
 			mui.init()
@@ -106,21 +177,12 @@
 			}
 	        var memorialType = GetQueryString("memorialType");
 			var memorialName = GetQueryString("memorialName");
-			var survivalMode = GetQueryString("survivalMode");
 			var memorialModelId = GetQueryString("memorialModelId");
 			var joinType = GetQueryString("joinType");
 			var password = GetQueryString("password");
 			$("#save").click(function(){
-			  	var requestBody = {
-				  "memorialName": memorialName,
-				  "memorialModelId": memorialModelId,
-				  "memorialType": memorialType,
-				  "survivalMode" : survivalMode,
-				  "peopleNumber": 1,
-				  "joinType": joinType,
-				  "password": password,
-				  "headImg": $("#imgID").attr("src").replace(imgBase,""),
-				  "memorialPerson": [
+				if(numPerson == 1){
+					memorialPerson = [
 					    {
 					      "personName": $("[name='personName']").val(),
 					      "personHeadimg": "",
@@ -129,7 +191,34 @@
 					      "diedIn": $("[name='diedIn']").val(),
 					      "introduction": $("[name='introduction']").val()
 					    }
-				  ],
+				  ];
+				}
+				if(numPerson == 2){
+					memorialPerson = [
+					    {
+					      "personName": $("[name='personName']").val(),
+					      "personSex": $('input[name="personSex"]:checked ').val(),
+					      "bornIn": $("[name='bornIn']").val(),
+					      "diedIn": $("[name='diedIn']").val(),
+					      "introduction": $("[name='introduction']").val()
+					    },{
+					      "personName": $("[name='personName2']").val(),
+					      "personSex": $('input[name="personSex2"]:checked ').val(),
+					      "bornIn": $("[name='bornIn2']").val(),
+					      "diedIn": $("[name='diedIn2']").val(),
+					      "introduction": $("[name='introduction2']").val()
+					    }
+				  ];
+				}
+			  	var requestBody = {
+				  "memorialName": memorialName,
+				  "memorialModelId": memorialModelId,
+				  "memorialType": memorialType,
+				  "peopleNumber": numPerson,
+				  "joinType": joinType,
+				  "password": password,
+				  "headImg": $("#imgID").attr("src").replace(imgBase,""),
+				  "memorialPerson": memorialPerson,
 				  "deviceType": "H5"
 				};
 			  	$.ajax({  
