@@ -181,6 +181,9 @@
 			var joinType = GetQueryString("joinType");
 			var password = GetQueryString("password");
 			$("#save").click(function(){
+				if(''==$("[name='personName']").val()){
+					alert("人一名字不能为空");
+				}
 				if(numPerson == 1){
 					memorialPerson = [
 					    {
@@ -194,6 +197,9 @@
 				  ];
 				}
 				if(numPerson == 2){
+					if(''==$("[name='personName2']").val()){
+						alert("人二名字不能为空");
+					}
 					memorialPerson = [
 					    {
 					      "personName": $("[name='personName']").val(),
