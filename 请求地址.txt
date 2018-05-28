@@ -1,1 +1,1 @@
-╫с©знд╣╣ http://api.yunji128.com/homage/apidoc
+http://api.yunji128.com/homage/swagger-ui.html

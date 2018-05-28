@@ -4,5 +4,9 @@
 .mui-input-row{width: 96%;margin-left: 2%;}
 .nextbtn{width: 80%;margin-left: 10%;}
 
-.deathPhoto{width:40%;margin:0 auto;text-align: center;}
+.deathPhoto, .membPhoto{width:40%;margin:0 auto;text-align: center;}
 .completebtn,.backbtn{float:left;width: 36%;margin-left: 10%;}
+.revsave{width: 80%;margin: auto; margin-bottom: 20px;}
+.membPhoto{margin-top: 80px;}
+.membPhoto #imgID{width: auto;}
+

@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>会员中心</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />
+		<link href="../css/buiding.css" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js"></script>
+	</head>
+	<script>
+    </script>
+	<body>
+<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">会员信息</h1>
+</header>
+<div class="mui-content">
+	  
+		 <div id="membNickname">
+		  	 <h5 class="mui-content-padded">昵称：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="Nickname" placeholder=" ">
+				</div>			
+		 </div> 
+		 
+		  <div id="memberName">
+		  	 <h5 class="mui-content-padded">真实姓名：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="realName" placeholder=" ">
+				</div>			
+		 </div> 
+		 
+		 <div id="memenberSex">
+		  	 <h5 class="mui-content-padded">性别：</h5>
+		   <div class="mui-card">
+				<form class="mui-input-group">
+					<div class="mui-input-row mui-radio mui-left">
+						<label>男</label>
+						<input name="gender " type="radio" value="男" checked>
+					</div>
+					<div class="mui-input-row mui-radio mui-left">
+						<label>女</label>
+						<input name="gender " type="radio" value="女">
+					</div>
+					
+				</form>
+			</div>
+		 <div id="birthDate">
+		  	 <h5 class="mui-content-padded">生日：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="birthDay" placeholder=" ">
+				</div>			
+		 </div> 
+		 
+		  <div id="jxct">
+		  	 <h5 class="mui-content-padded">家乡：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="jxcity" placeholder=" ">
+				</div>			
+		 </div> 
+		 
+		  <div id="xjct">
+		  	 <h5 class="mui-content-padded">现居地：</h5>
+		     <div class="mui-input-row">
+					<input type="text" name="xjcity" placeholder=" ">
+				</div>			
+		 </div> 
+		 
+		<div id="intro">
+		  	 <h5 class="mui-content-padded">个人简介：</h5>
+		     <div class="mui-input-row" style="margin: 10px 5px;">
+					<textarea id="textarea" name="introduction" rows="5" placeholder=""></textarea>
+				</div>		
+		 </div> 
+
+		 	<button type="button" id="save" class="mui-btn mui-btn-primary mui-btn-block revsave ">完成</button>
+	</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			var urlBase = 'http://api.yunji128.com/homage';
+			var imgBase = 'http://img.yunji128.com/';
+			mui.init()
+	
+	function GetQueryString(name) {
+			     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			     var r = window.location.search.substr(1).match(reg);
+			     if(r!=null)return  decodeURI(r[2]); return null;
+			}
+	        var userId = GetQueryString("userId");
+			$.ajax({
+			      headers: {
+		        		tokenInfo: window.localStorage.getItem("tokenInfo")
+		    	  },  
+			      type: "GET",
+			      contentType: "application/json",
+			      dataType: "json",
+			      url: urlBase+"/api/user/userInfoByMe?userId="+userId,
+			      success:function(data){
+					if(data.code=='SUCCESS'){
+						$("[name='Nickname']").val(data.result.nickname);
+						$("[name='realName']").val(data.result.realName);
+						$('input[name="gender"]:checked').val(data.result.gender);
+					    $("[name='birthDay']").val(data.result.birthDay);
+						$("[name='jxcity']").val(data.result.jxCity);
+						$("[name='xjcity']").val(data.result.xjCity);
+						$("[name='introduction']").val(data.result.introduction);
+									
+	                }
+	                else{
+	                	alert(data.message)
+	                }
+				  },
+			      error: function (message) {
+			      	alert("读取人物信息失败");
+			      }
+		    });  
+	
+			$("#save").click(function(){
+			  	var requestBody = {
+				
+					    
+					      "nickname": $("[name='Nickname']").val(),
+					      "realName": $("[name='realName']").val(),
+					      "gender": $('input[name="gender"]:checked ').val(),
+					      "birthDay": $("[name='birthDay']").val(),
+					      "jxCity": $("[name='jxcity']").val(),
+					      "xjCity": $("[name='xjcity']").val(),					      
+					      "introduction": $("[name='introduction']").val()
+					    
+				
+				};
+			  	$.ajax({  
+	                type: "POST",  
+	                headers: {
+				        tokenInfo: window.localStorage.getItem("tokenInfo")
+				    },
+	                url: urlBase + "/api/user/editUser",  
+	                contentType: "application/json; charset=utf-8",  
+	                data: JSON.stringify(requestBody),  
+	                dataType: "json",  
+	                success: function (data) {
+	                	if(data.code=='SUCCESS'){
+	                		alert("修改成功~~~~~~~");
+	                		window.location.href="memberInfo.html"
+	                	}
+	                	else{
+	                		alert(data.message)
+	                	}
+	                },  
+	                error: function (message) {  
+	                    alert("提交数据失败！");  
+	                }  
+	           });
+			});
+		</script>
+	</body>
+
+</html>
+

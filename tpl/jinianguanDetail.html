@@ -19,10 +19,38 @@
 	 </header>
 	<div class="mui-content">  
   	<div class="muxiang">
-  		<img id="mubeixiang"  src=""/>
-  		<span id="muzi" ></span>
+
+  		
+  		<!--<img id="mubeixiang"  src=""/>-->
+  		<!--<span id="muzi" >张国荣之墓</span>-->
   	</div>
 		<div class="changBuid">更换场景</div>
+		
+		<script type="application/javascript">
+//单人室内
+//		$(".muxiang").prepend('<img class="lingwei" id="lingwei" src="../img/lingpai1.png"/>');
+//		$(".muxiang").append('<img class="mubeixiang_sn" id="mubeixiang" src="../img/mx.jpg"/>');
+//		$(".muxiang").append('<span class="muzi_sn id="muzi">张国荣之灵位</span>')
+//双人室内		
+//	 	$(".muxiang").prepend('<img id="lingwei_L" src="../img/lingpai1.png"/>');
+//	 	$(".muxiang").append('<img id="lingwei_R" src="../img/lingpai1.png"/>');
+//		$(".muxiang").append('<img id="mubeixiang" class="mubeixiang_sn" src="../img/mx.jpg"/>');
+//		$(".muxiang").append('<span class="muzi_sn_L id="muzi_sn_L">张固然之墓</span>')	
+//		$(".muxiang").append('<span class="muzi_sn_R id="muzi_sn_R">张国荣之灵位</span>')
+		
+//单人室外
+	
+//		$(".muxiang").append('<img class="mubeixiang" id="mubeixiang" src="../img/mx.jpg"/>');
+//		$(".muxiang").append('<span class="muzi id="muzi">张国荣之灵位</span>')
+		
+//双人室外		
+//		$(".muxiang").append('<img class="mubeixiang" id="mubeixiang" src="../img/mx.jpg"/>');
+//		$(".muxiang").append('<span class="muzi_sw_L id="muzi_sn_L">张固然之墓</span>')	
+//		$(".muxiang").append('<span class="muzi_sw_R id="muzi_sn_R">张国荣之灵位</span>')
+//		
+		</script>
+
+		
 		
 		<div id="jibai" class="mui-control-content mui-active">
 			<!--<div class="close2"><img src="../img/shou.png"/></div>-->
@@ -75,11 +103,11 @@
 		        <div class="mui-slider-group mui-slider-loop">
 		        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
 		            <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view">
+		                <ul class="mui-table-view mui-grid-view" id="xpul">
 		                    <!--<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/1.jpg">
 		                            </a></li>
 		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/2.jpg">
-		                            </a></li>-->
+		                           </a></li>-->
 		                </ul>
 		            </div>
 		        </div>
@@ -96,12 +124,12 @@
         	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
             <div class="mui-slider-item">
                 <ul class="mui-table-view mui-grid-view">
-                    <!--<li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-                            </a></li>
                     <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
                             </a></li>
                     <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-                            </a></li>-->
+                            </a></li>
+                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
+                            </a></li>
                 </ul>
             </div>  
 	 </div>
@@ -231,25 +259,77 @@
 				$("#diedIn").text(data.result.persons[0].diedIn);
 				$("#introduction").text(data.result.persons[0].introduction);
 				$("#personHeadimg").attr("src",imgBase+data.result.headImg);
-				$("#mubeixiang").attr("src",imgBase+data.result.headImg);
-				$("#muzi").text(data.result.persons[0].personName+"之墓");
+//				$("#mubeixiang").attr("src",imgBase+data.result.headImg);
+//				$("#muzi").text(data.result.persons[0].personName+"之墓");
 				$(".mui-content").css("background","url("+imgBase+data.result.memorialModel.backImg+")no-repeat"); 
 				$(".mui-content").css("background-size","100%100%"); 
 				
 			if(data.result.peopleNumber==1 ){
-				if(data.result.memorialModel.scenesType  == "outdoor"){					
+				if(data.result.memorialModel.scenesType  == "outdoor"){			
+   			
+				$(".muxiang").append('<img id="mubeixiang" src=""/>');
+				$(".muxiang").append('<span id="muzi"></span>')
    				$("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");
-   				$("#muzi").addClass("muzi").removeClass("muzi_sn");
+   				$("#muzi").addClass("muzi").removeClass("muzi_sn");	
+				$("#mubeixiang").attr("src",imgBase+data.result.headImg);   				
+   				$("#muzi").text(data.result.persons[0].personName+"之墓");
    				
-   			  }
+   			  	}
 				
 				else if(data.result.memorialModel.scenesType == "indoor"){
-   				$("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang"); 				
-   				$("#muzi").addClass("muzi_sn").removeClass("muzi");
-   				}
+   			   				
+   					$(".muxiang").prepend('<img class="lingwei" id="lingwei" src="../img/lingpai1.png"/>');
+					$(".muxiang").append('<img id="mubeixiang" src=""/>');
+					$(".muxiang").append('<span id="muzi"></span>')	 				
+   					$("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang"); 				
+   					$("#muzi").addClass("muzi_sn").removeClass("muzi");
+					$("#mubeixiang").attr("src",imgBase+data.result.headImg);   					
+   					$("#muzi").text(data.result.persons[0].personName+"之灵位");
+
+   					
+   					}
 				else{
    					alert("选择错误");
    				}
+			}else if(data.result.peopleNumber==2){
+				if(data.result.memorialModel.scenesType  == "outdoor"){					
+	   				$(".muxiang").append('<img id="mubeixiang" src=""/>');
+					$(".muxiang").append('<span id="muzi_sw_L"></span>')	
+					$(".muxiang").append('<span id="muzi_sw_R"></span>')
+				
+	   				$("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");
+	   				$("#muzi_sw_L").addClass("muzi_sw_L").removeClass("muzi_sn_L");
+	   				$("#muzi_sw_R").addClass("muzi_sw_R").removeClass("muzi_sn_R");
+	   				
+					$("#mubeixiang").attr("src",imgBase+data.result.headImg);   					
+   					$("#muzi_sw_L").text(data.result.persons[1].personName+"之墓");
+   					$("#muzi_sw_R").text(data.result.persons[0].personName+"之墓");
+   				
+   			  	  }
+
+				else if(data.result.memorialModel.scenesType == "indoor"){
+					$(".muxiang").prepend('<img id="lingwei_L" src="../img/lingpai1.png"/>');
+				 	$(".muxiang").append('<img id="lingwei_R" src="../img/lingpai1.png"/>');
+				 	
+					$(".muxiang").append('<img id="mubeixiang" src=""/>');
+					$(".muxiang").append('<span id="muzi_sn_L"></span>')	
+					$(".muxiang").append('<span id="muzi_sn_R"></span>')
+					
+	   				$("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang"); 				
+	   				$("#muzi_sn_L").addClass("muzi_sn_L").removeClass("muzi_sw_L");
+	   				$("#muzi_sn_R").addClass("muzi_sn_R").removeClass("muzi_sw_R");
+	   				
+					$("#mubeixiang").attr("src",imgBase+data.result.headImg);   					
+   					$("#muzi_sn_L").text(data.result.persons[1].personName+"之灵位");
+   					$("#muzi_sn_R").text(data.result.persons[0].personName+"之灵位");	   				
+	   				
+	   				
+   				  }
+				else{
+   					alert("选择错误");
+   				}
+			}else{
+				alert("人数不对");
 			}
 			 
 			}else if(data.code=='PleaseLogin'){
@@ -259,7 +339,37 @@
 		 }
     });
 
-
+//判断单人和双人墓
+//如果是单人墓
+//	
+// 如果是室内
+//  创建一个img 给他一个src图片位置，付给1个排位的图片
+//	创建一个id为mubeixiang 的img 给他一个src图片位置  ，动态赋予照片的位置
+//	创建一个id为muzi的span   动态赋予墓志铭
+//	将以上个创建的dom元素付给class为muxiang的div
+//    分别将mubeixiang_sn和muzi_sn两个class属性给mubeixiang和muzi
+// 
+// 如果是室外
+//  创建一个id为mubeixiang 的img 给他一个src图片位置  动态赋予照片的位置
+//	创建一个id为muzi的span  动态赋予墓志铭
+//	将这上个创建的dom元素给class为muxiang的div//  
+//    将mubeixiang和muzi两个class属性分别给mubeixiang和muzi
+//
+//如果是双人墓
+//	
+// 如果是室内
+//  创建一个img 给他一个src图片位置  付给2个排位的图片
+//	创建一个id为mubeixiang 的img 给他一个src图片位置   动态赋予照片的位置
+//	创建一个id为muzi_nan的span   动态赋予墓志铭
+//	再创建一个id为muzi_nv的span   动态赋予墓志铭
+//	将这上个创建的dom元素给class为muxiang的div
+//    将mubeixiang_sn和muzi_sn两个class属性分别给mubeixiang和muzi
+// 如果是室外
+//  创建一个id为mubeixiang 的img 给他一个src图片位置  动态赋予照片的位置
+//	创建一个id为muzi_nan的span 	动态赋予墓志铭
+//	再创建一个id为muzi_nv的span   动态赋予墓志铭
+//	将这上个创建的dom元素给class为muxiang的div
+//    将mubeixiang和muzi两个class属性分别给mubeixiang和muzi
  
 	//jibai记录
 	$.ajax({
@@ -347,6 +457,39 @@
 	$(".changBuid").on("tap",function(){
  		window.location.href="upgradehouse.html?memorialId="+memorialId;
 	})
+	
+	//相册
+	$.ajax({
+		      headers: {
+		    	tokenInfo:window.localStorage.getItem("tokenInfo")
+			  },  
+		      type: "GET",
+		      contentType: "application/json",
+		      dataType: "json",
+		      
+			  url: urlBase + "/api/album/albumFileList?dataId="+memorialId+"&type=memorial&fileFormat=img",
+		      success:function(data){
+				if(data.code=='SUCCESS'){
+					//arlt(data);
+						var list = data.result[0];
+						//alert(data.result[0]);
+						var contens = "";
+						
+						$.each(list,function(index,item){
+							contens += '<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="'+urlBase+item.path+'"></a></li>'
+						//$("#xpul").append('<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="'+urlBase+item[index].path+'"></a></li>');
+						})
+					   	
+						document.getElementById(".photo #xpul").innerHTML = contens;
+					}
+					
+				
+			 },
+	   
+	 		error: function (message) {  
+                alert("提交数据失败！");  
+            }  
+       });
   </script> 
 </body>
 </html>

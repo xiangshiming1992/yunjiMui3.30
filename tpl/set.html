@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>会员中心</title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+     <link href="../css/index.css" rel="stylesheet"/>
+     <script src="../js/jquery-1.10.2.js"></script>
+     
+   <style type="text/css">
+   	.header{background: #FFFFFF;}
+   	.header h1{color: #000000;}
+   </style>
+   
+</head>
+
+<body>
+ <header class="mui-bar mui-bar-nav header">
+     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+      <h1 class="mui-title">设置</h1>
+</header>
+  <div class="mui-content">
+  	
+<!--  <div class="mybanner"><img id="headImg" src=""/><h4 id="nickname"></h4></div>  -->
+ 
+
+
+
+              
+ <div id="memberInfo" class="phone"><a href="memberInfo.html">会员信息</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+          
+ <div id="headInfo" class="phone"><a href="headInfo.html">修改头像</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+  
+ <div id="exitLogin" class="phone"><a href="exitLogin.html">退出</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
+
+  </div>
+  
+   <script>
+ 	
+ 	$("#memberInfo").on("tap",function(){
+ 	
+ 		window.location.href="memberInfo.html"}
+ 	)
+ 		$("#headInfo").on("tap",function(){
+ 	
+ 		window.location.href="headInfo.html"}
+ 	)
+ 		$("#exitLogin").on("tap",function(){
+ 	
+ 		window.location.href="exitLogin.html"}
+ 	)
+// 		mui('body').on('tap','a',function(){
+// 			document.location.href=this.href;
+// 		})
+ </script>
+  
+  <!--底部选项卡  
+<nav class="mui-bar mui-bar-tab">
+      <a class="mui-tab-item" id="jinianguan">
+          <span class="mui-icon mui-icon-home"></span>
+          <span class="mui-tab-label">纪念馆</span>
+      </a>
+      <a class="mui-tab-item" id="jiapu">
+          <span class="mui-icon mui-icon-map"></span>
+          <span class="mui-tab-label">家谱圈</span>
+      </a>
+      <a class="mui-tab-item" id="xingshi">
+          <span class="mui-icon mui-icon-navigate"></span>
+          <span class="mui-tab-label">姓氏起源</span>
+      </a>
+      <a class="mui-tab-item mui-active" id="my">
+          <span class="mui-icon mui-icon-contact"></span>
+          <span class="mui-tab-label">个人中心</span>
+      </a>
+  </nav>-->
+  
+<script src="../js/navJump.js"></script>
+
+</body>
+</html>

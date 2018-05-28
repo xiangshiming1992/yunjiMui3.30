@@ -19,49 +19,134 @@ li {
 	
 }
 
-/*室外css样式*/
+/*单人室外css样式*/
 .mubeixiang {
 	position: absolute;
 	left: 46.8%;
 	top: 23.3%;
-	width: 11%;
+	width: 12%;
 }
 .muzi{
 	position: absolute;
 	left: 50%;
-	top: 32.5%;
+	top: 33.6%;
 	-webkit-writing-mode:vertical-rl;
 	writing-mode:tb-rl;
 	writing-mode:vertical-rl;
 	font-family:STXingkai;
 	/*font-weight:normal;*/
-	color: #c2c2c2;
-	font-size: 18px;
+	color: #f7f7f7;
+	font-size: 15px;
 }
 /*完*/
 
-/*室内css样式*/
-
+/*单人室内css样式*/
+#lingwei{
+	width: 22%;
+	position:absolute;
+	left: 38%;
+	top: 28%;
+}
 .mubeixiang_sn {
 	position: absolute;
-	left: 46%;
-	top: 22.5%;
-	width: 12%;
+	left: 40.4%;
+	top: 10%;
+	width: 18%;
 }
 .muzi_sn{
 	position: absolute;
-	left: 48.6%;
-	top: 43%;
+	left: 46%;
+	top: 37%;
 	-webkit-writing-mode:vertical-rl;
 	writing-mode:tb-rl;
 	writing-mode:vertical-rl;
 	font-family:STXingkai;
 	/*font-weight:normal;*/
-	color: #c2c2c2;
-	font-size: 14px;
+	color: #F2F2F2;
+	font-size: 15px;
 }
 
 /*室内完*/
+
+/*双人室外css样式*/
+.mubeixiang {
+	position: absolute;
+	left: 46.8%;
+	top: 23.3%;
+	width: 12%;
+}
+.muzi_sw_L{
+	position: absolute;
+	left: 46%;
+	top: 33.6%;
+	-webkit-writing-mode:vertical-rl;
+	writing-mode:tb-rl;
+	writing-mode:vertical-rl;
+	font-family:STXingkai;
+	/*font-weight:normal;*/
+	color: #F7F7F7;
+	font-size: 15px;
+}
+.muzi_sw_R{
+	position: absolute;
+	left: 54%;
+	top: 33.6%;
+	-webkit-writing-mode:vertical-rl;
+	writing-mode:tb-rl;
+	writing-mode:vertical-rl;
+	font-family:STXingkai;
+	/*font-weight:normal;*/
+	color: #F7F7F7;
+	font-size: 15px;
+}
+/*完*/
+
+/*双人室内css样式*/
+#lingwei_L{
+	width: 22%;
+	position:absolute;
+	left: 28%;
+	top: 28%;
+}
+#lingwei_R{
+	width: 22%;
+	position:absolute;
+	left: 54%;
+	top: 28%;
+}
+
+.mubeixiang_sn_db {
+	position: absolute;
+	left: 40.4%;
+	top: 10%;
+	width: 18%;
+}
+.muzi_sn_L{
+	position: absolute;
+	left: 36%;
+	top: 37%;
+	-webkit-writing-mode:vertical-rl;
+	writing-mode:tb-rl;
+	writing-mode:vertical-rl;
+	font-family:STXingkai;
+	/*font-weight:normal;*/
+	color: #F2F2F2;
+	font-size: 15px;
+}
+.muzi_sn_R{
+	position: absolute;
+	left: 62%;
+	top: 37%;
+	-webkit-writing-mode:vertical-rl;
+	writing-mode:tb-rl;
+	writing-mode:vertical-rl;
+	font-family:STXingkai;
+	/*font-weight:normal;*/
+	color: #F2F2F2;
+	font-size: 15px;
+}
+
+/*双人室内完*/
 
 .mui-control-content {
 	margin-bottom: 0px;
@@ -103,7 +188,7 @@ li {
 	text-align: center;
 	line-height: 44px;
 	border-radius: 6px;
-	margin-top:140px;
+	margin-top:20px;
 	margin-right: 10px;
 	width: 80px;
 	height: 44px;

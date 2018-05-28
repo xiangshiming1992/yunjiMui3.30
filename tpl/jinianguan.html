@@ -89,10 +89,10 @@ var gallery = mui('.mui-slider');gallery.slider({  interval:1500//自动轮播
 				var listPersonal = data.result.content;
 				var memorialContent = "";
 				$.each(listPersonal, function(){     
-				    memorialContent +='<div><li class="mui-table-view-cell mui-media list1"><a href="javascript:info('+this.memorialId+');"><h4>'+this.memorialName+'</h4>'+
+				    memorialContent +='<li class="mui-table-view-cell mui-media list1"><a href="javascript:info('+this.memorialId+');"><h4>'+this.memorialName+'</h4>'+
 					'<img class="mui-media-object mui-pull-left" src="'+imgBase+this.headImg+'">'+
 	    			'<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>'+this.userId+'</span></li><li>建馆人：<span>'+this.nickname +'</span></li></ul>'+ 
-	 			 	'<ul class="smallul"><li>祭拜数：<span>'+this.worshipCount +'</span></li><li>建馆时间：<span>'+this.rowAddTime +'</span></li></ul></div></a></li></div>'
+	 			 	'<ul class="smallul"><li>祭拜数：<span>'+this.worshipCount +'</span></li><li>建馆时间：<span>'+this.rowAddTime +'</span></li></ul></div></a></li>'
 	 			 });
 				document.getElementById('mpersonal').innerHTML = memorialContent;
 			},

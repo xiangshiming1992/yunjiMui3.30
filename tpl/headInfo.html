@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>会员中心</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />
+		<link href="../css/buiding.css" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js"></script>
+	</head>
+	<script>
+    </script>
+	<body>
+<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">修改头像</h1>
+</header>
+<div class="mui-content">
+		
+		 <div class="membPhoto">
+		    	
+		    	<img class="userImg" id="myimgID" width="128px" height="128px" src="../img/demo.jpg" />
+		    	<form id="uploadImgForm">
+		    		<input id="upload" name="fileName" onchange="uploadImg()" accept="image/*" type="file" style="display: none"/>
+		    	</form>
+		    	<h5 class="mui-content-padded">最佳比例：80*80</h5>
+		    	<h5 class="">只支持JPG,PNG,GIF,大小不超过3M</h5>
+		 </div>   
+	</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			var urlBase = 'http://api.yunji128.com/homage';
+			var imgBase = 'http://img.yunji128.com/';
+			mui.init()
+			
+	$.ajax({  
+
+		headers: {
+
+	        tokenInfo: window.localStorage.getItem("tokenInfo")
+
+	    },
+
+        type: "GET",  
+
+        url: urlBase + "/api/user/userInfoByMe",  
+
+        data: {},  
+
+        dataType: "json",  
+
+        success: function (data) {
+
+        	if(data.code=='SUCCESS'){
+        		
+        		$("#myimgID").attr("src",imgBase + data.result.headImg);
+
+        	}
+
+        	else if(data.code=='PleaseLogin'){
+
+        		window.location.href='login.html';
+
+        	}
+
+        	else{
+
+        		alert(data.message);
+
+        	}
+
+        },  
+
+        error: function (message) {  
+
+            alert("提交数据失败！");  
+
+        }  
+
+   });
+			
+			
+			
+			
+			$("#myimgID").click(function(){
+				$("#upload").click();     
+			});
+		    function uploadImg(){  
+		        var fd = new FormData(document.getElementById("uploadImgForm"));
+				fd.append("path", "h5/userhead");
+				fd.append("fileFormat", "img");
+				fd.append("fileSize", "10001");
+				$.ajax({
+					type : "POST",
+					url : urlBase + "/file/fileUpload",
+					data : fd,//FormId
+					processData: false,  // 告诉jQuery不要去处理发送的数据
+					contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+					error : function(request) {
+						//layer.alert('添加出现异常', {icon: 5});
+					},
+					success : function(data) {
+						if (data.code == 'SUCCESS') {
+							$("#myimgID").attr("src",imgBase+data.result.path);
+						} else {
+							alert(data.message);
+						}
+					}
+				}); 
+				
+				
+				var requestBody = {	
+
+				  "headImg": $("#myimgID").attr("src").replace(imgBase,"")	
+
+				};
+				
+				$.ajax({  
+
+	                type: "POST",  
+
+	                headers: {
+
+				        tokenInfo: window.localStorage.getItem("tokenInfo")
+
+				    },
+
+	                url: urlBase + "/api/user/editUser",  
+
+	                contentType: "application/json; charset=utf-8",  
+
+	                data: JSON.stringify(requestBody),  
+
+	                dataType: "json",  
+
+	                success: function (data) {
+
+	                	if(data.code=='SUCCESS'){
+
+	                		alert("修改头像成功~~~~~~~");
+
+	                		window.location.href="headInfo.html";
+
+	                	}
+
+	                	else{
+
+	                		alert(data.message)
+
+	                	}
+
+	                },  
+
+	                error: function (message) {  
+
+	                    alert("提交数据失败！");  
+
+	                }  
+
+	           });
+		    }
+		    
+		    
+			
+		</script>
+	</body>
+
+</html>
