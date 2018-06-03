@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员中心</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" />
+		<link href="../css/phone.css" rel="stylesheet" />
+		<link href="../css/buiding.css" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+	</head>
+	<body>
+<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">我的亲友</h1>
+</header>
+  			 	
+
+
+
+<div class="mui-content">
+	<ul class="mui-table-view">
+	    <li class="mui-table-view-cell mui-media">
+	        <a href="javascript:;">
+	            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
+	            <div class="mui-media-body">
+	                张三
+	                <p class="mui-ellipsis">现居地：成都双流</p>
+	            </div>
+	        </a>
+	    </li>
+	    <li class="mui-table-view-cell mui-media">
+	        <a href="javascript:;">
+	            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
+	            <div class="mui-media-body">
+	                李四
+	                <p class="mui-ellipsis">现居地：四川绵阳.</p>
+	            </div>
+	        </a>
+	    </li>
+	    <li class="mui-table-view-cell mui-media">
+	        <a href="javascript:;">
+	            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
+	            <div class="mui-media-body">
+	                王五
+	                <p class="mui-ellipsis">现居地：云南昆明.</p>
+	            </div>
+	        </a>
+	    </li>
+	</ul>
+</div>
+
+
+
+
+	
+
+
+	
+	<!--<script type="text/javascript">
+			mui.init()
+			var urlBase = 'http://api.yunji128.com/homage';
+			var imgBase = 'http://img.yunji128.com/';
+			function GetQueryString(name) {
+			     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			     var r = window.location.search.substr(1).match(reg);
+			     if(r!=null)return  decodeURI(r[2]); return null;
+			}
+			var memorialId = GetQueryString("memorialId");
+			$.ajax({
+			      headers: {
+			    	tokenInfo:window.localStorage.getItem("tokenInfo")
+				  },  
+			      type: "GET",
+			      contentType: "application/json",
+			      dataType: "json",
+			      url: urlBase + "/api/sacrifice/sortList", //这里是网址
+			      success:function(data){
+					if(data.code=='SUCCESS'){
+						var list = data.result;
+						var contens = "";
+						var firstId = list[0].sacrificeId
+						$.each(list, function(){     
+						    contens += '<a class="mui-control-item" onclick="sacriInfoList('+this.sacrificeId+');">'+this.sacrificeName+'</a>'
+						}); 
+						document.getElementById('jpType').innerHTML = contens;
+						sacriInfoList(firstId);
+					}
+				 }
+	    	});
+			function sacriInfoList(id){
+				$.ajax({
+				      headers: {
+				    	tokenInfo:window.localStorage.getItem("tokenInfo")
+					  },  
+				      type: "GET",
+				      contentType: "application/json",
+				      dataType: "json",
+				      url: urlBase + "/api/sacrifice/list?pId="+id, //这里是网址
+				      success:function(data){
+						if(data.code=='SUCCESS'){
+							var list = data.result;
+							var contens = "";
+							$.each(list, function(){     
+							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+')"><li><img src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+'云币</span></p><p>时效：<span>'+this.sacrificeAging+'分钟</span></p></li></a>'
+							}); 
+							document.getElementById('jpList').innerHTML = contens;
+						}
+					 }
+		    	});
+			}
+			//确认祭拜
+			function sureJb(sacrificeId,useCloudBi){
+				if(window.confirm('你确定要祭拜吗？当前祭拜消耗'+useCloudBi+'云币')){
+                	$.ajax({
+					      headers: {
+					    	tokenInfo:window.localStorage.getItem("tokenInfo")
+						  },  
+					      type: "POST",
+					      contentType: "application/json",
+					      dataType: "json",
+					      url: urlBase + "/api/sacrifice/doSG?sacrificeId="+sacrificeId+"&memorialId="+memorialId, //这里是网址
+					      success:function(data){
+							if(data.code=='SUCCESS'){
+								alert("祭拜成功~~");
+								window.location.href = document.referrer;//返回上一页并刷新  
+							}
+						 }
+			    	});
+	            }
+			}
+	</script>-->
+	</body>
+</html>

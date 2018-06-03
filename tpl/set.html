@@ -43,14 +43,15 @@
  	
  		window.location.href="memberInfo.html"}
  	)
- 		$("#headInfo").on("tap",function(){
+ 	$("#headInfo").on("tap",function(){
  	
  		window.location.href="headInfo.html"}
  	)
- 		$("#exitLogin").on("tap",function(){
- 	
- 		window.location.href="exitLogin.html"}
- 	)
+ 	$("#exitLogin").on("tap",function(){
+ 		window.localStorage.removeItem("tokenInfo");
+ 		window.localStorage.removeItem("userInfo");
+		window.location.href="personal.html";
+ 	});
 // 		mui('body').on('tap','a',function(){
 // 			document.location.href=this.href;
 // 		})

@@ -67,6 +67,7 @@
 	                		//登录成功，将用户的token信息存入cook
 	                		var tokenInfo = data.result.tokenModel.userId + "_" +data.result.tokenModel.token;
 	                		window.localStorage.setItem("tokenInfo",tokenInfo);
+	                		window.localStorage.setItem("userInfo",JSON.stringify(data.result));
 	                		window.location.href='personal.html'
 	                	}
 	                	else{

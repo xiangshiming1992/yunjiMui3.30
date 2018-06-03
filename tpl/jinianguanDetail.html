@@ -10,6 +10,17 @@
     <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css">
     	#jibai{display: none;}
+    	.showImg{
+				text-align: center;
+			}
+			.showImg p img{
+				width: 100%;
+				border: 1px #d1d1d1 solid;
+			}
+			#videoH{
+				width:320px;
+				height:300px;
+			}
     </style>
 </head>
 <body>
@@ -99,19 +110,21 @@
 	
 	<div class="photo">
 				<div class="photo-img"><span class="mui-icon mui-icon-image videoImg"></span><span>相片</span></div>			 			
-				 <div class="mui-slider">
-		        <div class="mui-slider-group mui-slider-loop">
-		        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
-		            <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view" id="xpul">
-		                    <!--<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/1.jpg">
-		                            </a></li>
-		                    <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="../img/2.jpg">
-		                           </a></li>-->
-		                </ul>
-		            </div>
-		        </div>
-		   	</div>	
+			
+			<div class="mui-content-padded showImg" id="showImg">
+			<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->
+				<!--<p>
+					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
+				</p>
+			
+				<p>
+					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />
+				</p>
+				
+				<p>
+					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />
+				</p>-->
+			</div>
 		</div>		
 </div>
 <div id="video" class="mui-control-content">
@@ -119,21 +132,20 @@
 	<div class="photo">
 		<div class="photo-img"><span class="mui-icon mui-icon-videocam videoImg"></span><span>视频</span>	</div>			 			
 		
-		<div class="mui-slider">
-        <div class="mui-slider-group mui-slider-loop">
-        	<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
-            <div class="mui-slider-item">
-                <ul class="mui-table-view mui-grid-view">
-                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-                            </a></li>
-                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-                            </a></li>
-                    <li class="mui-table-view-cell mui-media mui-col-xs-4"><a href="#"><img class="mui-media-object" src="../img/v1.png">
-                            </a></li>
-                </ul>
-            </div>  
-	 </div>
-	</div>	
+	<div class="mui-content-padded showImg" id="showVideo">
+			<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->
+				<!--<p>
+					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
+				</p>
+			
+				<p>
+					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />
+				</p>
+				
+				<p>
+					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />
+				</p>-->
+			</div>
 		</div>		
 		</div>
 	<div id="laifang" class="mui-control-content">
@@ -206,6 +218,10 @@
    		$("#shengping").hide();
    		$("#video").hide();
    		$("#laifang").hide();
+   		
+   		
+   		
+   		
 		}); 
 	$("#ph").on("tap",function(){
    		$("#video").slideToggle("slow");
@@ -289,7 +305,7 @@
    					
    					}
 				else{
-   					alert("选择错误");
+   					//alert("选择错误");
    				}
 			}else if(data.result.peopleNumber==2){
 				if(data.result.memorialModel.scenesType  == "outdoor"){					
@@ -459,37 +475,74 @@
 	})
 	
 	//相册
-	$.ajax({
-		      headers: {
-		    	tokenInfo:window.localStorage.getItem("tokenInfo")
-			  },  
-		      type: "GET",
-		      contentType: "application/json",
-		      dataType: "json",
-		      
-			  url: urlBase + "/api/album/albumFileList?dataId="+memorialId+"&type=memorial&fileFormat=img",
-		      success:function(data){
-				if(data.code=='SUCCESS'){
-					//arlt(data);
-						var list = data.result[0];
-						//alert(data.result[0]);
-						var contens = "";
-						
-						$.each(list,function(index,item){
-							contens += '<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="'+urlBase+item.path+'"></a></li>'
-						//$("#xpul").append('<li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="#"><img class="mui-media-object" src="'+urlBase+item[index].path+'"></a></li>');
-						})
-					   	
-						document.getElementById(".photo #xpul").innerHTML = contens;
-					}
+	
+	$("#xp").on("tap",function(){
+		$.ajax({
+			      headers: {
+			    	tokenInfo:window.localStorage.getItem("tokenInfo")
+				  },  
+			      type: "GET",
+			      //contentType: "application/json",
+			      dataType: "json",
+			      
+				  url: urlBase + "/api/album/albumFileList?dataId="+memorialId+"&type=memorial&fileFormat=img",
+			      success:function(data){
+					if(data.code=='SUCCESS'){
+						//arlt(data);
+							var list = data.result;
+							//alert(data.result[0]);
+							var contens = "";
+							
+							$.each(list,function(index,item){
+								/*if(this.fileFormat='img'){
+									contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
+								}
+								if(this.fileFormat='video'){
+									contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
+								}*/
+								contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
 					
-				
-			 },
-	   
-	 		error: function (message) {  
-                alert("提交数据失败！");  
-            }  
-       });
+							})
+						   	
+							document.getElementById("showImg").innerHTML = contens;
+						}
+			},	   
+		 		error: function (message) {  
+	                alert("提交数据失败！");  
+	            }  
+	       });
+	 });
+	 //视频
+	 $("#ph").on("tap",function(){
+		$.ajax({
+			      headers: {
+			    	tokenInfo:window.localStorage.getItem("tokenInfo")
+				  },  
+			      type: "GET",
+			      //contentType: "application/json",
+			      dataType: "json",
+			      
+				  url: urlBase + "/api/album/albumFileList?dataId="+memorialId+"&type=memorial&fileFormat=video",
+			      success:function(data){
+					if(data.code=='SUCCESS'){
+						//arlt(data);
+							var list = data.result;
+							//alert(data.result[0]);
+							var contens = "";
+							
+							$.each(list,function(index,item){
+								contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
+					
+							})
+						   	
+							document.getElementById("showVideo").innerHTML = contens;
+						}
+			},	   
+		 		error: function (message) {  
+	                alert("提交数据失败！");  
+	            }  
+	       });
+	 });
   </script> 
 </body>
 </html>

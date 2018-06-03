@@ -104,64 +104,44 @@
 					success : function(data) {
 						if (data.code == 'SUCCESS') {
 							$("#myimgID").attr("src",imgBase+data.result.path);
+							editImg(data.result.path);
 						} else {
 							alert(data.message);
 						}
 					}
 				}); 
+			}
 				
+	
 				
-				var requestBody = {	
-
-				  "headImg": $("#myimgID").attr("src").replace(imgBase,"")	
-
-				};
-				
-				$.ajax({  
-
-	                type: "POST",  
-
-	                headers: {
-
-				        tokenInfo: window.localStorage.getItem("tokenInfo")
-
-				    },
-
-	                url: urlBase + "/api/user/editUser",  
-
-	                contentType: "application/json; charset=utf-8",  
-
-	                data: JSON.stringify(requestBody),  
-
-	                dataType: "json",  
-
-	                success: function (data) {
-
-	                	if(data.code=='SUCCESS'){
-
-	                		alert("修改头像成功~~~~~~~");
-
-	                		window.location.href="headInfo.html";
-
-	                	}
-
-	                	else{
-
-	                		alert(data.message)
-
-	                	}
-
-	                },  
-
-	                error: function (message) {  
-
-	                    alert("提交数据失败！");  
-
-	                }  
-
-	           });
+				function editImg(path){
+					$.ajax({  
+						type: "POST",  
+						headers: {
+							tokenInfo: window.localStorage.getItem("tokenInfo")
+						},
+						url: urlBase + "/api/user/editUser",  
+					   contentType: "application/json; charset=utf-8",  
+						data: JSON.stringify({"headImg": path}),  
+						dataType: "json",  
+						success: function (data) {
+							if(data.code=='SUCCESS'){
+								alert("修改头像成功!");
+								//window.location.reload();
+								window.location.href="headInfo.html";
+								
+							}
+							else{
+								alert(data.message)
+							}
+						},  
+						error: function (message) {  
+							alert("提交数据失败！");  
+						}  
+				   });
 		    }
-		    
+				
+			
 		    
 			
 		</script>

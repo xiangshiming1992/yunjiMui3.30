@@ -51,6 +51,7 @@
 
 				<div id="deathName">
 
+					<input type="hidden" name="memorialPersonId" >
 					<h5 class="mui-content-padded">姓名：</h5>
 
 					<div class="mui-input-row">
@@ -73,7 +74,7 @@
 
 								<label>男</label>
 
-								<input name="personSex" type="radio" value="男" checked>
+								<input name="personSex" type="radio" value="男">
 
 							</div>
 
@@ -133,7 +134,7 @@
 				<h4>逝者信息</h4>
 
 				<div id="deathName2">
-
+					<input type="hidden" name="memorialPersonId2" >
 					<h5 class="mui-content-padded">姓名：</h5>
 
 					<div class="mui-input-row">
@@ -156,7 +157,7 @@
 
 								<label>男</label>
 
-								<input name="personSex2" type="radio" value="男" checked>
+								<input name="personSex2" type="radio" value="男">
 
 							</div>
 
@@ -221,8 +222,6 @@
 		<script src="../js/mui.min.js"></script>
 
 		<script type="text/javascript">
-			var memorialPerson;
-			
 				mui.init();
 			var urlBase = 'http://api.yunji128.com/homage';
 			var imgBase = 'http://img.yunji128.com/';
@@ -232,6 +231,7 @@
 				if(r != null) return decodeURI(r[2]);
 				return null;
 			}
+			var stem="";
 			var memorialPersonId = GetQueryString("memorialPersonId");
 			var memorialId = GetQueryString("memorialId");
 			$.ajax({      
@@ -241,72 +241,81 @@
 				       type: "GET",
 				      contentType: "application/json",
 				      dataType: "json",
+						async:false, 
 				      url: urlBase + "/api/memorial/basicInfo?memorialId=" + memorialId,
 				      success: function(data) {
 					if(data.code == 'SUCCESS') {
+						stem =data.result.peopleNumber;
 						if(data.result.peopleNumber == 1) {
 							$(".people2").hide();
-						$("[name='personName']").val(data.result.persons[0].personName);
-						$('input[name="personSex"]:checked').val(data.result.persons[0].personSex);
-						$("[name='bornIn']").val(data.result.persons[0].bornIn);
-						$("[name='diedIn']").val(data.result.persons[0].diedIn);
-						$("[name='introduction']").val(data.result.persons[0].introduction);
-						
-						 memorialPerson = [
-
-						{
-							
-							"bornIn": $("[name='bornIn']").val(),
-							"diedIn": $("[name='diedIn']").val(),
-							"introduction": $("[name='introduction']").val(),							
-							"memorialPersonId": data.result.persons[0].memorialPersonId,
-							"personSex": $('input[name="personSex"]:checked ').val()
-						}
-					];
+							$("[name='memorialPersonId']").val(data.result.persons[0].memorialPersonId);
+							$("[name='personName']").val(data.result.persons[0].personName);
+							$(":radio[name='personSex'][value='" + data.result.persons[0].personSex + "']").prop("checked", "checked");
+							$("[name='bornIn']").val(data.result.persons[0].bornIn);
+							$("[name='diedIn']").val(data.result.persons[0].diedIn);
+							$("[name='introduction']").val(data.result.persons[0].introduction);
 						}
 						if(data.result.peopleNumber == 2) {
 							$(".people2").show();
-						$("[name='personName']").val(data.result.persons[0].personName);
-						$('input[name="personSex"]:checked').val(data.result.persons[0].personSex);
-						$("[name='bornIn']").val(data.result.persons[0].bornIn);
-						$("[name='diedIn']").val(data.result.persons[0].diedIn);
-						$("[name='introduction']").val(data.result.persons[0].introduction);
-							
-						$("[name='personName2']").val(data.result.persons[1].personName);
-						$('input[name="personSex2"]:checked').val(data.result.persons[1].personSex);
-						$("[name='bornIn2']").val(data.result.persons[1].bornIn);
-						$("[name='diedIn2']").val(data.result.persons[1].diedIn);
-						$("[name='introduction2']").val(data.result.persons[1].introduction);
-					
-					
-					 memorialPerson = [
-						{
-							"bornIn": $("[name='bornIn']").val(),
-							"diedIn": $("[name='diedIn']").val(),
-							"introduction": $("[name='introduction']").val(),							
-							"memorialPersonId": data.result.persons[0].memorialPersonId,
-							"personSex": $('input[name="personSex"]:checked ').val()
-						}, {
-
-							"bornIn": $("[name='bornIn2']").val(),
-							"diedIn": $("[name='diedIn2']").val(),
-							"introduction": $("[name='introduction2']").val(),
-							"memorialPersonId": data.result.persons[1].memorialPersonId,
-							"personSex": $('input[name="personSex2"]:checked ').val()
-							
-						}
-					];
+							$("[name='memorialPersonId']").val(data.result.persons[0].memorialPersonId);
+							$("[name='personName']").val(data.result.persons[0].personName);
+							$(":radio[name='personSex'][value='" + data.result.persons[0].personSex + "']").prop("checked", "checked");
+							$("[name='bornIn']").val(data.result.persons[0].bornIn);
+							$("[name='diedIn']").val(data.result.persons[0].diedIn);
+							$("[name='introduction']").val(data.result.persons[0].introduction);
+								
+							$("[name='memorialPersonId2']").val(data.result.persons[1].memorialPersonId);
+							$("[name='personName2']").val(data.result.persons[1].personName);
+							$(":radio[name='personSex2'][value='" + data.result.persons[1].personSex + "']").prop("checked", "checked");
+							$("[name='bornIn2']").val(data.result.persons[1].bornIn);
+							$("[name='diedIn2']").val(data.result.persons[1].diedIn);
+							$("[name='introduction2']").val(data.result.persons[1].introduction);
 						}
 					
 					} else {
 						alert(data.message)
 					}
 				},
-				      error: function(message) {      
+				    error: function(message) {      
 					alert("读取人物信息失败");      
 				}    
 			});
 			$("#save").click(function() {
+					var memorialPerson = null;
+					if(stem == 1){
+						memorialPerson = [
+						    {
+						      "memorialPersonId": $("[name='memorialPersonId']").val(),
+						      "personName": $("[name='personName']").val(),
+						      "personSex": $('input[name="personSex"]:checked ').val(),
+						      "bornIn": $("[name='bornIn']").val(),
+						      "diedIn": $("[name='diedIn']").val(),
+						      "introduction": $("[name='introduction']").val()
+						    }
+					  ];
+					}
+					if(stem == 2){
+						if(''==$("[name='personName2']").val()){
+							alert("人二名字不能为空");
+						}
+						memorialPerson = [
+						    {
+						      "memorialPersonId": $("[name='memorialPersonId']").val(),
+						      "personName": $("[name='personName']").val(),
+						      "personSex": $('input[name="personSex"]:checked ').val(),
+						      "bornIn": $("[name='bornIn']").val(),
+						      "diedIn": $("[name='diedIn']").val(),
+						      "introduction": $("[name='introduction']").val()
+						    },{
+						      "memorialPersonId": $("[name='memorialPersonId2']").val(),
+						      "personName": $("[name='personName2']").val(),
+						      "personSex": $('input[name="personSex2"]:checked ').val(),
+						      "bornIn": $("[name='bornIn2']").val(),
+						      "diedIn": $("[name='diedIn2']").val(),
+						      "introduction": $("[name='introduction2']").val()
+						    }
+					  ];
+					}
 				$.ajax({
 					type: "POST",
 					headers: {

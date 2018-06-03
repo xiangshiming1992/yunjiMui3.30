@@ -180,6 +180,8 @@
 			var memorialModelId = GetQueryString("memorialModelId");
 			var joinType = GetQueryString("joinType");
 			var password = GetQueryString("password");
+			var customizeHeadImg = GetQueryString("customizeHeadImg");
+			var modelSource = GetQueryString("modelSource");
 			$("#save").click(function(){
 				if(''==$("[name='personName']").val()){
 					alert("人一名字不能为空");
@@ -188,7 +190,6 @@
 					memorialPerson = [
 					    {
 					      "personName": $("[name='personName']").val(),
-					      "personHeadimg": "",
 					      "personSex": $('input[name="personSex"]:checked ').val(),
 					      "bornIn": $("[name='bornIn']").val(),
 					      "diedIn": $("[name='diedIn']").val(),
@@ -223,6 +224,8 @@
 				  "peopleNumber": numPerson,
 				  "joinType": joinType,
 				  "password": password,
+				  "customizeHeadImg":customizeHeadImg,
+				  "modelSource" :modelSource,
 				  "headImg": $("#imgID").attr("src").replace(imgBase,""),
 				  "memorialPerson": memorialPerson,
 				  "deviceType": "H5"
@@ -238,7 +241,7 @@
 	                dataType: "json",  
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
-	                		alert("创建成功~~~~~~~");
+	                		alert("创建成功！");
 	                		window.location.href="myjinianguan.html"
 	                	}
 	                	else{
