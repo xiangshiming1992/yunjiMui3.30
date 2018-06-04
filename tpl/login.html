@@ -50,6 +50,10 @@
 		<script src="js/mui.min.js"></script>
 		
 		<script type="application/javascript">
+			var openId = window.localStorage.getItem("openid");
+			if(openId == '' || null == openId){
+				window.location.href='../index.html?biz=login'
+			}
 			var urlBase = 'http://api.yunji128.com/homage';
 			$("#login").click(function(){
 			  	var user = {

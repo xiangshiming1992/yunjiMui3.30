@@ -15,10 +15,17 @@
 		     if(r!=null)return unescape(r[2]); return null;
 		}
         var jsonUser = GetQueryString("userInfoJson");
+	    var biz = GetQueryString("biz");
         //获取openid
         var openid = JSON.parse(decodeURI(jsonUser)).openid;
         window.localStorage.setItem("openid",openid);
-        window.location.href = 'tpl/jinianguan.html';
+        if(biz == '' || null == biz || 'null' == biz){
+        	window.location.href = 'tpl/jinianguan.html';
+        }
+        if(biz == 'login'){
+        	window.location.href = 'tpl/login.html';
+        }
+        
     </script>
 </body>
 

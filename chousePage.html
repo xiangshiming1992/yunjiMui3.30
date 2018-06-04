@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+</head>
+<body>
+<div class="demoTable">
+    <iframe width="100%" name="_blank" id="myframe" height="600px" frameborder=0 scrolling=auto src="http://film.qq.com/"></iframe>
+    <br/>
+    <button class="layui-btn"  id="qiehuan1" value="http://film.qq.com/">腾讯视频</button>
+    <button class="layui-btn"  id="qiehuan2" value="http://vip.iqiyi.com/">爱奇艺视频</button>
+    <button class="layui-btn" id="qiehuan3" value="http://vip.youku.com/">优酷</button>
+    <button class="layui-btn" id="qiehuan4" value="https://film.sohu.com/">搜狐</button>
+    <button class="layui-btn" id="qiehuan5" value="https://www.mgtv.com/vip/">芒果</button>
+    <button class="layui-btn" id="huoqu" >获取地址</button>
+</div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" ></script>
+<script>
+	$("[id^=qiehuan]").click(function(obj){
+        $("#myframe")[0].src=$(this).val();
+   });
+    $("#huoqu").click(function(){
+    	//var srcs = document.getElementById('myframe').src;
+    	/*var srcs = document.getElementById("myframe").contentWindow.location.href
+		alert(srcs);*/
+    });
+    
+</script>

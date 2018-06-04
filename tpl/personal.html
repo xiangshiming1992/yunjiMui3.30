@@ -22,9 +22,10 @@
  	<div class="ybyue">
  		<span>云币：</span><span id="ybnumber"></span>
  	</div>
- 
- <a type="button" href="recharge.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">充值</a>
-
+ 	<a type="button" href="recharge.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">充值</a>
+ </div>
+  <div class="PleaseLogin">
+ 	<a type="button" href="login.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">去登陆</a>
  </div>
               
  <div id="albumPhone" class="phone"><a href="#">相册管理</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
@@ -76,12 +77,16 @@
         dataType: "json",  
         success: function (data) {
         	if(data.code=='SUCCESS'){
+        		$(".yunbi").show();
+        		$(".PleaseLogin").hide();
         		$("#nickname").html(data.result.nickname);
         		$("#ybnumber").html(data.result.cloudBi);
         		$("#headImg").attr("src",imgBase + data.result.headImg);
         	}
         	else if(data.code=='PleaseLogin'){
-        		window.location.href='login.html';
+        		window.localStorage.removeItem("openid");
+        		$(".yunbi").hide();
+        		$(".PleaseLogin").show();
         	}
         	else{
         		alert(data.message);

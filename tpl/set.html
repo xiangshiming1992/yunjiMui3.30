@@ -38,23 +38,20 @@
   </div>
   
    <script>
- 	
  	$("#memberInfo").on("tap",function(){
  	
- 		window.location.href="memberInfo.html"}
- 	)
+ 		window.location.href="memberInfo.html"
+ 	});
  	$("#headInfo").on("tap",function(){
  	
- 		window.location.href="headInfo.html"}
- 	)
+ 		window.location.href="headInfo.html"
+ 	});
  	$("#exitLogin").on("tap",function(){
  		window.localStorage.removeItem("tokenInfo");
  		window.localStorage.removeItem("userInfo");
+ 		window.localStorage.removeItem("openid");
 		window.location.href="personal.html";
  	});
-// 		mui('body').on('tap','a',function(){
-// 			document.location.href=this.href;
-// 		})
  </script>
   
   <!--底部选项卡  
