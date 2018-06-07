@@ -11,16 +11,28 @@
     <style type="text/css">
     	#jibai{display: none;}
     	.showImg{
-				text-align: center;
+    		width: 90%;
+    		background: #D4D4D4;
+  			text-align: center;
+			}
+			.showImg p,.showVideo p{
+				float: left;
+				width: 46%;
+				/*border: 2px red solid;*/
+				
+				margin: 2%;
 			}
 			.showImg p img{
 				width: 100%;
-				border: 1px #d1d1d1 solid;
+				
+				/*border: 1px #d1d1d1 solid;*/
+				/*border-radius: 2px;*/
 			}
 			#videoH{
-				width:320px;
-				height:300px;
+			/*	width:320px;*/
+				height:150px;
 			}
+			
     </style>
 </head>
 <body>
@@ -116,11 +128,9 @@
 				<!--<p>
 					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
 				</p>
-			
 				<p>
 					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />
 				</p>
-				
 				<p>
 					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />
 				</p>-->
@@ -136,12 +146,10 @@
 			<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->
 				<!--<p>
 					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
-				</p>
-			
+				</p>		
 				<p>
 					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />
-				</p>
-				
+				</p>		
 				<p>
 					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />
 				</p>-->
@@ -287,7 +295,7 @@
 				$(".muxiang").append('<span id="muzi"></span>')
    				$("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");
    				$("#muzi").addClass("muzi").removeClass("muzi_sn");	
-				$("#mubeixiang").attr("src",imgBase+data.result.headImg);   				
+				$("#mubeixiang").attr("src",imgBase+data.result.headImg+"_crop_100x160_60");   				
    				$("#muzi").text(data.result.persons[0].personName+"之墓");
    				
    			  	}
@@ -317,7 +325,7 @@
 	   				$("#muzi_sw_L").addClass("muzi_sw_L").removeClass("muzi_sn_L");
 	   				$("#muzi_sw_R").addClass("muzi_sw_R").removeClass("muzi_sn_R");
 	   				
-					$("#mubeixiang").attr("src",imgBase+data.result.headImg);   					
+					$("#mubeixiang").attr("src",imgBase+data.result.headImg+"_crop_100x160_60");   					
    					$("#muzi_sw_L").text(data.result.persons[1].personName+"之墓");
    					$("#muzi_sw_R").text(data.result.persons[0].personName+"之墓");
    				
@@ -335,7 +343,7 @@
 	   				$("#muzi_sn_L").addClass("muzi_sn_L").removeClass("muzi_sw_L");
 	   				$("#muzi_sn_R").addClass("muzi_sn_R").removeClass("muzi_sw_R");
 	   				
-					$("#mubeixiang").attr("src",imgBase+data.result.headImg);   					
+					$("#mubeixiang").attr("src",imgBase+data.result.headImg+"_crop_100x160_60");   					
    					$("#muzi_sn_L").text(data.result.persons[1].personName+"之灵位");
    					$("#muzi_sn_R").text(data.result.persons[0].personName+"之灵位");	   				
 	   				
@@ -477,6 +485,8 @@
 	//相册
 	
 	$("#xp").on("tap",function(){
+		if($("#xiangpian").show()){
+		
 		$.ajax({
 			      headers: {
 			    	tokenInfo:window.localStorage.getItem("tokenInfo")
@@ -489,10 +499,8 @@
 			      success:function(data){
 					if(data.code=='SUCCESS'){
 						//arlt(data);
-							var list = data.result;
-							//alert(data.result[0]);
-							var contens = "";
-							
+							var list = data.result;							
+							var contens = "";							
 							$.each(list,function(index,item){
 								/*if(this.fileFormat='img'){
 									contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
@@ -500,7 +508,7 @@
 								if(this.fileFormat='video'){
 									contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
 								}*/
-								contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
+								contens += '<p><img src="'+imgBase+this.path+'_crop_260x180_60'+'" data-preview-src="" data-preview-group="1" /></p>'
 					
 							})
 						   	
@@ -511,9 +519,12 @@
 	                alert("提交数据失败！");  
 	            }  
 	       });
+	       	
+		}
 	 });
 	 //视频
 	 $("#ph").on("tap",function(){
+	 	if($("#video").show()){
 		$.ajax({
 			      headers: {
 			    	tokenInfo:window.localStorage.getItem("tokenInfo")
@@ -531,10 +542,11 @@
 							var contens = "";
 							
 							$.each(list,function(index,item){
-								contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
+								contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="160" height="120" controls="controls" /></video></p>'
 					
 							})
-						   	
+//						   	  plyr.setup('video', { controls: ['play-large'] });//只显示大按钮
+								
 							document.getElementById("showVideo").innerHTML = contens;
 						}
 			},	   
@@ -542,6 +554,7 @@
 	                alert("提交数据失败！");  
 	            }  
 	       });
+	      }
 	 });
   </script> 
 </body>

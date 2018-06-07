@@ -34,6 +34,9 @@
 			#shuangren {
 				margin-left: 20px;
 			}
+			.completebtn{
+				width: 80%;
+			}
 		</style>
 
 	</head>
@@ -42,185 +45,97 @@
 	</script>
 
 	<body>
-
 		<div class="mui-content">
-
 			<div class="people1">
-
 				<h4>逝者信息</h4>
-
 				<div id="deathName">
-
 					<input type="hidden" name="memorialPersonId" >
 					<h5 class="mui-content-padded">姓名：</h5>
-
 					<div class="mui-input-row">
-
-						<input type="text" name="personName" disabled="disabled" placeholder="只限中文，最多6个字">
-
+						<input type="text" name="personName" placeholder="只限中文，最多6个字">
 					</div>
-
 				</div>
-
 				<div id="deathSex">
-
 					<h5 class="mui-content-padded">性别：</h5>
-
 					<div class="mui-card">
-
 						<form class="mui-input-group">
-
 							<div class="mui-input-row mui-radio mui-left">
-
-								<label>男</label>
-
+							<label>男</label>
 								<input name="personSex" type="radio" value="男">
-
 							</div>
-
 							<div class="mui-input-row mui-radio mui-left">
-
 								<label>女</label>
-
 								<input name="personSex" type="radio" value="女">
-
 							</div>
-
 						</form>
-
 					</div>
-
 				</div>
-
 				<div id="birthDate">
-
 					<h5 class="mui-content-padded">出生日期：</h5>
-
 					<div class="mui-input-row">
-
 						<input type="text" name="bornIn" placeholder="1974-02-06">
-
 					</div>
-
 				</div>
-
 				<div id="deathDate">
-
 					<h5 class="mui-content-padded">逝世日期：</h5>
-
 					<div class="mui-input-row">
-
 						<input type="text" name="diedIn" placeholder="1974-02-06">
-
 					</div>
-
 				</div>
-
 				<div id="lifetime">
-
 					<h5 class="mui-content-padded">生平简介：</h5>
-
 					<div class="mui-input-row" style="margin: 10px 5px;">
-
 						<textarea id="textarea" name="introduction" rows="5" placeholder=""></textarea>
-
 					</div>
-
 				</div>
-
 			</div>
-
 			<div class="people2">
 				<h4>逝者信息</h4>
-
 				<div id="deathName2">
 					<input type="hidden" name="memorialPersonId2" >
 					<h5 class="mui-content-padded">姓名：</h5>
-
 					<div class="mui-input-row">
-
-						<input type="text" name="personName2" disabled="disabled" placeholder="只限中文，最多6个字">
-
+						<input type="text" name="personName2" placeholder="只限中文，最多6个字">
 					</div>
-
 				</div>
-
 				<div id="deathSex2">
-
 					<h5 class="mui-content-padded">性别：</h5>
-
 					<div class="mui-card">
-
 						<form class="mui-input-group">
-
 							<div class="mui-input-row mui-radio mui-left">
-
 								<label>男</label>
-
 								<input name="personSex2" type="radio" value="男">
-
 							</div>
-
 							<div class="mui-input-row mui-radio mui-left">
-
 								<label>女</label>
-
 								<input name="personSex2" type="radio" value="女">
-
 							</div>
-
 						</form>
-
 					</div>
-
 				</div>
-
 				<div id="birthDate2">
-
 					<h5 class="mui-content-padded">出生日期：</h5>
-
 					<div class="mui-input-row">
-
 						<input type="text" name="bornIn2" placeholder="1974-02-06">
-
 					</div>
-
 				</div>
-
 				<div id="deathDate2">
-
 					<h5 class="mui-content-padded">逝世日期：</h5>
-
 					<div class="mui-input-row">
-
 						<input type="text" name="diedIn2" placeholder="1978-02-06">
-
 					</div>
-
 				</div>
-
 				<div id="lifetime2">
-
 					<h5 class="mui-content-padded">生平简介：</h5>
-
 					<div class="mui-input-row" style="margin: 10px 5px;">
-
 						<textarea id="textarea" name="introduction2" rows="5" placeholder=""></textarea>
-
 					</div>
-
 				</div>
-
 			</div>
-
 			<!--<button type="button" class="mui-btn mui-btn-primary mui-btn-block backbtn">上一步</button>-->
-
 			<button type="button" id="save" class="mui-btn mui-btn-primary mui-btn-block completebtn">完成</button>
-
 		</div>
-
 		<script src="../js/mui.min.js"></script>
-
 		<script type="text/javascript">
 				mui.init();
 			var urlBase = 'http://api.yunji128.com/homage';

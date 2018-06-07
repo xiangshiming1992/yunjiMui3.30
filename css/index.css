@@ -138,3 +138,11 @@
 	margin-left:76%;
 }
 /*.xs hr{width:80%;color: #FFFFFF;}*/
+
+
+
+/*表单错误提示框*/
+.errorAlert,.errorAlertFade{width:100%;display:flex;justify-content:center;-webkit-justify-content:center; height:100vh;position:fixed;left:0px;top:0px;z-index:999; }
+.errorAlertBox{width:80%; background:rgba(0,0,0,0.6);border-radius:4px;text-align:center;height:1.8rem;margin-top:1.48rem;display: flex;justify-content:center;align-items: center;padding: 0.2rem;box-sizing: border-box;}
+.errorAlertBoxBox_error p{color:#fff;margin:4px 0;font-size:14px;line-height:0.48rem;display: flex;align-items: center;justify-content: center;}
+.flexOneLineCenter{display: flex;display:-webkit-flex;align-items: center;-webkit-align-items: center;justify-content: center;-webkit-justify-content: center; }

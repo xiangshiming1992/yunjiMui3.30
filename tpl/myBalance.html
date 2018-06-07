@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://m.yuansuju.com/personal/redpacket.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>我的余额</title>
+    <link rel="icon" href="https://m.yuansuju.com/image/logoicon-6d4a5610fe7df06f5daba8b1e4f64ba4.png">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link href="../css/index.css?v=333" rel="stylesheet" />
+<style>
+*{margin:0;padding:0;}
+ul,ol li{list-style:none;}
+/*苹方-简 纤细体*/
+.font-slin{font-family: PingFangSC-Thin, sans-serif;}
+.RedCoupon_header{width:100%;background: -webkit-linear-gradient(bottom, #ff3f48, #ef7245);}
+.RedCoupon_header_bz{padding:0.22rem 0.3rem;overflow:hidden;text-align:center; }
+.RedCoupon_header_bz a{float:right;display:block;width:22px;height:22px;text-align:center;line-height:22px;border-radius:50%;font-size:14px;font-weight:bold;display:flex;}
+.RedCoupon_header_num{text-align:center;color:#fff;}
+.RedCoupon_header_num p{font-size:0.3rem;}
+.RedCoupon_header_num h1{font-weight:normal;font-size:0.9rem;margin: 0.4rem 0;}
+.RedCoupon_header_zq{width:100%;margin-top:0.2rem;text-align:center;padding-bottom:0.7rem;}
+.RedCoupon_header_zq p{color:#fdd1ce;font-size:0.24rem;margin-bottom: 0.3rem;}
+.RedCoupon_header_zq a{font-size:0.28;padding:0rem 0.72rem;height:36px; border-radius:18px;border:1px solid #fdaba9;display:inline-block;line-height:36px;color:#fff;}
+.RedCoupon_nav{padding:0.32rem 0;overflow:hidden;background:#fff;}
+.RedCoupon_nav_item{width:49%;border-right:1px solid #f2f2f2;float:left;text-align:center;}
+.RedCoupon_nav_item p{margin:0px;color:#999;font-size: 0.26rem;}
+.RedCoupon_nav_item h3{margin:0px;color:#333;font-size:0.36rem;padding-top:0.1rem;font-weight: normal;}
+.RedCoupon_nav_item:last-child{border:none;}
+.RedCoupon_detail{margin-top: 0.2rem;background: #fff;overflow: hidden;}
+.RedCoupon_detail_title{width:100%;padding:0.2rem; font-size:14px;color:#333;border-bottom:1px solid #f2f2f2;box-sizing:border-box;}
+.RedCoupon_detail_title img{width:0.34rem;margin-right:4px;}
+.RedCoupon_detail_list {width:100%}
+.RedCoupon_detail_item{padding:0.24rem 0.2rem;box-sizing:border-box;float:left;border-bottom:1px solid #f2f2f2;width:100%;}
+.RedCoupon_detail_item_left{width:75%;float:left;}
+.RedCoupon_detail_item_name{width:100%;color:#000;font-size:14px;}
+.RedCoupon_detail_item_time{font-size:12px;color:#999;display:block;}
+.RedCoupon_detail_item_right{width:25%;float:right;overflow:hidden;text-align:right;}
+
+.tiApply  
+    {  
+        display:none;  
+        border:1px solid #BCE8F1;  
+        height:30%;  
+        width:80%;  
+        position:absolute;/*让节点脱离文档流,我的理解就是,从页面上浮出来,不再按照文档其它内容布局*/  
+        top:30%;/*节点脱离了文档流,如果设置位置需要用top和left,right,bottom定位*/  
+        left:10%;  
+        z-index:2;/*个人理解为层级关系,由于这个节点要在顶部显示,所以这个值比其余节点的都大*/  
+        background: white;  
+    }  
+    
+ .over  
+    {  
+        width: 100%;  
+        height: 100%;  
+        opacity:0.8;/*设置背景色透明度,1为完全不透明,IE需要使用filter:alpha(opacity=80);*/  
+        filter:alpha(opacity=80);  
+        display: none;  
+        position:absolute;  
+        top:0;  
+        left:0;  
+        z-index:1;  
+        background: silver;  
+    }  
+    
+</style>
+</head>
+<body><svg aria-hidden="true" style="position: absolute; width: 0px; height: 0px; overflow: hidden;">
+<div class="RedCoupon_header">
+    <div class="RedCoupon_header_bz">
+    </div>
+    <div class="RedCoupon_header_num">
+        <p>可提现余额</p>
+        <h1 id="canUseMoney"></h1>
+    </div>
+    <div class="RedCoupon_header_zq">
+        <p>余额不够用？马上</p>
+        <a href="#">邀请赚取</a>
+    </div>
+</div>
+
+<!--3.明细-->
+<div class="RedCoupon_detail">
+    <div class="RedCoupon_detail_title">
+        <img src="https://m.yuansuju.com/image/mxico-ba129d965ccc817386cac967a9ff7de3.png"><span>余额消费明细记录</span> <span onclick="tixian()" style="color: dodgerblue;float: right;">申请提现</span>
+    </div>
+    <ul class="RedCoupon_detail_list">
+		<li class="RedCoupon_detail_item">
+			<div class="RedCoupon_detail_item_left">
+				<p class="RedCoupon_detail_item_name"></p><span class="RedCoupon_detail_item_time"></span></div><div class="RedCoupon_detail_item_right">
+			</div>
+		</li>
+	</ul>
+    <div style="text-align: center;line-height: 28px; margin:14px 0; color: #999; font-size: 12px; display: none" id="notenymore">亲！没有更多了
+    </div>
+</div>
+
+<div class="tiApply" style="display:none" >
+    <table>
+    	<tr>
+    		<td>提现金额：</td>
+    		<td><input type="number" id="applyMoney" value=""></td>
+    	</tr>
+    	<tr>
+    		<td>支付宝账号：</td>
+    		<td><input type="text" id="cardNumber" value=""></td>
+    	</tr>
+    	<tr>
+    		<td>持有人：</td>
+    		<td><input type="text" id="realName" value=""></td>
+    	</tr>
+    	<tr>
+    		<td><input type="button" onclick="$('.tiApply').hide();$('.over').hide()" value="取消"></td>
+    		<td><input type="button" onclick="subApply();" value="提交申请"></td>
+    	</tr>
+    </table>
+</div>
+<div class="over"></div>  
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/showmessage.js"></script>
+<script>
+	var urlBase = 'http://api.yunji128.com/homage';
+	$.ajax({  
+        type: "GET",  
+        headers: {
+	        tokenInfo: window.localStorage.getItem("tokenInfo")
+	    },
+        url: urlBase + '/api/userBalance/balance',  
+        data: {},
+        dataType: "json",  
+        success: function (data) {
+            $("#canUseMoney").html((data.result/100.0).toFixed(2));
+        }
+    });
+    
+    /*<![CDATA[*/
+    var pageNum = 1;
+    var pageSize = 20;
+    var islast = false;
+    var isLoad = true;
+    $(window).scroll(function () {
+        if (isLoad || islast) {
+            return;
+        }
+        showLoading()
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if ((scrollTop + windowHeight == scrollHeight) && !islast) {
+            isLoad = true;
+            loadHistory();
+        }
+    });
+    var loadHistory = function () {
+        if (islast || isLoad == false) {
+            return;
+        }
+        $.ajax({  
+            type: "GET",  
+            headers: {
+		        tokenInfo: window.localStorage.getItem("tokenInfo")
+		    },
+            url: urlBase + '/api/userBalance/list',  
+            data: {currentPage: pageNum, limit: pageSize},
+            dataType: "json",  
+            success: function (data) {
+	            islast = data.result.lastPage;
+	            pageNum++;
+	            var list = data.result.content;
+	            var context = '';
+	            for (var i = 0; i < list.length; i++) {
+	                context += "<li class='RedCoupon_detail_item' ><div class='RedCoupon_detail_item_left'><p class='RedCoupon_detail_item_name' >";
+	                context += list[i].dic + "</p><span class='RedCoupon_detail_item_time'>";
+	                context += list[i].rowAddTime;
+	                context += "</span></div><div class='RedCoupon_detail_item_right'>" + ((list[i].number / 100).toFixed(2)) + "</div></li>";
+	            }
+	            setTimeout(function () {
+	                console.log(islast)
+	                if (islast){
+	                    $("#notenymore").css("display", "block");
+	                }
+	                $(".RedCoupon_detail_list").append(context);
+	                isLoad = false;
+	            }, 1000);
+	        }
+        });
+    };
+    loadHistory();
+    /*]]>*/
+   
+   function tixian(){
+	   $(".tiApply").show();
+	   $(".over").show();
+   }
+   function subApply(){
+   		var requestBody = {
+   			money : $("#applyMoney").val(),
+   			realName : $("#realName").val(),
+   			cardNumber : $("#cardNumber").val()
+   		}
+   		$.ajax({  
+            type: "POST",  
+            headers: {
+		        tokenInfo: window.localStorage.getItem("tokenInfo")
+		    },
+            url: urlBase + '/api/userBalance/applyWithdraw',  
+            contentType: "application/json; charset=utf-8",  
+	        data: JSON.stringify(requestBody),  
+            dataType: "json",  
+            success: function (data) {
+	            if(data.code=='SUCCESS'){
+	               	alert("提交申请成功，我们将在3-7个工作日完成打款");
+	                window.location.reload();
+	            }
+	            else{
+	                showMessage(data.message);
+	            }
+	        }
+        });
+   }
+</script>
+
+
+</body></html>

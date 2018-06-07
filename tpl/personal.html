@@ -22,6 +22,9 @@
  	<div class="ybyue">
  		<span>云币：</span><span id="ybnumber"></span>
  	</div>
+ 	<div class="">
+ 		<a href="myBalance.html"><span>  余额：</span><span id="canUseMoney"></span></a>
+ 	</div>
  	<a type="button" href="recharge.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">充值</a>
  </div>
   <div class="PleaseLogin">
@@ -81,6 +84,7 @@
         		$(".PleaseLogin").hide();
         		$("#nickname").html(data.result.nickname);
         		$("#ybnumber").html(data.result.cloudBi);
+        		$("#canUseMoney").html((data.result.balance/100.0).toFixed(2));
         		$("#headImg").attr("src",imgBase + data.result.headImg);
         	}
         	else if(data.code=='PleaseLogin'){

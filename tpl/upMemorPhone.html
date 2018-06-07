@@ -13,7 +13,7 @@
 		<style type="text/css">
 			.uploadbtn{
 				width: 200px;
-				margin: 0 auto;
+				margin-left: 4%;
 				/*border:1px red solid;*/
 				margin-top: 10px;
 			}
@@ -40,40 +40,19 @@
 	<div class="uploadbtn">
 		<button type="button" id="myimgID" class="mui-btn mui-btn-blue"> + 添加照片</button>	
 		<button type="button" id="myvideoID" class="mui-btn mui-btn-blue"> + 添加视频</button>
-		<form id="uploadImgForm">
-		    		<input id="imgupload" name="fileName" onchange="uploadImg('img')" accept="image/*" type="file" style="display: none"/>
-		    		
+		<form id="uploadImgForm">		    	<input id="imgupload" name="fileName" onchange="uploadImg('img')" accept="image/*" type="file" style="display: none"/>
 		</form>
 		<form id="uploadViodeForm">
-		    		<input id="videoupload" name="fileName" onchange="uploadImg('video')" accept="video/*" type="file" style="display: none"/>
+		    	<input id="videoupload" name="fileName" onchange="uploadImg('video')" accept="video/*" type="file" style="display: none"/>
 		</form>
 	</div>
 	
-		
-	
-	
-			<div class="mui-content-padded showImg" id="showImg">
+	<div class="mui-content-padded showImg" id="showImg">
 			<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->
-				<!--<p>
-					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
-				</p>
-				
-				<p>
-					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />
-				</p>
-			
-				<p>
-					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />
-				</p>-->
+				<!--<p>					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />				</p>				<p>
+					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />				</p>				<p>					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />				</p>-->
 			</div>
 		</div>
-
-
-
-
-	
-
-
 	
 	<script type="text/javascript">
 			mui.init()
@@ -99,25 +78,18 @@
 					if(data.code=='SUCCESS'){
 						//arlt(data);
 							var list = data.result;
-							//alert(data.result[0]);
 							var contens = "";
-							$.each(list,function(index,item){
-								
+							$.each(list,function(index,item){						
 								if(this.fileFormat=='img'){
-									contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
-								}
-								else if(this.fileFormat=='video'){
-									contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
-								}
-					
-							})
-						   	
+									contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'								}								else if(this.fileFormat=='video'){
+									contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'								}			
+							})						   	
 							document.getElementById("showImg").innerHTML = contens;
 						}
 			},	   
-		 		error: function (message) {  
-	                alert("提交数据失败！");  
-	            }  
+			 		error: function (message) {  
+		                alert("提交数据失败！");  
+		            }  
 	       });
 	//点击添加照片上传照片路径
 		$("#myimgID").click(function(){
