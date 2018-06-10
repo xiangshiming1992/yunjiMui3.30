@@ -8,38 +8,50 @@
     <link href="../css/mui.min.css" rel="stylesheet"/>
      <link href="../css/index.css" rel="stylesheet"/>
      <script src="../js/jquery-1.10.2.js"></script>
-   
+     <script src="../js/ showmessage.js"></script>
+    
+   <style type="text/css">
+   	.mybanner #headImg{
+   		border-radius: 50%;
+   	}
+   </style>
 </head>
 <body>
 <!-- <header class="mui-bar mui-bar-nav header">
      <h1 class="mui-title">个人中心</h1>
 </header>-->
-  <div class="mui-content">
+<div class="mui-content">
   	
-  <div class="mybanner"><img id="headImg" src="../img/demo.jpg"/><h4 id="nickname"></h4></div>  
+     <div class="mybanner"><img id="headImg" src="../img/demo.jpg"/><h4 id="nickname"></h4></div>  
  
- <div class="yunbi">
- 	<div class="ybyue">
- 		<span>云币：</span><span id="ybnumber"></span>
- 	</div>
- 	<div class="">
- 		<a href="myBalance.html"><span>  余额：</span><span id="canUseMoney"></span></a>
- 	</div>
- 	<a type="button" href="recharge.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">充值</a>
- </div>
-  <div class="PleaseLogin">
- 	<a type="button" href="../index.html?biz=login" class="mui-btn mui-btn-primary mui-btn-outlined payyb">去登陆</a>
- </div>
-              
- <div id="albumPhone" class="phone"><a href="#">相册管理</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
-    
- <div id="myjlg" class="phone"><a href="#">我的纪念馆</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
-        
- <div class="phone"><a href="#">我的家谱</a><span class="mui-icon mui-icon-forward phoneic"></span></div>    <div id="myfriend" class="phone"><a href="#">我的亲友</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
-  
- <div id="set1" class="phone"><a href="#">设置</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
+	 <div class="yunbi">
+	 	<div class="ybyue">
+	 		<a href="recharge.html"><h5>云币</h5><h4 id="ybnumber"></h4></a>
+	 	</div>
+	 	<div class="balance">
+	 		<a href="myBalance.html"><h5>余额</h5> <h4 id="canUseMoney"></h4></a>
+	 	</div>
+	 	<div class="userct">
+	 		<a href="#"><h5>会员数</h5> <h4 id="usercout"></h4> </a>
+	 	</div>
+	 </div>	
+ 	
+	 <!--<div>
+	 	<a type="button" href="recharge.html" class="mui-btn mui-btn-primary mui-btn-outlined payyb">充值</a>
+	 </div>-->
+	  <div class="PleaseLogin">
+	 	<a type="button" href="../index.html?biz=login" class="mui-btn mui-btn-primary mui-btn-outlined payyb">去登陆</a>
+	 </div>
+	              
+	 <div id="albumPhone" class="phone"><a href="#">相册管理</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+	    
+	 <div id="myjlg" class="phone"><a href="#">我的纪念馆</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+	        
+	 <div class="phone"><a href="#">我的家谱</a><span class="mui-icon mui-icon-forward phoneic"></span></div>   	 <div id="myfriend" class="phone"><a href="#">我的亲友</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
+	  
+	 <div id="set1" class="phone"><a href="#">设置</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
 
-  </div>
+</div>
   
    <script>   	   	$("#albumPhone").on("tap",function(){   		window.location.href="albumPhone.html"; 	})
  	$("#recharge1").on("tap",function(){ 		window.location.href="recharge.html"; 	}) 	 	$("#myfriend").on("tap",function(){ 		window.location.href="myfriend.html"; 	}) 	 	
@@ -85,6 +97,7 @@
         		$("#nickname").html(data.result.nickname);
         		$("#ybnumber").html(data.result.cloudBi);
         		$("#canUseMoney").html((data.result.balance/100.0).toFixed(2));
+        		$("#usercout").html(data.result.shareUserCount)
         		$("#headImg").attr("src",imgBase + data.result.headImg);
         	}
         	else if(data.code=='PleaseLogin'){

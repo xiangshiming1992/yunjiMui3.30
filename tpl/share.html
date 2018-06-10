@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>个人中心</title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+     <link href="../css/index.css" rel="stylesheet"/>
+     <script src="../js/jquery-1.10.2.js"></script>
+     <script src="../js/ showmessage.js"></script>
+    
+   <style type="text/css">
+   	body{
+   		background:url(../img/share.jpg) no-repeat fixed;
+   		background-size:100%,100%;
+   		text-align: center;
+   	}
+   	.mui-content #btn{
+   		width: 200px;
+   		height: 120px;
+   		margin-left: 26%;
+   		margin-top: 70%;
+   		border: none;
+   	}
+   </style>
+   
+</head>
+<body>
+<div class="mui-content">
+	 <div>
+	 	<a href="reg.html" id="btn" type="button" class="mui-btn mui-btn-primary mui-btn-outlined payyb"></a>
+	 </div>
+</div>
+<script type="application/javascript">
+	function GetQueryString(name) {
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return unescape(r[2]); return null;
+	}
+    var shareUserId = GetQueryString("shareUserId");
+	window.localStorage.setItem("shareUserId",shareUserId);
+</script>
+</body>
+</html>
