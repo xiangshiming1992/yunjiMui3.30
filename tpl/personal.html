@@ -2,27 +2,28 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>个人中心</title>
-    <script src="../js/mui.min.js"></script>
-    <link href="../css/mui.min.css" rel="stylesheet"/>
-     <link href="../css/index.css" rel="stylesheet"/>
-     <script src="../js/jquery-1.10.2.js"></script>
-     <script src="../js/ showmessage.js"></script>
-    
-   <style type="text/css">
-   	.mybanner #headImg{
-   		border-radius: 50%;
-   	}
-   </style>
-</head>
+    <script src="../js/mui.min.js?version=1.1"></script>
+    <link href="../css/mui.min.css?version=1.1" rel="stylesheet"/>
+    <link href="../css/index.css?version=1.1" rel="stylesheet"/>
+    <script src="../js/jquery-1.10.2.js?version=1.1"></script>
+    <script src="../js/showmessage.js?version=1.1"></script>
+
+    <style type="text/css">
+        .mybanner #headImg {
+            border-radius: 50%;
+        }
+    </style>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 <body>
 <!-- <header class="mui-bar mui-bar-nav header">
      <h1 class="mui-title">个人中心</h1>
 </header>-->
 <div class="mui-content">
   	
-     <div class="mybanner"><img id="headImg" src="../img/demo.jpg"/><h4 id="nickname"></h4></div>  
+     <div class="mybanner"><img id="headImg" src="../img/demo.jpg" alt="头像"/><h4 id="nickname"></h4></div>
  
 	 <div class="yunbi">
 	 	<div class="ybyue">
@@ -47,72 +48,98 @@
 	    
 	 <div id="myjlg" class="phone"><a href="#">我的纪念馆</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
 	        
-	 <div class="phone"><a href="#">我的家谱</a><span class="mui-icon mui-icon-forward phoneic"></span></div>   	 <div id="myfriend" class="phone"><a href="#">我的亲友</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
+	 <div id="myjiapu" class="phone"><a href="#">我的家谱</a><span class="mui-icon mui-icon-forward phoneic"></span></div>
+	 <div id="myfriend" class="phone"><a href="#">我的亲友</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
 	  
 	 <div id="set1" class="phone"><a href="#">设置</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
 
 </div>
-  
-   <script>   	   	$("#albumPhone").on("tap",function(){   		window.location.href="albumPhone.html"; 	})
- 	$("#recharge1").on("tap",function(){ 		window.location.href="recharge.html"; 	}) 	 	$("#myfriend").on("tap",function(){ 		window.location.href="myfriend.html"; 	}) 	 	
- 	$("#myjlg").on("tap",function(){ 		window.location.href="myjinianguan.html"; 	}) 		 	$("#set1").on("tap",function(){ 		window.location.href="set.html"; 		}) 		
- </script>
-  
-<!--  底部选项卡-->  
+
+<script>
+
+    $("#albumPhone").on("tap", function () {
+        window.location.href = "albumPhone.html";
+    });
+    $("#recharge1").on("tap", function () {
+        window.location.href = "recharge.html";
+    });
+
+    $("#myfriend").on("tap", function () {
+        window.location.href = "myfriend.html";
+    });
+
+
+    $("#myjlg").on("tap", function () {
+        window.location.href = "myjinianguan.html";
+    });
+
+    $("#set1").on("tap", function () {
+        window.location.href = "set.html";
+    });
+    $("#myjiapu").on("tap", function () {
+        window.location.href = "myjiapu.html";
+    });
+</script>
+
+<!--  底部选项卡-->
 <nav class="mui-bar mui-bar-tab">
-      <a class="mui-tab-item" id="jinianguan">
-          <span class="mui-icon mui-icon-home"></span>
-          <span class="mui-tab-label">纪念馆</span>
-      </a>
-      <a class="mui-tab-item" id="jiapu">
-          <span class="mui-icon mui-icon-map"></span>
-          <span class="mui-tab-label">家谱圈</span>
-      </a>
-      <a class="mui-tab-item" id="xingshi">
-          <span class="mui-icon mui-icon-navigate"></span>
-          <span class="mui-tab-label">姓氏起源</span>
-      </a>
-      <a class="mui-tab-item mui-active" id="my">
-          <span class="mui-icon mui-icon-contact"></span>
-          <span class="mui-tab-label">个人中心</span>
-      </a>
-  </nav>
-  
-<script src="../js/navJump.js"></script>
+    <a class="mui-tab-item" id="jinianguan">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">纪念馆</span>
+    </a>
+    <a class="mui-tab-item" id="jiapu">
+        <span class="mui-icon mui-icon-map"></span>
+        <span class="mui-tab-label">家谱圈</span>
+    </a>
+    <a class="mui-tab-item" id="xingshi">
+        <span class="mui-icon mui-icon-navigate"></span>
+        <span class="mui-tab-label">姓氏起源</span>
+    </a>
+    <a class="mui-tab-item mui-active" id="personal">
+        <span class="mui-icon mui-icon-contact"></span>
+        <span class="mui-tab-label">个人中心</span>
+    </a>
+</nav>
+
+<script src="../js/navJump.js?version=1.1"></script>
 <script type="application/javascript">
-	var urlBase = 'http://api.yunji128.com/homage';
-	var imgBase = 'http://img.yunji128.com/';
-	$.ajax({  
-		headers: {
-	        tokenInfo: window.localStorage.getItem("tokenInfo")
-	    },
-        type: "GET",  
-        url: urlBase + "/api/user/userInfoByMe",  
-        data: {},  
-        dataType: "json",  
+    var urlBase = 'http://api.yunji128.com/homage';
+    var imgBase = 'http://img.yunji128.com/';
+    $.ajax({
+        headers: {
+            tokenInfo: window.localStorage.getItem("tokenInfo")
+        },
+        type: "GET",
+        url: urlBase + "/api/user/userInfoByMe",
+        data: {},
+        dataType: "json",
         success: function (data) {
-        	if(data.code=='SUCCESS'){
-        		$(".yunbi").show();
-        		$(".PleaseLogin").hide();
-        		$("#nickname").html(data.result.nickname);
-        		$("#ybnumber").html(data.result.cloudBi);
-        		$("#canUseMoney").html((data.result.balance/100.0).toFixed(2));
-        		$("#usercout").html(data.result.shareUserCount)
-        		$("#headImg").attr("src",imgBase + data.result.headImg);
-        	}
-        	else if(data.code=='PleaseLogin'){
-        		//window.localStorage.removeItem("openid");
-        		$(".yunbi").hide();
-        		$(".PleaseLogin").show();
-        	}
-        	else{
-        		alert(data.message);
-        	}
-        },  
-        error: function (message) {  
-            alert("提交数据失败！");  
-        }  
-   });
+            if (data.code == 'SUCCESS') {
+                $(".yunbi").show();
+                $(".PleaseLogin").hide();
+                $("#nickname").html(data.result.nickname);
+                $("#ybnumber").html(data.result.cloudBi);
+                $("#canUseMoney").html((data.result.balance / 100.0).toFixed(2));
+                $("#usercout").html(data.result.shareUserCount)
+                $("#headImg").attr("src", imgBase + data.result.headImg +'_crop_72x72');
+            }
+            else if (data.code == 'PleaseLogin') {
+                //window.localStorage.removeItem("openid");
+                $(".yunbi").hide();
+                $(".PleaseLogin").show();
+            }
+            else {
+                alert(data.message);
+            }
+        },
+        error: function (message) {
+            alert("提交数据失败！");
+        }
+    });
+
+    $("#headImg").on("error",function (e) {
+        $(this).attr("src","http://img.yunji128.com/homage/upload/n2n/h5/userhead/2018/06/cd19f659-68c.jpg")
+    })
 </script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>创建家谱</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_669452_mrhqfd4if30g4x6r.css?version=1.1" />
+    <link href="../css/mui.min.css?version=1.1" rel="stylesheet" />
+    <link href="../css/mui.picker.css?version=1.1" rel="stylesheet" />
+    <link href="../css/mui.poppicker.css?version=1.1" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../css/createFamily.css?version=1.1" />
+    <script src="../js/city.data-3.js?version=1.1" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-1.10.2.js?version=1.1"></script>
+    <script src="../js/mui.min.js?version=1.1"></script>
+    <script src="../js/mui.picker.js?version=1.1"></script>
+    <script src="../js/mui.poppicker.js?version=1.1"></script>
+    <script src="../js/request.js?version=1.1" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/createFamily.js?version=1.1" type="text/javascript" charset="utf-8"></script>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
+
+<body class="mui-ios mui-ios-11 mui-ios-11-0">
+    <div class="mui-content">
+        <div class="mui-table-view">
+            <form id="jiapuImg" class="mui-table-view-cell">
+                <img class="mui-media-object" id="img" src="../img/1.jpg">
+                <input id="file" name="fileName" style="visibility: hidden;" type="file">
+                <input type="hidden" name="path" value="jiapu" />
+                <input type="hidden" name="fileFormat" value="img" />
+            </form>
+            <div class="mui-input-row">
+                <label class="mui-h4">姓氏</label>
+                <input type="text" placeholder="输入家族的姓氏" class="surname mui-input-clear">
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">祖籍</label>
+                <input id="cityResult3" readonly type="text" id="zuji" placeholder="祖籍">
+                <button id='showCityPicker3' class="mui-btn mui-btn-block" type='button' style="display: none;">三级联动示例 ...</button>
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">字辈</label>
+                <input type="text" placeholder="字辈" class="gen mui-input-clear gen">
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">谱书</label>
+                <input type="text" placeholder="谱书" id="musicBook" class="musicBook mui-input-clear">
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">图腾</label>
+                <form id="totem" class="mui-table-view-cell">
+                    <img class="totem" src="../img/deathimg.png" alt="" style="width: 34px;" id="jiapu-tt-img">
+                    <input id="jiapu-tt-file" name="fileName" style="visibility: hidden;" type="file">
+                    <input type="hidden" name="path" value="jiapu" />
+                    <input type="hidden" name="fileFormat" value="img" />
+                </form>
+                <!--<input type="text" placeholder="">-->
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">祖训</label>
+                <input type="text" placeholder="祖训" class="mui-input-clear zuxun">
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">堂号</label>
+                <input type="text" placeholder="堂号" class="mui-input-clear church">
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">家规</label>
+                <input type="text" placeholder="家规" class="houseRules mui-input-clear">
+            </div>
+            <div class="mui-input-row">
+                <label class="mui-h4">祠堂</label>
+                <textarea id="textarea" rows="5" placeholder="多行文本框" class="ancestralHall"></textarea>
+            </div>
+            <li class="mui-table-view-cell">
+            	<span>是否需要密码</span>
+            	<div class="mui-switch mui-switch-blue mui-active">
+            		<div class="mui-switch-handle"></div>
+            	</div>
+            </li>
+            <div class="mui-input-row" id="password">
+                <label class="mui-h4">密码</label>
+                <input type="text" placeholder="密码" class="accessPwd mui-input-clear">
+            </div>
+            <input type="submit" value="创建家谱" id="create" style="margin-top: 0.5rem;">
+        </div>
+    </div>
+</body>
+
+</html>

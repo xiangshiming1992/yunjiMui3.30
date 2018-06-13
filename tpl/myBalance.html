@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>个人中心</title>
-    <script src="../js/mui.min.js"></script>
-    <link href="../css/mui.min.css" rel="stylesheet"/>
-     <link href="../css/index.css" rel="stylesheet"/>
-      <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-     <script src="../js/jquery-1.10.2.js"></script>
-     <script src="../js/showmessage.js"></script>
+    <script src="../js/mui.min.js?version=1.1"></script>
+    <link href="../css/mui.min.css?version=1.1" rel="stylesheet"/>
+     <link href="../css/index.css?version=1.1" rel="stylesheet"/>
+     <script src="../js/jquery-1.10.2.js?version=1.1"></script>
+     <script src="../js/showmessage.js?version=1.1"></script>
+		 <script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
     
    <style type="text/css">
    	.mybanner {
@@ -216,9 +216,9 @@ ul,ol li{list-style:none;}
 // 		alert("弹出层分享引导");
  		$(".bg, .fxYingDao").show();
  	});
- 	$(".header").on("tap",function(){
+ 	$(".header,.bg, .fxYingDao").on("tap",function(){
  			$(".bg, .fxYingDao").hide();
- 	})
+ 	});
  	var urlBase = 'http://api.yunji128.com/homage';
 	$.ajax({  
         type: "GET",  
@@ -315,89 +315,6 @@ ul,ol li{list-style:none;}
 	        }
         });
    }
- 
- 	$(document).ready(function(){
- 		var userInfo = window.localStorage.getItem("userInfo");
- 		if(null == userInfo){
- 			showMessage("请先登录");
- 			//location.href="login.html";
- 		}
- 		var shareUserId = JSON.parse(userInfo).userId;
- 		if(null == shareUserId){
- 			showMessage("请先登录");
- 			///location.href="login.html";
- 		}
-        initPage(shareUserId);
-    });
-    function initPage(shareUserId) {
-    	/***用于获得当前连接url用**/
-        //alert(window.location.href);
-        /***用户点击分享到微信圈后加载接口接口*******/
-        $.get(urlBase + "/api/wexin_mp/v_1/config",{"url":window.location.href},function(data,status){
-            console.log(data.appId+" "+data.timestamp+" "+data.nonceStr+" "+data.signature);
-            wx.config({
-                debug: false,
-                appId: data.appId,
-                timestamp:data.timestamp,
-                nonceStr:data.nonceStr,
-                signature:data.signature,
-                jsApiList: [
-                    'checkJsApi',
-                    'onMenuShareAppMessage',
-                    'onMenuShareTimeline',
-                    'onMenuShareQQ',
-                    'hideOptionMenu',
-                ]
-            });
-            var shareTitle = "一起分享吧！";
-            var desc = "分享描述";
-            var shareImg = "http://img.yunji128.com/homage/upload/sacrifice/2018/06/75ca75abf4864918b70794d2390d43cc.png";
-            var link = "http://wx.yunji128.com/tpl/share.html?shareUserId="+shareUserId;
-            
-            wx.ready(function(){
-            	 /*分享给朋友*/  
-		        wx.onMenuShareAppMessage({  
-		            title: shareTitle, // 分享标题  
-		            desc: desc, // 分享描述  
-		            link: link, // 分享链接  
-		            imgUrl: shareImg, // 分享图标  
-		            type: 'link', // 分享类型,music、video或link，不填默认为link  
-		            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空  
-		            success: function () {   
-		                showMessage("您已分享");  
-		            },  
-		            cancel: function () {   
-		                showMessage('您已取消分享');  
-		            }  
-		        });
-                wx.onMenuShareTimeline({
-                    title : shareTitle, // 分享标题
-                    link : link, // 分享链接
-                    imgUrl : shareImg, // 分享图标
-                    success : function() {
-                        showMessage("分享成功");
-                    },
-                    cancel : function() {
-                        showMessage("分享取消");
-                    }
-                });
-                wx.onMenuShareQQ({  
-		            title: shareTitle, // 分享标题  
-		            desc: desc, // 分享描述  
-		            link: link, // 分享链接  
-		            imgUrl: shareImg, // 分享图标  
-		            success: function () {   
-		               showMessage("分享成功");
-		            },  
-		            cancel: function () {   
-		              showMessage("分享取消");
-		            }  
-		        });  
-                
-                //wx.hideOptionMenu();/***隐藏分享菜单****/
-            });
-        });
-    }
  </script>
 </body>
 </html>

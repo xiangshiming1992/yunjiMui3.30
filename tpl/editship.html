@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>编辑家谱</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="../css/main.css?version=1.1"/>
+    <link rel="stylesheet" type="text/css" href="../css/mui.min.css?version=1.1"/>
+    <link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css?version=1.1">
+    <link rel="stylesheet" type="text/css" href="../css/editship.css?version=1.1"/>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
+
+<body>
+<div id="edit">
+    <div class="mui-content">
+        <div  style="padding: 10px 10px;">
+            <div id="segmentedControl" class="mui-segmented-control">
+                <a class="mui-control-item mui-active" href="#item1">自己</a>
+                <a class="mui-control-item" href="#item2">配偶</a>
+            </div>
+        </div>
+        <div class="mui-control-content mui-active" id="item1">
+            <ul class="mui-table-view mui-content">
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">姓名</label>
+                        <input form="info-form" type="text" name="name" placeholder="输入自己的姓名"
+                               class="surname mui-input-clear">
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media image">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">头像</label>
+                        <img id="img" src="../img/boy.jpg" class="mui-media-object img-circle">
+                        <input form="info-form" type="text" hidden="hidden" name="headImg"/>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">性别</label>
+                        <div class="mui-input-row mui-radio">
+                            <label class="mui-h4">男</label>
+                            <input form="info-form" name="sex" type="radio" value="男">
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label class="mui-h4">女</label>
+                            <input form="info-form" name="sex" type="radio" value="女">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">状态</label>
+                        <div class="mui-input-row mui-radio">
+                            <label class="mui-h4">活</label>
+                            <input form="info-form" name="survivalMode" type="radio" value="活">
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label class="mui-h4">逝世</label>
+                            <input form="info-form" name="survivalMode" type="radio" value="逝">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">电话</label>
+                        <input form="info-form" type="text" name="phone" maxlength="11" minlength="11"
+                               placeholder="输入自己的电话" class="surname mui-input-clear">
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">生日</label>
+                        <input form="info-form" type="text" class="birth" id="myBirth" readonly="readonly"
+                               placeholder="输入选择生日" name="birthDay" class="surname mui-input-clear">
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">现居地</label>
+                        <input id="cityResult2" readonly="readonly" type="text" placeholder="现居地">
+                        <input form="info-form" readonly="readonly" hidden="hidden" name="xjProvince" type="text">
+                        <input form="info-form" readonly="readonly" hidden="hidden" name="xjCity" type="text">
+                        <input form="info-form" readonly="readonly" hidden="hidden" name="xjCounty" type="text">
+                        <button id="showCityPicker2" class="mui-btn mui-btn-block" type="button"
+                                style="display: none;"></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="mui-control-content" id="item2">
+            <ul class="mui-table-view mui-content">
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">姓名</label>
+                        <input form="info-form" type="text" name="spouseName" placeholder="输入配偶的姓名"
+                               class="surname mui-input-clear">
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row image">
+                        <label class="mui-h4">头像</label>
+                        <img id="another" src="../img/girl.jpg" class="mui-media-object img-circle">
+                        <input form="info-form" type="text" hidden="hidden" name="spouseHeadImg"/>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">状态</label>
+                        <div class="mui-input-row mui-radio">
+                            <label class="mui-h4">活</label>
+                            <input form="info-form" name="spouseSurvivalMode" type="radio" value="活">
+                        </div>
+                        <div class="mui-input-row mui-radio">
+                            <label class="mui-h4">逝世</label>
+                            <input form="info-form" name="spouseSurvivalMode" type="radio" value="逝">
+                        </div>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">电话</label>
+                        <input form="info-form" type="text" name="spousePhone" maxlength="11" minlength="11"
+                               placeholder="输入配偶的电话" class="surname mui-input-clear">
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">生日</label>
+                        <input form="info-form" type="text" name="spouseBirthDay" class="birth" id="aBirth"
+                               data-options="{}" readonly="readonly"
+                               placeholder="输入选择生日" class="surname mui-input-clear">
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <div class="mui-input-row">
+                        <label class="mui-h4">现居地</label>
+                        <input form="info-form" id="cityResult3" readonly="readonly" type="text" placeholder="配偶现居地">
+                        <input form="info-form" readonly="readonly" hidden="hidden" name="spouseXjProvince" type="text">
+                        <input form="info-form" readonly="readonly" hidden="hidden" name="spouseXjCity" type="text">
+                        <input form="info-form" readonly="readonly" hidden="hidden" name="spouseXjCounty" type="text">
+                        <button id="showCityPicker3" class="mui-btn mui-btn-block" type="button"
+                                style="display: none;"></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <form id="info-form">
+    </form>
+    <form id="headImg" class="mui-table-view-cell" style="display: none;">
+        <input id="file" name="fileName" type="file">
+        <input type="hidden" name="path" value="jiapu"/>
+        <input type="hidden" name="fileFormat" value="img"/>
+    </form>
+    <form id="aHeadImg" class="mui-table-view-cell" style="display: none;">
+        <input id="aFile" name="fileName" type="file">
+        <input type="hidden" name="path" value="jiapu"/>
+        <input type="hidden" name="fileFormat" value="img"/>
+    </form>
+    <nav class="mui-bar mui-bar-tab">
+        <button id="submit" style="width: 100%;height: 100%;" type="button" data-loading-icon="mui-spinner mui-spinner-custom" class="mui-btn mui-btn-primary">确认</button>
+    </nav>
+</div>
+<div class="show-canvas-content back-white">
+    <div class="position-relative move">
+        <canvas class="show-genealogy-canvas"></canvas>
+    </div>
+</div>
+<script type="text/javascript" charset="utf-8" src="../js/mui.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/ship/jquery.min.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/ship/wy.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/mui.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/mui.picker.min.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/city.data-3.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/request.js?version=1.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/ship/addOrEdit.js?version=2.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/ship/loadJiapuData.js?version=2.1"></script>
+<script type="text/javascript" charset="utf-8" src="../js/ship/genealogy-detail.js?version=2.1"></script>
+</body>
+
+</html>

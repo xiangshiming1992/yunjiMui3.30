@@ -4,18 +4,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>纪念馆</title>
-    <script src="../js/mui.min.js"></script>
-    <link href="../css/mui.min.css" rel="stylesheet"/>
-     <link href="../css/index.css" rel="stylesheet"/>
-     <link href="../css/list.css" rel="stylesheet"/>     
-    <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/mui.min.js?version=1.1"></script>
+    <link href="../css/mui.min.css?version=1.1" rel="stylesheet"/>
+     <link href="../css/index.css?version=1.1" rel="stylesheet"/>
+     <link href="../css/list.css?version=1.1" rel="stylesheet"/>
+    <script src="../js/jquery-1.10.2.js?version=1.1" type="text/javascript" charset="utf-8"></script>
 
-</head>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 <body>
 <!-- <header class="mui-bar mui-bar-nav header">
      <h1 class="mui-title">纪念馆</h1>
  </header>-->
-    <div class="mui-content"><!--  轮播图-->  <div class="mui-slider bannertop">    <div class="mui-slider-group mCreat">                                     <div class="mui-slider-item">      		<img src="../img/banner3.png"/>      </div>          <div class="mui-slider-item">                	<img src="../img/banner4.png"/>      </div>        <div class="mui-slider-item">      		<img src="../img/banner5.png"/>      </div>          <div class="mui-slider-item">                	<img src="../img/banner6.png"/>      </div>    </div>  <div class="mui-slider-indicator">				<div class="mui-indicator mui-active"></div>				<div class="mui-indicator"></div>				<div class="mui-indicator"></div>				<div class="mui-indicator"></div>									</div>    <div id="creatBtn"><img src="../img/creat.png"/></div>  </div>
+  
+  <div class="mui-content">
+
+<!--  轮播图-->
+  <div class="mui-slider bannertop">
+    <div class="mui-slider-group mCreat">
+          
+    
+      
+     
+      
+      <div class="mui-slider-item">
+      		<img src="../img/banner3.png"/>
+      </div>
+    
+      <div class="mui-slider-item">        
+        	<img src="../img/banner4.png"/>
+      </div> 
+       <div class="mui-slider-item">
+      		<img src="../img/banner5.png"/>
+      </div>
+    
+      <div class="mui-slider-item">        
+        	<img src="../img/banner6.png"/>
+      </div>  
+  </div>
+  <div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				
+				
+	</div>
+    <div id="creatBtn"><img src="../img/creat.png"/></div>
+  </div>
   <script>
 	document.getElementById('creatBtn').addEventListener('tap', function() {
 		//打开纪念馆详情页面
@@ -24,7 +59,10 @@
 		    id:'buidhose1'
 		});
 	});
-var gallery = mui('.mui-slider');gallery.slider({  interval:1500//自动轮播周期，若为0则不自动播放，默认为0；});
+var gallery = mui('.mui-slider');
+gallery.slider({
+  interval:1500//自动轮播周期，若为0则不自动播放，默认为0；
+});
 
 // 	$("#creatBtn").click(function(){
 // 		window.location.href="jinianguanDetail.html"})
@@ -75,7 +113,7 @@ var gallery = mui('.mui-slider');gallery.slider({  interval:1500//自动轮播
           <span class="mui-tab-label">个人中心</span>
       </a>
   </nav>
-<script src="../js/navJump.js"></script>
+<script src="../js/navJump.js?version=1.1"></script>
 <script type="application/javascript">
 	var urlBase = 'http://api.yunji128.com/homage';
 	var imgBase = 'http://img.yunji128.com/';
@@ -216,6 +254,7 @@ var gallery = mui('.mui-slider');gallery.slider({  interval:1500//自动轮播
 			});
 	    }
 	}
-</script></div>
+</script>
+</div>
 </body>
 </html>
