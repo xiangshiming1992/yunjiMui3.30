@@ -1,4 +1,4 @@
-document.write('<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js?version=1.1"></script>')
+document.write('<script src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>')
 $(document).ready(function(){
 				var userInfo = window.localStorage.getItem("userInfo");
 				var shareUserId = "";

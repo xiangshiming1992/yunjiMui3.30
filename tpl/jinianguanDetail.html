@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title></title>
-    <link href="../css/mui.min.css?version=1.1" rel="stylesheet"/>
-    <link href="../css/index.css?version=1.1" rel="stylesheet"/>
-    <link href="../css/changjing.css?version=1.1" rel="stylesheet" />
-    <script src="../js/jquery-1.10.2.js?version=1.1" type="text/javascript" charset="utf-8"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/index.css?version=2.2" rel="stylesheet"/>
+    <link href="../css/changjing.css?version=2.2" rel="stylesheet" />
+    <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css">
     	#jibai{display: none;}
     	.showImg{
@@ -47,7 +47,7 @@
   		<!--<img id="mubeixiang"  src=""/>-->
   		<!--<span id="muzi" >张国荣之墓</span>-->
   	</div>
-		<div class="changBuid">更换场景</div>
+		<div class="changBuid" style="display: none;">更换场景</div>
 		
 		<script type="application/javascript">
 //单人室内
@@ -180,6 +180,7 @@
  		</div> 
 	
  <!--下标签-->
+		<div style="height: 50px"></div>
 <nav class="mui-bar mui-bar-tab">
       <a id="jb" class="mui-tab-item mui-active" href="#jibai">
           <span class="mui-icon mui-icon-home"></span>
@@ -248,7 +249,7 @@
 	
  </script>	
  
- <script src="../js/mui.min.js?version=1.1"></script>
+ <script src="../js/mui.min.js"></script>
   <script type="application/javascript">
 	mui.init({
 			swipeBack:true //启用右滑关闭功能
@@ -360,6 +361,15 @@
 	    		window.location.href='login.html';
 	    		
 	    	}
+				
+				var userInfo = window.localStorage.getItem("userInfo");
+				if(null != userInfo){
+					var thisUserId = JSON.parse(userInfo).userId;
+					if(thisUserId == data.result.userId){
+						$('.changBuid').show();
+					}
+				}
+				
 		 }
     });
 

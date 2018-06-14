@@ -37,6 +37,7 @@ $(function () {
         params:{pedigreeId:pedigreeId},
         success:function (res) {
             var nodes = res.result;
+            maxLength = nodes.length;
             for (var i = 0; i < nodes.length; i++) {
                 if (nodes[i] == null) {
                     continue
@@ -127,3 +128,4 @@ if (user) {
 }else {
     user ={};
 }
+var maxLength=0;

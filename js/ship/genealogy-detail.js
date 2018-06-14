@@ -293,10 +293,10 @@ WY.genealogy = function (options) {
                 this.ele.append('<div  class="fz-12"><span class="cursor-pointer inline-block pr-5 add-item-btn" rel="up">新增</span></div>');
             }
             this.ele.append('<div class="fz-16"><div class="btn btn-small ' + (data.survivalMode == '活' ?
-                    'btn-primary' : '') + '">' +
+                    'btn-primary' : '') +(data.sex=="男" ? " boy" : " girl")+ '">' +
                 '<img class="img-circle .img-responsive" width="28" height="28" src="' + (data.headImg ? imgBase+ data.headImg.replace(imgBase,"")+"_crop_28x28" : "../img/boy.jpg") + '"/>' +
                 '<div class="jiapu-name">' + (data.name || "未知") + '</div></div>' +
-                '<div class="btn btn-small ' + (data.spouseSurvivalMode == '活' ? 'btn-primary' : '') +
+                '<div class="btn btn-small ' + (data.spouseSurvivalMode == '活' ? 'btn-primary' : '') + (data.sex=="女" ? " boy" : " girl")+
                 '"><img class="img-circle .img-responsive" width="28" height="28" src="' + (data.spouseHeadImg ? imgBase+data.spouseHeadImg.replace(imgBase,"")+"_crop_28x28" : "../img/girl.jpg") + '"/>' +
                 '<div class="jiapu-name">' + (data.spouseName || "未知") + '</div></div>' +
                 '</div>');
@@ -465,19 +465,12 @@ WY.genealogy = function (options) {
         // if (allGeneration < 7) allGeneration = 7;
     }
 
-    function getLeft(a, index) {
-        var level = a.children[a.children.length - 1].offsetTop / 2 + options.concatLineTop + a.offsetTop;
-        if (index == a.children.length) {
-            level = (a.children[a.children.length - 1].offsetTop - a.offsetTop) / 2 + a.offsetTop + options.concatLineTop;
-        }
-        return level;
-    }
 
     function drawStart() {
         $content.find('.' + itemClass).hide();
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         setHeight(options.stepWidth * allGeneration);
-        setWidth(options.stepWidth * allGeneration * 10);
+        setWidth(options.stepWidth * maxLength/3*2);
         $(".show-canvas-content").height($(window).height());
         ctx.strokeStyle = options.stepLineColor;
         for (var i = 1; i <= allGeneration; i++) {
@@ -510,8 +503,7 @@ WY.genealogy = function (options) {
                 a.children.forEach(function (b) {
                     var levelB = (b.offsetTop + options.concatLineTop);
                     if (b.children.length) {
-                        levelB = (b.children[b.children.length - 1].offsetTop + b.offsetTop) / 2 +
-                            options.concatLineTop;
+                        levelB = (b.children[b.children.length - 1].offsetTop + b.offsetTop) / 2 + options.concatLineTop;
                     }
 
                     ctx.lineTo(levelB, a.stepRight);
@@ -532,6 +524,7 @@ WY.genealogy = function (options) {
 				}
 			}
         })
+        moveTo(100,100)
     }
     createElement(dataList);
     resetItemObject();

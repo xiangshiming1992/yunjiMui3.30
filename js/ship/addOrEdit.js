@@ -165,6 +165,7 @@ function upload(img, file, form) {
                     var imgSrc = imgBase + data.result.path+"_crop_28x28";
                     img.attr("src", imgSrc);
                     img.next().val(data.result.path);
+                    file.val('')
                     console.log(img.next())
                 } else {
                     console.log(data.message);

@@ -71,12 +71,12 @@
      max-width: 92px;
      text-overflow: ellipsis;
  }
-.fz-16 .btn:last-child{
-	border-left: 1px solid #000000;
-}
 
  ul,li{ margin:0; padding:0; list-style:none; font-size:12px;}
  .popup_menu{position:absolute; z-index:999; border:1px solid #AEAEAE; padding:2px; width:120px;background-color: white}
  .popup_menu a{ display:block; color:#325B8E; text-indent:12px; text-decoration:none; height:26px; line-height:25px; padding-right:5px;}
  .popup_menu a:hover{ background:#57B4E4; color:#fff; border-radius:5px;}
  .show-canvas-content{overflow: scroll;width: 100%}
+  .mui-bar .mui-btn{top: 0}
+  .boy{color: yellowgreen}
+  .girl{color: white}

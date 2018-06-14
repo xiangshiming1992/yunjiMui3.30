@@ -1,7 +1,39 @@
 $(function () {
+    $("#textarea").click(function () {
+        $(this).attr("contenteditable","true")
+    });
+
     var urlBase = 'http://api.yunji128.com/homage';
     var imgBase = 'http://img.yunji128.com/';
 
+    $("#musicBook").on("tap",function () {
+        var file  = $(this).prev().children("input[type=file]");
+        file.click();
+        file.unbind();
+        file.change(function () {
+            var fileSize = $(this)[0].files[0].size;
+            var data = new FormData($(this).parent()[0]);
+            data.set("fileSize", fileSize);
+            $.ajax({
+                type: "POST",
+                url: urlBase + "/file/fileUpload",
+                data: data, //FormId
+                processData: false, // 告诉jQuery不要去处理发送的数据
+                contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                error: function (request) {
+                    //layer.alert('添加出现异常', {icon: 5});
+                },
+                success: function (data) {
+                    if (data.code == 'SUCCESS') {
+                        $("#musicBook").val( imgBase + data.result.path);
+                        file.val('');
+                    } else {
+                        console.log(data.message);
+                    }
+                }
+            });
+        });
+    });
     function upload(img, file, form) {
         img.click(function () {
             file.click()
@@ -10,7 +42,6 @@ $(function () {
             // getSize($(this)[0],img[0])
             var fileSize = $(this)[0].files[0].size;
             console.log(fileSize)
-            var path = $(this).val();
             var jiapuImg = new FormData(form[0]);
             jiapuImg.set("fileSize", fileSize);
             $.ajax({
@@ -25,6 +56,7 @@ $(function () {
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
                         img.attr("src", imgBase + data.result.path);
+                        file.val('');
                     } else {
                         console.log(data.message);
                     }
@@ -32,7 +64,7 @@ $(function () {
             });
         })
     }
-    upload($("#img"), $("#file"), $("#jiapuImg"));
+    // upload($("#img"), $("#file"), $("#jiapuImg"));
     upload($("#jiapu-tt-img"), $("#jiapu-tt-file"), $("#totem"));
     // 	
     var _getParam = function (obj, param) {
@@ -68,7 +100,7 @@ var accessPwd = true;
         var data = {
 			"flagPwd":accessPwd,
             "accessPwd": $(".accessPwd").val(),
-            "ancestralHall": $(".ancestralHall").val(),
+            "ancestralHall": $("#textarea").html(),
             "church": $(".church").val(),
             "province": "string",
             "city": "string",
@@ -99,6 +131,32 @@ var accessPwd = true;
 			alert("请填写祖籍！")
 		}
     })
-
-})
+    $(".mui-icon-plusempty").click(function () {
+        console.log("add")
+        $("#jiapu-tt-citang").click();
+    });
+    $("#jiapu-tt-citang").change(function () {
+        var fileSize = $(this)[0].files[0].size;
+        var data = new FormData($(this).parent()[0]);
+        data.set("fileSize", fileSize);
+        $.ajax({
+            type: "POST",
+            url: urlBase + "/file/fileUpload",
+            data: data, //FormId
+            processData: false, // 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            error: function (request) {
+                //layer.alert('添加出现异常', {icon: 5});
+            },
+            success: function (data) {
+                if (data.code == 'SUCCESS') {
+                    $("#textarea").append('<img src="'+imgBase + data.result.path+'_crop_41x41'+'" alt="">' );
+                    $("#jiapu-tt-citang").val('');
+                } else {
+                    console.log(data.message);
+                }
+            }
+        });
+    });
+});
 

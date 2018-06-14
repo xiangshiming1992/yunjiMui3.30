@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>我的纪念馆</title>
-    <script src="../js/mui.min.js?version=1.1"></script>
-    <link href="../css/mui.min.css?version=1.1" rel="stylesheet"/>
-     <link href="../css/index.css?version=1.1" rel="stylesheet"/>
-     <link href="../css/list.css?version=1.1" rel="stylesheet"/>
-    <script src="../js/jquery-1.10.2.js?version=1.1" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+     <link href="../css/index.css?version=2.2" rel="stylesheet"/>
+     <link href="../css/list.css?version=2.2" rel="stylesheet"/>
+    <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css">
 	.editMem{
 	/*display: none;*/
@@ -92,16 +92,15 @@
 
   
  <div class="mui-slider">
-     <div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-         <a class="mui-control-item" href="#item1">私人馆</a>
+     <div class="mui-segmented-control">
+         <a class="mui-control-item mui-active" href="#item1">私人馆</a>
          <a class="mui-control-item" href="#item2">双人馆</a>
          <a class="mui-control-item" href="#item3">名人馆</a>
      </div>
-       <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
      <div class="mui-slider-group">
          
          
- <div id="item1" class="mui-slider-item mui-control-content mui-active">
+ <div id="item1" class="mui-control-content mui-active">
    <ul class="mui-table-view" id="mpersonal">
    	<script type="application/javascript">
    		$("#editPhone").click(function(){
