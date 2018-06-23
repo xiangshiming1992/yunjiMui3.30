@@ -6,7 +6,6 @@
     <title>创建家谱</title>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_669452_mrhqfd4if30g4x6r.css?version=3.0"/>
     <link href="../css/mui.min.css" rel="stylesheet"/>
     <link href="../css/mui.picker.css?version=3.0" rel="stylesheet"/>
@@ -19,41 +18,16 @@
     <script src="../js/mui.poppicker.js?version=3.0"></script>
     <script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/createFamily.js?version=3.0" type="text/javascript" charset="utf-8"></script>
-=======
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_669452_mrhqfd4if30g4x6r.css?version=2.2"/>
-    <link href="../css/mui.min.css" rel="stylesheet"/>
-    <link href="../css/mui.picker.css?version=2.2" rel="stylesheet"/>
-    <link href="../css/mui.poppicker.css?version=2.2" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="../css/createFamily.css?version=2.2"/>
-    <script src="../js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/jquery-1.10.2.js"></script>
-    <script src="../js/mui.min.js"></script>
-    <script src="../js/mui.picker.js?version=2.2"></script>
-    <script src="../js/mui.poppicker.js?version=2.2"></script>
-    <script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/createFamily.js?version=2.2" type="text/javascript" charset="utf-8"></script>
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
     <!--<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>-->
 </head>
 
 <body class="mui-ios mui-ios-11 mui-ios-11-0">
-<<<<<<< HEAD
 <div id="bigImg" style="position: fixed; width: 100vw; height: 100vh; background: rgb(0, 0, 0); justify-content: center; align-items: center; z-index: 12; display: none;">
     <img src="http://oydc1lvkk.bkt.clouddn.com/FjeIcMDof_zf6Eqjf5e62ufFbX42">
 </div>
 <div class="mui-content">
     <div class="mui-table-view">
         <input type="hidden" class="pedigreeId ">
-=======
-<div class="mui-content">
-    <div class="mui-table-view">
-        <form id="jiapuImg" class="mui-table-view-cell">
-            <img class="mui-media-object" id="img" src="../img/1.jpg">
-            <input id="file" name="fileName" style="visibility: hidden;" type="file">
-            <input type="hidden" name="path" value="jiapu"/>
-            <input type="hidden" name="fileFormat" value="img"/>
-        </form>
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         <div class="mui-input-row">
             <label class="mui-h4">姓氏</label>
             <input type="text" placeholder="输入家族的姓氏" class="surname mui-input-clear">
@@ -70,7 +44,6 @@
         </div>
         <div class="mui-input-row">
             <label class="mui-h4">谱书</label>
-<<<<<<< HEAD
             <input type="text" style=" width: 37%;float: left;" placeholder="上传谱书(doc,docx,pdf)" readonly class="musicBookText">
             <input type="hidden" readonly class="musicBook">
             <button  id="musicBook" style="padding: 9px; ">上传谱书</button>
@@ -79,19 +52,6 @@
             <label class="mui-h4" style="line-height: 68px;">图腾</label>
             <form id="totem" class="mui-table-view-cell">
                 <img class="totem" onerror="this.src='../img/demo.jpg'" src="../img/demo.jpg" alt="" width="68" height="68" id="jiapu-tt-img">
-=======
-            <form>
-                <input type="hidden" name="path" value="jiapu"/>
-                <input type="hidden" name="fileFormat" value="doc"/>
-                <input type="file" name="fileName" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
-            </form>
-            <input type="text" placeholder="上传谱书(doc,docx,pdf)" id="musicBook" readonly class="musicBook mui-input-clear">
-        </div>
-        <div class="mui-input-row">
-            <label class="mui-h4">图腾</label>
-            <form id="totem" class="mui-table-view-cell">
-                <img class="totem" src="../img/demo.jpg" alt="" width="34" height="34" id="jiapu-tt-img">
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 <input id="jiapu-tt-file" name="fileName" hidden type="file">
                 <input type="hidden" name="path" value="jiapu"/>
                 <input type="hidden" name="fileFormat" value="img"/>
@@ -112,11 +72,7 @@
         </div>
         <div class="mui-input-row">
             <label class="mui-h4">祠堂</label>
-<<<<<<< HEAD
             <div id="textarea" contenteditable="true" style="-webkit-user-select: auto"></div>
-=======
-            <div id="textarea" contenteditable="true"></div>
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
            <span class=" mui-icon mui-icon-plusempty"></span>
             <form id="citang" class="mui-table-view-cell">
                 <input id="jiapu-tt-citang" name="fileName" hidden type="file" accept="image/*">
@@ -134,7 +90,6 @@
             <label class="mui-h4">密码</label>
             <input type="text" placeholder="密码" class="accessPwd mui-input-clear">
         </div>
-<<<<<<< HEAD
         <div style="height: 75px"></div>
             <nav class="mui-bar mui-bar-tab">
                 <input type="submit" value="创建家谱" id="create" style="width: 80%;height: 100%;font-size: 18px;" class="mui-btn mui-btn-primary">
@@ -149,10 +104,6 @@
         <input type="hidden" name="fileFormat" value="doc"/>
         <input type="file" name="fileName" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
     </form>
-=======
-        <input type="submit" value="创建家谱" id="create" style="margin-top: 0.5rem;">
-    </div>
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 </div>
 </body>
 

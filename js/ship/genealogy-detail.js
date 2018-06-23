@@ -96,11 +96,7 @@ WY.genealogy = function (options) {
         itemHeight: 120,
         itemMargin: 25,
         itemLeftMargin: 15,
-<<<<<<< HEAD
         concatLineColor: '#000',
-=======
-        concatLineColor: '#f00',
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         concatLineTop: 20,
         stepLineColor: '#eee',
         circleRadius: 5,
@@ -345,30 +341,18 @@ WY.genealogy = function (options) {
         var itemClick = $(this).closest("[code]");
         editId = itemClick.attr("code");
         let obj = item.getById(editId);
-<<<<<<< HEAD
         var left =parseInt(itemClick.css("left")) ;
         var top = parseInt(itemClick.css("top")) +itemClick.height();
-=======
-        var left =parseInt(itemClick.css("left")) + itemClick.width();
-        var top = parseInt(itemClick.css("top"));
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         kyoPopupMenu.user = obj;
         kyoPopupMenu.id = editId;
         obj = obj.data;
         let  index = $(this).index();
-<<<<<<< HEAD
         kyoPopupMenu.index =index;
         kyoPopupMenu.memorialId = index ==0 ? obj.memorialId : obj.spouseMemorialId;
-=======
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         kyoPopupMenu.phone = index == 0 ? obj.phone : obj.spousePhone;
         kyoPopupMenu.name =  index == 0 ? obj.name : obj.spouseName;
         kyoPopupMenu.sys().css({left: left,top: top}).show();
         return false;
-<<<<<<< HEAD
-=======
-        // showSomeOne(obj);
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
     });
 
     //编辑
@@ -510,16 +494,12 @@ WY.genealogy = function (options) {
                 a.ele.css({
                     left: level - options.itemHeight / 2 - options.circleRadius
                 }).show();
-<<<<<<< HEAD
                 if (a.data.flagCreator) {
                     jQuery('.show-canvas-content').animate({
                         scrollTop: parseInt(a.ele.css("top"))  -$(window).height()/2 +a.ele.height()
                         ,scrollLeft:parseInt(a.ele.css("left")) - $(window).width()/2 + a.ele.width()/2
                     }, 0);
                 }
-=======
-
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 ctx.moveTo(level, a.offsetRight - 20);
                 ctx.lineTo(level, a.stepRight);
                 //console.log(a.offsetRight, a.stepRight)
@@ -544,27 +524,19 @@ WY.genealogy = function (options) {
                 });
 
             }else{
-<<<<<<< HEAD
                 if (a.data.flagCreator) {
                     jQuery('.show-canvas-content').animate({
                         scrollTop: parseInt(a.ele.css("top"))  -$(window).height()/2 +a.ele.height()
                         ,scrollLeft:parseInt(a.ele.css("left")) - $(window).width()/2 + a.ele.width()/2
                     }, 0);
                 }
-=======
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 				var parent = a.getParent();
 				if(parent && parent.children.length == 1){
 					a.ele.css("left",parent.ele.css("left"))
 				}
 			}
-<<<<<<< HEAD
         });
 
-=======
-        })
-        moveTo(100,100)
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
     }
     createElement(dataList);
     resetItemObject();
@@ -577,11 +549,7 @@ kyoPopupMenu = (function(){
         sys: function (obj) {
             $('.popup_menu').remove();
             popupMenuApp =
-<<<<<<< HEAD
                 $('<div class="popup_menu app-menu"><ul><li><a menu="menu1">人物视觉</a></li><li><a menu="menu2">个人信息</a></li><li><a menu="menu3">纪念馆</a></li></ul></div>').
-=======
-                $('<div class="popup_menu app-menu"><ul><li><a menu="menu1">人物视觉</a></li><li><a menu="menu2">个人信息</a></li></ul></div>').
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 find('a').attr('href','javascript:;').end().appendTo('.position-relative');
             //绑定事件
             $('.app-menu a[menu="menu1"]').on('click', function (){
@@ -591,17 +559,12 @@ kyoPopupMenu = (function(){
                         if (res.result){
                             location.href = "editship.html?pedigreeId="+res.result;
                         }else {
-<<<<<<< HEAD
                             mui.alert(kyoPopupMenu.name +"还没有创建人物视角");
-=======
-                            alert(kyoPopupMenu.name +"还没有创建人物视角");
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                         }
                     },function (error) {
                         console.log(error);
                     })
                 }else {
-<<<<<<< HEAD
                     mui.alert(kyoPopupMenu.name +"还没有创建人物视角");
                 }
             });
@@ -614,13 +577,6 @@ kyoPopupMenu = (function(){
                 }else {
                     goJiNianGuan(kyoPopupMenu.memorialId);
                 }
-=======
-                    alert(kyoPopupMenu.name +"还没有创建人物视角");
-                }
-            });
-            $('.app-menu a[menu="menu2"]').on('click', function (){
-                showSomeOne(kyoPopupMenu.user);
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
             });
             return popupMenuApp;
         },

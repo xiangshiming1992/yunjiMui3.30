@@ -32,14 +32,7 @@
      text-align: center;
  }
 
-<<<<<<< HEAD
  /*.image label~input {}*/
-=======
- .image label {
-     text-align: left;
- }
- .image label~input {}
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 
  .image label~input {
      width: 42px;
@@ -47,20 +40,13 @@
      float: none;
  }
 
-<<<<<<< HEAD
  #edit ,#info,#ship{
-=======
- #edit {
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
      display: none;
  }
 
  .mui-table-view .mui-media-object {
      width: 42px;
-<<<<<<< HEAD
      float: left;
-=======
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
  }
 
  .fz-12 {
@@ -91,7 +77,6 @@
  .show-canvas-content{overflow: scroll;width: 100%}
   .mui-bar .mui-btn{top: 0}
   .boy{color: yellowgreen}
-<<<<<<< HEAD
   .girl{color: white}
  .mui-input-row label:last-child{width: auto;max-width: 60%;overflow: hidden;text-overflow: ellipsis;padding-right: 0;padding-left: 0;}
 
@@ -108,6 +93,3 @@
      user-select: none;
  }
  .mui-content>.mui-table-view:first-child{margin-top:0}
-=======
-  .girl{color: white}
->>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
