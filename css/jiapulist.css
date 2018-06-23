@@ -14,6 +14,7 @@ position: absolute;
 right: 0;
 }
 .time{top: 0;}
+<<<<<<< HEAD
 .addr{bottom:0}
 
 .shu {
@@ -22,3 +23,6 @@ right: 0;
 .mui-table-view .mui-media-object.mui-pull-left {
     margin-right: 20px;
 }
+=======
+.addr{bottom:0}
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91

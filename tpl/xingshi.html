@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<<<<<<< HEAD
     <title>云祭文化</title>
     <script src="../js/mui.min.js"></script>    <link href="../css/mui.min.css" rel="stylesheet"/>
      <link href="../css/index.css?version=3.0" rel="stylesheet"/>
@@ -48,3 +49,93 @@
 			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'			}); 			document.getElementById('surname').innerHTML = contens;
 	},
       	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });//传统文化	$.ajax({	      headers: {        		tokenInfo: window.localStorage.getItem("tokenInfo")    	  },  	      type: "GET",	      contentType: "application/json",	      dataType: "json",	      url: urlBase+"/api/industryDynamic/list?type=FS&currentPage=1&limit=50", //这里是网址	      success:function(data){			var list = data.result.content;			var contens = "";			$.each(list, function(){     			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'			}); 			document.getElementById('culture').innerHTML = contens;	},      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });//健康管理$.ajax({	      headers: {        		tokenInfo: window.localStorage.getItem("tokenInfo")    	  },  	      type: "GET",	      contentType: "application/json",	      dataType: "json",	      url: urlBase+"/api/industryDynamic/list?type=NEWS&currentPage=1&limit=50", //这里是网址	      success:function(data){			var list = data.result.content;			var contens = "";			$.each(list, function(){     			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'			}); 			document.getElementById('health').innerHTML = contens;	},      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });</script><script src="../js/navJump.js?version=3.0"></script></body></html>
+=======
+    <title>姓氏起源</title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+     <link href="../css/index.css?version=2.2" rel="stylesheet"/>
+     <script src="../js/jquery-1.10.2.js"></script>
+  <script src="../js/template-web.js?version=2.2"></script>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
+<body>
+<!-- <header class="mui-bar mui-bar-nav header">
+     <h1 class="mui-title">姓氏起源</h1>
+</header>-->
+ <div class="mui-slider bannertop">
+    <div class="mui-slider-group mui-slider-loop">
+    
+      <div class="mui-slider-item">
+        <!-- 具体内容 -->
+        	<img src="../img/banner5.png"/>
+      </div>      
+    </div>
+  </div>
+  
+  
+  
+ 
+  <!--列表-->
+<ul class="mui-table-view" id="news">
+    <!--<li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1522482522&di=9c1f53d048b2d792e28eb72867e0003b&src=http://img4.duitang.com/uploads/item/201602/25/20160225215733_e2XvT.jpeg">
+            <div class="mui-media-body">
+              		标题
+                <p class="mui-ellipsis">简介</p>
+            </div>
+        </a>
+    </li>-->
+</ul>
+
+<!--下标签-->
+<div style="height: 50px"></div>
+<nav class="mui-bar mui-bar-tab">
+      <a class="mui-tab-item" id="jinianguan">
+          <span class="mui-icon mui-icon-home"></span>
+          <span class="mui-tab-label">纪念馆</span>
+      </a>
+      <a class="mui-tab-item" id="jiapu">
+          <span class="mui-icon mui-icon-map"></span>
+          <span class="mui-tab-label">家谱圈</span>
+      </a>
+      <a class="mui-tab-item mui-active" id="xingshi">
+          <span class="mui-icon mui-icon-navigate"></span>
+          <span class="mui-tab-label">姓氏起源</span>
+      </a>
+      <a class="mui-tab-item" id="personal">
+          <span class="mui-icon mui-icon-contact"></span>
+          <span class="mui-tab-label">个人中心</span>
+      </a>
+  </nav>
+
+<script type="application/javascript">
+	var imgBase = "http://img.yunji128.com/";
+	var urlBase = 'http://api.yunji128.com/homage';
+	 $.ajax({
+	      headers: {
+        		tokenInfo: window.localStorage.getItem("tokenInfo")
+    	  },  
+	      type: "GET",
+	      contentType: "application/json",
+	      dataType: "json",
+	      url: urlBase+"/api/industryDynamic/list?type=XSQY&currentPage=1&limit=50", //这里是网址
+	      success:function(data){
+			var list = data.result.content;
+			var contens = "";
+			$.each(list, function(){     
+			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+			}); 
+			document.getElementById('news').innerHTML = contens;
+		},
+      	error: function (message) {
+      		//alert("读取姓氏列表失败");
+      	}
+    });
+</script>
+  
+  
+<script src="../js/navJump.js?version=2.2"></script>
+</body>
+</html>
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91

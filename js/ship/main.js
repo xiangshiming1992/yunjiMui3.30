@@ -893,7 +893,11 @@ WY.createOne = function(type , data , i){
                 '</div>'+
                 '<div class="width-100-100 text-left lh-20 height-20">生日:'+(data.birthDay?(useCommon.parseDate(data.birthDay,'Y-m-d')):'' )+'</div>' +
                 '<div class="width-100-100 text-left lh-20 height-20">家乡:'+(data.jxProvince || '')+(data.jxCity || '')+(data.jxCounty || '')+'</div>' +
+<<<<<<< HEAD
                 '<div class="width-100-100 text-left lh-20 height-20">居住地:'+(data.xjProvince || '')+(data.xjCity || '')+(data.xjCounty || '')+'</div>' +
+=======
+                '<div class="width-100-100 text-left lh-20 height-20">现居地:'+(data.xjProvince || '')+(data.xjCity || '')+(data.xjCounty || '')+'</div>' +
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 '</div>');
             $list.append('<div class="friend-footer pl-10 pr-10 pt-5 pb-5">' +
             '</div>');

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var url = "/api/pedigree/add";
 ajax({
     url:"/api/pedigree/myPedigreeInfo",
@@ -23,6 +24,8 @@ ajax({
         }
     }
 });
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 $(function () {
     $("#textarea").click(function () {
         $(this).attr("contenteditable","true")
@@ -32,7 +35,11 @@ $(function () {
     var imgBase = 'http://img.yunji128.com/';
 
     $("#musicBook").on("tap",function () {
+<<<<<<< HEAD
         var file  = $("form[name=musicBook]").children("input[type=file]");
+=======
+        var file  = $(this).prev().children("input[type=file]");
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         file.click();
         file.unbind();
         file.change(function () {
@@ -46,13 +53,20 @@ $(function () {
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false, // 告诉jQuery不要去设置Content-Type请求头
                 error: function (request) {
+<<<<<<< HEAD
                     //layer.mui.alert('添加出现异常', {icon: 5});
+=======
+                    //layer.alert('添加出现异常', {icon: 5});
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 },
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
                         $("#musicBook").val( imgBase + data.result.path);
+<<<<<<< HEAD
                         $(".musicBookText").val("已上传");
                         mui.alert("上传成功");
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                         file.val('');
                     } else {
                         console.log(data.message);
@@ -78,7 +92,11 @@ $(function () {
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false, // 告诉jQuery不要去设置Content-Type请求头
                 error: function (request) {
+<<<<<<< HEAD
                     //layer.mui.alert('添加出现异常', {icon: 5});
+=======
+                    //layer.alert('添加出现异常', {icon: 5});
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 },
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
@@ -146,6 +164,7 @@ var accessPwd = true;
             data.province = addr[0];
             data.city = addr[1];
             data.county = addr[2];
+<<<<<<< HEAD
             var pedigreeId=$(".pedigreeId").val();{}
             if (pedigreeId){
                 data.pedigreeId = pedigreeId
@@ -160,6 +179,18 @@ var accessPwd = true;
 			},function(error){console.log(error)})
         }else{
 			mui.alert("请填写祖籍！")
+=======
+			postDataToServer("/api/pedigree/add",JSON.stringify(data),function(res){
+				if(res.code == "SUCCESS"){
+				    localStorage.setItem("jiapu",JSON.stringify(res.result));
+					window.location.href="editship.html?pedigreeId="+res.result.pedigreeId;
+				}else{
+					alert(res.message)
+				}
+			},function(error){console.log(error)})
+        }else{
+			alert("请填写祖籍！")
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 		}
     })
     $(".mui-icon-plusempty").click(function () {
@@ -177,13 +208,20 @@ var accessPwd = true;
             processData: false, // 告诉jQuery不要去处理发送的数据
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             error: function (request) {
+<<<<<<< HEAD
                 //layer.mui.alert('添加出现异常', {icon: 5});
+=======
+                //layer.alert('添加出现异常', {icon: 5});
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
             },
             success: function (data) {
                 if (data.code == 'SUCCESS') {
                     $("#textarea").append('<img src="'+imgBase + data.result.path+'_crop_41x41'+'" alt="">' );
                     $("#jiapu-tt-citang").val('');
+<<<<<<< HEAD
                     initShowBigImg();
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 } else {
                     console.log(data.message);
                 }
@@ -191,6 +229,7 @@ var accessPwd = true;
         });
     });
 });
+<<<<<<< HEAD
 function initShowBigImg() {
     $("#textarea img").click(function () {
         showBigImg($(this));
@@ -205,4 +244,6 @@ function showBigImg(img) {
     });
 }
 
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 

@@ -34,7 +34,15 @@ html,
 .mui-table-view::after {
     background: #fff;
 }
+<<<<<<< HEAD
 .mui-bar .mui-btn{top: 0}
+=======
+
+input[type=submit] {
+    width: 10rem;
+}
+
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 .mui-input-row label~input,
 .mui-input-row label~textarea {
     border: 1px solid rgba(0, 0, 0, .2);
@@ -57,6 +65,7 @@ input[type="file"] {
     right: 0;
     bottom:22px;
 }
+<<<<<<< HEAD
 img{  vertical-align: middle;}
 .mui-switch.mui-active:before{content: "是"}
 .mui-switch:before{content: "否"}
@@ -68,3 +77,6 @@ img{  vertical-align: middle;}
      -webkit-backface-visibility: hidden;
 }
 #bigImg img{vertical-align: middle;width: 100%;}
+=======
+img{    vertical-align: middle;}
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91

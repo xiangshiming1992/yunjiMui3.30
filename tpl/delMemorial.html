@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
@@ -33,6 +34,36 @@
 
         url: urlBase + "/api/memorial/delete?memorialId=" + memorialId,
         contentType: "application/json; charset=utf-8",
+=======
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js"></script>
+		<title>删除</title>
+	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
+	<body>
+		
+		<script type="text/javascript">
+			var urlBase = 'http://api.yunji128.com/homage';
+			var imgBase = 'http://img.yunji128.com/';
+			
+			function GetQueryString(name) {
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  decodeURI(r[2]); return null;
+		}
+	var memorialId = GetQueryString("memorialId");
+	
+			$.ajax({  
+	                type: "POST",  
+	                headers: {
+				        tokenInfo: window.localStorage.getItem("tokenInfo")
+				    },
+
+	                url: urlBase + "/api/memorial/delete?memorialId="+memorialId,  
+	                contentType: "application/json; charset=utf-8",  
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 //	                data: JSON.stringify(requestBody),  
         dataType: "json",
         success: function (data) {

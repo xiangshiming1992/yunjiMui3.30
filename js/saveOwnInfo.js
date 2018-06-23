@@ -6,12 +6,15 @@ $(function () {
     }
     if (user) {
         user = JSON.parse(user);
+<<<<<<< HEAD
         if(user.birthDay){
             user.birthDay = user.birthDay.substr(0,10);
         }
         if (user.spouseBirthDay){
             user.spouseBirthDay = user.spouseBirthDay.substr(0,10);
         }
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         for (var item in user) {
             var input = $("input[name=" + item + "]")
             var type = input.attr("type");
@@ -26,26 +29,75 @@ $(function () {
         }
         $("input[name=addr]").val(user.xjProvince + " " + user.xjCity + " " + user.xjCounty);
         $("input[name=spouseAddr]").val(user.spouseXjProvince + " " + user.spouseXjCity + " " + user.spouseXjCounty);
+<<<<<<< HEAD
     }
     $("input[type=submit]").click(function () {
         var data = $("#info-form").serializeArray();
         var info = {};
         for (var item of data){
             info[item.name] = item.value;
+=======
+        // var headImgUrl = imgBase + user.headImg;
+        // $("input[name=headImg]").prev().attr("src", headImgUrl);
+        // $("input[name=headImg]").val(user.headImg)
+        // $("input[name=spouseHeadImg]").prev().attr("src",imgBase +  user.spouseHeadImg);
+        // $("input[name=sex][value=" + user.sex + "]").prop("checked", "checked");
+    }
+    $("input[type=submit]").click(function () {
+        var data = $("#info-form").serializeArray();
+        var addr = $("input[name=addr]").val().split(" ");
+        var spouseAddr = $("input[name=spouseAddr]").val().split(" ");
+        var info = {
+            "birthDay": $("input[name=birthDay]").val(),
+            "headImg": $("input[name=headImg]").val(),
+            "name": $("input[name=name]").val(),
+            "phone": $("input[name=phone]").val(),
+            "remark": $("input[name=birthDay]").val(),
+            "sex": $("input[name=sex]:checked").val(),
+            "spouseBirthDay": $("input[name=spouseBirthDay]").val(),
+            "spouseHeadImg": $("input[name=spouseHeadImg]").val(),
+            "spouseName": $("input[name=spouseName]").val(),
+            "spousePhone": $("input[name=spousePhone]").val(),
+            "spouseXjCity": spouseAddr[1],
+            "spouseXjCounty": spouseAddr[2],
+            "spouseXjProvince": spouseAddr[0],
+            "xjCity": addr[1],
+            "xjCounty": addr[2],
+            "xjProvince": addr[0]
+        };
+        if (info.birthDay) {
+            info.birthDay = new Date(info.birthDay).getTime();
+        }
+        if (info.spouseBirthDay) {
+            info.spouseBirthDay = new Date(info.spouseBirthDay).getTime();
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         }
         console.log(info)
         postDataToServer("/api/pedigree/myPedigreeUserInfoSave", JSON.stringify(info), function (res) {
             if (res.code == "SUCCESS") {
+<<<<<<< HEAD
                 mui.alert("保存成功")
                 history.back();
             } else {
                 mui.alert(res.message)
+=======
+                alert("保存成功")
+                history.back();
+            } else {
+                alert(res.message)
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
             }
             console.log(res)
         }, function (error) {
             console.log(error)
         });
+<<<<<<< HEAD
     });
+=======
+    })
+
+
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
     function upload(img, file, form) {
         img.click(function () {
             file.click()
@@ -63,7 +115,11 @@ $(function () {
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false, // 告诉jQuery不要去设置Content-Type请求头
                 error: function (request) {
+<<<<<<< HEAD
                     //layer.mui.alert('添加出现异常', {icon: 5});
+=======
+                    //layer.alert('添加出现异常', {icon: 5});
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
                 },
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
@@ -117,10 +173,15 @@ $(function () {
     var cityResult3 = $("#cityResult3");
     cityResult3.click(function () {
         cityPicker3.show(function (items) {
+<<<<<<< HEAD
             cityResult3.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
             $("input[name=spouseXjProvince]").val(items[0].text)
             $("input[name=spouseXjCity]").val(items[1].text)
             $("input[name=spouseXjCounty]").val(items[2].text)
+=======
+            cityResult3.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') +
+                " " + _getParam(items[2], 'text'));
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         })
     })
     var cityPicker2 = new mui.PopPicker({
@@ -131,10 +192,15 @@ $(function () {
     var cityResult2 = $("#cityResult2");
     cityResult2.click(function () {
         cityPicker2.show(function (items) {
+<<<<<<< HEAD
             cityResult2.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
             $("input[name=xjProvince]").val(items[0].text)
             $("input[name=xjCity]").val(items[1].text)
             $("input[name=xjCounty]").val(items[2].text)
+=======
+            cityResult2.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') +
+                " " + _getParam(items[2], 'text'));
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
         })
     })
     if (user) {

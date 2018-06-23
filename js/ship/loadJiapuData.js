@@ -24,9 +24,19 @@ $(function () {
         return null;
     }
     pedigreeId = getQueryString("pedigreeId");
+<<<<<<< HEAD
     /**
      * 获取族谱数据
      */
+=======
+    // $.get(urlBase + "/api/pedigreePerson/personListAll", {
+    //     pedigreeId: pedigreeId
+    // }, function (res) {
+    //     console.log(res)
+    //
+    //     // console.log(p)
+    // });
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
     ajax({
         method:"get",
         url:"/api/pedigreePerson/personListAll",
@@ -85,9 +95,12 @@ $(function () {
         },
         async:false
     });
+<<<<<<< HEAD
     /**
      * 判断访问用户是否具有编辑权限
      */
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
     ajax({
         method:"get",
         url:"/api/pedigree/info",
@@ -114,6 +127,7 @@ $(function () {
             clearInterval(count);
         }
     });
+<<<<<<< HEAD
 
     ajax({
         url:"/api/pedigree/info",
@@ -139,6 +153,8 @@ $(function () {
             }
         }
     })
+=======
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
 });
 
 var loadBelong =false;
@@ -152,6 +168,7 @@ if (user) {
 }else {
     user ={};
 }
+<<<<<<< HEAD
 var maxLength=0;
 
 function goJiNianGuan(id) {
@@ -222,3 +239,6 @@ function showBigImg(img) {
         $(this).css("display","none");
     });
 }
+=======
+var maxLength=0;
+>>>>>>> ac23a54e09fa706088c679ff5ad1d38c73666e91
