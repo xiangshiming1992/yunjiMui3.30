@@ -1,0 +1,70 @@
+/*
+ *这是单独为hello mui准备的个性化css，可以覆盖标准mui的css定义；
+ * 在实际项目开发时，建议为App单独写一个css文件，从而实现项目的自定义皮肤功能；
+ * 
+ * */
+/*.mui-input-row label~input,
+.mui-input-row label~select,
+.mui-input-row label~textarea {
+    float: left;
+    width: 50%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+}*/
+body{
+	background-color:#FFFFFF
+}
+.mui-content{
+	margin: 0 auto;
+    width: 80%
+}
+.mui-table-view {
+    text-align: center;
+}
+
+.relation-ship-for-me {
+    color: #2AC845;
+}
+
+.mui-table-view-cell:after,
+.mui-content,
+html,
+.mui-table-view::before,
+.mui-table-view::after {
+    background: #fff;
+}
+.mui-bar .mui-btn{top: 0}
+.mui-input-row label~input,
+.mui-input-row label~textarea {
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+input[type="file"] {
+    display: none;
+}
+#textarea{
+    text-align: left;
+    float: right;
+    width: 65%;
+    border: 1px solid rgba(0, 0, 0, .2);
+    line-height: 21px;
+    padding: 11px 0 ;
+    padding-right: 24px;
+}
+.mui-icon-plusempty{
+    position: absolute;
+    right: 0;
+    bottom:22px;
+}
+img{  vertical-align: middle;}
+.mui-switch.mui-active:before{content: "是"}
+.mui-switch:before{content: "否"}
+
+.mui-bar{
+    background-color: #FFFFFF;
+     -webkit-box-shadow: none;
+     box-shadow: none;
+     -webkit-backface-visibility: hidden;
+}
+#bigImg img{vertical-align: middle;width: 100%;}

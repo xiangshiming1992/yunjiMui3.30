@@ -12,9 +12,9 @@
 
 		<link href="../css/mui.min.css" rel="stylesheet" />
 
-		<link href="../css/index.css" rel="stylesheet" />
+		<link href="../css/index.css?version=3.0" rel="stylesheet" />
 
-		<link href="../css/buiding.css" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.0" rel="stylesheet" />
 
 		<script src="../js/jquery-1.10.2.js"></script>
 
@@ -39,7 +39,7 @@
 			}
 		</style>
 
-	</head>
+	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 
 	<script>
 	</script>
@@ -188,11 +188,11 @@
 						}
 					
 					} else {
-						alert(data.message)
+						mui.alert(data.message)
 					}
 				},
 				    error: function(message) {      
-					alert("读取人物信息失败");      
+					mui.alert("读取人物信息失败");      
 				}    
 			});
 			$("#save").click(function() {
@@ -211,7 +211,7 @@
 					}
 					if(stem == 2){
 						if(''==$("[name='personName2']").val()){
-							alert("人二名字不能为空");
+							mui.alert("人二名字不能为空");
 						}
 						memorialPerson = [
 						    {
@@ -242,17 +242,17 @@
 					dataType: "json",
 					success: function(data) {
 						if(data.code == 'SUCCESS') {
-							alert("修改成功！");
+							mui.alert("修改成功！");
 							window.location.href = "myjinianguan.html"
 						} else {
-							alert(data.message);
+							mui.alert(data.message);
 						}
 
 					},
 
 					error: function(message) {
 
-						alert("提交数据失败！");
+						mui.alert("提交数据失败！");
 
 					}
 

@@ -9,10 +9,10 @@
     <title>姓氏起源</title>
     <script src="../js/mui.min.js"></script>
     <link href="../css/mui.min.css" rel="stylesheet"/>
-     <link href="../css/index.css" rel="stylesheet"/>
+     <link href="../css/index.css?version=3.0" rel="stylesheet"/>
      <script src="../js/jquery-1.10.2.js"></script>
-  <script src="../js/template-web.js"></script>
-</head>
+  <script src="../js/template-web.js?version=3.0"></script>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 <body>
 <!-- <header class="mui-bar mui-bar-nav header">
      <h1 class="mui-title">姓氏起源</h1>
@@ -42,7 +42,7 @@
 	</div>
  </div>
  </div> 
-<script src="../js/navJump.js"></script>
+<script src="../js/navJump.js?version=3.0"></script>
 <script type="text/javascript">
 			var urlBase = 'http://api.yunji128.com/homage';
 			var imgBase = 'http://img.yunji128.com/';
@@ -70,11 +70,11 @@
 		        		window.location.href='login.html';
 		        	}
 		        	else{
-		        		alert(data.message);
+		        		mui.alert(data.message);
 		        	}
 		        },  
 		        error: function (message) {  
-		            alert("提交数据失败！");  
+		            mui.alert("提交数据失败！");
 		        }  
 		   });
 		    selectLev();
@@ -103,7 +103,7 @@
 			$("#sendLev").click(function(){
 				var neirong = $("#levContent").val();
 				if(neirong == ''){
-					alert("请输入留言内容");return;
+					mui.alert("请输入留言内容");return;
 				}
 			  	var conten = {
 				  "dataId": industryDynamicId,
@@ -119,16 +119,16 @@
 			        dataType: "json",  
 			        success: function (data) {
 			        	if(data.code=='SUCCESS'){
-			        		alert("评论成功~~~");
+			        		mui.alert("评论成功~~~");
 			        		$("#levContent").val('');
 			        		selectLev();
 			        	}
 			        	else{
-			        		alert(data.message)
+			        		mui.alert(data.message)
 			        	}
 			        },  
 			        error: function (message) {  
-			            alert("提交数据失败！");  
+			            mui.alert("提交数据失败！");
 			        }  
 			   });
 			});

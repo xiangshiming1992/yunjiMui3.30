@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title></title>
     <link href="../css/mui.min.css" rel="stylesheet"/>
-    <link href="../css/index.css" rel="stylesheet"/>
-    <link href="../css/changjing.css" rel="stylesheet" />
+    <link href="../css/index.css?version=3.0" rel="stylesheet"/>
+    <link href="../css/changjing.css?version=3.0" rel="stylesheet" />
     <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css">
     	#jibai{display: none;}
@@ -34,7 +34,7 @@
 			}
 			
     </style>
-</head>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 <body>
 	 <header class="mui-bar mui-bar-nav header">
 	 	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
@@ -47,7 +47,7 @@
   		<!--<img id="mubeixiang"  src=""/>-->
   		<!--<span id="muzi" >张国荣之墓</span>-->
   	</div>
-		<div class="changBuid">更换场景</div>
+		<div class="changBuid" style="display: none;">更换场景</div>
 		
 		<script type="application/javascript">
 //单人室内
@@ -180,6 +180,7 @@
  		</div> 
 	
  <!--下标签-->
+		<div style="height: 50px"></div>
 <nav class="mui-bar mui-bar-tab">
       <a id="jb" class="mui-tab-item mui-active" href="#jibai">
           <span class="mui-icon mui-icon-home"></span>
@@ -313,7 +314,7 @@
    					
    					}
 				else{
-   					//alert("选择错误");
+   					//mui.alert("选择错误");
    				}
 			}else if(data.result.peopleNumber==2){
 				if(data.result.memorialModel.scenesType  == "outdoor"){					
@@ -350,16 +351,25 @@
 	   				
    				  }
 				else{
-   					alert("选择错误");
+   					mui.alert("选择错误");
    				}
 			}else{
-				alert("人数不对");
+				mui.alert("人数不对");
 			}
 			 
 			}else if(data.code=='PleaseLogin'){
 	    		window.location.href='login.html';
 	    		
 	    	}
+				
+				var userInfo = window.localStorage.getItem("userInfo");
+				if(null != userInfo){
+					var thisUserId = JSON.parse(userInfo).userId;
+					if(thisUserId == data.result.userId){
+						$('.changBuid').show();
+					}
+				}
+				
 		 }
     });
 
@@ -445,7 +455,7 @@
 	$("#sendLev").click(function(){
 		var neirong = $("#levContent").val();
 		if(neirong == ''){
-			alert("请输入留言内容");return;
+			mui.alert("请输入留言内容");return;
 		}
 	  	var conten = {
 		  "dataId": memorialId,
@@ -461,16 +471,16 @@
             dataType: "json",  
             success: function (data) {
             	if(data.code=='SUCCESS'){
-            		alert("留言成功~~~");
+            		mui.alert("留言成功~~~");
             		$("#levContent").val('');
             		selectLev();
             	}
             	else{
-            		alert(data.message)
+            		mui.alert(data.message)
             	}
             },  
             error: function (message) {  
-                alert("提交数据失败！");  
+                mui.alert("提交数据失败！");
             }  
        });
 	});
@@ -516,7 +526,7 @@
 						}
 			},	   
 		 		error: function (message) {  
-	                alert("提交数据失败！");  
+	                mui.alert("提交数据失败！");
 	            }  
 	       });
 	       	
@@ -538,7 +548,7 @@
 					if(data.code=='SUCCESS'){
 						//arlt(data);
 							var list = data.result;
-							//alert(data.result[0]);
+							//mui.alert(data.result[0]);
 							var contens = "";
 							
 							$.each(list,function(index,item){
@@ -551,7 +561,7 @@
 						}
 			},	   
 		 		error: function (message) {  
-	                alert("提交数据失败！");  
+	                mui.alert("提交数据失败！");
 	            }  
 	       });
 	      }

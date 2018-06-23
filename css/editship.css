@@ -1,0 +1,95 @@
+ body {
+     background-color: #FFFFFF;
+ }
+
+ .btn {
+	 width: 60px;
+     padding: 3px 3px;
+       background-color: rgb(221, 221, 221);
+     display: inline-block;
+ }
+
+ .btn-primary {
+	 background-color: #337ab7;
+	
+ }
+
+ .person-data-item {
+     width: 120px;
+	 text-align: center;
+ }
+
+ .mui-radio label {
+     width: auto;
+ }
+
+ .mui-checkbox,
+ .mui-radio {
+     display: inline-block;
+ }
+
+ .image {
+     text-align: center;
+ }
+
+ /*.image label~input {}*/
+
+ .image label~input {
+     width: 42px;
+     height: 42px;
+     float: none;
+ }
+
+ #edit ,#info,#ship{
+     display: none;
+ }
+
+ .mui-table-view .mui-media-object {
+     width: 42px;
+     float: left;
+ }
+
+ .fz-12 {
+     line-height: 25px;
+ }
+
+ .mui-table-view-cell {
+     padding: 10px 15px;
+ }
+
+ .img-circle {
+     border-radius: 50%;
+     vertical-align: middle;
+     border: 0;
+ }
+
+ .jiapu-name {
+	 overflow: hidden;
+	 white-space: nowrap;
+     max-width: 92px;
+     text-overflow: ellipsis;
+ }
+
+ ul,li{ margin:0; padding:0; list-style:none; font-size:12px;}
+ .popup_menu{position:absolute; z-index:999; border:1px solid #AEAEAE; padding:2px; width:120px;background-color: white}
+ .popup_menu a{ display:block; color:#325B8E; text-indent:12px; text-decoration:none; height:26px; line-height:25px; padding-right:5px;}
+ .popup_menu a:hover{ background:#57B4E4; color:#fff; border-radius:5px;}
+ .show-canvas-content{overflow: scroll;width: 100%}
+  .mui-bar .mui-btn{top: 0}
+  .boy{color: yellowgreen}
+  .girl{color: white}
+ .mui-input-row label:last-child{width: auto;max-width: 60%;overflow: hidden;text-overflow: ellipsis;padding-right: 0;padding-left: 0;}
+
+ .pushu{position: fixed;top:2rem;right: 1rem;padding: 11px 0;z-index: 999;width: 90px;background-color: #5bc0de;text-align: center;opacity:0.2;}
+ .pushu:hover{opacity:1;}
+ .pushu button{margin: 5px 0}
+ #ship .mui-content{width: 80%;margin: 0 auto}
+ .mui-switch.mui-active:before{content: "是"}
+ .mui-switch:before{content: "否"}
+ .mui-input-row label{text-align: right}
+  .mui-radio label{width: 90px;padding-right: 0;text-align: left}
+  .mui-radio input[type=radio]{width: 10px}
+ [readonly="readonly"] {
+     user-select: none;
+ }
+ .mui-content>.mui-table-view:first-child{margin-top:0}

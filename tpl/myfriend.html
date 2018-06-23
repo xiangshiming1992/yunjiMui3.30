@@ -5,12 +5,12 @@
 		<title>会员中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/index.css" rel="stylesheet" />
-		<link href="../css/phone.css" rel="stylesheet" />
-		<link href="../css/buiding.css" rel="stylesheet" />
+		<link href="../css/index.css?version=3.0" rel="stylesheet" />
+		<link href="../css/phone.css?version=3.0" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.0" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/mui.min.js"></script>
-	</head>
+	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 	<body>
 <header class="mui-bar mui-bar-nav header">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
@@ -27,7 +27,7 @@
 	            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
 	            <div class="mui-media-body">
 	                张三
-	                <p class="mui-ellipsis">现居地：成都双流</p>
+	                <p class="mui-ellipsis">居住地：成都双流</p>
 	            </div>
 	        </a>
 	    </li>
@@ -36,7 +36,7 @@
 	            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
 	            <div class="mui-media-body">
 	                李四
-	                <p class="mui-ellipsis">现居地：四川绵阳.</p>
+	                <p class="mui-ellipsis">居住地：四川绵阳.</p>
 	            </div>
 	        </a>
 	    </li>
@@ -45,7 +45,7 @@
 	            <img class="mui-media-object mui-pull-left" src="http://placehold.it/40x30">
 	            <div class="mui-media-body">
 	                王五
-	                <p class="mui-ellipsis">现居地：云南昆明.</p>
+	                <p class="mui-ellipsis">居住地：云南昆明.</p>
 	            </div>
 	        </a>
 	    </li>
@@ -124,7 +124,7 @@
 					      url: urlBase + "/api/sacrifice/doSG?sacrificeId="+sacrificeId+"&memorialId="+memorialId, //这里是网址
 					      success:function(data){
 							if(data.code=='SUCCESS'){
-								alert("祭拜成功~~");
+								mui.alert("祭拜成功~~");
 								window.location.href = document.referrer;//返回上一页并刷新  
 							}
 						 }

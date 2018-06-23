@@ -1,0 +1,31 @@
+body {
+    background-color: #fff;
+}
+
+input[type=search] {
+    background-color: rgba(255, 255, 255, .1);
+    border: 1px rgba(0, 0, 0, .1) solid;
+}
+
+.mui-h5 {
+    padding: 11px 15px;
+}
+
+.jiapu {
+    text-align: center;
+    padding: 3px 0;
+}
+
+.jiapu-xing {
+    width: 3rem;
+    max-width: 6rem;
+    margin: 0 auto;
+    color: #8f8f94;
+}
+
+.shu {
+    padding: 0 8px;
+}
+.mui-table-view-cell:after {
+	left: 0;
+}
