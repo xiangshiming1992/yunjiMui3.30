@@ -45,6 +45,27 @@
 			var list = data.result.content;
 			var contens = "";
 			$.each(list, function(){     
-			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'			}); 			document.getElementById('surname').innerHTML = contens;
+				if(this.picUrl.indexOf('http') == 0){
+					contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+				}else{
+					contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+				}
+			    			}); 			document.getElementById('surname').innerHTML = contens;
 	},
-      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });//传统文化	$.ajax({	      headers: {        		tokenInfo: window.localStorage.getItem("tokenInfo")    	  },  	      type: "GET",	      contentType: "application/json",	      dataType: "json",	      url: urlBase+"/api/industryDynamic/list?type=FS&currentPage=1&limit=50", //这里是网址	      success:function(data){			var list = data.result.content;			var contens = "";			$.each(list, function(){     			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'			}); 			document.getElementById('culture').innerHTML = contens;	},      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });//健康管理$.ajax({	      headers: {        		tokenInfo: window.localStorage.getItem("tokenInfo")    	  },  	      type: "GET",	      contentType: "application/json",	      dataType: "json",	      url: urlBase+"/api/industryDynamic/list?type=NEWS&currentPage=1&limit=50", //这里是网址	      success:function(data){			var list = data.result.content;			var contens = "";			$.each(list, function(){     			    contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'			}); 			document.getElementById('health').innerHTML = contens;	},      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });</script><script src="../js/navJump.js?version=3.0"></script></body></html>
+      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });//传统文化	$.ajax({	      headers: {        		tokenInfo: window.localStorage.getItem("tokenInfo")    	  },  	      type: "GET",	      contentType: "application/json",	      dataType: "json",	      url: urlBase+"/api/industryDynamic/list?type=FS&currentPage=1&limit=50", //这里是网址	      success:function(data){			var list = data.result.content;			var contens = "";			$.each(list, function(){     
+				if(this.picUrl.indexOf('http') == 0){
+					contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+				}else{
+					contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+				}			    			}); 			document.getElementById('culture').innerHTML = contens;	},      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });//健康管理$.ajax({	      headers: {        		tokenInfo: window.localStorage.getItem("tokenInfo")    	  },  	      type: "GET",	      contentType: "application/json",	      dataType: "json",	      url: urlBase+"/api/industryDynamic/list?type=NEWS&currentPage=1&limit=50", //这里是网址	      success:function(data){			var list = data.result.content;			var contens = "";			$.each(list, function(){     
+				if(this.picUrl.indexOf('http') == 0){
+					contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+				}else{
+					contens += '<li class="mui-table-view-cell mui-media"><a href="xingDetaili.html?industryDynamicId='+this.industryDynamicId+'">'+
+			    '<img class="mui-media-object mui-pull-left" src="'+imgBase+this.picUrl +'"><div class="mui-media-body">'+this.title+'<p class="mui-ellipsis">'+this.contenJx+'</p></div></a></li>'
+				}			    			}); 			document.getElementById('health').innerHTML = contens;	},      	error: function (message) {      		//mui.alert("读取姓氏列表失败");      	}    });</script><script src="../js/navJump.js?version=3.0"></script></body></html>

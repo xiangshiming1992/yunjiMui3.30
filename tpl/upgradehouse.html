@@ -17,30 +17,18 @@
 		border: 2px solid #007AFF;
 	}
 </style>
-	<body>
-<!--<header class="mui-bar mui-bar-nav header">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">创建纪念馆</h1>
-</header>-->
+	<body><!--<header class="mui-bar mui-bar-nav header">		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>		    <h1 class="mui-title">创建纪念馆</h1></header>-->
 <div class="mui-content">
 		    <h5 class="mui-content-padded">修改纪念馆名称：</h5>
 				<div class="mui-input-row">
 					<input type="text" id="memorialName" placeholder="2-5个字，限中文">
 				</div>	
 			<h5 class="mui-content-padded">请选择纪念馆模板：</h5>
-				<div class="mui-slider">
-		        <div class="mui-slider-group mui-slider-loop">
-		            <div class="mui-slider-item">
-		                <ul class="mui-table-view mui-grid-view" id="modelChose">
-		                </ul>
-		            </div>
-		        </div>
+				<div class="mui-slider">        <div class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">            <a class="mui-control-item" href="#item1">选择平台模板</a>            <a class="mui-control-item" href="#item2">自定义上传模板</a>        </div>        <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>        <div class="mui-slider-group">            <div id="item1" class="mui-slider-item mui-control-content mui-active">                <ul class="mui-table-view" id="mpersonal">                    <!--<h5 class="mui-content-padded">请选择纪念馆模板：</h5>-->                    <div class="mui-slider">                        <div class="mui-slider-group mui-slider-loop">                            <div class="mui-slider-item">                                <ul class="mui-table-view mui-grid-view" id="modelChose">                                </ul>                            </div>                        </div>                    </div>                </ul>            </div>            <div id="item2" class="mui-slider-item mui-control-content">                <ul class="mui-table-view" id="mcustom">                    <div class="deathPhoto">                        <h5 class="mudiImg mui-content-padded">墓地照片</h5>                        <img class="userImg" id="myimgID" width="128px" height="164px" src="../img/deathimg.png"/>                        <form id="uploadImgForm">                            <input id="upload" name="fileName" onchange="uploadImg()" accept="image/*" type="file"                                   style="display: none"/>                        </form>                        <h5 class="bili mui-content-padded">最佳比例720*1280</h5>                    </div>                </ul>            </div>        </div>    </div>
 		 <div id="quanxian">
-		  	
 		 <h5 class="mui-content-padded">进入权限：</h5>
 					<div id="chousejoinType" class="mui-switch mui-switch-blue mui-switch-mini switchdiv mui-active">
-						<div class="mui-switch-handle"></div>
-					</div>
+						<div class="mui-switch-handle"></div>					</div>
 		 </div> 		
 		 		<input type="hidden" id="joinType" value="password" placeholder="">
 				<div class="mui-input-row">
@@ -48,15 +36,11 @@
 					
 				</div>	
 				<input type="hidden" id="memorialModelId">
-			 <button type="button" id="saveB" class="mui-btn mui-btn-primary mui-btn-block nextbtn">下一步</button>
-		
-		
+			 <button type="button" id="saveB" class="mui-btn mui-btn-primary mui-btn-block nextbtn">完成</button>			 <input id="customizeHeadImg" type="hidden" value=""/>			<input id="modelSource" type="hidden" value="A"/>
 </div>
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
-			var isManual = true;//标志按钮最后状态
-			mui.init()
-			//模版列表
+			var isManual = true;//标志按钮最后状态			mui.init()			//模版列表
 			var imgBase = "http://img.yunji128.com/";
 			var urlBase = 'http://api.yunji128.com/homage';
 			function GetQueryString(name) {
@@ -89,15 +73,8 @@
 			        		$('#password').hide();
 			        		$('#password').val('');
 			        		$("#chousejoinType").removeClass("mui-active");
-			        		isManual = false;
-						}
-	                }
-	                else{
-	                	mui.alert(data.message)
-	                }
-				  },
-			      error: function (message) {
-			      	mui.alert("读取姓氏列表失败");
+			        		isManual = false;						}	                }	                else{	                	mui.alert(data.message);
+	                }				  },			      error: function (message) {			      	mui.alert("读取姓氏列表失败");
 			      }
 		    });
 		
@@ -140,30 +117,12 @@
 			function chouseModel(memorialModelId){
 				$(".mui-table-view-cell").removeClass("checkedImg")
 				$("#abc_"+memorialModelId).addClass("checkedImg")
-				$("#memorialModelId").val(memorialModelId);
+				$("#memorialModelId").val(memorialModelId);				$("modelSource").val('A');        		$("#customizeHeadImg").val('');
 			}
-			
+$("#myimgID").click(function () {        $("#upload").click();    });    function uploadImg() {        var fd = new FormData(document.getElementById("uploadImgForm"));        fd.append("path", "h5/customizeHead");        fd.append("fileFormat", "img");        fd.append("fileSize", "10001");        $.ajax({            type: "POST",            url: urlBase + "/file/fileUpload",            data: fd,//FormId            processData: false,  // 告诉jQuery不要去处理发送的数据            contentType: false,   // 告诉jQuery不要去设置Content-Type请求头            error: function (request) {                //layer.mui.alert('添加出现异常', {icon: 5});            },            success: function (data) {                if (data.code == 'SUCCESS') {                    $("#myimgID").attr("src", imgBase + data.result.path);                    $("#customizeHeadImg").val(data.result.path);                    $("#modelSource").val('B');                    $(".mui-table-view-cell").removeClass("checkedImg")                    $("#memorialModelId").val('');                } else {                    mui.alert(data.message);                }            }        });    }			
 			$("#saveB").click(function(){
-				var memorialType = $('input[name="memorialType"]:checked ').val();
-				var memorialName = $("#memorialName").val();
-				var memorialModelId = $("#memorialModelId").val();
-				var joinType = $("#joinType").val();
-			    var password = $('#password').val();
-			    if(memorialName == ''){
-					mui.alert("请输入纪念馆名字");
-					return;
-				}
-				if(memorialModelId == ''){
-					mui.alert("请选择一个模版");
-					return;
-				}
-				var requestBody = {
-				  "memorialId": memorialId,
-				  "memorialName": memorialName,
-				  "joinType": joinType,
-				  "password": password,
-				  "deviceType": 'H5',
-				  "memorialModelId": memorialModelId
+				var memorialType = $('input[name="memorialType"]:checked ').val();				var memorialName = $("#memorialName").val();				var memorialModelId = $("#memorialModelId").val();				var joinType = $("#joinType").val(); 				var modelSource = $("#modelSource").val();      			 var customizeHeadImg = $("#customizeHeadImg").val();   
+			    var password = $('#password').val();			    if(memorialName == ''){					mui.alert("请输入纪念馆名字");					return;				}				if (modelSource == "A") {		            if (memorialModelId == '') {		                mui.alert("请选择一个模版");		                return;		            	}		        }		        if (modelSource == "B") {		            if (customizeHeadImg == '') {		                mui.alert("请上传自定义图片");		                return;			            }	      	    }				var requestBody = {				  "memorialId": memorialId,				  "memorialName": memorialName,				  "joinType": joinType,				  "password": password,				  "deviceType": 'H5',				  "memorialModelId": memorialModelId,				 "modelSource":modelSource,					"customizeHeadImg":customizeHeadImg
 				};
 			  	$.ajax({  
 	                type: "POST",  
@@ -177,7 +136,7 @@
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
 	                		mui.alert("修改成功~~~~~~~");
-	                		window.location.href="myjinianguan.html"
+	                		window.location.href="jinianguanDetail.html?memorialId="+memorialId;
 	                	}
 	                	else{
 	                		mui.alert(data.message)

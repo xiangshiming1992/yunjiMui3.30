@@ -340,13 +340,13 @@ WY.genealogy = function (options) {
         e.stopPropagation();
         var itemClick = $(this).closest("[code]");
         editId = itemClick.attr("code");
-        let obj = item.getById(editId);
+        var obj = item.getById(editId);
         var left =parseInt(itemClick.css("left")) ;
         var top = parseInt(itemClick.css("top")) +itemClick.height();
         kyoPopupMenu.user = obj;
         kyoPopupMenu.id = editId;
         obj = obj.data;
-        let  index = $(this).index();
+        var  index = $(this).index();
         kyoPopupMenu.index =index;
         kyoPopupMenu.memorialId = index ==0 ? obj.memorialId : obj.spouseMemorialId;
         kyoPopupMenu.phone = index == 0 ? obj.phone : obj.spousePhone;

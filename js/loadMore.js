@@ -25,10 +25,11 @@ function goJiapu(id) {
 function loadMore(content) {
     getDataFromServer("/api/pedigree/myJoinlist", {currentPage: page, limit: 20, content: content}, function (res) {
         if (res.code == "SUCCESS") {
-            let list = res.result.content;
+            var list = res.result.content;
             if (list && list.length > 0) {
                 var record = "";
-                for (let item of list) {
+                for (var i=0;i<list.length;i++) {
+                    var item = list[i]
                     record += '<li class="mui-table-view-cell mui-media" onclick="goJiapu(' + item.pedigreeId + ')">' +
                         '<img onerror="defaultImgUrl(this)"  class="mui-media-object mui-pull-left" src="' + imgBase + item.totem + '_crop_42x42' + '">' +
                         '<div class="mui-media-body">' + item.surname  +

@@ -1,12 +1,12 @@
 getDataFromServer("/api/pedigree/myPedigreeUserInfo", null, function (res) {
     if (res.code == "SUCCESS") {
-        let user = res.result;
+        var user = res.result;
         if (user) {
             $("img").attr("src", imgBase + user.headImg+"_crop_42x42");
             localStorage.setItem(user.userId + "jiapuInfo", JSON.stringify(user));
             getDataFromServer("/api/pedigree/myPedigreeInfo", null, function (res) {
                 if (res.code == "SUCCESS") {
-                    let jiapu = res.result;
+                    var jiapu = res.result;
                     if (jiapu) {
                         $("#submit").val("编辑家谱");
                         $("#submit").click(function () {
@@ -55,10 +55,11 @@ $("#search").submit(function () {
 function loadJiapu(content) {
     getDataFromServer("/api/pedigree/myJoinlist", {currentPage: 1, limit: 2, content: content}, function (res) {
         if (res.code == "SUCCESS") {
-            let list = res.result.content;
+            var list = res.result.content;
             if (list && list.length > 0) {
                 var record = "";
-                for (let item of list) {
+                for (var i=0;i<list.length;i++) {
+                    var item = list[i];
                     record += '<li class="mui-table-view-cell mui-media" onclick="jiapuInfo(' + item.pedigreeId + ')">' +
                         '<div class="jiapu mui-h3">' +
                         '<span class="jiapu-xing">' + item.surname + '</span>' +

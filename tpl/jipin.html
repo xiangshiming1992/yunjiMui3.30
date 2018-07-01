@@ -82,7 +82,7 @@
 							var list = data.result;
 							var contens = "";
 							$.each(list, function(){     
-							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+')"><li><img src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+'云币</span></p><p>时效：<span>'+this.sacrificeAging+'分钟</span></p></li></a>'
+							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+',\''+this.effects+'\',\''+this.sacrificeBigImg+'\')"><li><img src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+'云币</span></p><p>时效：<span>'+this.sacrificeAging+'分钟</span></p></li></a>'
 							}); 
 							document.getElementById('jpList').innerHTML = contens;
 						}
@@ -90,7 +90,7 @@
 		    	});
 			}
 			//确认祭拜
-			function sureJb(sacrificeId,useCloudBi){
+			function sureJb(sacrificeId,useCloudBi,effects,sacrificeBigImg){
 				if(window.confirm('你确定要祭拜吗？当前祭拜消耗'+useCloudBi+'云币')){
                 	$.ajax({
 					      headers: {
@@ -103,10 +103,12 @@
 					      success:function(data){
 							if(data.code=='SUCCESS'){
 								mui.alert("祭拜成功~~");
+								window.localStorage.setItem("effects",effects);
+								window.localStorage.setItem("sacrificeBigImg",sacrificeBigImg);
 								window.location.href = document.referrer;//返回上一页并刷新  
 							}
 							else{
-								mui.alert(data.message);
+								alert(data.message);
 								window.location.href = document.referrer;//返回上一页并刷新  
 							}
 						 }
