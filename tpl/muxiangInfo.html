@@ -6,8 +6,8 @@
 		<title>会员中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/index.css?version=2.2" rel="stylesheet" />
-		<link href="../css/buiding.css?version=2.2" rel="stylesheet" />
+		<link href="../css/index.css?version=3.2" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.2" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
 			<style type="text/css">
 			.membPhoto{
@@ -81,11 +81,11 @@
         		window.location.href='login.html';
         	}
         	else{
-        		alert(data.message);
+        		mui.alert(data.message);
         	}
         },  
         error: function (message) {  
-            alert("提交数据失败！");  
+            mui.alert("提交数据失败！");
         }  
    });
 			
@@ -110,7 +110,7 @@
 							$("#myimgID").attr("src",imgBase+data.result.path);
 							editImg(data.result.path);
 						} else {
-							alert(data.message);
+							mui.alert(data.message);
 						}
 					}
 				});
@@ -127,15 +127,15 @@
 	                dataType: "json",  
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
-	                		alert("修改头像成功~~~~~~~");
+	                		mui.alert("修改头像成功~~~~~~~");
 	                		//window.location.reload();
 	                	}
 	                	else{
-	                		alert(data.message)
+	                		mui.alert(data.message)
 	                	}
 	                },  
 	                error: function (message) {  
-	                    alert("提交数据失败！");  
+	                    mui.alert("提交数据失败！");
 	                }  
 	           });
 		    }

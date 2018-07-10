@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>修改纪念馆地址</title>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+</head>
+<body>
+<iframe id="mapPage" width="100%" frameborder=0></iframe>
+<nav class="mui-bar" style="padding-left: 0;padding-right: 0">
+    <button class="mui-btn-blue" style="width: 100%;">确定</button>
+</nav>
+<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/request.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]);
+        return null;
+    }
+
+    var address;
+    window.addEventListener('message', function (event) {
+        // 接收位置信息，用户选择确认位置点后选点组件会触发该事件，回传用户的位置信息
+        var loc = event.data;
+        if (loc && loc.module == 'locationPicker') {//防止其他应用也会向该页面post信息，需判断module是否为'locationPicker'
+            console.log('location', loc);
+            address = loc
+        }
+    }, false);
+    var iframeSrc = "http://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp";
+    var beforeAddr =GetQueryString("coord").split(",");
+    if (beforeAddr.length==2 && beforeAddr[0] && beforeAddr[1]){
+        iframeSrc += "&coord=" +beforeAddr.join(",");
+    }
+
+    $("#mapPage").css("height", $(window).height() - $("nav").height());
+    $("#mapPage").attr("src", iframeSrc);
+    $("button").click(function () {
+        if (address) {
+            console.log(address);
+            var data = {
+                "address": address.poiaddress,
+                "addressName": address.poiname,
+                "latitude": address.latlng.lat,
+                "longitude": address.latlng.lng,
+                "memorialId": GetQueryString("memorialId")
+            };
+            postDataToServer("/api/memorial/editLocation",JSON.stringify(data),function (res) {
+                console.log(res)
+                if (res.code ==  "SUCCESS") {
+                    mui.alert(res.message,function () {
+                        sessionStorage.setItem("addressChange","addressChange");
+                        history.back()
+                    })
+                }
+            },function (error) {
+                console.log(error)
+            });
+        } else {
+            mui.alert("你还米有选择一个地址")
+        }
+    });
+</script>
+</body>
+</html>

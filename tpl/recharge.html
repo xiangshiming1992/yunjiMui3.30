@@ -6,9 +6,9 @@
 		<title>充值中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/recharge.css?version=2.2" rel="stylesheet" />
+		<link href="../css/recharge.css?version=3.2" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
-		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js?version=2.2"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js?version=3.2"></script>
 	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 	<body>
 	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
@@ -17,7 +17,7 @@
 			 <div class="mui-card">
 				<div class="mui-input-group" id="chouseCzTypeList">
 					<div class="mui-input-row mui-radio mui-left">
-						<label>云币充值</label>
+						<label>兑换银子</label>
 						<input name="chouseCzType" type="radio" value="CZ_YB" checked>
 					</div>
 					<!--<div class="mui-input-row mui-radio mui-left">
@@ -35,7 +35,7 @@
 				</div>
 		</div>
 		 <div id="recharges">
-		  		 <h5 class=" chongzhi mui-content-padded">充值金额：</h5>
+		  		 <h5 class=" chongzhi mui-content-padded">兑换金额：</h5>
  				<div class="mui-input-row">
 					<input type="number" id="czMoney" placeholder="">
 				</div>
@@ -84,7 +84,7 @@
 						});
 					},
 					error: function(message) {
-						alert("读取列表失败");
+						mui.alert("读取列表失败");
 					}
 			});
 			
@@ -97,7 +97,7 @@
  				if("CZ_YB"==a){
  					var czMoney = $("#czMoney").val();
 					if(czMoney < 1){
-						alert("至少充值一元钱的嘛");
+						mui.alert("至少充值一元钱的嘛");
 						return;
 					}
 					createData = {
@@ -155,11 +155,11 @@
 			        		window.location.href='login.html';
 			        	}
 	                	else{
-	                		alert(data.message)
+	                		mui.alert(data.message)
 	                	}
 	                },  
 	                error: function (message) {  
-	                    alert("提交数据失败！");  
+	                    mui.alert("提交数据失败！");
 	                }  
 	           });
 			});
@@ -178,7 +178,7 @@
 			           if(res.err_msg == "get_brand_wcpay_request:ok" ) {
 			           		window.location.href="personal.html";
 			           }else{
-			           		alert("支付取消");
+			           		mui.alert("支付取消");
 			           }
 			       }
 			   ); 

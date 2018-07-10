@@ -6,13 +6,10 @@
 		<title>会员中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<!--<link href="../css/index.css?version=2.2" rel="stylesheet" />
-		<link href="../css/phone.css?version=2.2" rel="stylesheet" />
-		<link href="../css/buiding.css?version=2.2" rel="stylesheet" />-->
 		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
-			
 			.uploadbtn {
 				width: 200px;
 				margin-left: 2%;
@@ -34,187 +31,86 @@
 				width: 46%;
 				height: 150px;
 				text-align: center;
-				margin: 6px;
+				margin: 6px;				position: relative;
 				}
-			.photolist .coverImg img{				
+			.photolist .coverImg #headsimg{				
 				width: 140px;
 				height: 108px;
 				margin-top: 6px;
-			}
+			}			#delimg{								width: 40px;				position: absolute;				top: 1%;				left: 78%;			}
 		</style>
-	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
-
+	</head>
 	<body>
 		<header class="mui-bar mui-bar-nav header">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">相册管理</h1>
 		</header>
-
 		<div class="mui-content">
-			<!--<div class="uploadbtn">
-				<button type="button" id="myimgID" class="mui-btn mui-btn-blue"> 创建相册</button>
-				<form id="uploadImgForm">
-					<input id="imgupload" name="fileName" onchange="uploadImg(img)" type="file" accept="img/*" style="display: none;" />
-				</form>
+			<div id="photolist" class="photolist">
+				<div class="coverImg">
+					<img onclick="createAlbum()" src="../img/jia.png" />
+					<h5>新建相册</h5>									</div>								<!--<div class="coverImg">
+					<a href="albumPhone.html?albumId='+this.albumId+'"><img id="headsimg" src="../img/4.jpg" /></a>
+					<h5>'+this.albumName+'<span>('+this.countPic+')</span></abbr></h5>
+					<a href="javascript:deleteImg(' + this.albumId + ');"><img id="delimg" src="../img/deletimg.png"/></a>
+				</div>-->
 			</div>
-			-->
-			<div class="photolist">
-				<div class="coverImg">
-					<img src="../img/jia.png" />
-					<h5>新建相册</h5>
-				</div>
-				<div class="coverImg">
-					<img src="../img/my.png" />
-					<h5>我的风景照片<span>(555)</span></abbr></h5>
-				</div>
-				<div class="coverImg">
-					<img src="../img/1.jpg" />
-					<h5>我的风景照片<span>(555)</span></abbr></h5>
-				</div>
-				<div class="coverImg">
-					<img src="../img/2.jpg" />
-					<h5>我的风景照片<span>(555)</span></abbr></h5>
-				</div>
-				<div class="coverImg">
-					<img src="../img/1.jpg" />
-					<h5>我的风景照片<span>(555)</span></abbr></h5>
-				</div>
-				<div class="coverImg">
-					<img src="../img/2.jpg" />
-					<h5>我的风景照片<span>(555)</span></abbr></h5>
-				</div>
-			</div>
-			
 		</div>
-
 		<script type="text/javascript">
 			mui.init()
 			var urlBase = 'http://api.yunji128.com/homage';
 			var imgBase = 'http://img.yunji128.com/';
-
-			function GetQueryString(name) {
-				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-				var r = window.location.search.substr(1).match(reg);
-				if(r != null) return decodeURI(r[2]);
-				return null;
-			}
-			var memorialId = GetQueryString("memorialId");
-
-			//请求图片信息列表
 			$.ajax({    
 				headers: {
 					tokenInfo: window.localStorage.getItem("tokenInfo")
 				},
-				       type: "GET",
-				       //contentType: "application/json",
-				      dataType: "json",
-				      
-				url: urlBase + "/api/album/albumFileList?&type=album",
+				type: "GET",
+				dataType: "json",
+				url: urlBase + "/api/album/myAlbumList",
 				      success: function(data) {
 					if(data.code == 'SUCCESS') {
-						//arlt(data);
 						var list = data.result;
-						//alert(data.result[0]);
 						var contens = "";
-
 						$.each(list, function(index, item) {
-							if(this.fileFormat = 'img') {
-								contens += '<p><img src="' + imgBase + this.path + '_crop_280x150_60' + '" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
+							if(null != this.headFile){
+								contens += '<div class="coverImg"><a href="albumPhone.html?albumId='+this.albumId+'"><img id="headsimg" src="'+imgBase+this.headFile.path+'_crop_280x150_60'+'" /></a><h5>'+this.albumName+'<span>('+this.countPic+')</span></abbr></h5><a href="javascript:deleteImg(' + this.albumId + ');"><img id="delimg" src="../img/deletimg.png"/></a></div>';
 							}
-							if(this.fileFormat = 'video') {
-								contens += '<p id="videoH"><video  src="' + imgBase + this.path + '_crop_280x150_60+'
-								" width="
-								320 " height="
-								240 " controls="
-								controls " /></video></p>'
+							if(null == this.headFile){
+								contens += '<div class="coverImg"><a href="albumPhone.html?albumId='+this.albumId+'"><img id="headsimg" src="" /></a><h5>'+this.albumName+'<span>('+this.countPic+')</span></abbr></h5><a href="javascript:deleteImg(' + this.albumId + ');"><img id="delimg" src="../img/deletimg.png"/></a></div>';
 							}
+							
 						})
 						console.log(data);
-						document.getElementById("showImg").innerHTML = contens;
+						$('#photolist').append(contens);
 					}
-				},
-				   
-				error: function(message) {
-					alert("提交数据失败！");
 				}
 			});
-
-			$("#myimgID").click(function() {
-				$("#imgupload").click();
-			});
-			$("#myvideoID").click(function() {
-				$("#videoupload").click();
-			});
-
-			function uploadImg(fileFormat) {
-				var fd = null;
-				if(fileFormat == "img") {
-					fd = new FormData(document.getElementById("uploadImgForm"));
-					fd.append("path", "h5/memorphone");
-					fd.append("fileFormat", "img");
-				}
-				if(fileFormat == "video") {
-					fd = new FormData(document.getElementById("uploadImgForm"));
-					fd.append("path", "h5/memorphone");
-					fd.append("fileFormat", "video");
-				}
-				fd.append("fileSize", "10001");
-
-				$.ajax({
-					type: "POST",
-					url: urlBase + "/file/fileUpload",
-					data: fd, //FormId
-					processData: false, // 告诉jQuery不要去处理发送的数据
-					contentType: false, // 告诉jQuery不要去设置Content-Type请求头
-					error: function(request) {
-						//layer.alert('添加出现异常', {icon: 5});
-					},
-					success: function(data) {
-						if(data.code == 'SUCCESS') {
-							//$("#myimgID").attr("src",imgBase+data.result.path);
-							editImg(data.result.path, fileFormat);
-						} else {
-							alert(data.message);
-						}
+			
+			function createAlbum() {
+				if (albumName = prompt("请输入相册名")) {
+					if(albumName){
+						$.ajax({  
+							type: "POST",  
+							headers: {
+								tokenInfo: window.localStorage.getItem("tokenInfo")
+							},
+							contentType: "application/json; charset=utf-8",  
+							url: urlBase + "/api/album/createAlbum",  
+							data: JSON.stringify({albumName:albumName}),
+							dataType: "json",  
+							success: function (data) {
+								if(data.code=='SUCCESS'){
+									mui.alert("创建成功");
+									window.location.reload();
+								}
+								else{
+									mui.alert(data.message)
+								}
+							}
+						});
 					}
-				});
-			}
-
-			function editImg(path, fileFormat) {
-
-				var requestBody = {
-					"dataId": albumId,
-					"files": [{
-						"fileFormat": fileFormat,
-						"fileSize": 100,
-						"path": "path"
-					}],
-					"type": "album"
 				}
-				$.ajax({
-					type: "POST",
-					headers: {
-						tokenInfo: window.localStorage.getItem("tokenInfo")
-					},
-					url: urlBase + "/api/album/uploadFileToAlbum",
-					contentType: "application/json; charset=utf-8",
-					data: JSON.stringify(requestBody),
-					dataType: "json",
-					success: function(data) {
-						if(data.code == 'SUCCESS') {
-							alert("上传成功!");
-							window.location.reload();
-							//window.location.href="headInfo.html";
-
-						} else {
-							alert(data.message)
-						}
-					},
-					error: function(message) {
-						alert("提交数据失败！");
-					}
-				});
-			}
+			}function deleteImg(id) {    var btnArray = ['是', '否'];    mui.confirm('是否删除该相册？', '提示', btnArray, function(e) {        if (e.index == 0) {            $.ajax({                type: "POST",                headers: {                    tokenInfo: window.localStorage.getItem("tokenInfo")                },                url: urlBase + "/api/album/deleteAlbum?albumId=" + id,                contentType: "application/json; charset=utf-8",//	                data: JSON.stringify(requestBody),                dataType: "json",                success: function (data) {                    if (data.code == 'SUCCESS') {                        mui.alert("删除成功~~~~~~~");                        location.reload();                    }                    else {                        mui.alert(data.message)                    }                },                error: function (message) {                    mui.alert("提交数据失败！");                }            });        }    })}
 		</script>
 	</body>
 

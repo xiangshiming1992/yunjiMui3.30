@@ -25,13 +25,14 @@ $(document).ready(function(){
                     'onMenuShareTimeline',
                     'onMenuShareQQ',
                     'hideOptionMenu',
+                    'getLocation',
+                    'openLocation'
                 ]
             });
             var shareTitle = "一起分享吧！";
             var desc = "分享描述";
             var shareImg = "http://img.yunji128.com/homage/upload/sacrifice/2018/06/75ca75abf4864918b70794d2390d43cc.png";
             var link = "http://wx.yunji128.com/tpl/share.html?shareUserId="+shareUserId;
-            
             wx.ready(function(){
             	 /*分享给朋友*/  
 		        wx.onMenuShareAppMessage({  
@@ -70,8 +71,7 @@ $(document).ready(function(){
 		            cancel: function () {   
 		              showMessage("分享取消");
 		            }  
-		        });  
-                
+		        });
                 //wx.hideOptionMenu();/***隐藏分享菜单****/
             });
         });

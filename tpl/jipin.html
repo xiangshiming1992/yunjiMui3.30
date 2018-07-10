@@ -5,9 +5,9 @@
 		<title>祭拜</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/index.css?version=2.2" rel="stylesheet" />
-		<link href="../css/jipin.css?version=2.2" rel="stylesheet" />
-		<link href="../css/buiding.css?version=2.2" rel="stylesheet" />
+		<link href="../css/index.css?version=3.2" rel="stylesheet" />
+		<link href="../css/jipin.css?version=3.2" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.2" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 	<body>
@@ -82,7 +82,7 @@
 							var list = data.result;
 							var contens = "";
 							$.each(list, function(){     
-							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+')"><li><img src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+'云币</span></p><p>时效：<span>'+this.sacrificeAging+'分钟</span></p></li></a>'
+							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+',\''+this.effects+'\',\''+this.sacrificeBigImg+'\')"><li><img width="100px" height="100px"  src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+'云币</span></p><p>时效：<span>'+this.sacrificeAging+'分钟</span></p></li></a>'
 							}); 
 							document.getElementById('jpList').innerHTML = contens;
 						}
@@ -90,7 +90,7 @@
 		    	});
 			}
 			//确认祭拜
-			function sureJb(sacrificeId,useCloudBi){
+			function sureJb(sacrificeId,useCloudBi,effects,sacrificeBigImg){
 				if(window.confirm('你确定要祭拜吗？当前祭拜消耗'+useCloudBi+'云币')){
                 	$.ajax({
 					      headers: {
@@ -102,13 +102,17 @@
 					      url: urlBase + "/api/sacrifice/doSG?sacrificeId="+sacrificeId+"&memorialId="+memorialId, //这里是网址
 					      success:function(data){
 							if(data.code=='SUCCESS'){
-								alert("祭拜成功~~");
-								window.location.href = document.referrer;//返回上一页并刷新  
+								mui.alert("祭拜成功~~",function () {
+                                    window.localStorage.setItem("effects",effects);
+                                    window.localStorage.setItem("sacrificeBigImg",sacrificeBigImg);
+                                    sessionStorage.setItem("addressChange","addressChange")
+                                    history.back();
+                                    // window.location.href = document.referrer;//返回上一页并刷新
+                                });
 							}
 							else{
-								alert(data.message);
-								window.location.href = document.referrer;//返回上一页并刷新  
-							}
+                                mui.alert(data.message);
+                            }
 						 }
 			    	});
 	            }

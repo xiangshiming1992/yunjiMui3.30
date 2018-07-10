@@ -32,10 +32,7 @@
      text-align: center;
  }
 
- .image label {
-     text-align: left;
- }
- .image label~input {}
+ /*.image label~input {}*/
 
  .image label~input {
      width: 42px;
@@ -43,12 +40,13 @@
      float: none;
  }
 
- #edit {
+ #edit ,#info,#ship{
      display: none;
  }
 
  .mui-table-view .mui-media-object {
      width: 42px;
+     float: left;
  }
 
  .fz-12 {
@@ -80,3 +78,18 @@
   .mui-bar .mui-btn{top: 0}
   .boy{color: yellowgreen}
   .girl{color: white}
+ .mui-input-row label:last-child{width: auto;max-width: 60%;overflow: hidden;text-overflow: ellipsis;padding-right: 0;padding-left: 0;}
+
+ .pushu{position: fixed;top:2rem;right: 1rem;padding: 11px 0;z-index: 999;width: 90px;background-color: #5bc0de;text-align: center;opacity:0.2;}
+ .pushu:hover{opacity:1;}
+ .pushu button{margin: 5px 0}
+ #ship .mui-content{width: 80%;margin: 0 auto}
+ .mui-switch.mui-active:before{content: "是"}
+ .mui-switch:before{content: "否"}
+ .mui-input-row label{text-align: right}
+  .mui-radio label{width: 90px;padding-right: 0;text-align: left}
+  .mui-radio input[type=radio]{width: 10px}
+ [readonly="readonly"] {
+     user-select: none;
+ }
+ .mui-content>.mui-table-view:first-child{margin-top:0}

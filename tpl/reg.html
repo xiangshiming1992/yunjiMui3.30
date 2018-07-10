@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>注册</title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/reg.css?version=2.2" rel="stylesheet" />
+		<link href="../css/reg.css?version=3.2" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
-		<script src="../js/sha256.jquery.debug.js?version=2.2"></script>
+		<script src="../js/sha256.jquery.debug.js?version=3.2"></script>
 		<style>
 		</style>
 	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
@@ -58,26 +58,26 @@
 	                dataType: "json",  
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
-	                		alert("发送短信成功，请注意查收");
+	                		mui.alert("发送短信成功，请注意查收");
 	                		var obj = $("#_sendSms");
 	                		settime(obj);
 	                	}
 	                	else{
-	                		alert(data.message)
+	                		mui.alert(data.message)
 	                	}
 	                },  
 	                error: function (message) {  
-	                    alert("提交数据失败！");  
+	                    mui.alert("提交数据失败！");
 	                }  
 	           });
 			});
 			$("#reg").click(function(){
 				if($("#password").val().length < 6){
-					alert("密码至少6位");
+					mui.alert("密码至少6位");
 					return;
 				}
 				if($("#password").val() != $("#password_confirm").val()){
-					alert("两次密码不一致");
+					mui.alert("两次密码不一致");
 					return;
 				}
 				var shareUserId = window.localStorage.getItem("shareUserId");
@@ -98,15 +98,15 @@
 	                dataType: "json",  
 	                success: function (data) {
 	                	if(data.code=='SUCCESS'){
-	                		alert("注册成功,去登录吧");
+	                		mui.alert("注册成功,去登录吧");
 	                		window.location.href="../index.html?biz=login";
 	                	}
 	                	else{
-	                		alert(data.message)
+	                		mui.alert(data.message)
 	                	}
 	                },  
 	                error: function (message) {  
-	                    alert("提交数据失败！");  
+	                    mui.alert("提交数据失败！");
 	                }  
 	           });
 			});

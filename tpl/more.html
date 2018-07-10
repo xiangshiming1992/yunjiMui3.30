@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <title>我加入的家谱</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_669452_mrhqfd4if30g4x6r.css?version=2.2" />
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_669452_mrhqfd4if30g4x6r.css?version=3.2" />
     <link href="../css/mui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../css/jiapulist.css?version=2.2" />
+    <link rel="stylesheet" type="text/css" href="../css/jiapulist.css?version=3.2" />
     <script type="text/javascript" charset="utf-8" src="../js/mui.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/jquery-1.10.2.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../js/loadMore.js?version=2.2"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/loadMore.js?version=3.2"></script>
 <script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 <body>
 <div class="mui-slider bannertop" data-slider="1">
@@ -25,7 +25,8 @@
 <ul class="mui-table-view">
     <li class="mui-table-view-cell mui-media">
         <div class="mui-input-row mui-search">
-            <input type="search" class="mui-input-clear" placeholder="">
+            <form id="search"></form>
+            <input form="search" type="search" id="shousou" class="mui-input-clear" placeholder="">
         </div>
     </li>
 </ul>
@@ -53,6 +54,20 @@
         <span class="mui-tab-label">个人中心</span>
     </a>
 </nav>
-<script src="../js/navJump.js?version=2.2"></script>
+<script src="../js/navJump.js?version=3.2"></script>
+<script>
+    var shousou = null;
+    loadMore(shousou);
+    $("#search").submit(function () {
+        var content = $("#shousou").val();
+        if (content != shousou){
+            shousou=content;
+            page=1;
+            loadMore(shousou)
+        }
+        console.log(1);
+        return false
+    })
+</script>
 </body>
 </html>

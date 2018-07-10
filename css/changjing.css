@@ -11,7 +11,7 @@ li {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: url()no-repeat;
+	background: url('')no-repeat;
 	background-size: 100%100%;
 }
 
@@ -29,7 +29,7 @@ li {
 .muzi{
 	position: absolute;
 	left: 50%;
-	top: 33.6%;
+	top: 36%;
 	-webkit-writing-mode:vertical-rl;
 	writing-mode:tb-rl;
 	writing-mode:vertical-rl;
@@ -78,7 +78,7 @@ li {
 .muzi_sw_L{
 	position: absolute;
 	left: 46%;
-	top: 33.6%;
+	top: 35%;
 	-webkit-writing-mode:vertical-rl;
 	writing-mode:tb-rl;
 	writing-mode:vertical-rl;
@@ -90,7 +90,7 @@ li {
 .muzi_sw_R{
 	position: absolute;
 	left: 54%;
-	top: 33.6%;
+	top: 35%;
 	-webkit-writing-mode:vertical-rl;
 	writing-mode:tb-rl;
 	writing-mode:vertical-rl;
@@ -181,17 +181,20 @@ li {
 	height: 44px;
 }
 .changBuid{
-	float: right;
-	
-	background: #007AFF;
-	color: #FFFFFF;
+	position: fixed;
+	right: 0.5rem;
+	top: 4rem;
+	height: 4rem;
+	background-color: #007AFF;
 	text-align: center;
-	line-height: 44px;
+	line-height: 2rem;
 	border-radius: 6px;
-	margin-top:20px;
-	margin-right: 10px;
 	width: 80px;
-	height: 44px;
+	font-size: smaller;
+}
+.changeBackground,.changeAddress{
+	height: 2rem;
+	color: white;
 }
 .mui-input-row {
 	margin-top: -6px
@@ -300,7 +303,7 @@ color: #898989;
 
 #xiangpian,
 #video {
-	background: rgb(237,237,242);
+	background: rgb(249,249,249);
 	width: 100%;
 	height: 46%;
 	position: absolute;

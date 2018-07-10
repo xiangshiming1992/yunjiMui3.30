@@ -20,55 +20,27 @@ $(function () {
         }
         $("input[name=addr]").val(user.xjProvince + " " + user.xjCity + " " + user.xjCounty);
         $("input[name=spouseAddr]").val(user.spouseXjProvince + " " + user.spouseXjCity + " " + user.spouseXjCounty);
-        // var headImgUrl = imgBase + user.headImg;
-        // $("input[name=headImg]").prev().attr("src", headImgUrl);
-        // $("input[name=headImg]").val(user.headImg)
-        // $("input[name=spouseHeadImg]").prev().attr("src",imgBase +  user.spouseHeadImg);
-        // $("input[name=sex][value=" + user.sex + "]").prop("checked", "checked");
     }
     $("input[type=submit]").click(function () {
         var data = $("#info-form").serializeArray();
-        var addr = $("input[name=addr]").val().split(" ");
-        var spouseAddr = $("input[name=spouseAddr]").val().split(" ");
-        var info = {
-            "birthDay": $("input[name=birthDay]").val(),
-            "headImg": $("input[name=headImg]").val(),
-            "name": $("input[name=name]").val(),
-            "phone": $("input[name=phone]").val(),
-            "remark": $("input[name=birthDay]").val(),
-            "sex": $("input[name=sex]:checked").val(),
-            "spouseBirthDay": $("input[name=spouseBirthDay]").val(),
-            "spouseHeadImg": $("input[name=spouseHeadImg]").val(),
-            "spouseName": $("input[name=spouseName]").val(),
-            "spousePhone": $("input[name=spousePhone]").val(),
-            "spouseXjCity": spouseAddr[1],
-            "spouseXjCounty": spouseAddr[2],
-            "spouseXjProvince": spouseAddr[0],
-            "xjCity": addr[1],
-            "xjCounty": addr[2],
-            "xjProvince": addr[0]
-        };
-        if (info.birthDay) {
-            info.birthDay = new Date(info.birthDay).getTime();
-        }
-        if (info.spouseBirthDay) {
-            info.spouseBirthDay = new Date(info.spouseBirthDay).getTime();
+        var info = {};
+        for (var item of data){
+            info[item.name] = item.value;
         }
         console.log(info)
         postDataToServer("/api/pedigree/myPedigreeUserInfoSave", JSON.stringify(info), function (res) {
             if (res.code == "SUCCESS") {
-                alert("保存成功")
-                history.back();
+                mui.alert("保存成功",function () {
+                    history.back();
+                });
             } else {
-                alert(res.message)
+                mui.alert(res.message)
             }
             console.log(res)
         }, function (error) {
             console.log(error)
         });
-    })
-
-
+    });
     function upload(img, file, form) {
         img.click(function () {
             file.click()
@@ -86,7 +58,7 @@ $(function () {
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false, // 告诉jQuery不要去设置Content-Type请求头
                 error: function (request) {
-                    //layer.alert('添加出现异常', {icon: 5});
+                    //layer.mui.alert('添加出现异常', {icon: 5});
                 },
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
@@ -105,31 +77,6 @@ $(function () {
     upload($("#img"), $("#file"), $("#headImg"));
     upload($("#another"), $("#aFile"), $("#aHeadImg"));
     var btns = $(".birth");
-    var dtpicker = new mui.DtPicker({
-        type: "date", //设置日历初始视图模式
-        beginDate: new Date(1900, 0, 1), //设置开始日期
-        endDate: new Date(2050, 12, 31), //设置结束日期
-    })
-    if ($("input[name=birthDay]").val().length > 0) {
-        dtpicker.setSelectedValue($("input[name=birthDay]").val())
-    }
-    btns[0].addEventListener('tap', function () {
-        dtpicker.show(function (e) {
-            console.log(e);
-            $(btns[0]).val(e.text)
-        })
-    });
-    var dtpicke2 = new mui.DtPicker({
-        type: "date", //设置日历初始视图模式
-        beginDate: new Date(1900, 0, 1), //设置开始日期
-        endDate: new Date(2050, 11, 31), //设置结束日期
-    });
-    btns[1].addEventListener('tap', function () {
-        dtpicke2.show(function (e) {
-            console.log(e);
-            $(btns[1]).val(e.text)
-        })
-    });
     var _getParam = function (obj, param) {
         return obj[param] || '';
     };
@@ -140,8 +87,10 @@ $(function () {
     var cityResult3 = $("#cityResult3");
     cityResult3.click(function () {
         cityPicker3.show(function (items) {
-            cityResult3.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') +
-                " " + _getParam(items[2], 'text'));
+            cityResult3.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
+            $("input[name=spouseXjProvince]").val(items[0].text)
+            $("input[name=spouseXjCity]").val(items[1].text)
+            $("input[name=spouseXjCounty]").val(items[2].text)
         })
     })
     var cityPicker2 = new mui.PopPicker({
@@ -152,8 +101,10 @@ $(function () {
     var cityResult2 = $("#cityResult2");
     cityResult2.click(function () {
         cityPicker2.show(function (items) {
-            cityResult2.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') +
-                " " + _getParam(items[2], 'text'));
+            cityResult2.val(_getParam(items[0], 'text') + " " + _getParam(items[1], 'text') + " " + _getParam(items[2], 'text'));
+            $("input[name=xjProvince]").val(items[0].text)
+            $("input[name=xjCity]").val(items[1].text)
+            $("input[name=xjCounty]").val(items[2].text)
         })
     })
     if (user) {

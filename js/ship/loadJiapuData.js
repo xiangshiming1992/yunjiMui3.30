@@ -24,13 +24,9 @@ $(function () {
         return null;
     }
     pedigreeId = getQueryString("pedigreeId");
-    // $.get(urlBase + "/api/pedigreePerson/personListAll", {
-    //     pedigreeId: pedigreeId
-    // }, function (res) {
-    //     console.log(res)
-    //
-    //     // console.log(p)
-    // });
+    /**
+     * 获取族谱数据
+     */
     ajax({
         method:"get",
         url:"/api/pedigreePerson/personListAll",
@@ -89,6 +85,9 @@ $(function () {
         },
         async:false
     });
+    /**
+     * 判断访问用户是否具有编辑权限
+     */
     ajax({
         method:"get",
         url:"/api/pedigree/info",
@@ -96,6 +95,23 @@ $(function () {
         success:function (res) {
             belong = user.userId ==  res.result.userId;
             loadBelong = true;
+            if(res.code=='SUCCESS'){
+                for (var item in res.result){
+                    $("."+item).val(res.result[item]);
+                }
+                if (res.result.flagPwd){
+                    $(".flagPwd").addClass("mui-active");
+                }
+                $(".addr").val(res.result.province + " "+res.result.city + " " +res.result.county);
+                $("#jiapu-tt-img").attr("src",imgBase+ res.result.totem);
+                $("#ship input").attr("readonly","readonly");
+                $("#textarea").html(res.result.ancestralHall)
+                if (user.userId !=res.result.userId){
+                    $("#editShip").remove();
+                }
+                $("#download").attr("rel",res.result.musicBook);
+                initShowBigImg()
+            }
         },
         async:false
     });
@@ -129,3 +145,72 @@ if (user) {
     user ={};
 }
 var maxLength=0;
+
+function goJiNianGuan(id) {
+    $.ajax({
+        headers: {
+            tokenInfo: window.localStorage.getItem("tokenInfo")
+        },
+        type: "POST",
+        url: urlBase + "/api/memorial/checkAccess?memorialId=" + id,
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            if (data.code == 'SUCCESS') {
+                if (data.result) {
+                    window.location.href = "jinianguanDetail.html?memorialId=" + id;
+                } else {
+                    mui.prompt('请输入密码访问：', '密码', '纪念馆', ['取消', '确定'], function(e) {
+                        if (e.index == 1) {
+                            checkPwd( e.valu, id);
+                        }
+                    });
+                    // if (inputPwd = prompt("请输入密码访问")) {
+                    //     checkPwd(inputPwd, id);
+                    // }
+                }
+            }
+            else {
+                mui.alert(data.message);
+            }
+        },
+        error: function (message) {
+        }
+    });
+}
+
+function checkPwd(pwd, id) {
+    $.ajax({
+        headers: {
+            tokenInfo: window.localStorage.getItem("tokenInfo"),
+            userId: 0
+        },
+        type: "GET",
+        url: urlBase + "/api/memorial/accessMemorialcheckPassWorld?password=" + pwd + "&memorialId=" + id,
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            if (data.code == 'SUCCESS') {
+                window.location.href = "jinianguanDetail.html?memorialId=" + id + "&password=" + pwd;
+            }
+            else {
+                mui.alert(data.message);
+            }
+        },
+        error: function (message) {
+        }
+    });
+}
+function initShowBigImg() {
+    $("#textarea img").click(function () {
+        showBigImg($(this));
+    });
+}
+function showBigImg(img) {
+    $("#bigImg img").attr("src",img.attr("src").split("_")[0]);
+    $("#bigImg").css("display","flex");
+    $("#bigImg").unbind();
+    $("#bigImg").click(function () {
+        $(this).css("display","none");
+    });
+}

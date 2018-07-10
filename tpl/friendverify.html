@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员中心</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/index.css?version=3.0" rel="stylesheet" />
+		<link href="../css/phone.css?version=3.0" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.0" rel="stylesheet" />
+		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/mui.min.js"></script>
+	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
+	<body>
+<header class="mui-bar mui-bar-nav header">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">好友验证消息</h1>
+</header>
+<div class="mui-content">
+	<ul class="mui-table-view" id="verifyList">
+	   <!-- <li class="mui-table-view-cell mui-media">
+            <div class="mui-media-body">
+                	来自：
+                	<span style="color: blue;" class="mui-pull-right">MMP哟</span>
+                	<p class="mui-ellipsis">内容：成都双流</p>
+                	<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="sendAddFriend('ss')">删除</p>
+                	<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="sendAddFriend('ss')">拒绝&nbsp;&nbsp;</p>
+                	<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="sendAddFriend('ss')">通过&nbsp;&nbsp;</p>
+            </div>
+	    </li>-->
+	</ul>
+</div>
+	<script type="text/javascript">
+		mui.init()
+		var urlBase = 'http://api.yunji128.com/homage';
+		var imgBase = 'http://img.yunji128.com/';
+		function GetQueryString(name) {
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  decodeURI(r[2]); return null;
+		}
+		$.ajax({
+		      headers: {
+		    	tokenInfo:window.localStorage.getItem("tokenInfo")
+			  },  
+		      type: "GET",
+		      contentType: "application/json",
+		      dataType: "json",
+		      url: urlBase + "/api/message/list?searchType=verify_message&currentPage=1&limit=1000", //这里是网址
+		      success:function(data){
+				if(data.code=='SUCCESS'){
+					var list = data.result.content;
+					var contens = "";
+					$.each(list, function(){     
+					    contens += '<li class="mui-table-view-cell mui-media"><div class="mui-media-body">'+
+                		'来自：<span style="color: blue;" class="mui-pull-right">'+this.nickname+'</span>'+
+	                	'<p class="mui-ellipsis">内容：'+this.msgContent+'</p>';
+	                	if("SEND" == this.msgState){
+	                		contens+='<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="deleteMsg('+this.msgId+')">删除</p>'+
+	                		'<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="doPassAndRe('+this.msgId+',\'REFUSE\')">拒绝&nbsp;&nbsp;</p>'+
+	                		'<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="doPassAndRe('+this.msgId+',\'PASS\')">通过&nbsp;&nbsp;</p></div></li>'	;
+	                	}
+	                	if("PASS" == this.msgState){
+	                		contens+='<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="deleteMsg('+this.msgId+')">删除</p>'+
+	                		'<p class="mui-ellipsis mui-pull-right" >已通过&nbsp;&nbsp;</p></div></li>';
+	                	}
+	                	if("REFUSE" == this.msgState){
+	                		contens+='<p class="mui-ellipsis mui-pull-right" style="color: blue;" onclick="deleteMsg('+this.msgId+')">删除</p>'+
+	                		'<p class="mui-ellipsis mui-pull-right" >已拒绝&nbsp;&nbsp;</p></div></li>';
+	                	}
+	                		
+					}); 
+					document.getElementById('verifyList').innerHTML = contens;
+				}
+			 }
+    	});
+		function deleteMsg(msgId){
+			$.ajax({
+			      headers: {
+			    	tokenInfo:window.localStorage.getItem("tokenInfo")
+				  },  
+			      type: "POST",
+			      contentType: "application/json",
+			      dataType: "json",
+			      url: urlBase + "/api/message/doDetele?msgId="+msgId, //这里是网址
+			      success:function(data){
+					if(data.code=='SUCCESS'){
+						mui.alert("删除成功",function(){
+							window.location.reload();
+						});
+					}
+				 }
+    		});
+		}
+		function doPassAndRe(msgId,msgState){
+			$.ajax({
+			      headers: {
+			    	tokenInfo:window.localStorage.getItem("tokenInfo")
+				  },  
+			      type: "POST",
+			      dataType: "json",
+			      url: urlBase + "/api/friend/passAddFriend", //这里是网址
+				  data:{"msgId":msgId,"msgState":msgState},
+			      success:function(data){
+					if(data.code=='SUCCESS'){
+						mui.alert("处理成功",function(){
+							window.location.reload();
+						});
+					}
+					else{
+						mui.alert(data.message);
+					}
+				 }
+    		});
+		}
+	</script>
+	</body>
+</html>

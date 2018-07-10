@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>登录</title>
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/login.css?version=2.2" rel="stylesheet" />
+		<link href="../css/login.css?version=3.2" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js"></script>
-		<script src="../js/sha256.jquery.debug.js?version=2.2"></script>
+		<script src="../js/sha256.jquery.debug.js?version=3.2"></script>
 		<style>
 		</style>
 	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
@@ -47,7 +47,7 @@
 
 			</div>
 		</div>
-		<script src="js/mui.min.js?version=2.2"></script>
+		<script src="../js/mui.min.js?version=3.2" type="text/javascript"></script>
 		
 		<script type="application/javascript">
 			var urlBase = 'http://api.yunji128.com/homage';
@@ -71,11 +71,11 @@
 	                		window.location.href='personal.html'
 	                	}
 	                	else{
-	                		alert(data.message)
+	                		mui.alert(data.message)
 	                	}
 	                },  
 	                error: function (message) {  
-	                    alert("提交数据失败！");  
+	                    mui.alert("提交数据失败！");
 	                }  
 	           });
 			});

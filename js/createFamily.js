@@ -1,3 +1,28 @@
+var url = "/api/pedigree/add";
+ajax({
+    url:"/api/pedigree/myPedigreeInfo",
+    method:"get",
+    success:function (res) {
+        if(res.code=='SUCCESS' && res.result){
+            url = "/api/pedigree/edit";
+            $("input[type=submit]").val("修改家谱");
+            document.title = "修改家谱";
+            for (var item in res.result){
+                $("."+item).val(res.result[item]);
+            }
+            if (res.result.flagPwd){
+                $(".flagPwd").addClass("mui-active");
+            }
+            if (res.result.musicBook) {
+                $(".musicBookText").val("已上传")
+            }
+            $("#cityResult3").val(res.result.province + " "+res.result.city + " " +res.result.county);
+            $("#jiapu-tt-img").attr("src",imgBase+ res.result.totem+'_crop_68x68');
+            $("#textarea").html(res.result.ancestralHall);
+            initShowBigImg()
+        }
+    }
+});
 $(function () {
     $("#textarea").click(function () {
         $(this).attr("contenteditable","true")
@@ -7,7 +32,7 @@ $(function () {
     var imgBase = 'http://img.yunji128.com/';
 
     $("#musicBook").on("tap",function () {
-        var file  = $(this).prev().children("input[type=file]");
+        var file  = $("form[name=musicBook]").children("input[type=file]");
         file.click();
         file.unbind();
         file.change(function () {
@@ -21,11 +46,13 @@ $(function () {
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false, // 告诉jQuery不要去设置Content-Type请求头
                 error: function (request) {
-                    //layer.alert('添加出现异常', {icon: 5});
+                    //layer.mui.alert('添加出现异常', {icon: 5});
                 },
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
                         $("#musicBook").val( imgBase + data.result.path);
+                        $(".musicBookText").val("已上传");
+                        mui.alert("上传成功");
                         file.val('');
                     } else {
                         console.log(data.message);
@@ -51,7 +78,7 @@ $(function () {
                 processData: false, // 告诉jQuery不要去处理发送的数据
                 contentType: false, // 告诉jQuery不要去设置Content-Type请求头
                 error: function (request) {
-                    //layer.alert('添加出现异常', {icon: 5});
+                    //layer.mui.alert('添加出现异常', {icon: 5});
                 },
                 success: function (data) {
                     if (data.code == 'SUCCESS') {
@@ -119,16 +146,20 @@ var accessPwd = true;
             data.province = addr[0];
             data.city = addr[1];
             data.county = addr[2];
-			postDataToServer("/api/pedigree/add",JSON.stringify(data),function(res){
+            var pedigreeId=$(".pedigreeId").val();{}
+            if (pedigreeId){
+                data.pedigreeId = pedigreeId
+            }
+			postDataToServer(url,JSON.stringify(data),function(res){
 				if(res.code == "SUCCESS"){
 				    localStorage.setItem("jiapu",JSON.stringify(res.result));
-					window.location.href="editship.html?pedigreeId="+res.result.pedigreeId;
+					window.location.href="editship.html?pedigreeId="+(data.pedigreeId || res.result.pedigreeId);
 				}else{
-					alert(res.message)
+					mui.alert(res.message)
 				}
 			},function(error){console.log(error)})
         }else{
-			alert("请填写祖籍！")
+			mui.alert("请填写祖籍！")
 		}
     })
     $(".mui-icon-plusempty").click(function () {
@@ -146,12 +177,13 @@ var accessPwd = true;
             processData: false, // 告诉jQuery不要去处理发送的数据
             contentType: false, // 告诉jQuery不要去设置Content-Type请求头
             error: function (request) {
-                //layer.alert('添加出现异常', {icon: 5});
+                //layer.mui.alert('添加出现异常', {icon: 5});
             },
             success: function (data) {
                 if (data.code == 'SUCCESS') {
                     $("#textarea").append('<img src="'+imgBase + data.result.path+'_crop_41x41'+'" alt="">' );
                     $("#jiapu-tt-citang").val('');
+                    initShowBigImg();
                 } else {
                     console.log(data.message);
                 }
@@ -159,4 +191,18 @@ var accessPwd = true;
         });
     });
 });
+function initShowBigImg() {
+    $("#textarea img").click(function () {
+        showBigImg($(this));
+    });
+}
+function showBigImg(img) {
+    $("#bigImg img").attr("src",img.attr("src").split("_")[0]);
+    $("#bigImg").css("display","flex");
+    $("#bigImg").unbind();
+    $("#bigImg").click(function () {
+        $(this).css("display","none");
+    });
+}
+
 

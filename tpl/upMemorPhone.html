@@ -5,9 +5,9 @@
 		<title>会员中心</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/index.css?version=2.2" rel="stylesheet" />
-		<link href="../css/phone.css?version=2.2" rel="stylesheet" />
-		<link href="../css/buiding.css?version=2.2" rel="stylesheet" />
+		<link href="../css/index.css?version=3.2" rel="stylesheet" />
+		<link href="../css/phone.css?version=3.2" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.2" rel="stylesheet" />
 		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/mui.min.js"></script>
 		<style type="text/css">
@@ -21,13 +21,8 @@
 				text-align: center;
 				margin: 0 auto;
 			}
-			.showImg{
-				text-align: center;
-			}
-			.showImg p img{
-				width: 100%;
-				border: 1px #0000FF solid;
-			}
+			.showImg{				text-align: center;			}			.showImg p{				position: relative;
+							}			.showImg p img{				width: 100%;				/*border: 1px #0000FF solid;*/			}			.showImg p #delimg{				width: 40px;				position: absolute;				top: 0;				left: 90%;			}
 		</style>
 	<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
 	<body>
@@ -50,14 +45,14 @@
 	
 	<div class="mui-content-padded showImg" id="showImg">
 			<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->
+				
 				<!--<p>
 					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
+					<a href="javascript:deleteInfo(' + this.memorialId + ');"><img id="delimg" src="../img/deletimg.png"/></a>
 				</p>
 				<p>
-					<img src="../img/banner2.png" data-preview-src="" data-preview-group="1" />
-				</p>
-				<p>
-					<img src="../img/banner3.png" data-preview-src="" data-preview-group="1" />
+					<img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
+					<a href="javascript:deleteInfo(' + this.memorialId + ');"><img id="delimg" src="../img/deletimg.png"/></a>
 				</p>-->
 			</div>
 		</div>
@@ -89,18 +84,15 @@
 							var contens = "";
 							$.each(list,function(index,item){						
 								if(this.fileFormat=='img'){
-									contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
+									contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /><a href="javascript:deleteImg(' + this.fileId + ');"><img id="delimg" src="../img/deletimg.png"/></a></p>'
 								}
 								else if(this.fileFormat=='video'){
-									contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
+									contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video><a href="javascript:deleteImg(' + this.fileId + ');"><img id="delimg" src="../img/deletimg.png"/></a></p>'
 								}			
 							})						   	
 							document.getElementById("showImg").innerHTML = contens;
 						}
-			},	   
-			 		error: function (message) {  
-		                alert("提交数据失败！");  
-		            }  
+			}
 	       });
 	//点击添加照片上传照片路径
 		$("#myimgID").click(function(){
@@ -130,14 +122,14 @@
 					processData: false,  // 告诉jQuery不要去处理发送的数据
 					contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
 					error : function(request) {
-						//layer.alert('添加出现异常', {icon: 5});
+						//layer.mui.alert('添加出现异常', {icon: 5});
 					},
 					success : function(data) {
 						if (data.code == 'SUCCESS') {
 							//$("#myimgID").attr("src",imgBase+data.result.path);
 							editImg(data.result.path,fileFormat);
 						} else {
-							alert(data.message);
+							mui.alert(data.message);
 						}
 					}
 				}); 
@@ -165,22 +157,25 @@
 						dataType: "json",  
 						success: function (data) {
 							if(data.code=='SUCCESS'){
-								alert("上传成功!");
+								mui.alert("上传成功!");
 								window.location.reload();
 								//window.location.href="upMemorPhone.html";							
 							}
 							else{
-								alert(data.message)
+								mui.alert(data.message)
 							}
 						},  
 						error: function (message) {  
-							alert("提交数据失败！");  
+							mui.alert("提交数据失败！");
 						}  
 				   });
 		    }
 	
 	//点击添加视频按钮 上传视频
-				
+function deleteImg(id) {
+	var requestBody = [id];    var btnArray = ['是', '否'];    mui.confirm('是否删除该影像？', '提示', btnArray, function(e) {        if (e.index == 0) {            $.ajax({                type: "POST",                headers: {                    tokenInfo: window.localStorage.getItem("tokenInfo")                },                url: urlBase + "/api/album/deleteFileToAlbum?dataIds=" + id,                contentType: "application/json; charset=utf-8",	            data: JSON.stringify(requestBody),                dataType: "json",                success: function (data) {                    if (data.code == 'SUCCESS') {                        mui.alert("删除成功~~~~~~~",function(){
+                        	 location.reload();
+                        });                    }                    else {                        mui.alert(data.message)                    }                }            });        }    })}				
 			
 				
 	</script>

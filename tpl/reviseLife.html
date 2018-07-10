@@ -12,9 +12,9 @@
 
 		<link href="../css/mui.min.css" rel="stylesheet" />
 
-		<link href="../css/index.css?version=2.2" rel="stylesheet" />
+		<link href="../css/index.css?version=3.2" rel="stylesheet" />
 
-		<link href="../css/buiding.css?version=2.2" rel="stylesheet" />
+		<link href="../css/buiding.css?version=3.2" rel="stylesheet" />
 
 		<script src="../js/jquery-1.10.2.js"></script>
 
@@ -47,7 +47,7 @@
 	<body>
 		<div class="mui-content">
 			<div class="people1">
-				<h4>逝者信息</h4>
+				<h4>人物信息</h4>
 				<div id="deathName">
 					<input type="hidden" name="memorialPersonId" >
 					<h5 class="mui-content-padded">姓名：</h5>
@@ -188,11 +188,11 @@
 						}
 					
 					} else {
-						alert(data.message)
+						mui.alert(data.message)
 					}
 				},
 				    error: function(message) {      
-					alert("读取人物信息失败");      
+					mui.alert("读取人物信息失败");      
 				}    
 			});
 			$("#save").click(function() {
@@ -211,7 +211,7 @@
 					}
 					if(stem == 2){
 						if(''==$("[name='personName2']").val()){
-							alert("人二名字不能为空");
+							mui.alert("人二名字不能为空");
 						}
 						memorialPerson = [
 						    {
@@ -242,17 +242,17 @@
 					dataType: "json",
 					success: function(data) {
 						if(data.code == 'SUCCESS') {
-							alert("修改成功！");
+							mui.alert("修改成功！");
 							window.location.href = "myjinianguan.html"
 						} else {
-							alert(data.message);
+							mui.alert(data.message);
 						}
 
 					},
 
 					error: function(message) {
 
-						alert("提交数据失败！");
+						mui.alert("提交数据失败！");
 
 					}
 

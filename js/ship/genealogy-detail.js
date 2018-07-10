@@ -96,7 +96,7 @@ WY.genealogy = function (options) {
         itemHeight: 120,
         itemMargin: 25,
         itemLeftMargin: 15,
-        concatLineColor: '#f00',
+        concatLineColor: '#000',
         concatLineTop: 20,
         stepLineColor: '#eee',
         circleRadius: 5,
@@ -340,18 +340,19 @@ WY.genealogy = function (options) {
         e.stopPropagation();
         var itemClick = $(this).closest("[code]");
         editId = itemClick.attr("code");
-        let obj = item.getById(editId);
-        var left =parseInt(itemClick.css("left")) + itemClick.width();
-        var top = parseInt(itemClick.css("top"));
+        var obj = item.getById(editId);
+        var left =parseInt(itemClick.css("left")) ;
+        var top = parseInt(itemClick.css("top")) +itemClick.height();
         kyoPopupMenu.user = obj;
         kyoPopupMenu.id = editId;
         obj = obj.data;
-        let  index = $(this).index();
+        var  index = $(this).index();
+        kyoPopupMenu.index =index;
+        kyoPopupMenu.memorialId = index ==0 ? obj.memorialId : obj.spouseMemorialId;
         kyoPopupMenu.phone = index == 0 ? obj.phone : obj.spousePhone;
         kyoPopupMenu.name =  index == 0 ? obj.name : obj.spouseName;
         kyoPopupMenu.sys().css({left: left,top: top}).show();
         return false;
-        // showSomeOne(obj);
     });
 
     //编辑
@@ -493,7 +494,12 @@ WY.genealogy = function (options) {
                 a.ele.css({
                     left: level - options.itemHeight / 2 - options.circleRadius
                 }).show();
-
+                if (a.data.flagCreator) {
+                    jQuery('.show-canvas-content').animate({
+                        scrollTop: parseInt(a.ele.css("top"))  -$(window).height()/2 +a.ele.height()
+                        ,scrollLeft:parseInt(a.ele.css("left")) - $(window).width()/2 + a.ele.width()/2
+                    }, 0);
+                }
                 ctx.moveTo(level, a.offsetRight - 20);
                 ctx.lineTo(level, a.stepRight);
                 //console.log(a.offsetRight, a.stepRight)
@@ -518,13 +524,19 @@ WY.genealogy = function (options) {
                 });
 
             }else{
+                if (a.data.flagCreator) {
+                    jQuery('.show-canvas-content').animate({
+                        scrollTop: parseInt(a.ele.css("top"))  -$(window).height()/2 +a.ele.height()
+                        ,scrollLeft:parseInt(a.ele.css("left")) - $(window).width()/2 + a.ele.width()/2
+                    }, 0);
+                }
 				var parent = a.getParent();
 				if(parent && parent.children.length == 1){
 					a.ele.css("left",parent.ele.css("left"))
 				}
 			}
-        })
-        moveTo(100,100)
+        });
+
     }
     createElement(dataList);
     resetItemObject();
@@ -537,7 +549,7 @@ kyoPopupMenu = (function(){
         sys: function (obj) {
             $('.popup_menu').remove();
             popupMenuApp =
-                $('<div class="popup_menu app-menu"><ul><li><a menu="menu1">人物视觉</a></li><li><a menu="menu2">个人信息</a></li></ul></div>').
+                $('<div class="popup_menu app-menu"><ul><li><a menu="menu1">进入家谱</a></li><li><a menu="menu2">个人信息</a></li><li><a menu="menu3">纪念馆</a></li></ul></div>').
                 find('a').attr('href','javascript:;').end().appendTo('.position-relative');
             //绑定事件
             $('.app-menu a[menu="menu1"]').on('click', function (){
@@ -545,19 +557,27 @@ kyoPopupMenu = (function(){
                 if (phone) {
                     getDataFromServer("/api/pedigreePerson/people_perspective",{phone:phone},function (res) {
                         if (res.result){
-                            location.href = "editship.html?pedigreeId="+res.result;
+                            jiaPuInfo(res.result)
+                            // location.href = "editship.html?pedigreeId="+res.result;
                         }else {
-                            alert(kyoPopupMenu.name +"还没有创建人物视角");
+                            mui.alert(kyoPopupMenu.name +"还没有创建人物视角");
                         }
                     },function (error) {
                         console.log(error);
                     })
                 }else {
-                    alert(kyoPopupMenu.name +"还没有创建人物视角");
+                    mui.alert(kyoPopupMenu.name +"还没有创建人物视角");
                 }
             });
             $('.app-menu a[menu="menu2"]').on('click', function (){
-                showSomeOne(kyoPopupMenu.user);
+                showSomeOne(kyoPopupMenu.user,kyoPopupMenu.index);
+            });
+            $('.app-menu a[menu="menu3"]').on("click",function () {
+                if (!kyoPopupMenu.memorialId){
+                    mui.alert(kyoPopupMenu.name +"还没有创建纪念馆");
+                }else {
+                    goJiNianGuan(kyoPopupMenu.memorialId);
+                }
             });
             return popupMenuApp;
         },
@@ -570,3 +590,51 @@ $('.show-canvas-content').on('click', function (){return false;}).click(function
     kyoPopupMenu.id=null;
     $('.popup_menu').hide();
 });
+
+//家谱访问处理
+function jiaPuInfo(id) {
+    $.ajax({
+        headers: {
+            tokenInfo: window.localStorage.getItem("tokenInfo")
+        },
+        type: "POST",
+        url: urlBase + "/api/pedigree/checkAccess?pedigreeId=" + id,
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            if (data.code == 'SUCCESS') {
+                if (data.result) {
+                    window.location.href = "editship.html?pedigreeId=" + id;
+                } else {
+                    if (inputPwd = prompt("请输入密码访问")) {
+                        jiapuCheckPwd(inputPwd, id);
+                    }
+                }
+            }
+            else {
+                mui.alert(data.message);
+            }
+        }
+    });
+}
+
+function jiapuCheckPwd(pwd, id) {
+    $.ajax({
+        headers: {
+            tokenInfo: window.localStorage.getItem("tokenInfo"),
+            userId: 0
+        },
+        type: "POST",
+        url: urlBase + "/api/pedigree/accesscheckPassWorld?password=" + pwd + "&pedigreeId=" + id,
+        data: {},
+        dataType: "json",
+        success: function (data) {
+            if (data.code == 'SUCCESS') {
+                window.location.href = "editship.html?pedigreeId=" + id + "&password=" + pwd;
+            }
+            else {
+                mui.alert(data.message);
+            }
+        }
+    });
+}

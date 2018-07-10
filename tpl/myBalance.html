@@ -6,7 +6,7 @@
     <title>个人中心</title>
     <script src="../js/mui.min.js"></script>
     <link href="../css/mui.min.css" rel="stylesheet"/>
-     <link href="../css/index.css?version=2.2" rel="stylesheet"/>
+     <link href="../css/index.css?version=3.2" rel="stylesheet"/>
      <script src="../js/jquery-1.10.2.js"></script>
      <script src="../js/showmessage.js"></script>
 		 <script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
@@ -213,7 +213,7 @@ ul,ol li{list-style:none;}
 
  <script type="application/javascript">
  	$("#yaoqing").on("tap",function(){
-// 		alert("弹出层分享引导");
+// 		mui.alert("弹出层分享引导");
  		$(".bg, .fxYingDao").show();
  	});
  	$(".header,.bg, .fxYingDao").on("tap",function(){
@@ -306,7 +306,7 @@ ul,ol li{list-style:none;}
             dataType: "json",  
             success: function (data) {
 	            if(data.code=='SUCCESS'){
-	               	alert("提交申请成功，我们将在3-7个工作日完成打款");
+	               	mui.alert("提交申请成功，我们将在3-7个工作日完成打款");
 	                window.location.reload();
 	            }
 	            else{

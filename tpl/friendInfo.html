@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>好友资料</title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/index.css?version=3.0" rel="stylesheet"/>
+    <link href="../css/list.css?version=3.0" rel="stylesheet"/>
+    <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+    	.mui-input-row1 label{
+    		font-family: 'Helvetica Neue',Helvetica,sans-serif;
+		    line-height: 1.1;
+		    float: left;
+		    padding: 3px 15px;
+    	}
+    </style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav header">
+	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">好友资料</h1>
+</header>
+<div class="mui-content">
+
+    <!--  个人资料-->
+    <div class="mui-slider bannertop">
+        <div class="mui-content">
+	        <ul class="mui-table-view mui-content">
+	            <li class="mui-table-view-cell mui-media image">
+	                <div class="mui-input-row">
+	                    <img onerror="this.src='../img/demo.jpg'" src="" width="90px" class="info-headImg">
+	                </div>
+	            </li>
+	            <li class="mui-table-view-cell mui-media">
+	                <div class="mui-input-row1">
+	                    <label class="mui-h5 mui-text-right">昵称：</label>
+	                    <label class="mui-h5 info-nickname"></label>
+	                </div>
+	            </li>
+	            <li class="mui-table-view-cell mui-media">
+	                <div class="mui-input-row1">
+	                    <label class="mui-h5 mui-text-right">性别：</label>
+	                    <label class="mui-h5 info-gender"></label>
+	                </div>
+	            </li>
+	            <li class="mui-table-view-cell mui-media">
+	                <div class="mui-input-row1">
+	                    <label class="mui-h5 mui-text-right">生日：</label>
+	                    <label class="mui-h5 info-birthDay"></label>
+	                </div>
+	            </li>
+	            
+	            <li class="mui-table-view-cell mui-media">
+	                <div class="mui-input-row1">
+	                    <label class="mui-h5 mui-text-right">家乡：</label>
+	                    <label class="mui-h5 info-jx"></label>
+	                </div>
+	            </li>
+	            <li class="mui-table-view-cell mui-media">
+	                <div class="mui-input-row1">
+	                    <label class="mui-h5 mui-text-right">现居：</label>
+	                    <label class="mui-h5 info-xj"></label>
+	                </div>
+	            </li>
+	            
+	            <li class="mui-table-view-cell mui-media">
+	                <div class="mui-input-row1">
+	                    <label class="mui-h5 mui-text-right">简介：</label>
+	                    <label class="mui-h5 info-introduction"></label>
+	                </div>
+	            </li>
+	        </ul>
+	    </div>
+    </div>
+    <!--  选项卡-->
+    <div class="mui-slider">
+        <div class="mui-segmented-control">
+            <a class="mui-control-item mui-active" href="#item1">纪念馆</a>
+            <a class="mui-control-item" href="#item2">家谱</a>
+        </div>
+        <div class="">
+            <div id="item1" class="mui-control-content mui-active">
+                <ul class="mui-table-view" id="mpersonal">
+                </ul>
+            </div>
+            <div id="item2" class=" mui-control-content">
+                <div id="more">
+				    <ul class="mui-table-view" id="data"></ul>
+				</div>
+            </div>
+        </div>
+    </div>
+    <!--列表-->
+    <div style="height: 50px"></div>
+    <script src="../js/navJump.js?version=1.1"></script>
+    <script src="../js/loadMoreAll.js"></script>
+    <script type="application/javascript">
+        var urlBase = 'http://api.yunji128.com/homage';
+        var imgBase = 'http://img.yunji128.com/';
+		function GetQueryString(name) {
+		     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  decodeURI(r[2]); return null;
+		}
+		var userId = GetQueryString("userId");
+		
+		//查看好友个人资料
+		$.ajax({
+    		headers: {
+	    		tokenInfo:window.localStorage.getItem("tokenInfo")
+		  	},  
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            url: urlBase + "/api/user/seeFriendInfo?taUserId="+userId,
+            success: function (data) {
+               	console.log(data.result);
+               	$(".info-headImg").attr("src",imgBase + data.result.headImg+"_crop_90x90_60");
+               	$(".info-nickname").html(data.result.nickname);
+               	$(".info-gender").html(data.result.gender);
+               	$(".info-birthDay").html(data.result.birthDay.replace("00:00:00",""));
+               	$(".info-xj").html(data.result.xjProvince + " " + data.result.xjCity + " " + data.result.xjCounty);
+               	$(".info-jx").html(data.result.jxProvince + " " + data.result.jxCity + " " + data.result.jxCounty);
+               	$(".info-introduction").html(data.result.introduction);
+            }
+        });
+        
+		//好友纪念馆列表
+        $.ajax({
+        		headers: {
+		    		tokenInfo:window.localStorage.getItem("tokenInfo")
+			  	},  
+                type: "GET",
+                contentType: "application/json",
+                dataType: "json",
+                url: urlBase + "/api/memorial/friendlist?taUserId="+userId+"&currentPage=1&limit=50&content=",
+                success: function (data) {
+                    var listPersonal = data.result.content;
+                    var memorialContent = "";
+                    $.each(listPersonal, function () {
+                        memorialContent += '<li class="mui-table-view-cell mui-media list1"><a href="javascript:info(' + this.memorialId + ');"><h4>' + this.memorialName + '</h4>' +
+                            '<img class="mui-media-object mui-pull-left" src="' + imgBase + this.headImg + '">' +
+                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.memorialId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
+                            '<ul class="smallul"><li>祭拜数：<span>' + this.worshipCount + '</span></li><li>建馆时间：<span>' + this.rowAddTime + '</span></li></ul></div></a></li>'
+                    });
+                    document.getElementById('mpersonal').innerHTML = memorialContent;
+                }
+        });
+
+		//好友家谱
+        $.ajax({
+    		headers: {
+	    		tokenInfo:window.localStorage.getItem("tokenInfo")
+		  	},  
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            url: urlBase + "/api/pedigree/friendList?taUserId="+userId+"&currentPage=1&limit=50",
+            success: function (res) {
+               	var list = res.result.content;
+	            if (list && list.length > 0) {
+	                var record = "";
+	                for (var i=0;i< list.length ; i++) {
+	                    var item = list[i];
+	                    record += '<li class="mui-table-view-cell mui-media" onclick="goJiapu(' + item.pedigreeId + ')">' +
+	                        '<img onerror="src=\'http://img.yunji128.com/homage/upload/n2n/h5/userhead/2018/06/cd19f659-68c.jpg\'"  class="mui-media-object mui-pull-left" src="' + imgBase + item.totem + '_crop_42x42' + '">' +
+	                        '<div class="mui-media-body">' + item.surname  +
+	                        '氏<p><span class="shu">'+ item.nickname +'</span>创<span class="shu">|</span><span>'+item.personNumber+'</span>人</p>' +
+	                        '<p class="time">' + item.rowAddTime.substring(0,10) + '</p>' +
+	                        '<p class="addr">' + item.province +' ' + item.city +' '+ item.county + '</p>' +
+	                        '</div>' +
+	                        '</li>';
+	                }
+                	document.getElementById('data').innerHTML = record;
+                }
+            }
+       });
+        //纪念馆访问处理
+        function info(id) {
+            $.ajax({
+                headers: {
+                    tokenInfo: window.localStorage.getItem("tokenInfo")
+                },
+                type: "POST",
+                url: urlBase + "/api/memorial/checkAccess?memorialId=" + id,
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == 'SUCCESS') {
+                        if (data.result) {
+                            window.location.href = "jinianguanDetail.html?memorialId=" + id;
+                        } else {
+                            if (inputPwd = prompt("请输入密码访问")) {
+                                checkPwd(inputPwd, id);
+                            }
+                        }
+                    }
+                    else {
+                        mui.alert(data.message);
+                    }
+                }
+            });
+        }
+
+        function checkPwd(pwd, id) {
+            $.ajax({
+                headers: {
+                    tokenInfo: window.localStorage.getItem("tokenInfo"),
+                    userId: 0
+                },
+                type: "GET",
+                url: urlBase + "/api/memorial/accessMemorialcheckPassWorld?password=" + pwd + "&memorialId=" + id,
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == 'SUCCESS') {
+                        window.location.href = "jinianguanDetail.html?memorialId=" + id + "&password=" + pwd;
+                    }
+                    else {
+                        mui.alert(data.message);
+                    }
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

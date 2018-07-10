@@ -2,15 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title>纪念馆</title>
     <script src="../js/mui.min.js"></script>
     <link href="../css/mui.min.css" rel="stylesheet"/>
-    <link href="../css/index.css?version=2.2" rel="stylesheet"/>
-    <link href="../css/list.css?version=2.2" rel="stylesheet"/>
+    <link href="../css/index.css?version=3.2" rel="stylesheet"/>
+    <link href="../css/list.css?version=3.2" rel="stylesheet"/>
     <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
-
     <script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
@@ -68,8 +66,8 @@
     </script>
     <!--搜索-->
     <div class="mui-input-row mui-search">
-        <input type="search" id="shousou" onkeyup="enterSearch(event)" class="mui-input-clear "
-               placeholder="馆号|馆名|被纪念人姓名">
+        <input form="search" type="search" id="shousou"  class="mui-input-clear " placeholder="馆号|馆名|被纪念人姓名">
+        <form id="search"></form>
     </div>
     <!--  选项卡-->
     <div class="mui-slider">
@@ -106,14 +104,14 @@
         </a>
         <a class="mui-tab-item" id="xingshi">
             <span class="mui-icon mui-icon-navigate"></span>
-            <span class="mui-tab-label">姓氏起源</span>
+            <span class="mui-tab-label">云祭文化</span>
         </a>
         <a class="mui-tab-item" id="personal">
             <span class="mui-icon mui-icon-contact"></span>
             <span class="mui-tab-label">个人中心</span>
         </a>
     </nav>
-    <script src="../js/navJump.js?version=1.1"></script>
+    <script src="../js/navJump.js?version=3.2"></script>
     <script type="application/javascript">
         var urlBase = 'http://api.yunji128.com/homage';
         var imgBase = 'http://img.yunji128.com/';
@@ -130,7 +128,7 @@
                     $.each(listPersonal, function () {
                         memorialContent += '<li class="mui-table-view-cell mui-media list1"><a href="javascript:info(' + this.memorialId + ');"><h4>' + this.memorialName + '</h4>' +
                             '<img class="mui-media-object mui-pull-left" src="' + imgBase + this.headImg + '">' +
-                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.userId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
+                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.memorialId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
                             '<ul class="smallul"><li>祭拜数：<span>' + this.worshipCount + '</span></li><li>建馆时间：<span>' + this.rowAddTime + '</span></li></ul></div></a></li>'
                     });
                     document.getElementById('mpersonal').innerHTML = memorialContent;
@@ -152,7 +150,7 @@
                     $.each(listcelebrity, function () {
                         memorialcelebrity += '<li class="mui-table-view-cell mui-media list1"><a href="javascript:info(' + this.memorialId + ');"><h4>' + this.memorialName + '</h4>' +
                             '<img class="mui-media-object mui-pull-left" src="' + imgBase + this.headImg + '">' +
-                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.userId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
+                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.memorialId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
                             '<ul class="smallul"><li>祭拜数：<span>' + this.worshipCount + '</span></li><li>建馆时间：<span>' + this.rowAddTime + '</span></li></ul></div></a></li>'
                     });
                     document.getElementById('mcelebrity').innerHTML = memorialcelebrity;
@@ -175,7 +173,7 @@
                     $.each(listrenqi, function () {
                         memorialrenqi += '<li class="mui-table-view-cell mui-media list1"><a href="javascript:info(' + this.memorialId + ');"><h4>' + this.memorialName + '</h4>' +
                             '<img class="mui-media-object mui-pull-left" src="' + imgBase + this.headImg + '">' +
-                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.userId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
+                            '<div class="mui-media-body"><ul class="smallul"><li>馆号：<span>' + this.memorialId + '</span></li><li>建馆人：<span>' + this.nickname + '</span></li></ul>' +
                             '<ul class="smallul"><li>祭拜数：<span>' + this.worshipCount + '</span></li><li>建馆时间：<span>' + this.rowAddTime + '</span></li></ul></div></a></li>'
                     });
                     document.getElementById('renqi').innerHTML = memorialrenqi;
@@ -209,7 +207,7 @@
                         }
                     }
                     else {
-                        alert(data.message);
+                        mui.alert(data.message);
                     }
                 },
                 error: function (message) {
@@ -232,7 +230,7 @@
                         window.location.href = "jinianguanDetail.html?memorialId=" + id + "&password=" + pwd;
                     }
                     else {
-                        alert(data.message);
+                        mui.alert(data.message);
                     }
                 },
                 error: function (message) {
@@ -240,22 +238,27 @@
             });
         }
 
+        $("#search").submit(function () {
+            $("#shousou").blur();
+            var content = $("#shousou").val();
+            console.log(content);
+            $(".mui-control-item.mui-active").each(function () {
+                if ('私人馆' == $(this).html()) {
+                    alist(content);
+                }
+                if ('公益馆' == $(this).html()) {
+                    blist(content);
+                }
+                if ('最旺馆' == $(this).html()) {
+                    clist(content);
+                }
+            });
+            return false;
+        });
+
         function enterSearch(e) {
             if (e.keyCode == 13) {
-                $("#shousou").blur();
-                var content = $("#shousou").val();
-                console.log(content);
-                $(".mui-control-item.mui-active").each(function () {
-                    if ('私人馆' == $(this).html()) {
-                        alist(content);
-                    }
-                    if ('公益馆' == $(this).html()) {
-                        blist(content);
-                    }
-                    if ('最旺馆' == $(this).html()) {
-                        clist(content);
-                    }
-                });
+
             }
         }
     </script>

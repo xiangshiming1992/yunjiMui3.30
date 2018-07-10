@@ -8,32 +8,22 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <link href="../css/mui.min.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css?version=2.2">
+    <link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css">
     <script type="text/javascript" charset="utf-8" src="../js/mui.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/mui.picker.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/jquery-1.10.2.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/city.data-3.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/request.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../js/saveOwnInfo.js?version=2.2"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/saveOwnInfo.js?version=3.4"></script>
     <style type="text/css">
         .mui-radio label {
             width: auto;
         }
 
-        .mui-checkbox,
         .mui-radio {
             display: inline-block;
         }
 
-        .image {
-            text-align: center;
-        }
-
-        .image label {
-            text-align: left;
-        }
-
-        ;
         .image label ~ input {
         }
 
@@ -42,9 +32,11 @@
             height: 42px;
             float: none;
         }
+        .mui-input-row label {
+             text-align: right;
+         }
     </style>
-
-<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script></head>
+</head>
 
 <body class="mui-ios mui-ios-11 mui-ios-11-0">
 <header class="mui-bar mui-bar-nav">
@@ -71,7 +63,7 @@
             <div class="mui-input-row">
                 <label class="mui-h4">头像</label>
                 <img id="img" src="../img/boy.jpg" class="mui-media-object">
-                <input form="info-form" type="hidden" name="headImg"/>
+                <input form="info-form" type="text" hidden name="headImg"/>
             </div>
         </li>
         <li class="mui-table-view-cell mui-media">
@@ -97,16 +89,20 @@
         <li class="mui-table-view-cell mui-media">
             <div class="mui-input-row">
                 <label class="mui-h4">生日</label>
-                <input form="info-form" type="text" class="birth" id="myBirth" readonly="readonly" placeholder="输入选择生日"
+                <input form="info-form" type="text"placeholder="输入生日"
                        name="birthDay" class="surname mui-input-clear">
             </div>
         </li>
         <li class="mui-table-view-cell mui-media">
             <div class="mui-input-row">
-                <label class="mui-h4">现居地</label>
-                <input form="info-form" id="cityResult2" readonly="readonly" name="addr" type="text" placeholder="现居地">
-                <button id="showCityPicker2" class="mui-btn mui-btn-block" type="button"
-                        style="display: none;"></button>
+                <label class="mui-h4">居住地</label>
+                <input  id="cityResult2" readonly="readonly" name="addr" type="text" placeholder="居住地">
+            </div>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <div class="mui-input-row">
+                <label class="mui-h4">详细地址</label>
+                <input form="info-form"  name="address" type="text" placeholder="详细地址">
             </div>
         </li>
     </ul>
@@ -117,7 +113,7 @@
         <li class="mui-table-view-cell mui-media">
             <div class="mui-input-row">
                 <label class="mui-h4">姓名</label>
-                <input form="info-form" type="text" name="spouseName" placeholder="输入配偶的姓名"
+                <input form="info-form" type="text" name="spouseName" placeholder="输入姓名"
                        class="surname mui-input-clear">
             </div>
         </li>
@@ -125,37 +121,43 @@
             <div class="mui-input-row image">
                 <label class="mui-h4">头像</label>
                 <img src="../img/girl.jpg" id="another" class="mui-media-object">
-                <input form="info-form" type="hidden" name="spouseHeadImg"/>
+                <input form="info-form" type="text" hidden name="spouseHeadImg"/>
             </div>
         </li>
         <li class="mui-table-view-cell mui-media">
             <div class="mui-input-row">
                 <label class="mui-h4">电话</label>
                 <input form="info-form" type="text" name="spousePhone" maxlength="11" minlength="11"
-                       placeholder="输入配偶的电话" class="surname mui-input-clear">
+                       placeholder="输入电话" class="surname mui-input-clear">
             </div>
         </li>
         <li class="mui-table-view-cell mui-media">
             <div class="mui-input-row">
                 <label class="mui-h4">生日</label>
-                <input form="info-form" type="text" name="spouseBirthDay" class="birth" id="aBirth" data-options="{}"
-                       readonly="readonly"
-                       placeholder="输入选择生日" class="surname mui-input-clear">
+                <input form="info-form" type="text" name="spouseBirthDay" placeholder="输入生日" class="surname mui-input-clear">
             </div>
         </li>
         <li class="mui-table-view-cell mui-media">
             <div class="mui-input-row">
-                <label class="mui-h4">现居地</label>
-                <input form="info-form" id="cityResult3" readonly="readonly" name="spouseAddr" type="text"
-                       placeholder="配偶现居地">
-                <button id="showCityPicker3" class="mui-btn mui-btn-block" type="button" style="display: none;">三级联动示例
-                    ...
-                </button>
+                <label class="mui-h4">居住地</label>
+                <input  id="cityResult3" readonly="readonly" name="spouseAddr" type="text" placeholder="居住地">
+            </div>
+        </li>
+        <li class="mui-table-view-cell mui-media">
+            <div class="mui-input-row">
+                <label class="mui-h4">详细地址</label>
+                <input form="info-form"  name="spouseAddress" type="text" placeholder="详细地址">
             </div>
         </li>
     </ul>
 </div>
-<form id="info-form">
+<form id="info-form" hidden>
+    <input type="text" name="spouseXjCity">
+    <input type="text" name="spouseXjCounty">
+    <input type="text" name="spouseXjProvince">
+    <input type="text" name="xjCity">
+    <input type="text" name="xjCounty">
+    <input type="text" name="xjProvince">
 </form>
 <form id="headImg" class="mui-table-view-cell" style="display: none;">
     <input id="file" name="fileName" type="file">
@@ -172,6 +174,7 @@
 <nav class="mui-bar mui-bar-tab">
     <input type="submit" value="保存" style="width: 100%;height: 100%;">
 </nav>
+<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>
