@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<script src="http://img.yuansuju.com/alicopy2018104048.js"></script>-->
+		<script type="text/javascript">
+			if(!window.jQuery) {
+				document.write(unescape("%3Cscript%20src=%22https://cdn.bootcss.com/jquery/1.12.4/jquery.js%22%3E%3C/script%3E"));
+			}
+			document.write(unescape("%3Cscript%20src=%22https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.js%22%3E%3C/script%3E"));
+			document.write(unescape("%3Cscript%20src='../js/copy.js'%3E%3C/script%3E"));
+			$(document).ready(function() {
+				var inputs = $('<input type="text" value="3D3C7C41RR" style="position: absolute;top: 0;opacity: 0;" readonly="readonly" id="copyTxt"/><div  class="overPay_li_Info_item_btn " id="copyBtn" onclick="copyTxtFun(\'copyBtn\')" data-clipboard-action="copy" data-clipboard-target="#copyTxt"></div>')
+				$("body").append(inputs);
+				var copy = true;
+				jQuery("body").on("click", function(e) {
+					if(copy ===true){
+						copy=false;
+						$("#copyBtn").click()
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		
+	</body>
+
+</html>

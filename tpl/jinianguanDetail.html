@@ -1,566 +1,80 @@
-<!DOCTYPE html>
-<html><head>    <meta charset="utf-8">    <meta name="viewport"          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>    <title></title>    <link href="../css/mui.min.css" rel="stylesheet"/>    <link href="../css/index.css?version=3.2" rel="stylesheet"/>    <link href="../css/changjing.css?version=3.1" rel="stylesheet"/>    <script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>    <script src="../js/reloadpage.js" type="text/javascript" charset="utf-8"></script>    <style type="text/css">        #jibai {            display: none;        }      .showImg {            width: 90%;            background: #D4D4D4;            text-align: center;        }       .showImg p, .showVideo p {            float: left;            width: 46%;            /*border: 2px red solid;*/		     margin: 2%;        }      .showImg p img {            width: 100%;          /*border: 1px #d1d1d1 solid;*/            /*border-radius: 2px;*/
-        }
-        #videoH {
-            /*	width:320px;*/
-            height: 150px;
-        }      .gifplay {
-            display: none;
-            width: 80%;
-            height: 70%;
-            margin: 0 auto;
-            margin-top: 5%;
-            border: 0px red solid;
-            z-index: 999;
-            text-align: center;
-        }       header .mui-icon {
-            color: white
-        }        /*#shengping .tab{
-        	 width: 400px;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
- 
-            position: relative;
-            z-index: 2;
-        }
-        #shengping .tab li{
-        	 float: left;
-            width: 80px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            border: 1px solid #DDD;
-            border-bottom: 0;
-            margin-left: 10px;
-            /*background: #fff;*/
-            /*cursor: pointer;*/*/        	}         /*.tab-active{
-        	border-bottom: 1px #007AFF solid;
-        	color: #007AFF;	
-        	}*/        	
-    </style>
-    <script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>
-</head>
-<body>
-<header class="mui-bar mui-bar-nav header">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-    <h1 class="mui-title" id="mName">德望传千古    影音存万年</h1>
-    <a class="mui-icon mui-icon-map mui-pull-right" id="location"></a>
-</header>
-<div class="mui-content">
-    <div class="muxiang">
-        <!--<img id="mubeixiang"  src=""/>-->
-        <!--<span id="muzi" >张国荣之墓</span>-->
-    </div>
-    <div class="changBuid" style="display: none">
-        <div class="changeBackground">更换场景</div>
-        <div class="changeAddress">修改地址</div>
-    </div>
-    <script type="application/javascript">
-        reloadPageCondition("addressChange")
-        //单人室内
-        //		$(".muxiang").prepend('<img class="lingwei" id="lingwei" src="../img/lingpai1.png"/>');
-        //		$(".muxiang").append('<img class="mubeixiang_sn" id="mubeixiang" src="../img/mx.jpg"/>');
-        //		$(".muxiang").append('<span class="muzi_sn id="muzi">张国荣之灵位</span>')
-        //双人室内
-        //	 	$(".muxiang").prepend('<img id="lingwei_L" src="../img/lingpai1.png"/>');
-        //	 	$(".muxiang").append('<img id="lingwei_R" src="../img/lingpai1.png"/>');
-        //		$(".muxiang").append('<img id="mubeixiang" class="mubeixiang_sn" src="../img/mx.jpg"/>');
-        //		$(".muxiang").append('<span class="muzi_sn_L id="muzi_sn_L">张固然之墓</span>')
-        //		$(".muxiang").append('<span class="muzi_sn_R id="muzi_sn_R">张国荣之灵位</span>')
+<!DOCTYPE html><html>	<head>		<meta charset="utf-8">		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />		<title></title>		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/imgviewer.css" rel="stylesheet" />		<link href="../css/index.css?version=3.2" rel="stylesheet" />		<link href="../css/changjing.css?version=3.1" rel="stylesheet" />		<script src="../js/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>		<script src="../js/reloadpage.js" type="text/javascript" charset="utf-8"></script>		<style type="text/css">			#jibai {				display: none;			}						.showImg {				width: 90%;				background: #D4D4D4;				text-align: center;			}						.showImg p,			.showVideo p {				float: left;				width: 46%;				/*border: 2px red solid;*/				margin: 2%;			}						.showImg p img {				width: 100%;				/*border: 1px #d1d1d1 solid;*/				/*border-radius: 2px;*/			}						#videoH {				/*	width:320px;*/				height: 150px;			}						.gifplay {				display: none;				width: 80%;				height: 70%;				margin: 0 auto;				margin-top: 5%;				border: 0px red solid;				z-index: 999;				text-align: center;			}						header .mui-icon {				color: white			}						.jipinaddress {				z-index: -1;				width: 98%;					height:180px;							/*border: 1px blue solid;*/				margin-left: 1%;				margin-top: 86%;				position: relative;			}						.jipinaddress #jipinaddr1 {				width: 92%;				height: 52px;				/*border: 1px red solid;*/				position: absolute;				top: 44px;				left: 4%;			}						.jipinaddress #jipinaddr2 {				width: 100%;				height: 52px;				/*border: 1px red solid;*/				margin: 0 auto;				position: absolute;				top: 104px;				left: 0px;			}			.jipinaddress #jipinaddr2 li {				width: 80px;				float: left;				margin: 2px;			}			.jipinaddress #jipinaddr2 li img {				width: 80px;							}						.jipinaddress #jipinaddr3 {				/*border: 1px #2AC845 solid;*/								width: 16%;				position: absolute;				top: -26px;				left: 42%;			}			.jipinaddress #jipinaddr3 li {				/*border: 1px #2AC845 solid;*/								width: 76px;							}			.jipinaddress #jipinaddr3 li img {				/*border: 1px #2AC845 solid;*/								width: 76px;							}			.jipinaddress #jipinaddr4 {				/*border: 1px red solid;*/				width: 74%;						position: absolute;				top: 6px;				left: 26%;			}						.jipinaddress #jipinaddr4 li {				/*border: 1px blue solid;*/				width: 20%;								margin: 0px 20px;			}						.jipinaddress ul li {				width: 52px;				float: left;				margin: 2px;			}						.jipinaddress ul li img {				width: 52px;			}		</style>		<!--<div id="xiangzhuaddr"><img src="../img/xianhua.png"/><img id="lz_l" src="../img/xianhua.png"/><img id="lz_r" src="../img/xianhua.png"/></div>		<ul id="jipinaddr">			<li ><img src="../img/xianhua.png"/></li>					<li ><img src="../img/xianhua.png"/></li>					<li ><img src="../img/xianhua.png"/></li>				</ul>		<ul id="gongpinaddr">			<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>					</ul>-->		<script src="../js/weixinShare.js" type="text/javascript" charset="utf-8"></script>	</head>	<body>		<header class="mui-bar mui-bar-nav header">			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>			<h1 class="mui-title" id="mName">德望传千古    影音存万年</h1>			<a class="mui-icon mui-icon-map mui-pull-right" id="location"></a>		</header>		<div class="mui-content">			<div class="muxiang">				<!--<img id="mubeixiang"  src=""/>-->				<!--<span id="muzi" >张国荣之墓</span>-->			</div>			<div class="changBuid" style="display: none">				<div class="changeBackground">更换场景</div>				<div class="changeAddress">修改地址</div>			</div>			<script type="application/javascript">				reloadPageCondition("addressChange")				//单人室内				//		$(".muxiang").prepend('<img class="lingwei" id="lingwei" src="../img/lingpai1.png"/>');				//		$(".muxiang").append('<img class="mubeixiang_sn" id="mubeixiang" src="../img/mx.jpg"/>');				//		$(".muxiang").append('<span class="muzi_sn id="muzi">张国荣之灵位</span>')				//双人室内				//	 	$(".muxiang").prepend('<img id="lingwei_L" src="../img/lingpai1.png"/>');				//	 	$(".muxiang").append('<img id="lingwei_R" src="../img/lingpai1.png"/>');				//		$(".muxiang").append('<img id="mubeixiang" class="mubeixiang_sn" src="../img/mx.jpg"/>');				//		$(".muxiang").append('<span class="muzi_sn_L id="muzi_sn_L">张固然之墓</span>')				//		$(".muxiang").append('<span class="muzi_sn_R id="muzi_sn_R">张国荣之灵位</span>')				//单人室外				//		$(".muxiang").append('<img class="mubeixiang" id="mubeixiang" src="../img/mx.jpg"/>');				//		$(".muxiang").append('<span class="muzi id="muzi">张国荣之灵位</span>')				//双人室外				//		$(".muxiang").append('<img class="mubeixiang" id="mubeixiang" src="../img/mx.jpg"/>');				//		$(".muxiang").append('<span class="muzi_sw_L id="muzi_sn_L">张固然之墓</span>')				//		$(".muxiang").append('<span class="muzi_sw_R id="muzi_sn_R">张国荣之灵位</span>')				//			</script>			<div id="jibai" class="mui-control-content mui-active">				<!--<div class="close2"><img src="../img/shou.png"/></div>-->				<div class="jingxian">我要敬献</div>				<h6>收到礼物</h6>				<ul class="mui-table-view" id="jprec">					<!--<li class="mui-table-view-cell mui-media">                <a href="javascript:;">                    <img class="mui-media-object mui-pull-left" src="../img/xianhua.png">                  <div class="mui-media-body"><h5>张三</h5><span class="mui-ellipsis">鲜花</span><span class="mui-ellipsis">敬献时间：2018-12-02</span></div>                </a>            </li>-->				</ul>			</div>			<!--<script>        $(".close2").on("tap",function(){              $(this).parent().hide();           });    </script>	-->			<div id="shengping" class="mui-control-content ">				<!--<ul id="tab-list" class="tab">		      <li class="tab-active">墓主一</li>		      <li>墓主二</li>		       		  </ul>-->				<div class="muzhu1">					<div class="zhaopian">						<img id="personHeadimg" width="128px" height="164px" src="" />						<ul class="jianjie-info">							<li><span>姓名：</span><span id="personName"></span></li>							<li><span>性别：</span><span id="personSex"></span></li>							<li><span>生辰：</span><span id="bornIn"></span></li>							<li><span>忌日：</span><span id="diedIn"></span></li>						</ul>					</div>					<div class="jianjie">						<h4>生平简介 </h4>						<p id="introduction"></p>					</div>				</div>				<div class="muzhu2">					<div class="zhaopian">						<img id="personHeadimg2" width="128px" height="164px" src="" />						<ul class="jianjie-info">							<li><span>姓名：</span><span id="personName2"></span></li>							<li><span>性别：</span><span id="personSex2"></span></li>							<li><span>生辰：</span><span id="bornIn2"></span></li>							<li><span>忌日：</span><span id="diedIn2"></span></li>						</ul>					</div>					<div class="jianjie">						<h4>生平简介 </h4>						<p id="introduction2"></p>					</div>				</div>			</div>			<!--<script type="application/javascript">	$("#tab-list li").click(function(){		$(this).addClass(" .tab-active");		$(this).siblings().removeClass(".tab-active");	})</script>-->			<div id="xiangpian" class="mui-control-content">				<div class="photo">					<div class="photo-img"><span class="mui-icon mui-icon-image videoImg"></span><span>相片</span></div>					<div class="mui-content-padded showImg" id="showImg">						<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->						<!--<p>                    <img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />                </p>       -->					</div>				</div>			</div>			<div id="video" class="mui-control-content">				<div class="photo">					<div class="photo-img"><span class="mui-icon mui-icon-videocam videoImg"></span><span>视频</span></div>					<div class="mui-content-padded showImg" id="showVideo">						<!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->						<!--<p>                    <img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />                </p>             -->					</div>				</div>			</div>			<div id="laifang" class="mui-control-content">				<!--<div class="close2"><img src="../img/close.png"/></div>-->				<h4>留言记录</h4>				<ul class="mui-table-view" id="levRec">					<!--<li class="mui-table-view-cell mui-media">                <a href="javascript:;">                    <img class="mui-media-object mui-pull-left" src="../img/touxiang.jpeg">                    <div class="mui-media-body">                            幸福                        <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>                    </div>                </a>            </li>-->				</ul>				<div class="liuyan">					<!--<h4>留言</h4>-->					<div class="mui-input-row inputliuyan">						<textarea id="levContent" rows="1" placeholder="留言"></textarea>					</div>					<div class="fasong" id="sendLev">发送</div>				</div>			</div>			<!--下标签-->			<div style="height: 50px"></div>			<nav class="mui-bar mui-bar-tab">				<a id="jb" class="mui-tab-item mui-active" href="#jibai">					<span class="mui-icon mui-icon-home"></span>					<span class="mui-tab-label">祭拜</span>				</a>				<a id="sp" class="mui-tab-item" href="#shengping">					<span class="mui-icon mui-icon-map"></span>					<span class="mui-tab-label">生平</span>				</a>				<a id="xp" class="mui-tab-item" href="#xiangpian">					<span class="mui-icon mui-icon-image"></span>					<span class="mui-tab-label">相片</span>				</a>				<a id="ph" class="mui-tab-item" href="#video">					<span class="mui-icon mui-icon-videocam"></span>					<span class="mui-tab-label">视频</span>				</a>				<a id="lf" class="mui-tab-item" href="#laifang">					<span class="mui-icon mui-icon-contact"></span>					<span class="mui-tab-label">留言</span>				</a>			</nav>						<!--<audio id="gifplayvideo" controls="controls" autoplay="autoplay" src="../img/gif/bp2.mp3" ></audio>-->			<div class="gifplay" style="z-index: 999999;position: fixed; bottom:20%;max-width:100%;max-height:360px;">				<img id="gifPlayImg" style="margin:0 auto;max-width:80%;max-width:200px;max-height:200px;position: absolute;">			<audio id="gifplayvideo" autoplay="autoplay"></audio>				</div>			<div class="jipinaddress">				<!--<div id="xiangzhuaddr"><img id="lz_l" src=""/><img id="xiang_m" src=""/><img id="lz_r" src=""/></div>-->				<ul id="jipinaddr1">					<!--<li ><img src="../img/xianhua.png"/></li>					<li ><img src="../img/xianhua.png"/></li>					<li ><img src="../img/xianhua.png"/></li>					<li ><img src="../img/xianhua.png"/></li>		-->				</ul>				<ul id="jipinaddr2">					<!--<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>	-->				</ul>				<ul id="jipinaddr3">					<!--<li ><img src="../img/xianhua.png"/></li>-->				</ul>				<ul id="jipinaddr4">					<!--<li ><img src="../img/xianhua.png"/></li>				<li ><img src="../img/xianhua.png"/></li>	-->				</ul>			</div>													<script>
+				$("#jb").on('tap', function() {
 
-        //单人室外
+					$("#jibai").slideToggle("slow");
 
-        //		$(".muxiang").append('<img class="mubeixiang" id="mubeixiang" src="../img/mx.jpg"/>');
-        //		$(".muxiang").append('<span class="muzi id="muzi">张国荣之灵位</span>')
+					$("#shengping").hide();
 
-        //双人室外
-        //		$(".muxiang").append('<img class="mubeixiang" id="mubeixiang" src="../img/mx.jpg"/>');
-        //		$(".muxiang").append('<span class="muzi_sw_L id="muzi_sn_L">张固然之墓</span>')
-        //		$(".muxiang").append('<span class="muzi_sw_R id="muzi_sn_R">张国荣之灵位</span>')
-        //
-    </script>
+					$("#xiangpian").hide();
 
+					$("#video").hide();
 
-    <div id="jibai" class="mui-control-content mui-active">
-        <!--<div class="close2"><img src="../img/shou.png"/></div>-->
-        <div class="jingxian">我要敬献</div>
-        <h6>收到礼物</h6>
+					$("#laifang").hide();
 
-        <ul class="mui-table-view" id="jprec">
-            <!--<li class="mui-table-view-cell mui-media">
-                <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="../img/xianhua.png">
-                  <div class="mui-media-body"><h5>张三</h5><span class="mui-ellipsis">鲜花</span><span class="mui-ellipsis">敬献时间：2018-12-02</span></div>
-                </a>
-            </li>-->
-        </ul>
+				});
 
-    </div>
+				$("#sp").on('tap', function() {
 
-    <!--<script>
+					$("#shengping").toggle();
 
-        $(".close2").on("tap",function(){
-              $(this).parent().hide();
-           });
+					$("#jibai").hide();
 
-    </script>	-->
-   <div id="shengping" class="mui-control-content ">    	  <!--<ul id="tab-list" class="tab">
-		      <li class="tab-active">墓主一</li>
-		      <li>墓主二</li>		       
-		  </ul>-->		      	<div class="muzhu1">
-	        <div class="zhaopian">
-	            <img id="personHeadimg" width="128px" height="164px" src=""/>
-	            <ul class="jianjie-info">
-	                <li><span>姓名：</span><span id="personName"></span></li>	                <li><span>性别：</span><span id="personSex"></span></li>	                <li><span>生辰：</span><span id="bornIn"></span></li>	                <li><span>忌日：</span><span id="diedIn"></span></li>	            </ul>
-	        </div>
-	        <div class="jianjie">
-	            <h4>生平简介 </h4>
-	            <p id="introduction"></p>
-	        </div>     	</div>        	     	<div class="muzhu2">	        <div class="zhaopian">	            <img id="personHeadimg2" width="128px" height="164px" src=""/>	            <ul class="jianjie-info">	                <li><span>姓名：</span><span id="personName2"></span></li>	                <li><span>性别：</span><span id="personSex2"></span></li>	                <li><span>生辰：</span><span id="bornIn2"></span></li>	                <li><span>忌日：</span><span id="diedIn2"></span></li>	            </ul>	        </div>	        <div class="jianjie">	            <h4>生平简介 </h4>	            <p id="introduction2"></p>	        </div>     	</div>  
-  </div><!--<script type="application/javascript">
-	$("#tab-list li").click(function(){
-		$(this).addClass(" .tab-active");
-		$(this).siblings().removeClass(".tab-active");
-	})
-</script>-->
-    <div id="xiangpian" class="mui-control-content">
-        <div class="photo">
-            <div class="photo-img"><span class="mui-icon mui-icon-image videoImg"></span><span>相片</span></div>
-            <div class="mui-content-padded showImg" id="showImg">                <!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->                <!--<p>                    <img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />                </p>       -->            </div>       </div>    </div>    
-    <div id="video" class="mui-control-content">      <div class="photo">            <div class="photo-img"><span class="mui-icon mui-icon-videocam videoImg"></span><span>视频</span></div>            <div class="mui-content-padded showImg" id="showVideo">
-                <!--	<p>这是图片放大预览示例，点击如下图片体验全屏预览功能</p>-->
-                <!--<p>
-                    <img src="../img/banner1.png" data-preview-src="" data-preview-group="1" />
-                </p>
-             -->
-            </div>
-        </div>
-    </div>
-    <div id="laifang" class="mui-control-content">
-        <!--<div class="close2"><img src="../img/close.png"/></div>-->
-        <h4>留言记录</h4>
-        <ul class="mui-table-view" id="levRec">
-            <!--<li class="mui-table-view-cell mui-media">
-                <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-left" src="../img/touxiang.jpeg">
-                    <div class="mui-media-body">
-                            幸福
-                        <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                    </div>
-                </a>
-            </li>-->
-        </ul>
-        <div class="liuyan">
-            <!--<h4>留言</h4>-->
-            <div class="mui-input-row inputliuyan">
-                <textarea id="levContent" rows="1" placeholder="留言"></textarea>
-            </div>
-            <div class="fasong" id="sendLev">发送</div>
-        </div>
-    </div>
+					$("#xiangpian").hide();
 
-    <!--下标签-->
-    <div style="height: 50px"></div>
-    <nav class="mui-bar mui-bar-tab">
-        <a id="jb" class="mui-tab-item mui-active" href="#jibai">
-            <span class="mui-icon mui-icon-home"></span>
-            <span class="mui-tab-label">祭拜</span>
-        </a>
-        <a id="sp" class="mui-tab-item" href="#shengping">
-            <span class="mui-icon mui-icon-map"></span>
-            <span class="mui-tab-label">生平</span>
-        </a>
-        <a id="xp" class="mui-tab-item" href="#xiangpian">
-            <span class="mui-icon mui-icon-image"></span>
-            <span class="mui-tab-label">相片</span>
-        </a>
-        <a id="ph" class="mui-tab-item" href="#video">
-            <span class="mui-icon mui-icon-videocam"></span>
-            <span class="mui-tab-label">视频</span>
-        </a>
-        <a id="lf" class="mui-tab-item" href="#laifang">
-            <span class="mui-icon mui-icon-contact"></span>
-            <span class="mui-tab-label">留言</span>
-        </a>
-    </nav>
-    <div class="gifplay" style="z-index: 999999;position: relative;"><img id="gifPlayImg" style="max-width: 100px;position: fixed;bottom: 20%;"></div>
-    <script>
-        $("#jb").on("tap", function () {
-            $("#jibai").slideToggle("slow");
-            $("#shengping").hide();
-            $("#xiangpian").hide();
-            $("#video").hide();
-            $("#laifang").hide();
-        });
+					$("#video").hide();
 
-        $("#sp").on("tap", function () {
-            $("#shengping").toggle();
-            $("#jibai").hide();
-            $("#xiangpian").hide();
-            $("#video").hide();
-            $("#laifang").hide();
+					$("#laifang").hide();
 
-        });
-        $("#xp").on("tap", function () {
-            $("#xiangpian").slideToggle("slow");
-            $("#jibai").hide("slow");
-            $("#shengping").hide();
-            $("#video").hide();
-            $("#laifang").hide();
-        });
-        $("#ph").on("tap", function () {
-            $("#video").slideToggle("slow");
-            $("#jibai").hide("slow");
-            $("#shengping").hide();
-            $("#xiangpian").hide();
-            $("#laifang").hide();
-        });
-        $("#lf").on("tap", function () {
-            $("#laifang").slideToggle("slow");
-            $("#jibai").hide("slow");
-            $("#shengping").hide();
-            $("#video").hide();
-            $("#xiangpian").hide();
-        });
+				});
 
-    </script>
+				$("#xp").on('tap', function() {
 
-    <script src="../js/mui.min.js"></script>
-    <script type="application/javascript">
-        var urlBase = 'http://api.yunji128.com/homage';
-        var imgBase = 'http://img.yunji128.com/';
+					$("#xiangpian").slideToggle("slow");
 
+					$("#jibai").hide("slow");
 
-        var effects = window.localStorage.getItem("effects");
-        var sacrificeBigImg = window.localStorage.getItem("sacrificeBigImg");
-        window.localStorage.removeItem("effects");
-        window.localStorage.removeItem("sacrificeBigImg");
-        var gifShowTime = 5000;
-        var gifUrl = "";
-        if ("A" == effects) {//香
-            gifUrl = "../img/gif/sx.gif";
-            gifShowTime = 6000;
-        } else if ("B" == effects) {//烛
-            gifUrl = "../img/gif/zhu.gif";
-            gifShowTime = 6000;
-        } else if ("C" == effects) {//纸
-            gifShowTime = 6000;
-        } else if ("D" == effects) {//烟花
-            gifUrl = "../img/gif/yh.gif";
-            gifShowTime = 6000;
-        } else if ("E" == effects) {//火炮
-            gifUrl = "../img/gif/bp.gif";
-            gifShowTime = 6000;
-        } else if ("I" == effects) {//磕头
-            gifUrl = "../img/gif/kt.gif";
-            gifShowTime = 16000;
-        } else {
-            gifUrl = imgBase + sacrificeBigImg;
+					$("#shengping").hide();
 
-            gifShowTime = 5000;
-        }
-        //处理祭拜效果
-        if (effects == null || effects == '' || effects == 'null' || gifUrl == '') {
-            $(".gifplay").hide();
-        } else {
-            $(".gifplay").slideDown("slow");
+					$("#video").hide();
 
-            $("#gifPlayImg").attr("src", gifUrl).css("left",($(window).width()-100)/2 +'px');
-            //n秒后关闭
-            setTimeout(function () {
+					$("#laifang").hide();
 
-                $(".gifplay").hide();
+				});//				$("#xp").focus(function(){
+//					document.activeElement.blur();
+//					$("#ph").click(function(){
+//				})
 
-            }, gifShowTime);
-        }
+				$("#ph").on('tap', function() {
 
+					$("#video").slideToggle("slow");
 
-        mui.init({
-            swipeBack: true //启用右滑关闭功能
-        });
+					$("#jibai").hide("slow");
 
-        function GetQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return decodeURI(r[2]);
-            return null;
-        }
+					$("#shengping").hide();
 
-        var memorialId = GetQueryString("memorialId");
-        var password = GetQueryString("password");
-        var userId = 0;
-        //主题信息 生平简介
-        $.ajax({
-            headers: {
-                tokenInfo: window.localStorage.getItem("tokenInfo"),
-                userId: userId
-            },
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            url: urlBase + "/api/memorial/accessMemorial?deviceType=H5&password=" + password + "&memorialId=" + memorialId, //这里是网址
-            success: function (data) {
-                if (data.code == 'SUCCESS') {
-                    var option = {
-                        latitude: data.result.latitude, // 纬度，浮点数，范围为90 ~ -90                        longitude: data.result.longitude, // 经度，浮点数，范围为180 ~ -180。                        name: data.result.addressName, // 位置名                        address: data.result.address, // 地址详情说明                        scale: 23, // 地图缩放级别,整形值,范围从1~28。默认为最大                    };
-                    $("#location").click(function () {
-                        if (option.longitude && option.latitude) {                            wx.openLocation(option);                        }else {                            mui.alert("该纪念馆没有位置信息")                        }                    });
-                    $(".changeBackground").on("tap", function () {                        window.location.href = "upgradehouse.html?memorialId=" + memorialId;                    });                    $(".changeAddress").on("tap", function () {                        window.location.href = "editJinianguanAddr.html?memorialId=" + memorialId +"&coord="+[option.latitude,option.longitude].join(",");                    });
-                    document.title = data.result.memorialName + "的纪念馆";						$("#personName").text(data.result.persons[0].personName);	                    $("#personSex").text(data.result.persons[0].personSex);	                    $("#bornIn").text(data.result.persons[0].bornIn);	                    $("#diedIn").text(data.result.persons[0].diedIn);	                    $("#introduction").text(data.result.persons[0].introduction);	                    $("#personHeadimg").attr("src", imgBase + data.result.headImg);
-                   
-//				$("#mubeixiang").attr("src",imgBase+data.result.headImg);
-//				$("#muzi").text(data.result.persons[0].personName+"之墓");
-                    $(".mui-content").css("background", "url(" + imgBase + data.result.memorialModel.backImg + ")no-repeat");
-                    $(".mui-content").css("background-size", "100%100%");
+					$("#xiangpian").hide();
 
-                    if (data.result.peopleNumber == 1) {						$(".muzhu2").hide();						
-                        if (data.result.memorialModel.scenesType == "outdoor") {
-                            $(".muxiang").append('<img id="mubeixiang" src=""/>');
-                            $(".muxiang").append('<span id="muzi"></span>')
-                            $("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");
-                            $("#muzi").addClass("muzi").removeClass("muzi_sn");
-                            $("#mubeixiang").attr("src", imgBase + data.result.headImg + '_crop_120x160_60');                            $("#muzi").text(data.result.persons[0].personName + "之墓");
-                        }
-                        else if (data.result.memorialModel.scenesType == "indoor") {
-                            $(".muxiang").prepend('<img class="lingwei" id="lingwei" src="../img/lingpai1.png"/>');                            $(".muxiang").append('<img id="mubeixiang" src=""/>');                            $(".muxiang").append('<span id="muzi"></span>')                            $("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang");                            $("#muzi").addClass("muzi_sn").removeClass("muzi");                            $("#mubeixiang").attr("src", imgBase + data.result.headImg + '_crop_120x176_60');                            $("#muzi").text(data.result.persons[0].personName + "之灵位");
-                        }
-                        else {
-                            //mui.alert("选择错误");
-                        }
-                    } else if (data.result.peopleNumber == 2) {						$(".muzhu2").show();						$("#personName2").text(data.result.persons[1].personName);	                    $("#personSex2").text(data.result.persons[1].personSex);	                    $("#bornIn2").text(data.result.persons[1].bornIn);	                    $("#diedIn2").text(data.result.persons[1].diedIn);	                    $("#introduction2").text(data.result.persons[1].introduction);	                    $("#personHeadimg2").attr("src", imgBase + data.result.headImg);
-                        if (data.result.memorialModel.scenesType == "outdoor") {
-                            $(".muxiang").append('<img id="mubeixiang" src=""/>');                            $(".muxiang").append('<span id="muzi_sw_L"></span>')                            $(".muxiang").append('<span id="muzi_sw_R"></span>')
-                            $("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");                            $("#muzi_sw_L").addClass("muzi_sw_L").removeClass("muzi_sn_L");                            $("#muzi_sw_R").addClass("muzi_sw_R").removeClass("muzi_sn_R");
-                            $("#mubeixiang").attr("src", imgBase + data.result.headImg + '_crop_120x180_60');                            $("#muzi_sw_L").text(data.result.persons[1].personName + "之墓");                            $("#muzi_sw_R").text(data.result.persons[0].personName + "之墓");
+					$("#laifang").hide();
 
-                        }
+				});
 
-                        else if (data.result.memorialModel.scenesType == "indoor") {                            $(".muxiang").prepend('<img id="lingwei_L" src="../img/lingpai1.png"/>');                            $(".muxiang").append('<img id="lingwei_R" src="../img/lingpai1.png"/>');
-                            $(".muxiang").append('<img id="mubeixiang" src=""/>');                            $(".muxiang").append('<span id="muzi_sn_L"></span>')                            $(".muxiang").append('<span id="muzi_sn_R"></span>')
+				$("#lf").on('tap', function() {
 
-                            $("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang");
-                            $("#muzi_sn_L").addClass("muzi_sn_L").removeClass("muzi_sw_L");
-                            $("#muzi_sn_R").addClass("muzi_sn_R").removeClass("muzi_sw_R");
+					$("#laifang").slideToggle("slow");
 
-                            $("#mubeixiang").attr("src", imgBase + data.result.headImg + "_crop_100x160_60");
-                            $("#muzi_sn_L").text(data.result.persons[1].personName + "之灵位");
-                            $("#muzi_sn_R").text(data.result.persons[0].personName + "之灵位");
-                        }
-                        else {
-                            mui.alert("选择错误");
-                        }
-                    } else {
-                        mui.alert("人数不对");
-                    }
+					$("#jibai").hide("slow");
 
-                } else if (data.code == 'PleaseLogin') {
-                    window.location.href = 'login.html';
+					$("#shengping").hide();
 
-                }
+					$("#video").hide();
 
-                var userInfo = window.localStorage.getItem("userInfo");
-                if (null != userInfo) {
-                    var thisUserId = JSON.parse(userInfo).userId;
-                    if (thisUserId == data.result.userId) {
-                        $('.changBuid').show();
-                    }
-                }
+					$("#xiangpian").hide();
 
-            }
-        });
-
-        //判断单人和双人墓
-        //如果是单人墓
-        //
-        // 如果是室内
-        //  创建一个img 给他一个src图片位置，付给1个排位的图片
-        //	创建一个id为mubeixiang 的img 给他一个src图片位置  ，动态赋予照片的位置
-        //	创建一个id为muzi的span   动态赋予墓志铭
-        //	将以上个创建的dom元素付给class为muxiang的div
-        //    分别将mubeixiang_sn和muzi_sn两个class属性给mubeixiang和muzi
-        //
-        // 如果是室外
-        //  创建一个id为mubeixiang 的img 给他一个src图片位置  动态赋予照片的位置
-        //	创建一个id为muzi的span  动态赋予墓志铭
-        //	将这上个创建的dom元素给class为muxiang的div//
-        //    将mubeixiang和muzi两个class属性分别给mubeixiang和muzi
-        //
-        //如果是双人墓
-        //
-        // 如果是室内
-        //  创建一个img 给他一个src图片位置  付给2个排位的图片
-        //	创建一个id为mubeixiang 的img 给他一个src图片位置   动态赋予照片的位置
-        //	创建一个id为muzi_nan的span   动态赋予墓志铭
-        //	再创建一个id为muzi_nv的span   动态赋予墓志铭
-        //	将这上个创建的dom元素给class为muxiang的div
-        //    将mubeixiang_sn和muzi_sn两个class属性分别给mubeixiang和muzi
-        // 如果是室外
-        //  创建一个id为mubeixiang 的img 给他一个src图片位置  动态赋予照片的位置
-        //	创建一个id为muzi_nan的span 	动态赋予墓志铭
-        //	再创建一个id为muzi_nv的span   动态赋予墓志铭
-        //	将这上个创建的dom元素给class为muxiang的div
-        //    将mubeixiang和muzi两个class属性分别给mubeixiang和muzi
-
-        //jibai记录
-        $.ajax({
-            headers: {
-                tokenInfo: window.localStorage.getItem("tokenInfo"),
-                userId: userId
-            },
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            url: urlBase + "/api/sacrifice/memorialSaclist?memorialId=" + memorialId + "&currentPage=1&limit=20", //这里是网址
-            success: function (data) {
-                if (data.code == 'SUCCESS') {
-                    var list = data.result.content;
-                    var contens = "";
-                    $.each(list, function () {
-                        contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;"><img width="42px" height="42px" class="mui-media-object mui-pull-left" src="' + imgBase + this.sacrificeImg + '">'
-                            + '<div class="mui-media-body">' + this.userName + '<p class="mui-ellipsis">' + this.dic + '</p></div></a></li>'
-                    });
-                    document.getElementById('jprec').innerHTML = contens;
-                }
-            }
-        });
-        selectLev();
-
-        //留言记录
-        function selectLev() {
-            $.ajax({
-                headers: {
-                    tokenInfo: window.localStorage.getItem("tokenInfo")
-                },
-                type: "GET",
-                contentType: "application/json",
-                dataType: "json",
-                url: urlBase + "/api/leav/memorialLeavlist?dataId=" + memorialId + "&leaType=memorial&currentPage=1&limit=20", //这里是网址
-                success: function (data) {
-                    if (data.code == 'SUCCESS') {
-                        var list = data.result.content;
-                        var contens = "";
-                        $.each(list, function () {
-                            contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;"><img width="42px" height="42px" class="mui-media-object mui-pull-left" src="' + imgBase + this.headImg + '">'
-                                + '<div class="mui-media-body">' + this.userName + '<p class="mui-ellipsis">' + this.content + '</p></div></a></li>'
-                        });
-                        document.getElementById('levRec').innerHTML = contens;
-                    }
-                }
-            });
-        }
-
-        $("#sendLev").click(function () {
-            var neirong = $("#levContent").val();
-            if (neirong == '') {
-                mui.alert("请输入留言内容");
-                return;
-            }
-            var conten = {
-                "dataId": memorialId,
-                "content": neirong
-            };
-            $.ajax({
-                type: "POST",
-                headers: {
-                    tokenInfo: window.localStorage.getItem("tokenInfo")
-                },
-                url: urlBase + "/api/leav/add?leaType=memorial",
-                data: conten,
-                dataType: "json",
-                success: function (data) {
-                    if (data.code == 'SUCCESS') {
-                        mui.alert("留言成功~~~");
-                        $("#levContent").val('');
-                        selectLev();
-                    }
-                    else {
-                        mui.alert(data.message)
-                    }
-                },
-                error: function (message) {
-                    mui.alert("提交数据失败！");
-                }
-            });
-        });
-
-        $(".jingxian").click(function () {
-            window.location.href = "jipin.html?memorialId=" + memorialId;
-        });
-        //相册
-
-        $("#xp").on("tap", function () {
-            if ($("#xiangpian").show()) {
-
-                $.ajax({
-                    headers: {
-                        tokenInfo: window.localStorage.getItem("tokenInfo")
-                    },
-                    type: "GET",
-                    //contentType: "application/json",
-                    dataType: "json",
-
-                    url: urlBase + "/api/album/albumFileList?dataId=" + memorialId + "&type=memorial&fileFormat=img",
-                    success: function (data) {
-                        if (data.code == 'SUCCESS') {
-                            //arlt(data);
-                            var list = data.result;
-                            var contens = "";
-                            $.each(list, function (index, item) {
-                                /*if(this.fileFormat='img'){
-                                    contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'
-                                }
-                                if(this.fileFormat='video'){
-                                    contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'
-                                }*/
-                                contens += '<p><img src="' + imgBase + this.path + '_crop_260x180_60' + '" data-preview-src="" data-preview-group="1" /></p>'
-
-                            })
-
-                            document.getElementById("showImg").innerHTML = contens;
-                        }
-                    },
-                    error: function (message) {
-                        mui.alert("提交数据失败！");
-                    }
-                });
-
-            }
-        });
-        //视频
-        $("#ph").on("tap", function () {
-            if ($("#video").show()) {
-                $.ajax({
-                    headers: {
-                        tokenInfo: window.localStorage.getItem("tokenInfo")
-                    },
-                    type: "GET",
-                    //contentType: "application/json",
-                    dataType: "json",
-
-                    url: urlBase + "/api/album/albumFileList?dataId=" + memorialId + "&type=memorial&fileFormat=video",
-                    success: function (data) {
-                        if (data.code == 'SUCCESS') {
-                            //arlt(data);
-                            var list = data.result;
-                            //mui.alert(data.result[0]);
-                            var contens = "";
-
-                            $.each(list, function (index, item) {
-                                contens += '<p id="videoH"><video  src="' + imgBase + this.path + '" width="160" height="120" controls="controls" /></video></p>'
-
-                            })
-//						   	  plyr.setup('video', { controls: ['play-large'] });//只显示大按钮
-
-                            document.getElementById("showVideo").innerHTML = contens;
-                        }
-                    },
-                    error: function (message) {
-                        mui.alert("提交数据失败！");
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+				});
+			</script>			<script src="../js/mui.min.js"></script>			<script type="application/javascript">				var urlBase = 'http://api.yunji128.com/homage';				var imgBase = 'http://img.yunji128.com/';				var effects = window.localStorage.getItem("effects");				var sacrificeBigImg = window.localStorage.getItem("sacrificeBigImg");				window.localStorage.removeItem("effects");				window.localStorage.removeItem("sacrificeBigImg");				var gifShowTime = 5000;				var gifUrl = "";								var gifvideo ="";								if("A" == effects) { //香					gifUrl = "../img/gif/sx.gif";					gifShowTime = 3000;					ketou();				}else if("B" == effects) { //烛1					gifUrl = "../img/gif/zhu.png";					gifShowTime = 1000;										gifEffects();									} else if("B2" == effects) { //烛2					gifUrl = "../img/gif/zhu2.gif";					gifShowTime = 2000;					gifEffects();
+									} else if("B3" == effects) { //烛3					gifUrl = "../img/gif/zhu3.gif";					gifShowTime = 3000;					gifEffects();				} else if("C" == effects) { //燒纸					gifUrl = "../img/gif/shaozhi.gif";										gifShowTime = 8000;					ketou();				} else if("D" == effects) { //烟花					gifUrl = "../img/gif/yh.gif";					gifvideo = "../img/gif/yanhua.mp3";					gifShowTime = 8000;					gifEffects();				} else if("E" == effects) { //火炮					gifUrl = "../img/gif/bp.gif";					gifvideo = "../img/gif/bp1.mp3";										gifShowTime = 2000;					gifEffects();				} else if("E2" == effects) { //火炮2					gifUrl = "../img/gif/bp22.gif";					gifvideo = "../img/gif/bp22.mp3";										gifShowTime = 14500;					gifEffects();				} else if("E3" == effects) { //火炮3					gifUrl = "../img/gif/bp33.gif";					gifvideo = "../img/gif/bp33.mp3";										gifShowTime = 9400;					gifEffects();				} else if("I" == effects) { //磕头					gifUrl = "../img/gif/kt.gif";					gifShowTime = 16000;					ketou();				}  else if("F" == effects) { //從大到小					gifUrl = imgBase + sacrificeBigImg;										gifShowTime = 4000;					scalZoom();				} else if("G" == effects) { //從左到右					gifUrl = imgBase + sacrificeBigImg;		
+					gifShowTime = 3000;					leftEffects();				} else {					gifUrl = imgBase + sacrificeBigImg;					gifShowTime = 3000;				}				//处理祭拜效果		function gifEffects(){			if(effects == null || effects == '' || effects == 'null' || gifUrl == '') {					$(".gifplay").hide();				} else {					$(".gifplay").show();					$("#gifPlayImg").attr("src", gifUrl).css("left", "20%");		
+//					$("#gifPlayImg").attr("src", gifUrl).css("left", ($(window).width() - 100) / 2 + 'px');							var audio1 = document.getElementById("gifplayvideo");					audio1.src = gifvideo;            		audio1.play();//开始播放					//n秒后关闭					setTimeout(function() {						$(".gifplay").hide();						audio1.pause();//开始播放					}, gifShowTime);				}		}						function leftEffects(){			if(effects == null || effects == '' || effects == 'null' || gifUrl == '') {					$(".gifplay").hide();				} else {					$(".gifplay").show();					$("#gifPlayImg").attr("src", gifUrl).css({"left": "-80px","top":"82%"}).animate({left:'180px'},gifShowTime);						//n秒后关闭					setTimeout(function() {						$(".gifplay").hide();					}, gifShowTime);				}		}				function scalZoom(){			if(effects == null || effects == '' || effects == 'null' || gifUrl == '') {					$(".gifplay").hide();				} else {					$(".gifplay").show();//					$(".gifplay").css({"width":"400px","height":"400px"});
+//					$(".gifPlayImg").css({"width":"400px","height":"400px"});					var gpimg = $("#gifPlayImg").css({"width":"20px","height":"20px","left":"40px","top":"70%"}).attr("src", gifUrl).css("left",($(window).width()-100)/2+'px');										var wValue=2.5*$(this).width();					var hValue=2.5*$(this).height();										gpimg.animate({width:'220px',height:'220px'},gifShowTime*0.5);
+					gpimg.animate({width:'60px',height:'60px'},gifShowTime*0.5);																	//n秒后关闭					setTimeout(function() {						$(".gifplay").hide();					}, gifShowTime);				}		}					function ketou(){			if(effects == null || effects == '' || effects == 'null' || gifUrl == '') {					$(".gifplay").hide();				} else {					$(".gifplay").show();//					$(".gifplay").css({"width":"400px","height":"400px"});//					$(".gifPlayImg").css({"width":"400px","height":"400px"});					var gpimg = $("#gifPlayImg").css({"left":"24px","top":"70%"}).attr("src", gifUrl).css("left",($(window).width()-100)/2+'px');																										//n秒后关闭					setTimeout(function() {						$(".gifplay").hide();					}, gifShowTime);				}		}				//获取memorialId的值				function GetQueryString(name) {					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");					var r = window.location.search.substr(1).match(reg);					if(r != null) return decodeURI(r[2]);					return null;				}				var memorialId = GetQueryString("memorialId");				var password = GetQueryString("password");				var userId = 0;				jipinaddr();				function jipinaddr() {					$.ajax({						headers: {							tokenInfo: window.localStorage.getItem("tokenInfo")						},						type: "GET",						contentType: "application/json",						dataType: "json",						url: urlBase + "/api/sacrifice/deskWorshipList?memorialId=" + memorialId, //这里是网址，A桌上  B桌下  C香  D烛						success: function(data) {							if(data.code == 'SUCCESS') {								var list = data.result;																			var contenjipinaddr1 = "";								var contenjipinaddr2 = "";								var contenjipinaddr3 = "";								var contenjipinaddr4 = "";								var aCount = 0;								var bCount = 0;								var cCount = 0;								var dCount = 0;								for(var i = 0; i < list.length; i++) {									var n = 0;									if(list[i].locTag == "A") {										if(aCount++ < 5)											contenjipinaddr1 += '<li ><img src="' + imgBase + list[i].sacrificeBigImg + '"></li>';									} else if(list[i].locTag == "B") {										if(bCount++ < 4)											contenjipinaddr2 += '<li ><img src="' + imgBase + list[i].sacrificeBigImg + '"></li>';									} else if(list[i].locTag == "C") {										if(cCount++ < 1)											contenjipinaddr3 += '<li ><img src="' + imgBase + list[i].sacrificeBigImg + '"></li>';									} else if(list[i].locTag == "D") {										if(dCount++ < 2)											contenjipinaddr4 += '<li ><img src="' + imgBase + list[i].sacrificeBigImg + '"></li>';									}								}								document.getElementById('jipinaddr1').innerHTML = contenjipinaddr1;								document.getElementById('jipinaddr2').innerHTML = contenjipinaddr2;								document.getElementById('jipinaddr3').innerHTML = contenjipinaddr3;								document.getElementById('jipinaddr4').innerHTML = contenjipinaddr4;							}						}					});				}			// <div class="smallmenu" style="display:none;"><h5>祭拜人：'+this.realName+' </h5><h5>有效时间：'+this.effectiveTime+'</h5> </div>				 				mui.init({					swipeBack: true //启用右滑关闭功能				});				//主题信息 生平简介				$.ajax({					headers: {						tokenInfo: window.localStorage.getItem("tokenInfo"),						userId: userId					},					type: "GET",					contentType: "application/json",					dataType: "json",					url: urlBase + "/api/memorial/accessMemorial?deviceType=H5&password=" + password + "&memorialId=" + memorialId, //这里是网址					success: function(data) {						if(data.code == 'SUCCESS') {							var option = {								latitude: data.result.latitude, // 纬度，浮点数，范围为90 ~ -90								longitude: data.result.longitude, // 经度，浮点数，范围为180 ~ -180。								name: data.result.addressName, // 位置名								address: data.result.address, // 地址详情说明								scale: 23, // 地图缩放级别,整形值,范围从1~28。默认为最大							};							$("#location").click(function() {								if(option.longitude && option.latitude) {									wx.openLocation(option);								} else {									mui.alert("该纪念馆没有位置信息")								}							});							$(".changeBackground").on("tap", function() {								window.location.href = "upgradehouse.html?memorialId=" + memorialId;							});							$(".changeAddress").on("tap", function() {								window.location.href = "editJinianguanAddr.html?memorialId=" + memorialId + "&coord=" + [option.latitude, option.longitude].join(",");							});							document.title = data.result.memorialName + "的纪念馆";							$("#personName").text(data.result.persons[0].personName);							$("#personSex").text(data.result.persons[0].personSex);							$("#bornIn").text(data.result.persons[0].bornIn);							$("#diedIn").text(data.result.persons[0].diedIn);							$("#introduction").text(data.result.persons[0].introduction);							$("#personHeadimg").attr("src", imgBase + data.result.headImg);							//				$("#mubeixiang").attr("src",imgBase+data.result.headImg);							//				$("#muzi").text(data.result.persons[0].personName+"之墓");							$(".mui-content").css("background", "url(" + imgBase + data.result.memorialModel.backImg + ")no-repeat");							$(".mui-content").css("background-size", "100%100%");							if(data.result.peopleNumber == 1) {								$(".muzhu2").hide();								if(data.result.memorialModel.scenesType == "outdoor") {									$(".muxiang").append('<img id="mubeixiang" src=""/>');									$(".muxiang").append('<span id="muzi"></span>')									$("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");									$("#muzi").addClass("muzi").removeClass("muzi_sn");									$("#mubeixiang").attr("src", imgBase + data.result.headImg + '_crop_120x160_60');									$("#muzi").text(data.result.persons[0].personName + "之墓");								} else if(data.result.memorialModel.scenesType == "indoor") {									$(".muxiang").prepend('<img class="lingwei" id="lingwei" src="../img/lingpai1.png"/>');									$(".muxiang").append('<img id="mubeixiang" src=""/>');									$(".muxiang").append('<span id="muzi"></span>')									$("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang");									$("#muzi").addClass("muzi_sn").removeClass("muzi");									$("#mubeixiang").attr("src", imgBase + data.result.headImg + '_crop_120x160_60');									$("#muzi").text(data.result.persons[0].personName + "之灵位");								} else {									//mui.alert("选择错误");								}							} else if(data.result.peopleNumber == 2) {								$(".muzhu2").show();								$("#personName2").text(data.result.persons[1].personName);								$("#personSex2").text(data.result.persons[1].personSex);								$("#bornIn2").text(data.result.persons[1].bornIn);								$("#diedIn2").text(data.result.persons[1].diedIn);								$("#introduction2").text(data.result.persons[1].introduction);								$("#personHeadimg2").attr("src", imgBase + data.result.headImg);								if(data.result.memorialModel.scenesType == "outdoor") {									$(".muxiang").append('<img id="mubeixiang" src=""/>');									$(".muxiang").append('<span id="muzi_sw_L"></span>')									$(".muxiang").append('<span id="muzi_sw_R"></span>')									$("#mubeixiang").addClass("mubeixiang").removeClass("mubeixiang_sn");									$("#muzi_sw_L").addClass("muzi_sw_L").removeClass("muzi_sn_L");									$("#muzi_sw_R").addClass("muzi_sw_R").removeClass("muzi_sn_R");									$("#mubeixiang").attr("src", imgBase + data.result.headImg + '_crop_120x180_60');									$("#muzi_sw_L").text(data.result.persons[1].personName + "之墓");									$("#muzi_sw_R").text(data.result.persons[0].personName + "之墓");								} else if(data.result.memorialModel.scenesType == "indoor") {									$(".muxiang").prepend('<img id="lingwei_L" src="../img/lingpai1.png"/>');									$(".muxiang").append('<img id="lingwei_R" src="../img/lingpai1.png"/>');									$(".muxiang").append('<img id="mubeixiang" src=""/>');									$(".muxiang").append('<span id="muzi_sn_L"></span>')									$(".muxiang").append('<span id="muzi_sn_R"></span>')									$("#mubeixiang").addClass("mubeixiang_sn").removeClass("mubeixiang");									$("#muzi_sn_L").addClass("muzi_sn_L").removeClass("muzi_sw_L");									$("#muzi_sn_R").addClass("muzi_sn_R").removeClass("muzi_sw_R");									$("#mubeixiang").attr("src", imgBase + data.result.headImg + "_crop_100x160_60");									$("#muzi_sn_L").text(data.result.persons[1].personName + "之灵位");									$("#muzi_sn_R").text(data.result.persons[0].personName + "之灵位");								} else {									mui.alert("选择错误");								}							} else {								mui.alert("人数不对");							}						} else if(data.code == 'PleaseLogin') {							window.location.href = 'login.html';						}						var userInfo = window.localStorage.getItem("userInfo");						if(null != userInfo) {							var thisUserId = JSON.parse(userInfo).userId;							if(thisUserId == data.result.userId) {								$('.changBuid').show();							}						}					}				});				//判断单人和双人墓				//如果是单人墓				//				// 如果是室内				//  创建一个img 给他一个src图片位置，付给1个排位的图片				//	创建一个id为mubeixiang 的img 给他一个src图片位置  ，动态赋予照片的位置				//	创建一个id为muzi的span   动态赋予墓志铭				//	将以上个创建的dom元素付给class为muxiang的div				//    分别将mubeixiang_sn和muzi_sn两个class属性给mubeixiang和muzi				//				// 如果是室外				//  创建一个id为mubeixiang 的img 给他一个src图片位置  动态赋予照片的位置				//	创建一个id为muzi的span  动态赋予墓志铭				//	将这上个创建的dom元素给class为muxiang的div//				//    将mubeixiang和muzi两个class属性分别给mubeixiang和muzi				//				//如果是双人墓				//				// 如果是室内				//  创建一个img 给他一个src图片位置  付给2个排位的图片				//	创建一个id为mubeixiang 的img 给他一个src图片位置   动态赋予照片的位置				//	创建一个id为muzi_nan的span   动态赋予墓志铭				//	再创建一个id为muzi_nv的span   动态赋予墓志铭				//	将这上个创建的dom元素给class为muxiang的div				//    将mubeixiang_sn和muzi_sn两个class属性分别给mubeixiang和muzi				// 如果是室外				//  创建一个id为mubeixiang 的img 给他一个src图片位置  动态赋予照片的位置				//	创建一个id为muzi_nan的span 	动态赋予墓志铭				//	再创建一个id为muzi_nv的span   动态赋予墓志铭				//	将这上个创建的dom元素给class为muxiang的div				//    将mubeixiang和muzi两个class属性分别给mubeixiang和muzi				//jibai记录				$.ajax({					headers: {						tokenInfo: window.localStorage.getItem("tokenInfo"),						userId: userId					},					type: "GET",					contentType: "application/json",					dataType: "json",					url: urlBase + "/api/sacrifice/memorialSaclist?memorialId=" + memorialId + "&currentPage=1&limit=20", //这里是网址					success: function(data) {						if(data.code == 'SUCCESS') {							var list = data.result.content;							var contens = "";							$.each(list, function() {								contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;"><img width="42px" height="42px" class="mui-media-object mui-pull-left" src="' + imgBase + this.sacrificeImg + '">'									+									'<div class="mui-media-body">' + this.userName + '<p class="mui-ellipsis">' + this.dic + '</p></div></a></li>'							});							document.getElementById('jprec').innerHTML = contens;						}					}				});				selectLev();				//留言记录				function selectLev() {					$.ajax({						headers: {							tokenInfo: window.localStorage.getItem("tokenInfo")						},						type: "GET",						contentType: "application/json",						dataType: "json",						url: urlBase + "/api/leav/memorialLeavlist?dataId=" + memorialId + "&leaType=memorial&currentPage=1&limit=20", //这里是网址						success: function(data) {							if(data.code == 'SUCCESS') {								var list = data.result.content;								var contens = "";								$.each(list, function() {									contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:;"><img width="42px" height="42px" class="mui-media-object mui-pull-left" src="' + imgBase + this.headImg + '">'										+										'<div class="mui-media-body">' + this.userName + '<p class="mui-ellipsis">' + this.content + '</p></div></a></li>'								});								document.getElementById('levRec').innerHTML = contens;							}						}					});				}				$("#sendLev").click(function() {					var neirong = $("#levContent").val();					if(neirong == '') {						mui.alert("请输入留言内容");						return;					}					var conten = {						"dataId": memorialId,						"content": neirong					};					$.ajax({						type: "POST",						headers: {							tokenInfo: window.localStorage.getItem("tokenInfo")						},						url: urlBase + "/api/leav/add?leaType=memorial",						data: conten,						dataType: "json",						success: function(data) {							if(data.code == 'SUCCESS') {								mui.alert("留言成功~~~");								$("#levContent").val('');								selectLev();							} else {								mui.alert(data.message)							}						},						error: function(message) {							mui.alert("提交数据失败！");						}					});				});				$(".jingxian").click(function() {					window.location.href = "jipin.html?memorialId=" + memorialId;				});				//相册				$("#xp").on("tap", function() {					if($("#xiangpian").show()) {						$.ajax({							headers: {								tokenInfo: window.localStorage.getItem("tokenInfo")							},							type: "GET",							//contentType: "application/json",							dataType: "json",							url: urlBase + "/api/album/albumFileList?dataId=" + memorialId + "&type=memorial&fileFormat=img",							success: function(data) {								if(data.code == 'SUCCESS') {									//arlt(data);									var list = data.result;									var contens = "";									$.each(list, function(index, item) {										/*if(this.fileFormat='img'){										    contens += '<p><img src="'+imgBase+this.path+'_crop_280x150_60'+'" data-preview-src="" width="320" height="240"  data-preview-group="1" /></p>'										}										if(this.fileFormat='video'){										    contens += '<p id="videoH"><video  src="'+imgBase+this.path+'" width="320" height="240" controls="controls" /></video></p>'										}*/										contens += '<p><img src="' + imgBase + this.path + '_crop_260x180_60' + '" data-preview-src="" data-preview-group="1" /></p>'									})									document.getElementById("showImg").innerHTML = contens;								}							},							error: function(message) {								mui.alert("提交数据失败！");							}						});					}				});				//视频				$("#ph").on("tap", function() {					if($("#video").show()) {						$.ajax({							headers: {								tokenInfo: window.localStorage.getItem("tokenInfo")							},							type: "GET",							//contentType: "application/json",							dataType: "json",							url: urlBase + "/api/album/albumFileList?dataId=" + memorialId + "&type=memorial&fileFormat=video",							success: function(data) {								if(data.code == 'SUCCESS') {									//arlt(data);									var list = data.result;									//mui.alert(data.result[0]);									var contens = "";									$.each(list, function(index, item) {										contens += '<p id="videoH"><video  src="' + imgBase + this.path + '" width="160" height="120" controls="controls" /></video></p>'									})									//						   	  plyr.setup('video', { controls: ['play-large'] });//只显示大按钮									document.getElementById("showVideo").innerHTML = contens;								}							},							error: function(message) {								mui.alert("提交数据失败！");							}						});					}				});			</script>		</body><!--<script src="../js/mui.min.js"></script>-->	<script src="../js/mui.zoom.js"></script>	<script src="../js/mui.previewimage.js"></script>	<script>		mui.previewImage();	</script></html>

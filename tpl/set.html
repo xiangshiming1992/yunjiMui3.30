@@ -32,6 +32,7 @@
  <div id="memberInfo" class="phone"><a href="memberInfo.html">会员信息</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
           
  <div id="headInfo" class="phone"><a href="headInfo.html">修改头像</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
+ <div id="Disclaimer" class="phone"><a href="Disclaimer.html">服务条款</a><span class="mui-icon mui-icon-forward phoneic"></span></div>     
   
  <div id="exitLogin" class="phone"><a>退出</a><span class="mui-icon mui-icon-forward phoneic"></span></div> 
 
@@ -42,10 +43,9 @@
  	
  		window.location.href="memberInfo.html"
  	});
- 	$("#headInfo").on("tap",function(){
- 	
+ 	$("#headInfo").on("tap",function(){	
  		window.location.href="headInfo.html"
- 	});
+ 	}); 	 	$("#Disclaimer").on("tap",function(){	 		window.location.href="Disclaimer.html" 	});
  	$("#exitLogin").on("tap",function(){
  		window.localStorage.removeItem("tokenInfo");
  		window.localStorage.removeItem("userInfo");

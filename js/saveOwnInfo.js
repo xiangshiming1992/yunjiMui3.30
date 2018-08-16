@@ -47,10 +47,8 @@ $(function () {
         });
         file.change(function () {
             var fileSize = $(this)[0].files[0].size;
-            console.log(fileSize)
-            var path = $(this).val();
             var jiapuImg = new FormData(form[0]);
-            jiapuImg.set("fileSize", fileSize);
+            jiapuImg.append("fileSize", fileSize);
             $.ajax({
                 type: "POST",
                 url: urlBase + "/file/fileUpload",

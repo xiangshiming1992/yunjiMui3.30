@@ -351,7 +351,7 @@ function upload(img, file, form) {
         console.log(fileSize)
         var path = $(this).val();
         var jiapuImg = new FormData(form[0]);
-        jiapuImg.set("fileSize", fileSize);
+        jiapuImg.append("fileSize", fileSize);
         $.ajax({
             type: "POST",
             url: urlBase + "/file/fileUpload",

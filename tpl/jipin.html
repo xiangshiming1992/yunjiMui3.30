@@ -27,7 +27,7 @@
 		        	
 <div class="mui-slider-item mui-control-content">            			 	
 	<ul id="jpList" class="jipin">
-		<!--<li><img src="../img/xianhua.png"/><h5>祭品</h5><p>价格：<span>20云币</span></p><p>时效：<span>20天</span></p></li>-->
+		<!--<li><img src="../img/xianhua.png"/><h5>祭品</h5><p>价格：<span>20银子</span></p><p>时效：<span>20天</span></p></li>-->
 	</ul>
 </div>  
   </div>
@@ -82,7 +82,7 @@
 							var list = data.result;
 							var contens = "";
 							$.each(list, function(){     
-							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+',\''+this.effects+'\',\''+this.sacrificeBigImg+'\')"><li><img width="100px" height="100px"  src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+'云币</span></p><p>时效：<span>'+this.sacrificeAging+'分钟</span></p></li></a>'
+							    contens += '<a onclick="sureJb('+this.sacrificeId+','+this.useCloudBi+',\''+this.effects+'\',\''+this.sacrificeBigImg+'\')"><li><img width="100px" height="100px"  src="'+imgBase+this.sacrificeImg +'"/><h5>'+this.sacrificeName+'</h5><p>价格：<span>'+this.useCloudBi+' 银子</span></p><p>时效：<span>'+this.sacrificeAging+' 分钟</span></p></li></a>'
 							}); 
 							document.getElementById('jpList').innerHTML = contens;
 						}
@@ -91,7 +91,7 @@
 			}
 			//确认祭拜
 			function sureJb(sacrificeId,useCloudBi,effects,sacrificeBigImg){
-				if(window.confirm('你确定要祭拜吗？当前祭拜消耗'+useCloudBi+'云币')){
+				if(window.confirm('你确定要祭拜吗？当前祭拜消耗'+useCloudBi+'银子')){
                 	$.ajax({
 					      headers: {
 					    	tokenInfo:window.localStorage.getItem("tokenInfo")
