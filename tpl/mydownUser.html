@@ -58,7 +58,7 @@
 						$.each(list, function(){     
 						    contens += '<li class="mui-table-view-cell mui-media"><a href="javascript:window.location.href=\'friendInfo.html?userId='+this.userId+'\';">'+
 						    '<img height="40px" width="40px" onerror="src=\'http://img.yunji128.com/homage/upload/n2n/h5/userhead/2018/06/cd19f659-68c.jpg\'" class="mui-media-object mui-pull-left"'+
-						    ' src="'+ imgBase + this.headImg+'"><div class="mui-media-body">'+this.userName + "---" +this.realName+'<p class="mui-ellipsis">居住地：'+this.xjProvince+ this.xjCity + this.xjCounty+'</p></div></a></li>'
+						    ' src="'+ imgBase + this.headImg+'"><div class="mui-media-body">'+this.userName + "  " + this.realName+'<p class="mui-ellipsis">居住地：'+this.xjProvince+ this.xjCity + this.xjCounty+'</p></div></a></li>'
 						}); 
 					}
 					document.getElementById('friendList').innerHTML = contens;
