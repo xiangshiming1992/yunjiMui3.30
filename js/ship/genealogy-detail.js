@@ -560,13 +560,13 @@ kyoPopupMenu = (function(){
                             jiaPuInfo(res.result)
                             // location.href = "editship.html?pedigreeId="+res.result;
                         }else {
-                            mui.alert(kyoPopupMenu.name +"还没有创建人物视角");
+                            mui.alert(kyoPopupMenu.name +"还没有创建家谱");
                         }
                     },function (error) {
                         console.log(error);
                     })
                 }else {
-                    mui.alert(kyoPopupMenu.name +"还没有创建人物视角");
+                    mui.alert(kyoPopupMenu.name +"还没有创建家谱");
                 }
             });
             $('.app-menu a[menu="menu2"]').on('click', function (){
@@ -574,7 +574,7 @@ kyoPopupMenu = (function(){
             });
             $('.app-menu a[menu="menu3"]').on("click",function () {
                 if (!kyoPopupMenu.memorialId){
-                    mui.alert(kyoPopupMenu.name +"还没有创建纪念馆");
+                    mui.alert("没有"+kyoPopupMenu.name +"的纪念馆");
                 }else {
                     goJiNianGuan(kyoPopupMenu.memorialId);
                 }

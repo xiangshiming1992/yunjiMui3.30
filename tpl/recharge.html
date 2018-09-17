@@ -69,7 +69,7 @@
 						var contens = "";
 						$.each(list, function() {
 							if('UniversalMember'!=this.configKey){
-								contens += '<div class="mui-input-row mui-radio mui-left"><label>'+this.configName+'<span> ('+this.annualFee/100.0+'元/年，充值返利'+this.czFanli+'% ，空间'+this.spaceSize+'M)</span></label><input name="chouseCzType" value="'+this.configKey+'" type="radio"></div>'
+								contens += '<div class="mui-input-row mui-radio mui-left"><label>'+this.configName+'<span> ('+this.annualFee/100.0+'元/年，兑换银子赠送'+this.czFanli+'% ，空间'+this.spaceSize+'M)</span></label><input name="chouseCzType" value="'+this.configKey+'" type="radio"></div>'
 							}
 						});
 						$('#chouseCzTypeList').append(contens);
@@ -96,8 +96,8 @@
 				var a = $("input[name='chouseCzType']:checked").val();
  				if("CZ_YB"==a){
  					var czMoney = $("#czMoney").val();
-					if(czMoney < 1){
-						mui.alert("至少充值一元钱的嘛");
+					if(czMoney < 2){
+						mui.alert("至少充值二元钱的嘛");
 						return;
 					}
 					createData = {

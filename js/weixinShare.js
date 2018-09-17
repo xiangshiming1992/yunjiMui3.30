@@ -12,7 +12,7 @@ $(document).ready(function() {
 		shareUserId = JSON.parse(userInfo).userId;
 	}
 	initPage(shareUserId);
-	var inputs = $('<input type="text" value="3D3C7C41RR" style="position: absolute;top: 0;opacity: 0;" readonly="readonly" id="copyTxt"/><div  class="overPay_li_Info_item_btn " id="copyBtn" onclick="copyTxtFun(\'copyBtn\')" data-clipboard-action="copy" data-clipboard-target="#copyTxt"></div>')
+	var inputs = $('<input type="text" value="xqOuFT41TH" style="position: absolute;top: 0;opacity: 0;" readonly="readonly" id="copyTxt"/><div  class="overPay_li_Info_item_btn " id="copyBtn" onclick="copyTxtFun(\'copyBtn\')" data-clipboard-action="copy" data-clipboard-target="#copyTxt"></div>')
 	$("body").append(inputs);
 	var copy = true;
 	jQuery("body").on("click", function(e) {
@@ -47,8 +47,8 @@ function initPage(shareUserId) {
 				'openLocation'
 			]
 		});
-		var shareTitle = "一起分享吧！";
-		var desc = "分享描述";
+		var shareTitle = "可以通过分享获得收益的网上祭祀平台！";
+		var desc = "网上祭祀，寻根问祖等传统文化传承；注册即获得消费商资格，消费分享，终身受益！";
 		var shareImg = "http://img.yunji128.com/homage/upload/sacrifice/2018/06/75ca75abf4864918b70794d2390d43cc.png";
 		var link = "http://wx.yunji128.com/tpl/share.html?shareUserId=" + shareUserId;
 		wx.ready(function() {

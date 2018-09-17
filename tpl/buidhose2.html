@@ -133,6 +133,12 @@
             </div>
         </div>
     </div>
+    <div>
+        <h5 class="mui-content-padded">免费卡密(无卡密不填)：</h5>
+        <div class="mui-input-row" style="margin: 10px 5px;">
+            <input type="text" name="cardPass" placeholder="输入正确卡密可免费创建">
+        </div>
+    </div>
     <button type="button" class="mui-btn mui-btn-primary mui-btn-block backbtn">上一步</button>
     <button type="button" id="save" class="mui-btn mui-btn-primary mui-btn-block completebtn">完成</button>
 </div>
@@ -141,8 +147,6 @@
     $(".backbtn").click(function () {
         window.location.href = "buidhose1.html";
     })
-
-
     var numPerson = $('input[name="numbPeople"]:checked').val();
     var memorialPerson = null;
     $("input[name='numbPeople']").click(function () {
@@ -201,6 +205,7 @@
     var customizeHeadImg = GetQueryString("customizeHeadImg");
     var modelSource = GetQueryString("modelSource");
     $("#save").click(function () {
+    	 mui(this).button("loading");
         if ('' == $("[name='personName']").val()) {
             mui.alert("人一名字不能为空");
         }
@@ -250,7 +255,8 @@
             "latitude": GetQueryString("latitude"),
             "longitude": GetQueryString("longitude"),
             "address": GetQueryString("address"),
-            "addressName": GetQueryString("addressName")
+            "addressName": GetQueryString("addressName"),
+            "cardPass": $("[name='cardPass']").val()
         };
         $.ajax({
             type: "POST",
